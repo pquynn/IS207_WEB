@@ -5,6 +5,8 @@
 .btn {
     width: 25%;
     height: 30px;
+    border: none;
+    border-radius: 5px;
     box-sizing: border-box;
     box-shadow: 0 8px #ccc;
     cursor: pointer;
