@@ -1,4 +1,7 @@
 .btn5{
-    width:auto;
-    background-color: aliceblue;
+    width: 200px;
+    background-color: #FFBE1A;
+    border-radius: 4px;
+    color: black;
+    margin: 3px;
 }
