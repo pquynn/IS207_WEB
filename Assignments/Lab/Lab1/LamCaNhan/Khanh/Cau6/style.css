@@ -1,1 +1,36 @@
+/** @format */
 
+body {
+  background-color: #ffedca;
+}
+
+h2 {
+  text-align: center;
+  margin: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 350px;
+  margin: auto;
+  /* border: solid; */
+}
+
+table,
+tr,
+td {
+  border: solid 1px;
+}
+
+td {
+  padding: 5px;
+}
+
+label {
+  color: blue;
+}
+
+button {
+  display: block;
+  margin: auto;
+}

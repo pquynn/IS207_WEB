@@ -1,1 +1,76 @@
+<!-- @format -->
 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Phiếu đăng ký tham gia dự thưởng</h2>
+
+    <!-- FROM DK -->
+    <table>
+      <!-- HO TEN -->
+      <tr>
+        <td><label for="ho-ten">Họ và tên</label></td>
+        <td><input type="text" placeholder="Nguyễn Văn A" id="ho-ten" /></td>
+      </tr>
+
+      <!-- DIA CHI -->
+      <tr>
+        <td><label for="dia-chi">Địa chỉ</label></td>
+        <td><input type="text" placeholder="abc, xyz, jqk" id="dia-chi" /></td>
+      </tr>
+
+      <!-- SDT -->
+      <tr>
+        <td><label for="sdt">Điện thoại</label></td>
+        <td><input type="text" placeholder="09xxxxxxxx" id="sdt" /></td>
+      </tr>
+
+      <!-- GIOI TINH -->
+      <tr>
+        <td><label>Phái</label></td>
+        <td>
+          <!-- nam -->
+          <label for="nam">Nam</label>
+          <input type="radio" value="nam" id="nam" />
+
+          <!-- nu -->
+          <label for="nu">Nữ</label>
+          <input type="radio" value="nu" id="nu" />
+        </td>
+      </tr>
+
+      <!-- SAN PHAM -->
+      <tr>
+        <td>
+          <label for="san-pham">Sản phẩm</label>
+        </td>
+        <td>
+          <select id="san-pham">
+            <option value="ihone">Iphone 11 pro Max</option>
+            <option value="samsung">Samsum galaxy note 20</option>
+            <option value="xiaomi">Xiaomi Redmi K30</option>
+            <option value="oppo">OPPO A53</option>
+          </select>
+        </td>
+      </tr>
+
+      <!-- SO DU DOAN -->
+      <tr>
+        <td><label for="so-du-doan">Số dự đoán</label></td>
+        <td><input id="so-du-doan" type="number" /></td>
+      </tr>
+
+      <!-- NUT DANG KY -->
+      <tr>
+        <td colspan="2"><button>Đăng ký</button></td>
+        <!-- <td></td> -->
+      </tr>
+    </table>
+  </body>
+</html>
