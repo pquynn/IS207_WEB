@@ -1,0 +1,99 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* box-model navigation bar */
+.nav{
+    width: 250px;
+    background-color: #F8F9F8;
+    margin: 0;
+    padding: 0;
+}
+
+/* || Nav heading */
+h1.nav_heading{
+    text-align: center;
+    padding: 10px;
+}
+
+/* start || Nav search form */
+.nav input[type="search"]{
+    width: 80%;
+    border: 1px lightslategrey solid;
+
+    font-size: 16px;
+    padding: 7px;
+}
+
+.nav button{
+    border: 1px lightslategrey solid;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.nav form{
+    display: flex;
+    justify-content: center;
+
+    padding: 0 15px;
+}
+/* end || Nav search form */
+
+
+/* start || Main menu */
+.nav a{
+    color: #4F88C8;
+    text-decoration: none;
+}
+
+.nav ul{
+   list-style: none; 
+}
+
+ul.nav_main-menu {
+    padding: 15px;
+}
+
+.nav_main-menu i{
+    color: #4F88C8;
+}
+
+.nav_main-menu ul{
+    padding: 0 0;
+}
+
+    /* float right chevron */
+i.rightside{
+    float: right;
+    font-size: 12px;
+} 
+
+    /* start || box model li */
+.li-container, .nav_product-sub-menu li{
+    padding: 10px 0;
+    cursor: pointer;
+}
+.nav_admin-sub-menu .li-container{
+    padding-left: 15px;
+}
+
+.nav_product-sub-menu li{
+    padding-left: 30px;
+}
+
+.li-container:hover, .nav_product-sub-menu li:hover{
+    background-color: lightgray;
+}
+    /* end || box model li */
+
+    /* box model main menu */
+.nav_main-menu{
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* end || Main menu */
+

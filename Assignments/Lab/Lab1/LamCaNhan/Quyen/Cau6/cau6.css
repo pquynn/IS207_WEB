@@ -1,0 +1,55 @@
+body{
+    background-color: #FFEDCA;
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    width: 70%;
+}
+
+/* Heading */
+h1.form_heading{
+    font-size: 30px;
+    text-align: center;
+}
+
+/* start: Table */
+table, tr, td{
+    border: 1px black solid;
+}
+
+td{
+    padding: 2px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    /* Left columns */
+td.label{
+    color: blue;
+    padding-right: 40px;
+}
+
+    /* Right columns */
+input[name="hoten"], input[name="dienthoai"], input[type=number], select{
+    width: 50%;
+}
+
+input[name="diachi"]{
+    width: 95%;
+}
+
+    /* center button */
+.form_btn{
+    text-align: center;
+}
+
+button{
+    cursor: pointer;
+}
+
+/* end: Table */
