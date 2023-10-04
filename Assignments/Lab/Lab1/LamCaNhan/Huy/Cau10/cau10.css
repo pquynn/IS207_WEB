@@ -1,0 +1,78 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.navigation {
+  width: 350px;
+}
+
+.mainmenu, .submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mainmenu a {
+  font-weight: bold;
+  display: block;
+  background-color: #e0e0e0;
+  text-decoration: none;
+  padding: 10px;
+  color: blue;
+}
+
+.mainmenu a:hover {
+    background-color:#949494;
+}
+
+.mainmenu li:hover .submenu {
+  display: block;
+  max-height: 200px;
+}
+
+.submenu a {
+  background-color: #cdcdcd;
+  padding-left: 20px;
+}
+
+.submenu a:hover {
+  background-color: #949494;
+}
+
+.submenu { 
+    overflow: hidden; /*Giấu menu phụ*/
+    max-height: 0;
+  
+  }
+
+.table-container {
+    font-weight: bold;
+    width: 350px;
+    border: 1px solid blue; 
+    background-color: #dddddd; 
+    padding: 10px; 
+}
+
+.center {
+    color: grey;
+    text-align: center;
+}
+
+.search-bar {
+  display: flex;
+  max-width: 400px;
+  margin:  auto;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.search-button {
+  padding: 0 0px;
+  background-color: #f5f5f5;
+  color: #000000;
+  border: none;
+  cursor: pointer;
+}
