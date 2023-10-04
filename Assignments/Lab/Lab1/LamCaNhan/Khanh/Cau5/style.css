@@ -1,0 +1,31 @@
+/** @format */
+
+/* genneral */
+body {
+  width: fit-content;
+  margin: auto;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 1000px;
+  border: solid 1px;
+  padding: 3px 10px;
+}
+
+/* form title */
+.form-title {
+  color: #8a2be2;
+  text-align: center;
+}
+
+/*  */
+.forget-sign {
+  text-align: center;
+  margin: 5px 0;
+}
+
+.forget-sign a {
+  text-decoration: none;
+  color: black;
+}

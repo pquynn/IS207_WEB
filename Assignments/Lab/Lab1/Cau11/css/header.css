@@ -1,0 +1,48 @@
+/** @format */
+
+/* HOME + NAV */
+.header {
+}
+
+/* HOME */
+.home {
+  border: solid;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 17px;
+}
+
+.home p {
+  font-weight: 600;
+}
+
+.logo-img {
+  width: 100px;
+  height: auto;
+}
+
+/* NAV */
+.nav {
+  list-style: none;
+  display: flex;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  width: 110px;
+  background: linear-gradient(180deg, #009500, black);
+  border: solid 1.4px;
+  border-top: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav li a {
+  text-decoration: none;
+  color: white;
+}
