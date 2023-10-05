@@ -3,46 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/aside.css">
-    <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/footer.css">
-    <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/header.css">
-    <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/main-cards.css">
-    <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/main-showcase.css">
-    <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/navigation.css">
+    <link rel="stylesheet" href="css/aside.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/main-cards.css">
+    <link rel="stylesheet" href="css/main-showcase.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <script src="https://kit.fontawesome.com/f7fcb1a9ac.js" crossorigin="anonymous"></script>
     <title>Nature Tour</title>
 </head>
 <body>
-    <!--  -->
-    <div>
-        <div> <!-- HEADER -->
-
-        </div>
-
-        <div> <!-- NAVIGATION -->
-
-        </div>
-
-        <div> <!-- MAIN CONTENT && ASIDE CONTENT -->
-
-            <div> <!-- MAIN CONTENT -->
-                <div> <!-- MAIN CONTENT SHOWCASE -->
     
+
+
+
+    <!-- START || ASIDE CONTENT-->
+    <aside class="aside">
+        <div class="aside_form">
+
+            <!-- start: holiday search form -->
+            <div class="aside_holiday-search">
+                <div class="aside_form-heading">
+                    <h3>HOLIDAY SEARCH</h3>
+                    <p>Chọn nơi bạn muốn tham quan:</p>
                 </div>
-    
-                <div> <!-- MAIN CONTENT CARDS -->
-    
-                </div>
+               
+                <form action="">
+                    <select name="area" style="font-weight: bold;">
+                        <option value="" disabled selected hidden>Chọn khu vực</option>
+                        <option value="KV1">Khu vực 1</option>
+                        <option value="KV2">Khu vực 2</option>
+                        <option value="KV3">Khu vực 3</option>
+                    </select>
+
+                    <select name="topic">
+                        <option value="" disabled selected hidden>Chọn chủ đề</option>
+                        <option value="CĐ1">Chủ đề 1</option>
+                        <option value="CĐ2">Chủ đề 2</option>
+                        <option value="CĐ3">Chủ đề 3</option>
+                    </select>
+
+                    <select name="date">
+                        <option value="" disabled selected hidden>Chọn ngày du lịch</option>
+                        <option value="NDL1">Ngày du lịch 1</option>
+                        <option value="NDL2">Ngày du lịch 2</option>
+                        <option value="NDL3">Ngày du lịch 3</option>
+                    </select>
+
+                    <select name="price">
+                        <option value="" disabled selected hidden>Chọn mức giá</option>
+                        <option value="MG1">Mức giá 1</option>
+                        <option value="MG2">Mức giá 2</option>
+                        <option value="MG3">Mức giá 3</option>
+                    </select>
+
+                    <a href="#" class="btn btn-search-holidays">SEARCH HOLIDAYS
+                        <i class="fa-solid fa-right-long"></i>
+                    </a>
+                </form>
+            <!-- end: holiday search form -->
             </div>
     
-            <div> <!-- AASIDE CONTENT-->
-    
+            <!-- start: quick search form -->
+            <div class="aside_quick-search">
+                <div class="aside_form-heading">
+                    <h3>QUICK SEARCH</h3>
+                    <p>Tìm thông tin nơi bạn tham quan:</p>
+                </div>
+
+                <form action="">
+                    <div class="flex-box">
+                        <input type="text" name="country-code" placeholder="Country/Code...">
+                        <a href="#" class="btn">SEARCH</a>
+                    </div>
+                </form>
             </div>
-            
+            <!-- end: quick search form -->
+
+            <!-- start: newsletter signup form -->
+            <div class="aside_newsletter">
+                <div class="aside_form-heading">
+                    <h3>NEWSLETTER SIGNUP</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus.</p>
+                </div>
+
+                <form action="">
+                    <input type="email" name="email" placeholder="Enter Email...">
+                    <div class="flex-box">
+                        <input type="text" name="name" placeholder="Enter Name...">
+                        <a href="#" class="btn">SIGN UP</a>
+                    </div>
+                </form>
+            </div>
+             <!-- end: newsletter signup form -->
+
         </div>
         
-        <div> <!-- FOOTER, COPYRIGHT -->
+        <!-- start: lastest news content -->
+        <div class="aside_latest-news">
+            <h3 class="aside_p-heading">LATEST NEWS</h3>
 
+            <div class="aside_news-paragraph outstanding">
+                <p class="news-topic">Lorem ipsum dolor sit amet.</p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod ut nostrum rem error similique non?</p>
+            </div>
+
+            <div class="aside_news-paragraph">
+                <p class="news-topic">Lorem ipsum dolor sit amet.</p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod ut nostrum rem error similique non?</p>
+            </div>
+
+            <div class="aside_news-paragraph">
+                <p class="news-topic">Lorem ipsum dolor sit amet.</p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod ut nostrum rem error similique non?</p>
+            </div>
         </div>
-    </div>
+        <!-- end: lastest news content -->
+
+    </aside>
+     <!-- END || ASIDE CONTENT-->
+
 </body>
 </html>
