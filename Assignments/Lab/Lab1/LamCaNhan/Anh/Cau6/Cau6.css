@@ -1,0 +1,43 @@
+
+table {
+    border-collapse: collapse;
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
+
+table, tr, td {
+    border: 1px solid black;
+}
+
+.col1 {
+    color: blue;
+    width: 130px;
+}
+
+.frame {
+    background-color: #FFEDCA;
+    border: 0.5px solid black;
+    width: 500px;
+    margin:auto;
+}
+
+.input1 {
+    width:150px;
+}
+
+.input2{
+    width:300px;
+}
+
+.input4 {
+    width:150px;
+}
+
+.btn-1 {
+    width:auto;
+    border-color: 1px solid black;
+    background-color: lightgray;
+    color:black;
+    cursor: pointer;
+}
+

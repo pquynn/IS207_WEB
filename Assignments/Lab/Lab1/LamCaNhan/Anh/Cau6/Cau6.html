@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="cau6.css">
+</head>
+<body>
+    <div class="frame">
+    <h2 style="text-align: center;">Phiếu đăng ký tham gia dự thưởng</h2>
+
+    <table>
+        <tr>
+            <td class="col1">Họ và tên</td>
+            <td><input type="text" class="input1" placeholder="Nguyễn Văn A"></td>
+        </tr>
+
+        <tr>
+            <td class="col1">Địa chỉ</td>
+            <td ><input type="text" class="input2" placeholder="abc, xyz, jqk"></td>
+        </tr>
+
+        <tr>
+            <td class="col1">Điện thoại</td>
+            <td><input type="text" class="input1" placeholder="09xxxxxxxx"></td>
+        </tr>
+
+        <tr>
+            <td class="col1">Phái</td>
+            <td>
+                <input type="radio"><span>Nam</span>
+                <input type="radio"><span>Nữ</span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="col1">Sản phẩm</td>
+            <td>
+                <select size="4">
+                    <option>Iphone 11 Pro Max</option>
+                    <option>Samsung Galaxt Note 20</option>
+                    <option>Xiaomi Redmi K30</option>
+                    <option>OPPO A53</option>
+                    <option>Iphone 15 Pro Max</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="col1">Số dự đoán</td>
+            <td>
+                <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value"></div>
+                <input type="number" id="number" value="1" class="input4">
+                <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value"></div>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Đăng ký" class="btn-1">
+            </td>
+        </tr>
+    </table>
+
+    </div>
+</body>
+</html>
