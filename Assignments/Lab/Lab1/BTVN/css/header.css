@@ -9,10 +9,6 @@ table {
     width: 100%;
 }
 
-p {
-    margin: 3px;
-}
-
 #logo {
     margin: 5px 40px 5px 40px;
     width: 250px;
@@ -33,6 +29,11 @@ p {
 #tel {
     color: black;
     font-size: 120%;
+}
+
+#tel span {
+    color: #3BAB2F;
+    font-size: 110%;
 }
 
 .menu {
