@@ -25,15 +25,13 @@ table {
     color: gray;
     font-size: 80%;
 }
-
-#tel {
+.tel {
     color: black;
     font-size: 120%;
 }
-
-#tel span {
-    color: #3BAB2F;
-    font-size: 110%;
+.tel span {
+    color: #3BAB2F; 
+    font-size: 100%;
 }
 
 .menu {
