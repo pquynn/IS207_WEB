@@ -13,6 +13,11 @@ footer hr {
 nav {
     list-style: none;
     margin: 10px 0;
+    cursor: pointer;
+}
+
+nav li:hover {
+    opacity: 0.6;
 }
 
 li {
