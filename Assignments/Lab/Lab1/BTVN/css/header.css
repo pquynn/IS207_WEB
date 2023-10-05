@@ -1,0 +1,60 @@
+header {
+    background-color: #EFEEE2;
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+table {
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+}
+
+#logo {
+    margin: 5px 40px 5px 40px;
+    width: 250px;
+    cursor: pointer;
+}
+
+.contact{
+    text-align: right;
+    padding-right: 15px;
+    padding-top: 0px;
+}
+
+#contact-title{
+    color: gray;
+    font-size: 80%;
+}
+
+#tel {
+    color: black;
+    font-size: 120%;
+}
+
+#tel span {
+    color: #3BAB2F;
+    font-size: 110%;
+}
+
+.menu {
+    text-align: right;
+    padding-right: 15px;
+
+}
+.btn-menu {
+    width:auto;
+}
+.btn-menu a{
+    color:#3BAB2F;
+    font-weight: bolder;
+    text-decoration: none;
+    padding: 5px;
+    margin: 3px 0px 3px 10px;
+}
+
+.btn-menu a:hover {
+    background-color: #3BAB2F;
+    border: 1px solid #448632;
+    border-radius: 8px;
+    color: white;
+}
