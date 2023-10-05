@@ -2,68 +2,102 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/aside.css" />
-    <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/footer.css" />
-    <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/header.css" />
-    <link
-      rel="stylesheet"
-      href="/Assignments/Lab/Lab1/BTVN/css/main-cards.css" />
-    <link
-      rel="stylesheet"
-      href="/Assignments/Lab/Lab1/BTVN/css/main-showcase.css" />
-    <link
-      rel="stylesheet"
-      href="/Assignments/Lab/Lab1/BTVN/css/navigation.css" />
-    <title>Nature Tour</title>
-  </head>
-  <body>
-    <!--  -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/aside.css" />
+  <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/footer.css" />
+  <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/header.css" />
+  <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/main-cards.css" />
+  <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/main-showcase.css" />
+  <link rel="stylesheet" href="/Assignments/Lab/Lab1/BTVN/css/navigation.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Nature Tour</title>
+</head>
+
+<body>
+  <!--  -->
+  <div>
     <div>
+      <!-- HEADER -->
+      <header>
+        <table>
+          <tr>
+            <td rowspan="2" align="left">
+              <a href="#">
+                <img src="logo.jpg" id="logo" />
+              </a>
+            </td>
+
+            <td class="contact">
+              <p id="contact-title">
+                Contact Us by the telephone number bellow
+              </p>
+              <p id="tel">
+                12 <span style="color: #3bab2f">(0) 12</span>34 567890
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="menu">
+              <a href="#">HOME</a>
+              <a href="#">ABOUT</a>
+              <a href="#">DONATE</a>
+              <a href="#">VIDEO</a>
+              <a href="#">CONTACT</a>
+            </td>
+          </tr>
+        </table>
+      </header>
+    </div>
+
+    <div><!-- NAVIGATION --></div>
+
+    <div>
+      <!-- MAIN CONTENT && ASIDE CONTENT -->
+
       <div>
-        <!-- HEADER -->
-        <header>
-          <table>
-            <tr>
-              <td rowspan="2" align="left">
-                <a href="#">
-                  <img src="logo.jpg" id="logo" />
-                </a>
-              </td>
+        <!-- MAIN CONTENT -->
+        <div><!-- MAIN CONTENT SHOWCASE -->
+          <div class="main-content-showcase">
+            <div class="main-content-showcase__one">
+              <img src="card-img/lion.jpg" alt="Picture of Lion" class="main-content-showcase__one__lion">
+              <div class="main-content-showcase__one__content">
+                <div class="group-para">
+                  <p id="group-para__our">Our</p>
+                  <p id="group-para__newtour">New Tour</p>
+                  <p id="group-para__content">Đến với NATURE TOURS, bạn có thể tham quan
+                    hoặc tìm kiếm thông tin về các thắng cảnh ở bất kì nơi nào trên thế giới mà bạn muốn.</p>
+                  <p id="group-para__continue">Continue <span>reading...</span></p>
+                </div>
+                <div class="group-circle-number">
+                  <div class="circle-number circle-number--green">
+                    <i class="fa-solid fa-1"></i>
+                  </div>
+                  <div class="circle-number">
+                    <i class="fa-solid fa-2"></i>
+                  </div>
+                  <div class="circle-number">
+                    <i class="fa-solid fa-3"></i>
+                  </div>
+                  <div class="circle-number">
+                    <i class="fa-solid fa-4"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-              <td class="contact">
-                <p id="contact-title">
-                  Contact Us by the telephone number bellow
-                </p>
-                <p id="tel">
-                  12 <span style="color: #3bab2f">(0) 12</span>34 567890
-                </p>
-              </td>
-            </tr>
-
-            <tr>
-              <td class="menu">
-                <a href="#">HOME</a>
-                <a href="#">ABOUT</a>
-                <a href="#">DONATE</a>
-                <a href="#">VIDEO</a>
-                <a href="#">CONTACT</a>
-              </td>
-            </tr>
-          </table>
-        </header>
-      </div>
-
-      <div><!-- NAVIGATION --></div>
-
-      <div>
-        <!-- MAIN CONTENT && ASIDE CONTENT -->
-
-        <div>
-          <!-- MAIN CONTENT -->
-          <div><!-- MAIN CONTENT SHOWCASE --></div>
+            <div class="main-content-showcase__two">
+              <p id="showcase__two__loremipsum">LOREM IPSUM <span>DOLOR</span>SIT AMENT</p>
+              <p id="showcase__two__content">Blandit praesent luptatum zzril delenit augue duis dolore to feugait
+                nulla facilisi. Nam liber tempor cum soluta nobis <span href="">tutorials guides.</span>
+              </p>
+            </div>
+          </div> <!-- THE END MAIN CONTENT SHOWCASE -->
 
           <div class="card-section">
             <!-- MAIN CONTENT CARDS -->
@@ -147,5 +181,6 @@
 
       <div><!-- FOOTER, COPYRIGHT --></div>
     </div>
-  </body>
+</body>
+
 </html>
