@@ -1,0 +1,11 @@
+
+.aside {
+    border: 1px solid;
+    border-color: #ee8181;
+    background-color: #66cccc;
+    text-align: center;
+    padding: 10px;
+    width: 25%;
+    margin-bottom: 5px;
+    float: right;
+}
