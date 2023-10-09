@@ -1,9 +1,0 @@
-.body, .html {
-    margin: 0;
-}
-
-.box {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
