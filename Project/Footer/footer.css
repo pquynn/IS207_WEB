@@ -1,0 +1,43 @@
+html,
+body {
+    background-color: #FFFFFF;
+}
+
+.FooterBox__one {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+}
+
+.FooterBox__one h3 {
+    font-family: Roboto, San-Serif;
+    font-size: 24px;
+}
+
+.FooterBox__one p {
+    font-family: Roboto, San-Serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+.FooterBox__one p:hover {
+    color: #E96D00;
+}
+
+.span-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.FooterBox__two hr {
+    width: 70%;
+}
+
+.FooterBox__two__rightpayment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: self-end;
+}
