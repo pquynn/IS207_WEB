@@ -1,0 +1,84 @@
+.nav-admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    width: 240px;
+    height: 1094px;
+    background-color: rgba(33, 47, 60, 1); 
+    font-family: sans-serif;
+}
+
+.nav-admin-logo {
+    position: relative;
+    color:#fff;
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.nav-admin-logo img {
+    width: 70px;
+}
+
+.nav-admin-menu {
+    position: relative;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 50px;
+    width: 196px;
+  }
+  
+  .nav-admin-menu li {
+    margin-bottom: 10px;
+  }
+  
+  .nav-admin-menu li a {
+    display: block;
+    padding: 15px;
+    background-color: rgba(33, 47, 60, 1);
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-admin-menu li a:hover {
+    background-color: rgba(84, 160, 232, 1);
+  }
+  
+  .nav-admin-account {
+    position: relative;
+    margin-top: 300px;
+  }
+
+  .nav-admin-account #logout {
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    color:#fff;
+    transition: transform 0.3 ease;
+    width: 180px;
+    margin-top:30px;
+  }
+
+  .nav-admin-account #logout:hover {
+    background-color: rgba(84, 160, 232, 1);
+  }
+
+  .nav-admin-account #account {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color:#fff;
+    text-decoration: none;
+  }
+
+  .nav-admin-account #account img {
+    width: 50px;
+    margin-right: 10px;
+  }
