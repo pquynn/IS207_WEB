@@ -1,0 +1,94 @@
+/*----- Modified 10/13/2023 by Quyen */
+/* Reset default styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set base font and color */
+body {
+    font-family: Roboto, San-Serif; 
+    font-size: 16px;
+    background-color: #fff;
+    color: #000;
+    line-height: 1.5;
+}
+
+/* Set root variables */
+:root {
+    /* store */
+    --orange: #E96D00;
+
+    /* admin */
+    --admin-primary:#54A0E8;
+    --nav-admin-bg: #212F3C;
+    --table-border: #ddd;
+    --light-text: #667085;
+}
+
+
+/* Reused selectors */
+h1{
+    font-size: 32px;
+}
+
+h2{
+    font-size: 28px;
+}
+
+h3{
+    font-size: 24px;
+}
+
+h4{
+    font-size: 20px;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+/* button, input,... */
+/* .btn {
+    width: 100px;
+    height: 30px;
+    border: 2px solid;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.btn-cta {
+    width: 100px;
+    height: 30px;
+    border: 1px solid;
+    text-align: center;
+    background-color: #d7ccc8;
+    color:#000000;
+}
+.btn-cta:hover {
+    background-color: #a1887f;
+    color: #3e2723;
+}
+
+.ava {
+    width: 30px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 50%;
+}
+
+.search-bar {
+    width: 270px;
+    height: 27px;
+    border: 1px solid;
+} */

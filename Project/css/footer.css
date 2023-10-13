@@ -1,29 +1,25 @@
-html,
-body {
-    background-color: #FFFFFF;
-}
-
+/* Refactoring code. Modified 10/13/2023 by Quyen */
 .FooterBox__one {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin-bottom: 50px;
+    padding: 10px 0;
 }
 
 .FooterBox__one h3 {
-    font-family: Roboto, San-Serif;
-    font-size: 24px;
+    padding-bottom: 10px;
 }
 
 .FooterBox__one p {
-    font-family: Roboto, San-Serif;
-    font-size: 16px;
+    padding-top: 10px;
+
     cursor: pointer;
     transition: 0.2s linear;
 }
 
 .FooterBox__one p:hover {
-    color: #E96D00;
+    color: var(--orange);
 }
 
 .span-container {
@@ -32,7 +28,7 @@ body {
 }
 
 .FooterBox__two hr {
-    width: 70%;
+    width: 100%;
 }
 
 .FooterBox__two__rightpayment {
@@ -40,4 +36,6 @@ body {
     flex-direction: row;
     justify-content: space-around;
     align-items: self-end;
+
+    margin: 15px;
 }

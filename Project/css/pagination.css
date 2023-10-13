@@ -1,18 +1,23 @@
+/* Refactoring code. Modified 10/13/2023 by Quyen */ 
+
 .pagination {
     display: flex;
     justify-content: center;
-    color: black;
 }
 
 .pagination a{
     padding: 10px 20px;
-    text-decoration: none;
     border-radius: 20%;
   }
   
 .pagination a.active {
-    background-color: dodgerblue;
+    background-color: var(--orange);
     color: white;
   }
   
 .pagination a:hover:not(.active) {background-color: #ddd;}
+
+/* admin -> change color */
+.pagination.admin a.active {
+  background-color: var(--admin-primary);
+}

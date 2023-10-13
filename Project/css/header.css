@@ -1,25 +1,15 @@
-/** @format */
+/* Refactoring code. Modified 10/13/2023 by Quyen */
 
 /* ************GENERAL************ */
 body {
   background-color: rgb(227, 227, 227);
-  font-family: "Roboto", sans-serif;
 }
 
 ul,
 li,
 a,
 button {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  color: black;
   cursor: pointer;
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
 }
 
 /* ************STYLING************ */
@@ -101,7 +91,7 @@ a {
   height: 2px;
   bottom: -2px;
   left: 0;
-  background-color: #fd8923;
+  background-color: var(--orange);
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
@@ -117,5 +107,5 @@ a {
 }
 
 .nav-icon--item a:hover {
-  color: #fd8923;
+  color: var(--orange);
 }
