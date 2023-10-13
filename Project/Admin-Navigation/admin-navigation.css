@@ -1,17 +1,20 @@
+:root{ --nav-admin-bg: #212F3C;}
+:root{ --nav-admin-btn-bg: #54A0E8;}
 .nav-admin {
     display: flex;
     flex-direction: column;
+    position: fixed;
     align-items: center;
     margin: 0;
     width: 240px;
-    height: 1094px;
-    background-color: rgba(33, 47, 60, 1); 
+    height: 100vh;
+    background-color: var(--nav-admin-bg); 
     font-family: sans-serif;
 }
 
 .nav-admin-logo {
     position: relative;
-    color:#fff;
+    color:#ffff;
     margin: 15px;
     display: flex;
     align-items: center;
@@ -26,7 +29,7 @@
     position: relative;
     list-style-type: none;
     padding: 0;
-    margin-top: 50px;
+    margin-top: 20px;
     width: 196px;
   }
   
@@ -37,21 +40,20 @@
   .nav-admin-menu li a {
     display: block;
     padding: 15px;
-    background-color: rgba(33, 47, 60, 1);
+    background-color: var(--nav-admin-bg); 
     border-radius: 8px;
     text-decoration: none;
-    color: #fff;
+    color: #ffff;
     cursor: pointer;
     transition: transform 0.3s ease;
   }
   
   .nav-admin-menu li a:hover {
-    background-color: rgba(84, 160, 232, 1);
+    background-color: var(--nav-admin-btn-bg);
   }
   
   .nav-admin-account {
     position: relative;
-    margin-top: 300px;
   }
 
   .nav-admin-account #logout {
@@ -60,14 +62,14 @@
     border-radius: 8px;
     text-decoration: none;
     text-align: center;
-    color:#fff;
+    color:#ffff;
     transition: transform 0.3 ease;
     width: 180px;
-    margin-top:30px;
+    margin-top: 15px;
   }
 
   .nav-admin-account #logout:hover {
-    background-color: rgba(84, 160, 232, 1);
+    background-color: var(--nav-admin-btn-bg);
   }
 
   .nav-admin-account #account {
