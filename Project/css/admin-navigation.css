@@ -48,6 +48,14 @@ a{
   .nav-admin-menu li a:hover {
     background-color: var(--admin-primary);
   }
+
+  .nav-admin-menu li a:hover:not(a.active){
+    background-color: var(--admin-primary);
+  }
+
+  .nav-admin-menu li a.active {
+    background-color: var(--admin-primary);
+  }
   
   .nav-admin-account {
     position: relative;
@@ -65,14 +73,6 @@ a{
   }
 
   .nav-admin-account #logout:hover {
-    background-color: var(--admin-primary);
-  }
-
-  .nav-admin-menu li a:hover:not(a.active){
-    background-color: var(--admin-primary);
-  }
-
-  .nav-admin-menu li a.active {
     background-color: var(--admin-primary);
   }
 
