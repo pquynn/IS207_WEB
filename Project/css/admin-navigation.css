@@ -11,7 +11,7 @@
     background-color: var(--nav-admin-bg); 
 }
 
-a{
+.nav-admin a{
   color: #fff;
 }
 
