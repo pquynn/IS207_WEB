@@ -1,0 +1,48 @@
+:root {
+    --line-border-color: 1px solid #b1b1b1;
+}
+.navigation-account {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 215px;
+    height: auto;
+    padding: 30px;
+    border-right: var(--line-border-color);
+}
+
+.navigation-account li {
+    font-size: 18px;
+    line-height: 30px; 
+}
+
+.navigation-account li a:hover:not(a.active) {
+    font-weight: bolder;
+}
+
+.navigation-account li a.active {
+    font-weight: bolder;
+}
+
+#title-TaiKhoan {
+    font-size: 24px;
+    font-weight:600;
+    margin-bottom: 30px;
+}
+
+.section {
+    display:flex;
+    align-items:flex-start ;
+    margin-top: 15px;
+    border-bottom: var(--line-border-color);
+}
+
+.list-orders {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    width: 100vh;
+    height: auto;
+    padding-left: 80px;
+    padding-top: 30px;
+}
