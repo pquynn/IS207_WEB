@@ -1,0 +1,68 @@
+#calculator {
+    width: 300px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+    /* display: flex;
+    flex-direction: row; */
+}
+
+#calculatorScreen {
+    font-size: 20px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+
+#inputBox, #resultBox {
+    margin: 0px;
+}
+
+#resultBox {
+    margin-top: 5px;
+    text-align: right;
+}
+
+#btnGroup {
+    margin-top: 5px;
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+button {
+    font-size: 15px;
+    width: 95px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.6;
+}
+
+#btnCE {
+    background-color: #D9534F;
+}
+
+#btnDel {
+    background-color: #F0AD4E;
+}
+
+.btnOperation {
+    background-color: #5CB85C;
+}
+
+.btnNumber {
+    background-color: #428BCA;
+}
+
+#btnDot,
+#btnEqual {
+    background-color: #5BC0DE;
+}
