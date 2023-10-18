@@ -19,7 +19,9 @@
   <body>
     <ul class="header">
       <!-- logo -->
-      <li class="nav-logo"><a href="#">LOGO</a></li>
+      <li class="nav-logo">
+        <a href="#"><img src="../img/logo.png" /></a>
+      </li>
 
       <!-- link (home, shop, category,....) -->
       <ul class="nav-link">

@@ -3,11 +3,8 @@
  *
  * @format
  */
-/* ************GENERAL************ */
-body {
-  background-color: white !important;
-}
 
+/* ************GENERAL************ */
 ul,
 li,
 a,
@@ -20,13 +17,18 @@ button {
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: white;
-  padding: 10px 20px;
+  padding: 0 20px;
 }
 
 /* logo */
 .nav-logo {
   margin-top: 5px;
+}
+
+.nav-logo a img {
+  width: 40px;
 }
 
 /* icon */
