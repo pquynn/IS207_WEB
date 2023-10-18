@@ -49,6 +49,14 @@
     background-color: var(--admin-primary);
   }
 
+  .nav-admin-menu li a:hover:not(a.active){
+    background-color: var(--admin-primary);
+  }
+
+  .nav-admin-menu li a.active {
+    background-color: var(--admin-primary);
+  }
+  
   .nav-admin-account {
     position: relative;
     margin-top: 40px;
