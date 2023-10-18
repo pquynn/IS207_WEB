@@ -28,6 +28,9 @@
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </head>
   <body>
+    <!-- body header -->
+    <?php include ("C:\wamp64\www\github\IS207_WEB\Project\components\header.php") ?>
+
     <!-- CHECKOUT HEADER -->
     <div class="checkout-header">
       <h2>Check Out</h2>

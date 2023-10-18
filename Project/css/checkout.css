@@ -88,6 +88,10 @@ select {
 
 /* ***************LEFT COLUMN************* */
 /* ******checkout header******* */
+.checkout-header {
+  margin: 10px 0;
+}
+
 .checkout-header a {
   display: flex;
   align-items: center;
@@ -146,7 +150,7 @@ select {
 .right-col {
   height: fit-content;
   position: sticky;
-  top: 0;
+  top: 15px;
   width: 45%;
 }
 /* ******Product list****** */
