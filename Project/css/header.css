@@ -1,8 +1,11 @@
-/* Refactoring code. Modified 10/13/2023 by Quyen */
-
+/**
+ * Refactoring code. Modified 10/13/2023 by Quyen
+ *
+ * @format
+ */
 /* ************GENERAL************ */
 body {
-  background-color: rgb(227, 227, 227);
+  background-color: white !important;
 }
 
 ul,

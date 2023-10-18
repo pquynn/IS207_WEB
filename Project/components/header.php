@@ -8,7 +8,7 @@
     <title>Document</title>
 
     <!-- css file -->
-    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/base.css" />
     <link rel="stylesheet" href="../css/header.css" />
 
     <!-- icon -->
