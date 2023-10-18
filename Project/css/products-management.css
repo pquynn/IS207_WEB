@@ -1,6 +1,7 @@
 body{
     display: flex;
     background-color: #F1F1F1;
+    margin: 0;
 }
 
 .nav-container{
@@ -14,7 +15,6 @@ body{
     padding: 30px;
 }
 
-
 .section_functions{
     display: flex;
     justify-content: space-between;
@@ -25,4 +25,3 @@ body{
     display: flex;
     align-items: center;
 }
-

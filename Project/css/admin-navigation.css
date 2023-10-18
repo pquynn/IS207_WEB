@@ -48,7 +48,7 @@
   .nav-admin-menu li a:hover {
     background-color: var(--admin-primary);
   }
-  
+
   .nav-admin-account {
     position: relative;
     margin-top: 40px;
