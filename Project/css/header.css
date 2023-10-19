@@ -5,13 +5,6 @@
  */
 
 /* ************GENERAL************ */
-/* ul,
-li,
-a,
-button {
-  cursor: pointer;
-} */
-
 .nav-link--item a,
 .sub-nav-link--item a,
 .nav-icon--item a {
