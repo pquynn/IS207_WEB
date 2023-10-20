@@ -24,7 +24,7 @@ body {
     justify-content:center;
 }
 
-.button {
+button {
     width: 30%;
     height: 40px;
     font-size: 20px;
@@ -33,6 +33,10 @@ body {
     border: none;
     border-radius: 5px;
     color: white;
+}
+
+button:hover {
+    opacity: 0.6;
 }
 
 .operation{
