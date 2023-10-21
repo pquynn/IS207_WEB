@@ -116,6 +116,11 @@ select {
   justify-content: space-between;
 }
 
+/* other address */
+.other-address--form {
+  gap: 20px;
+}
+
 /* *******payment******* */
 .payment-section {
   margin-top: 10px;
