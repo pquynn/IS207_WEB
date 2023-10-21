@@ -28,6 +28,7 @@
 <?php include ("C:\wamp64\www\github\IS207_WEB\Project\components\header.php") ?>
 
     <!-- CART_HEADER -->
+  <div class='cart'>
     <div class="cart-header">
       <h2>Shopping Cart</h2>
       <a href="#">
@@ -194,5 +195,6 @@
         <button class="btn checkout-bnt pointer">Safe to checkout</button>
       </div>
     </div>
+  </div>  
   </body>
 </html>
