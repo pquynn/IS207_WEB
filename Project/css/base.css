@@ -8,8 +8,8 @@
 
 /* Set base font and color */
 body {
-    font-family: Roboto, San-Serif; 
-    font-size: 16px;
+    font-family: Roboto, San-Serif !important; 
+    font-size: 14px !important;
     background-color: #fff;
     color: #000;
     line-height: 1.5;
@@ -65,18 +65,19 @@ ul{
     cursor: pointer;
 }
 
-/* store button */
+/******* store button */
 .btn-confirm{
     color: #fff;
     background-color: #000;
 }
 
-/* button confirm */
+    /* button confirm */
 .btn-confirm:hover{
     background-color: var(--orange);
+    color: #fff;
 }
 
-/* button cancel */
+    /* button cancel */
 .btn-cancel{
     border: 1.6px solid #000;
     background-color: #fff;
@@ -87,14 +88,18 @@ ul{
     border-color: var(--orange);
 }
 
-/* admmin button */
-.btn.admin{
+/******* admmin button */
+.btn-admin{
     width: 100px;
     height: 35px;
+    margin: 5px 2px;
+    border: none;
+
+    cursor: pointer;
     border-radius: 7px;
 }
 
-/* button export */
+    /* button export */
 .btn-export{
     background-color: rgba(84, 160, 232, 0.2);
     color: #1F5588;
@@ -104,7 +109,7 @@ ul{
     opacity: 0.7;
 }
 
-/* button add */
+    /* button add */
 .btn-add{
     color: #fff;
     background-color: var(--admin-primary);
@@ -114,21 +119,56 @@ ul{
     opacity: 0.7;
 }
 
-/* button filter */
-.btn-filter{
+    /* button filter */
+.btn-filter,
+.btn-calendar{
     border: 1px solid var(--table-border);
     color: var(--light-text);
     background-color: #fff;
 }
 
-.btn-filter:hover{
+.btn-filter:hover,
+.btn-calendar:hover{
     border: 1px solid var(--admin-primary);
     color: var(--admin-primary);
 }
 
-.btn.admin i{
+.btn-admin i{
     margin-right: 5px;
 }
+
+/* start of admin button in modal */
+.btn.admin{
+    width: 220px;
+    height: 40px;
+    margin: 5px 2px;
+    border: none;
+    cursor: pointer;
+}
+
+    /* button confirm */
+.btn-confirm.admin{
+    color: #fff;
+    background-color: var(--admin-primary);
+}
+
+.btn-confirm.admin:hover{
+    opacity: 0.7;
+}
+
+    /* button cancel */
+.btn-cancel.admin{
+    border: 1px solid var(--light-text);
+    color: var(--light-text);
+    background-color: #fff;
+}
+
+.btn-cancel.admin:hover{
+    color: var(--admin-primary);
+    border-color: var(--admin-primary);
+}
+/* end of admin button in modal */
+
 /* ---------------end: button */
 
 
@@ -171,11 +211,16 @@ ul{
 /* ---------------end: search bar */
 
 /* style input, select */
-.input, select{
+input, select{
     width: 300px;
-    height: 30px;
+    height: 35px;
     margin: 5px;
 }
+
+textarea{
+    margin: 5px;
+}
+
 
 
 
