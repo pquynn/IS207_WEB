@@ -1,0 +1,105 @@
+/*general main section*/
+body{
+    display: flex;
+    background-color: #F1F1F1;
+    margin: 0;
+}
+
+.nav-container{
+    min-width: 240px;
+    
+}
+.admin-orders{
+    flex-grow: 2;
+
+    min-width: 400px;
+    padding: 30px;
+}
+
+/**/
+.date-orders {
+    margin: 10px;
+    margin-left: 1000px
+}
+
+/*dropdown status*/
+.choose-status{
+    margin: 10px;
+    margin-left: 1000px;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 200px;
+    padding: 5px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.5s ease-out;
+    position: relative; 
+}
+.list-status {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #fff;
+    width: 200px;
+}
+
+.list-status li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.list-status li:hover {
+    background-color: #d8d8d8;
+}
+
+.choose-status:hover .list-status {
+    display: block;
+}
+
+
+/*Search box*/
+.search-bar {
+    margin: 10px;
+    width: 250px;
+}
+
+.search-bar input[type="text"] {
+    border-radius: 4px;
+    border: none;
+    
+}
+
+/*table list order*/
+.list-orders{
+    margin-top: 20px;
+}
+.list-orders th {
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    background-color: #fff;
+}
+
+/*pagination*/
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pagination a{
+    padding: 5px 15px;
+    border-radius: 20%;
+  }
+  
+.pagination a.active {
+    background-color: var(--orange);
+    color: white;
+  }
+  
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+/* admin -> change color */
+.pagination.admin a.active {
+  background-color: var(--admin-primary);
+}
+
+
