@@ -1,6 +1,12 @@
-
+<!-- Init basic layout, components. Modified 10/23/2023 by Quyen. 
+    Not have: 
+    + export button event
+    + filter button event
+    + responsive
+-->
     <!-- start: admin navigation -->
     <?php 
+        $title = "Quản lý sản phẩm";
         include("AdminNavigation.php");
     ?>
     <!-- end: admin navigation -->
@@ -65,7 +71,11 @@
     <!-- end of Modal of Add new elements-->
 
     <!-- start of warning message when click del-btn -->
-        <?php include("ModalAlert.php"); ?>
+        <?php 
+            $alert_message = "xóa sản phẩm";
+            $alert_action = "Xóa";
+            include("ModalAlert.php"); 
+        ?>
     <!-- end of warning message when click del-btn -->
 
 </body>

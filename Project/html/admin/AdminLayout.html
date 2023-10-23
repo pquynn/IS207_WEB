@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../../css/pagination.css">
     <link rel="stylesheet" href="../../css/admin/ProductsManagement.css">
     <link rel="stylesheet" href="../../css/admin/ModalAddNewProduct.css">
+    <link rel="stylesheet" href="../../css/admin/ModalAlert.css">
     <title>Quản lý sản phẩm</title>
 
 </head>
@@ -54,13 +55,12 @@
 
     <!-- start: main section -->
     <div class="section">
+        <h2 class="section_heading">
+           Sản phẩm
+        </h2>
         
-        
-            <!-- start: search bar, button section -->
+        <!-- start: search bar, button section -->
         <div class="section_top-content">
-            <h2 class="section_heading">
-                Sản phẩm
-             </h2>
 
             <div class="top-content left">
                 <div class="admin-search-container">
@@ -85,11 +85,11 @@
                 </button>
             </div>
         </div>
-
+        <!-- end: search bar, button section -->
 
         <!-- start of Modal of Add new elements-->
         <!-- Modified 10/22/2023 by Quyen -->
-        <div class="modal fade modal-lg" id="add-new" tabindex="-1" aria-labelledby="#add-product" aria-hidden="true">
+        <div class="modal fade modal-lg add-new-container" id="add-new" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="#add-product" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
 
@@ -99,22 +99,24 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="" class="add-new-product">
+                        <form action="" class="add-new-product" >
                             <div class="row g-2">
                                 <!-- start of 1st column -->
                                 <div class="col">
                                     <label for="product-name" class="form-label">Tên giày</label>
-                                    <input type="text" id="product-name" class="form-control">
-
+                                    <input type="text" id="product-name" class="form-control" required>
+                                    <div class="invalid-feedback">
+                                        Hãy nhập tên giày.
+                                    </div>
 
                                     <label for="product-price" class="form-label">Giá</label>
-                                    <input type="number" id="product-price" class="form-control" min="0" step="1" value="0">
+                                    <input type="number" id="product-price" class="form-control" min="0" step="1">
 
                                     <div class="row g-2">
                                         <div class="col">
                                             <label for="product-size" class="form-label">Kích thước</label>
                                             <select id="product-size" class="form-select">
-                                                <option value="" disabled selected hidden>Chọn kích thước</option>
+                                                <option value="" disabled selected hidden></option>
                                                 <option value="M">M</option>
                                                 <option value="L">L</option>
                                                 <option value="XL">XL</option>
@@ -123,7 +125,7 @@
 
                                         <div class="col">
                                             <label for="product-quantity" class="form-label">Số lượng</label>
-                                            <input type="number" id="product-quantity" class="form-control" min="0" step="1" value="0">
+                                            <input type="number" id="product-quantity" class="form-control" min="0" step="1">
                                         </div>
                                     </div>
 
@@ -139,7 +141,7 @@
                                     
                                     <label for="product-category" class="form-label">Phân loại</label>
                                     <select id="product-category" class="form-select">
-                                        <option value="" disabled selected hidden>Chọn loại giày</option>
+                                        <option value="" disabled selected hidden></option>
                                         <option value="giày thể thao">Giày thể thao</option>
                                         <option value="giày nữ">Giày nữ</option>
                                         <option value="giày nam">Giày nam</option>
@@ -156,12 +158,14 @@
                     
                     <div class="modal-footer">
                         <button type="button" class="btn btn-cancel admin" data-bs-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-confirm admin">Thêm mới</button>
+                        <button type="button" class="btn btn-confirm admin" >Thêm mới</button>
                     </div>
 
                 </div>
             </div>
         </div>
+
+        
         <!-- end of Modal of Add new elements-->
 
         <!-- start: section_botton-content -->
@@ -210,23 +214,23 @@
     <!-- end: main section -->
 
     <!-- start of warning message when click del-btn -->
-    <div class="modal fade" id="alert" tabindex="-1" aria-labelledby="#delete-alert" aria-hidden="true">
+    <div class="modal fade modal-sm alert-container" id="alert" tabindex="-1" aria-labelledby="#delete-alert" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="delete-alert">Xác nhận xóa sản phẩm</h1>
+                    <h1 class="modal-title fs-5" id="delete-alert">Xác nhận xóa sản phẩm?</h1>
                 </div>
                 <div class="modal-body">
-                    <button type="button" class="btn btn-cancel admin" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-confirm admin">Xóa</button>
+                    <button type="button" class="btn btn-outline-secondary border border-secondary">Hủy</button>
+                    <button type="button" class="btn btn-danger">Xóa</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- end of warning message when click del-btn -->
 
-</body>
-</html>
 
+   
+    
 </body>
 </html>

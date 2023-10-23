@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="../../css/pagination.css">
     <link rel="stylesheet" href="../../css/admin/ProductsManagement.css">
     <link rel="stylesheet" href="../../css/admin/ModalAddNewProduct.css">
-    <title>Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="../../css/admin/ModalAlert.css">
+    <title>
+        <?php echo $title; ?>
+    </title>
 
 </head>
 <body>
