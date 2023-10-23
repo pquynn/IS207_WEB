@@ -2,7 +2,7 @@ body {
     font-size: 16;
     font-family: Arial, Helvetica, sans-serif; 
 
-    background-image: url('shoe.jpg');
+    background-image: url('../img/shoe.jpg');
 }
 
 table,th {
