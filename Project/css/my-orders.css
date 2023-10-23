@@ -1,6 +1,7 @@
 :root {
     --line-border-color: 1px solid #b1b1b1;
 }
+/*Style left-navigation --start*/
 .navigation-account {
     display: flex;
     flex-direction: column;
@@ -29,7 +30,9 @@
     font-weight:600;
     margin-bottom: 30px;
 }
+/*Style left-navigation --end*/
 
+/*Style main section --start*/
 .section {
     display:flex;
     margin-top: 15px;
@@ -37,12 +40,32 @@
 }
 
 .list-orders {
+    position: relative;
     display: flex;
     flex-direction: column;
     margin: 0px;
     width: 100vh;
-    height: auto;
+    height: 100vh;
     padding-left: 80px;
     padding-top: 30px;
     padding-bottom: 30px;
 }
+
+.search-bar {
+    position: absolute;
+    top: 80px;
+    left: 875px;
+}
+
+.table-list-orders {
+    margin-top: 90px;
+    margin-bottom: 30px;
+    width: 1100px;
+}
+
+#pagination-my-orders {
+    position: absolute;
+    bottom: 30px;
+    left: 875px;
+}
+/*Style main section --end*/
