@@ -28,11 +28,13 @@
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </head>
   <body>
-    <!-- body header -->
+    <!-- BODU HEADER: Start -->
     <?php include ("C:\wamp64\www\github\IS207_WEB\Project\components\header.php") ?>
+    <!-- BODU HEADER: End -->
 
-    <!-- CHECKOUT HEADER -->
+    <!-- CHECKOUT'S MAIN CONTENT: Start -->
     <div class="checkout">
+      <!-- CHECKOUT HEADER: Start -->
       <div class="checkout-header">
         <h2>Check Out</h2>
         <a href="#">
@@ -40,14 +42,15 @@
           >Continue Shopping
         </a>
       </div>
+       <!-- CHECKOUT's HEADER: End -->
 
-      <!-- CHECKOUT BODY -->
+      <!-- CHECKOUT BODY: Start -->
       <form>
         <div class="checkout-body flex">
-          <!-- infor form -->
+          <!-- INFOR FORM: Start -->
           <div class="left-col">
             <div class="infor-form flex flex-col">
-              <!-- gender -->
+              <!-- GENDER: Start -->
               <div class="gender flex">
                 <div>
                   <input
@@ -67,8 +70,9 @@
                   <label for="mr">Mr.</label>
                 </div>
               </div>
+              <!-- GENDER: End -->
 
-              <!-- name, email -->
+              <!-- NAME, EMAIL: Start -->
               <input
                 type="text"
                 placeholder="First name*"
@@ -81,8 +85,9 @@
                 class="input-char" />
 
               <input type="email" placeholder="email" class="input-char" />
+              <!-- NAME, EMAIL: End -->
 
-              <!-- address -->
+              <!-- ADDRESS: Start -->
               <div class="address width-50-30">
                 <input
                   type="text"
@@ -115,16 +120,18 @@
                 <option value="country">Country 3</option>
                 <option value="country">Country 4</option>
               </select>
+              <!-- ADDRESS: End -->
 
-              <!-- phone number -->
+              <!-- PHONE NUMBER: Start -->
               <input
                 type="number"
                 placeholder="Phone Number*"
                 required
                 class="input-char" />
               <small class="gray-text">*Required field</small>
+              <!-- PHONE NUMBER: End -->
 
-              <!-- create account -->
+              <!-- CREATE ACCOUNT: Start -->
               <div>
                 <input type="checkbox" id="create-account" />
                 <label for="create-account"
@@ -136,9 +143,9 @@
                 ><span class="material-symbols-outlined"> error </span>The
                 password will be sent to you by email</small
               >
+              <!-- CREATE ACCOUNT: End -->
 
-              <!-- other address -->
-              <!-- <div class="flex flex-col"> -->
+              <!-- OTHER ADDRESS: Start -->
               <div>
                 <input type="checkbox" id="other-address" />
                 <label for="other-address">Shipping Address is Different</label>
@@ -188,9 +195,9 @@
                   </select>
                 </div>
             </div>
-            <!-- </div> -->
+            <!-- OTHER ADDRESS: End -->
 
-            <!-- payment -->
+            <!-- PAYMENT: Start -->
             <div class="payment-section flex flex-col">
               <!-- paypal -->
               <div class="payment">
@@ -281,10 +288,11 @@
               </div>
             </div>
           </div>
+          <!-- PAYMENT: Start -->
 
-          <!-- buy column -->
+          <!-- BUY COLUMN: Start -->
           <div class="right-col">
-            <!-- product list -->
+            <!-- PRODUCT LIST: Start -->
             <table class="product-list">
               <!-- table col's name -->
               <tr class="col-name">
@@ -338,16 +346,15 @@
                 <td>300.000</td>
               </tr>
             </table>
+            <!-- PRODUCT LIST: End -->
 
-            <!-- buy section -->
+            <!-- BUY SECTION: Start -->
             <div class="buy-section">
               <!-- sub total -->
               <div class="sub-total flex">
                 <p>Subtotal</p>
                 <p>183.00 SAR</p>
               </div>
-
-              <!--  -->
 
               <!-- shipping -->
               <div class="shipping flex">
@@ -372,6 +379,9 @@
               >
               <!-- avaliable pament method -->
             </div>
+            <!-- BUY SECTION: Start -->
+
+            <!-- AVAILABLE PAYMENT: Start -->
             <h4>We Aceept</h4>
             <ul class="payment-list flex">
               <li>
@@ -400,9 +410,12 @@
                   src="../img/footer_image/napas.png" />
               </li>
             </ul>
+            <!-- AVAILABLE PAYMENT: Start -->
           </div>
         </div>
       </form>
+      <!-- CHECKOUT BODY: End -->
     </div>
+    <!-- CHECKOUT'S MAIN CONTENT: End -->
   </body>
 </html>

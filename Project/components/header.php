@@ -23,12 +23,13 @@
   </head>
   <body>
     <ul class="header">
-      <!-- logo -->
+      <!-- LOGO: start -->
       <li class="nav-logo">
         <a href="#"><img src="../img/logo.png" /></a>
       </li>
+      <!-- LOGO: End -->
 
-      <!-- link (home, shop, category,....) -->
+      <!-- LINK (HOME, SHOP, CATEGORY,....): Start -->
       <ul class="nav-link">
         <li class="nav-link--item hover-underline"><a href="#">HOME</a></li>
         <li class="nav-link--item hover-underline"><a href="#">SHOP</a></li>
@@ -58,8 +59,9 @@
         <li class="nav-link--item hover-underline"><a href="#">PAGES</a></li>
         <li class="nav-link--item hover-underline"><a href="#">BLOGS</a></li>
       </ul>
+      <!-- LINK (HOME, SHOP, CATEGORY,....): End -->
 
-      <!-- icon (accoutn, cart) -->
+      <!-- ICON (ACCOUNT, CART): Start -->
       <ul class="nav-icon">
         <!-- search -->
         <li class="nav-icon--item">
@@ -93,6 +95,7 @@
           </a>
         </li>
       </ul>
+      <!-- ICON (ACCOUNT, CART): End -->
     </ul>
   </body>
 </html>

@@ -27,7 +27,7 @@
 <!-- page header -->
 <?php include ("C:\wamp64\www\github\IS207_WEB\Project\components\header.php") ?>
 
-    <!-- CART_HEADER -->
+    <!-- CART-HEADER: Start -->
   <div class='cart'>
     <div class="cart-header">
       <h2>Shopping Cart</h2>
@@ -36,10 +36,11 @@
         >Continue Shopping
       </a>
     </div>
+    <!-- CART-HEADER: End -->
 
-    <!-- CART-BODY -->
+    <!-- CART-BODY: Start -->
     <div class="cart-body">
-      <!-- PRODUCT-LIST -->
+      <!-- PRODUCT-LIST: Start -->
       <table class="product-list">
         <!-- header -->
         <tr class="product-list--header">
@@ -156,24 +157,27 @@
           </td>
         </tr>
       </table>
+      <!-- PRODUCT-LIST: End -->
 
-      <!-- SUBMIT-SECTION -->
+      <!-- SUBMIT-SECTION: Start -->
       <div class="submit-section flex">
-        <!-- header -->
+        <!-- HEADER: Start -->
         <h4 class="flex">
           Do you have a voucher? <small class="gray-text">(Optional)</small
           ><span class="material-symbols-outlined pointer">
             keyboard_arrow_up
           </span>
         </h4>
+        <!-- HEADER: End -->
 
-        <!-- redeem voucher code -->
+        <!-- Redeem voucher code: start -->
         <div class="redeem-section">
           <input class="btn-cancel" placeholder="Enter the code" type="text" />
           <button class="btn-confirm pointer">Redeem</button>
         </div>
+        <!-- Redeem voucher code: End -->
 
-        <!-- sub total -->
+        <!-- sub total: Start -->
         <div>
           <div class="sub-total flex">
             <p>Subtotal</p>
@@ -184,17 +188,22 @@
             ><small class="gray-text">5.91 SAR</small>
           </div>
         </div>
+        <!-- sub total: End -->
 
-        <!-- total -->
+        <!-- total: Start -->
         <div class="total flex">
           <p>Total <small class="gray-text">(VAT inclued)</small></p>
           <p>143.91 SAR</p>
         </div>
+        <!-- total: End -->
 
-        <!-- checkout btn -->
+        <!-- checkout btn: Start -->
         <button class="btn checkout-bnt pointer">Safe to checkout</button>
+        <!-- checkout btn: End -->
       </div>
+      <!-- SUBMIT-SECTION: End -->
     </div>
+    <!-- CART-BODY: End -->
   </div>  
   </body>
 </html>
