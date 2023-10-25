@@ -18,7 +18,8 @@
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  padding: 0 20px;
+  padding: 0 20px 5px 20px;
+  border-bottom: solid 1px #c8c8c8;
 }
 
 /* logo */
@@ -66,7 +67,8 @@
   opacity: 0;
   pointer-events: none;
   top: 100%;
-  right: -45px;
+  right: 50%;
+  transform: translateX(50%);
   background-color: white;
   padding: 20px 10px 10px 10px;
   transition: all 0.3s;

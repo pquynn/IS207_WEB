@@ -161,7 +161,7 @@ select {
 }
 /* ******Product list****** */
 /* table */
-.product-list {
+.product-list--checkout {
   width: 100%;
   border-spacing: 10px;
   background-color: var(--gray);
@@ -172,6 +172,10 @@ select {
   font-weight: 500;
   font-size: 14px;
   margin-bottom: 10px;
+}
+
+.product-checkout {
+  background-color: transparent;
 }
 
 .product-infor {

@@ -38,7 +38,7 @@ body {
 }
 
 /* ******cart-body****** */
-.product-list {
+.product-list--cart {
   border-spacing: 0 10px;
   width: 65%;
 }
@@ -113,7 +113,7 @@ body {
 
 /* *******submit-section******** */
 .submit-section {
-  margin-top: 40px;
+  margin: auto;
   width: 26%;
   flex-direction: column;
   gap: 20px;
