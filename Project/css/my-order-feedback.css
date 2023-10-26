@@ -3,7 +3,6 @@
     padding-left: 80px;
     padding-top: 30px;
     padding-bottom: 30px;
-    width: 100vh;
 }
 
 /*star feedback*/
@@ -15,7 +14,7 @@
 
 /*text area feedback*/
 .input-feedback {
-    width: 100%;
+    width: 80%;
     height: 150px;
     border-radius: 6px;
     border-color: #e2e2e2;
@@ -39,7 +38,7 @@
     width: 150px;
     padding: 10px 15px;
     margin-top: 50px;
-    margin-left: 500px;
+    margin-left: 750px;
     text-align: center;
     border: none;
     background-color: #FFC416;

@@ -1,9 +1,17 @@
 <?php
+    $title = "Đánh giá đơn hàng";
     include("header.php");
 ?>
 <!--MY_ORDER-FEEDBACK START-->
 <div class="my-order-feedback">
-      <h1>Chi tiết đơn hàng #A123 > Đánh giá đơn hàng</h1>
+      <ul class="breadcrumb-my-order">
+        <li><a href="../php/my-orders.php">Danh sách đơn hàng</a> / </li>
+        <li> <a href="../php/my-order-detail.php">Chi tiết đơn hàng</a> / </li>
+        <li class="breadcrumb-current-page">Đánh giá đơn hàng</li>
+      </ul>
+
+      <h2>Đánh giá đơn hàng</h2>
+
         <p class="star product">
           Đánh giá sản phẩm
           <i class="fa-regular fa-star"></i>
