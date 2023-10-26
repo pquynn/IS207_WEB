@@ -1,9 +1,16 @@
 <?php
+    $title = "Chi tiết đơn hàng";
     include("header.php");
 ?>
 
 <!--DETAIL ORDER--START-->
 <div class="my-order-detail">
+      <!--breadcrumb-->
+      <ul class="breadcrumb-my-order">
+        <li><a href="../php/my-orders.php">Danh sách đơn hàng</a> / </li>
+        <li class="breadcrumb-current-page">Chi tiết đơn hàng</li>
+      </ul>
+
       <div class="title-order-detail">
           <h2>Chi tiết đơn hàng #A123</h2>
           <p id="date-create-order">
@@ -18,23 +25,11 @@
           <ul class="info">
             <li class="header-info">Thông tin người nhận</li>
             <li>Họ tên: </li>
-            <li>Email: </li>
             <li>SĐT: </li> 
           </ul>
         </li>
-        
+      
         <li class="box-info" id="info-2">
-          <i class="fa-solid fa-truck-fast icon-info"></i>
-              
-          <ul class="info">
-            <li class="header-info">Vận chuyển</li>
-            <li>ĐVVC: </li>
-            <li>Thanh toán: </li>
-            <li>Trạng thái: </li> 
-          </ul>
-        </li>
-
-        <li class="box-info" id="info-3">
           <i class="fa-solid fa-location-dot icon-info"></i>
               
           <ul class="info">
@@ -42,19 +37,34 @@
             <li> 123 ABC</li>
           </ul>
         </li>
+
+        <li class="box-info" id="info-3">
+            <i class="fa-solid fa-credit-card icon-info"></i>
+                <ul class="info">
+                    <li class="header-info">Phương thức thanh toán</li>
+                    <li>Momo: 09123456789</li>
+                    <li>Tên: </li>
+                </ul>
+            </li>
       </ul>
       
       <table class="table-detail-order">
         <tr>
-          <td>Sản phẩm</td>
+          <td>Mã sản phẩm</td>
+          <td>Kích thước</td>
+          <td>Tên sản phẩm</td>
+          <td>Hình ảnh</td>
           <td>Số lượng</td>
-          <td>Tổng</td>
+          <td>Tổng tiền</td>
         </tr>
 
         <tr>
-          <td>Tên sản phẩm 1</td>
-          <td>n</td>
-          <td>cost1</td>
+          <td>SS001</td>
+          <td>38</td>
+          <td>Product name</td>
+          <td>xem hình ảnh</td>
+          <td>1</td>
+          <td>$9999</td>
         </tr>
       </table>
 
@@ -63,10 +73,7 @@
           <td>Tổng tiền sản phẩm</td>
           <td class="cost order">$9999</td>
         </tr>
-        <tr>
-          <td>Chi phí vận chuyển</td>
-          <td class="cost delivery">$9999</td>
-        </tr>
+        
         <tr>
           <td>Khuyến mãi</td>
           <td class="cost promotion">$9999</td>
