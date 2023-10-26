@@ -22,7 +22,8 @@
 /*customer infomation*/
 /***header*/
 .order-status {
-    background-color: #FFA52F;
+    background-color: #37cd70;
+    color: #ffff;
     font-size: 15px;
     padding: 10px;
     margin: 10px;
@@ -63,6 +64,7 @@
     left: 0;
     background-color: #F4F2F2;
     width: 200px;
+    z-index: 10;
 }
 
 .option-status li {
@@ -77,7 +79,7 @@
     display: block;
 }
 
-/***icon*/
+/***icon print, save*/
 .icon {
     width: 40px;
     height: 40px;
@@ -85,8 +87,9 @@
     border-radius: 8px;
     background-color: #F4F2F2;
     cursor: pointer;
-    text-align: center;
-    padding: 10px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
 }
 
 /***3 boxes customer info*/
@@ -117,6 +120,8 @@
     background-color: var(--icon-bgcolor);
     color: #fff;
     margin: 5px 15px 0 5px;
+    display: flex !important;
+    justify-content: center;
 }
 
 .info {
@@ -131,38 +136,6 @@
     font-size:120%;
 }
 
-#box-text-note {
-    display: flex;
-    flex-direction: column;
-    border: none;
-    height: 100px;
-    width: 720px;
-}
-
-#area-text-note {
-    border-radius: 8px;
-    font-family: Roboto, San-Serif;
-    border: var(--border-box-info);
-    resize: none;
-    padding: 5px;
-    height: 80px;
-}
-
-#area-text-note::placeholder {
-    font-family: Roboto, San-Serif;
-}
-/*table products*/
-.table-products {
-    width: 100%;
-    margin-bottom: 15px;
-}
-
-.table-products th {
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-    background-color: #fff;
-}
-
 .col-checkbox {
     width: 15px;
 }
@@ -170,6 +143,7 @@
 /*order cost*/
 .order-cost{
     min-width: 50px !important;
+    margin-top: 20px;
     width: 300px;
     margin-left: 880px;
 }
