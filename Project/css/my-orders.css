@@ -1,5 +1,7 @@
 :root {
     --line-border-color: 1px solid #b1b1b1;
+    --breadscrumb-text-color: #8f8f8fa4;
+    --breadscumb-text-active: #E96D00;
 }
 /*Style left-navigation --start*/
 .navigation-account {
@@ -39,12 +41,31 @@
     border-bottom: var(--line-border-color);
 }
 
+/*breadscrumb*/
+.breadscrumb-my-order {
+    font-size: 20px;
+    font-style: italic;
+    color: var(--breadscrumb-text-color);
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.breadscrumb-my-order li a{
+    color: var(--breadscrumb-text-color);
+}
+.breadscrumb-my-order li a:hover {
+    color: var(--breadscumb-text-active);
+}
+.breadscrumb-current-page {
+    color: var(--breadscumb-text-active);
+}
+
 .list-orders {
     position: relative;
     display: flex;
     flex-direction: column;
     margin: 0px;
-    width: 100vh;
     height: 100vh;
     padding-left: 80px;
     padding-top: 30px;
@@ -53,7 +74,7 @@
 
 .search-bar {
     position: absolute;
-    top: 80px;
+    top: 140px;
     left: 875px;
 }
 
@@ -63,9 +84,9 @@
     width: 1100px;
 }
 
-#pagination-my-orders {
+#pagination-my-orders{
     position: absolute;
     bottom: 30px;
-    left: 875px;
+    left: 750px;
 }
 /*Style main section --end*/

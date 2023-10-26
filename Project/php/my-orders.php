@@ -1,11 +1,16 @@
 <?php
+    $title = "Danh sách đơn hàng của tôi";
     include("header.php");
 ?>
 
   <!--LIST-ORDERS START-->
     <div class="list-orders">
-      <h1>Đơn hàng của tôi</h1>
+      <!--breadscrumb-->
+      <ul class="breadscrumb-my-order">
+        <li class="breadscrumb-current-page">Danh sách đơn hàng</li> / 
+      </ul>
 
+      <h2>Danh sách đơn hàng của tôi</h2>
       <!--search bar-->
       <div class="search-bar">
         <input type="text" name="" placeholder="Tìm kiếm đơn hàng..." class="search-field">
@@ -15,55 +20,64 @@
 
       <!--Table list orders--start-->
       <table class="table-list-orders">
-        <tr>
-          <td>Mã đơn hàng</td>
-          <td>Ngày đặt hàng</td>
-          <td>PTTT</td>
-          <td>Trạng thái</td>
-          <td>Trị giá</td>
+        <tr>  
+            <td>Mã đơn hàng</td>
+            <td>Ngày hóa đơn</td>   
+            <td>SĐT</td>   
+            <td>Tên khách hàng</td>                  
+            <td>Địa chỉ</td>
+            <td>PTTT</td>   
+            <td>Trạng thái</td>    
+            <td>Tổng sản phẩm</td>   
+            <td>Tổng tiền</td> 
         </tr>
 
         <tr>
-          <td>A123</td>
-          <td>18/10/2023</td>
-          <td>Momo</td>
-          <td>Giao hàng thành công</td>
-          <td>152.000đ</td>
+            <td>A123</td>
+            <td>dd/mm/yyyy</td>   
+            <td>0912345678</td>   
+            <td>ABC DEF GHIJK</td>                  
+            <td>123 ABCD</td>
+            <td>Momo</td>               
+            <td>Giao hàng thành công</td>
+            <td>3</td>                 
+            <td>$9999</td>   
         </tr>
         <tr>
-          <td>A123</td>
-          <td>18/10/2023</td>
-          <td>Momo</td>
-          <td>Giao hàng thành công</td>
-          <td>152.000đ</td>
+            <td>A123</td>
+            <td>dd/mm/yyyy</td>   
+            <td>0912345678</td>   
+            <td>ABC DEF GHIJK</td>                  
+            <td>123 ABCD</td>
+            <td>Momo</td>               
+            <td>Giao hàng thành công</td>
+            <td>3</td>                 
+            <td>$9999</td>   
         </tr>
         <tr>
-          <td>A123</td>
-          <td>18/10/2023</td>
-          <td>Momo</td>
-          <td>Giao hàng thành công</td>
-          <td>152.000đ</td>
-        </tr>
-        <tr>
-          <td>A123</td>
-          <td>18/10/2023</td>
-          <td>Momo</td>
-          <td>Giao hàng thành công</td>
-          <td>152.000đ</td>
+            <td>A123</td>
+            <td>dd/mm/yyyy</td>   
+            <td>0912345678</td>   
+            <td>ABC DEF GHIJK</td>                  
+            <td>123 ABCD</td>
+            <td>Momo</td>               
+            <td>Giao hàng thành công</td>
+            <td>3</td>                 
+            <td>$9999</td>   
         </tr>
 
       </table>
       <!--Table list orders--end-->
     
       <!--pagination--start-->
-      <div class="pagination" id="pagination-my-orders">
+      <div class="pagination"  id="pagination-my-orders">
         <a href="#">&laquo;</a>
         <a class="active" href="#">1</a>
         <a href="#">2</a>
         <a href="#">3</a>
         <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
+        <span class="ellipsis">...</span>
+        <a href="#">10</a>
         <a href="#">&raquo;</a>
       </div>
       <!--pagiantion--end-->
