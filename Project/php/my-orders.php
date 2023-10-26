@@ -6,8 +6,8 @@
   <!--LIST-ORDERS START-->
     <div class="list-orders">
       <!--breadscrumb-->
-      <ul class="breadscrumb-my-order">
-        <li class="breadscrumb-current-page">Danh sách đơn hàng</li> / 
+      <ul class="breadcrumb-my-order">
+        <li class="breadcrumb-current-page">Danh sách đơn hàng</li> / 
       </ul>
 
       <h2>Danh sách đơn hàng của tôi</h2>

@@ -41,8 +41,8 @@
     border-bottom: var(--line-border-color);
 }
 
-/*breadscrumb*/
-.breadscrumb-my-order {
+/*breadcrumb*/
+.breadcrumb-my-order {
     font-size: 20px;
     font-style: italic;
     color: var(--breadscrumb-text-color);
@@ -51,13 +51,13 @@
     flex-direction: row;
     justify-content: center;
 }
-.breadscrumb-my-order li a{
+.breadcrumb-my-order li a{
     color: var(--breadscrumb-text-color);
 }
-.breadscrumb-my-order li a:hover {
+.breadcrumb-my-order li a:hover {
     color: var(--breadscumb-text-active);
 }
-.breadscrumb-current-page {
+.breadcrumb-current-page {
     color: var(--breadscumb-text-active);
 }
 
