@@ -213,7 +213,7 @@
 
               <!-- total -->
               <div class="total flex">
-                <p>Tổng</p>
+                <p>Tổng <small>(bao gồm VAT)</small></p>
                 <p>143.910 đ</p>
               </div>
 

@@ -154,7 +154,7 @@
           <!-- total: End -->
 
           <!-- checkout btn: Start -->
-          <button class="btn checkout-bnt pointer">Safe to checkout</button>
+          <button class="btn checkout-bnt pointer">Tiến hành thanh toán</button>
           <!-- checkout btn: End -->
         </div>
         <!-- SUBMIT-SECTION: End -->

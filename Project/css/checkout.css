@@ -215,6 +215,10 @@ select {
   font-weight: 600;
 }
 
+.total p small {
+  font-size: 0.8rem;
+}
+
 /* buy btn */
 .buy-btn {
   width: 100% !important;
