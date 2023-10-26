@@ -74,6 +74,7 @@ ul{
 /* button confirm */
 .btn-confirm:hover{
     background-color: var(--orange);
+    color: #fff;
 }
 
 /* button cancel */
