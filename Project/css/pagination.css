@@ -1,26 +1,26 @@
 /* Refactoring code. Modified 10/13/2023 by Quyen */ 
 
 .pagination {
-    display: flex;
-    justify-content: center;
-    color: black;
+  display: flex;
+  justify-content: center;
+  color: black;
 }
 
 .pagination a{
-   padding: 8px 20px;
-    text-decoration: none;
-    border-radius: 20%;
-    border: 2px solid #000000;
-    margin: 5px;
-  }
-  
+ padding: 8px 20px;
+  text-decoration: none;
+  border-radius: 20%;
+  border: 2px solid #000000;
+  margin: 5px;
+}
+
 .pagination a.active {
-    background-color: var(--orange);
-    color: white;
-  }
+  background-color: var(--orange);
+  color: white;
+}
 
 .ellipsis {
-  padding: 15px 5px;
+padding: 15px 5px;
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
