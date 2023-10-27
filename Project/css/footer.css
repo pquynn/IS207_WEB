@@ -1,4 +1,8 @@
 /* Refactoring code. Modified 10/13/2023 by Quyen */
+.FooterBox {
+    margin-top: 10px;
+}
+
 .FooterBox__one {
     display: flex;
     flex-direction: row;
