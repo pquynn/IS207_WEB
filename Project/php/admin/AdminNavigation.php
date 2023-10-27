@@ -31,13 +31,13 @@
     
             <ul class="nav-admin-menu">
                 <li><a href="#">Về Cửa Hàng</a></li>
-                <li><a href="#">Thống Kê</a></li>
-                <li><a href="#">Danh Mục</a></li>
-                <li><a href="#" class="active">Sản Phẩm</a></li>
-                <li><a href="#">Đơn Hàng</a></li>
-                <li><a href="#">Khách Hàng</a></li>
-                <li><a href="#">Nhân Viên</a></li>
-                <li><a href="#">Blog</a></li>
+                <li><a href="Dashboard.php">Thống Kê</a></li>
+                <li><a href="CategoriesManagement.php">Danh Mục</a></li>
+                <li><a href="ProductsManagement.php" class="active">Sản Phẩm</a></li>
+                <li><a href="admin-orders.php">Đơn Hàng</a></li>
+                <li><a href="CustomersManagement.php">Khách Hàng</a></li>
+                <li><a href="EmployeesManagement.php">Nhân Viên</a></li>
+                <li><a href="BlogManagement.php">Blog</a></li>
             </ul>
     
             <div class="nav-admin-account">

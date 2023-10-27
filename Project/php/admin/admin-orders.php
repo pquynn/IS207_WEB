@@ -3,11 +3,13 @@
 
 <?php
     $title = "Danh sách đơn hàng";
-    include("admin-nav.php");
+    include("AdminNavigation.php");
 ?>
 
 <!--MAIN SECTION----START-->
 <div class="admin-orders">
+    <h2 class="section_heading">Danh sách đơn hàng</h2>
+
     <ol class="breadcrumb">
         <li class= "breadcrumb-item active" aria-current="page">Danh sách đơn hàng</li>
     </ol>
@@ -30,40 +32,44 @@
     </div>
     
     <!--Search bar-->
-    <div class="search-bar">    
-        <input type="text" name="" placeholder="Tìm kiếm đơn hàng..." class="search-field">
-        <a href="#" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></a>            
+    <div class="admin-search-container">
+        <div class="search-bar-box">
+            <input type="text" id="search" placeholder="Tìm kiếm..." class="form-control ">
+            <a href="#" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></a>
+        </div>
     </div>
 
     <!--Table list orders-->
-    <table class="list-orders">
-        <th colspan="10">Danh sách đơn hàng</th>
-        <tr>
-            <td><input type="checkbox"></td>   
-            <td>Mã đơn hàng</td>
-            <td>Ngày hóa đơn</td>   
-            <td>SĐT</td>   
-            <td>Tên khách hàng</td>                  
-            <td>Địa chỉ</td>
-            <td>PTTT</td>   
-            <td>Trạng thái</td>   
-            <td>Tổng sản phẩm</td>   
-            <td>Tổng tiền</td>   
-        </tr>
+    <div class="admin-table">
+        <table class="list-orders">
+            <tr>
+                <th><input type="checkbox"></th>   
+                <th>Mã đơn hàng</th>
+                <th>Ngày hóa đơn</th>   
+                <th>SĐT</th>   
+                <th>Tên khách hàng</th>                  
+                <th>Địa chỉ</th>
+                <th>PTTT</th>   
+                <th>Trạng thái</th>   
+                <th>Tổng sản phẩm</th>   
+                <th>Tổng tiền</th>   
+            </tr>
 
-        <tr>
-            <td><input type="checkbox"></td>
-            <td>A123</td>
-            <td>dd/mm/yyy</td>   
-            <td>0912345678</td>   
-            <td>ABC DEF GHIJK</td>                  
-            <td>123 ABCD</td>
-            <td>Momo</td>   
-            <td>Giao hàng thành công</td>   
-            <td>3</td>   
-            <td>$9999</td> 
-        </tr>
-    </table>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>A123</td>
+                <td>dd/mm/yyy</td>   
+                <td>0912345678</td>   
+                <td>ABC DEF GHIJK</td>                  
+                <td>123 ABCD</td>
+                <td>Momo</td>   
+                <td>Giao hàng thành công</td>   
+                <td>3</td>   
+                <td>$9999</td> 
+            </tr>
+        </table>
+    </div>
+    
 
     <!--Pagination-->
     <div class="pagination admin">

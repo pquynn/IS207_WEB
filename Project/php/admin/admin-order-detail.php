@@ -4,10 +4,12 @@
 
 <?php
     $title = "Chi tiết đơn hàng";
-    include("admin-nav.php");
+    include("AdminNavigation.php");
 ?>
 <!--MAIN SECTION----START-->
 <div class="admin-order-detail">
+    <h2 class="section_heading">Chi tiết đơn hàng</h2>
+
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="../../php/admin/admin-orders.php">Danh sách đơn hàng</a></li>
         <li class= "breadcrumb-item active" aria-current="page">Chi tiết đơn hàng #A123</li>
@@ -75,9 +77,9 @@
     </div>
 
     <!--Information of products in order-->
-    <div class="order-infomation">
+    <div class="order-infomation admin-table">
         <table>
-            <th colspan="8">Sản phẩm</th>
+            <td colspan="8">Sản phẩm</td>
             <tr>
                 <td colspan="2">Mã đơn hàng</td>
                 <td>Mã sản phẩm</td>

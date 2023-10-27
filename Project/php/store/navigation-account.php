@@ -12,7 +12,7 @@
       <ul>
         <li id="title-TaiKhoan">Tài khoản</li>
         <li><a href="#">Quản lý tài khoản</a></li>
-        <li><a href="#" class="active">Đơn hàng của tôi</a></li>
+        <li><a href="my-orders.php" class="active">Đơn hàng của tôi</a></li>
       </ul>  
     </div>
   <!--NAVIGATION END-->

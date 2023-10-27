@@ -63,7 +63,7 @@
         </li>
 
         <li class="nav-link--item hover-underline"><a href="#">TRANG</a></li>
-        <li class="nav-link--item hover-underline"><a href="#">BLOGS</a></li>
+        <li class="nav-link--item hover-underline"><a href="blog.php">BLOGS</a></li>
       </ul>
       <!-- LINK (HOME, SHOP, CATEGORY,....): End -->
 
@@ -86,7 +86,7 @@
               <a href="#">TÀI KHOẢN</a>
             </li>
             <li class="sub-nav--item hover-underline">
-              <a href="#">QUẢN LÝ</a>
+              <a href="../admin/Dashboard.php">QUẢN LÝ</a>
             </li>
             <li class="sub-nav--item hover-underline">
               <a href="#">LOG OUT</a>
@@ -96,7 +96,7 @@
 
         <!-- cart -->
         <li class="nav-icon--item">
-          <a>
+          <a href="cart.php">
             <span class="material-symbols-outlined"> shopping_bag </span>
           </a>
         </li>
