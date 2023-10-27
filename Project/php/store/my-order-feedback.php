@@ -2,11 +2,17 @@
     $title = "Đánh giá đơn hàng";
     include("header.php");
 ?>
+
+<!-- MAIN SECTION START -->
+  <!-- NAVIGATION ACCOUNT START -->
+  <?php include("navigation-account.php");?>
+<!-- NAVIGATION ACCOUNT START -->
+
 <!--MY_ORDER-FEEDBACK START-->
 <div class="my-order-feedback">
       <ul class="breadcrumb-my-order">
-        <li><a href="../php/my-orders.php">Danh sách đơn hàng</a> / </li>
-        <li> <a href="../php/my-order-detail.php">Chi tiết đơn hàng</a> / </li>
+        <li><a href="my-orders.php">Danh sách đơn hàng</a> / </li>
+        <li> <a href="my-order-detail.php">Chi tiết đơn hàng</a> / </li>
         <li class="breadcrumb-current-page">Đánh giá đơn hàng</li>
       </ul>
 

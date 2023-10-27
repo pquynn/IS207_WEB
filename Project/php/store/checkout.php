@@ -1,3 +1,7 @@
+    <!-- Add particular css link to file: start -->
+      <link rel="stylesheet" href="../../css/checkout.css" />
+    <!-- Add particular css link to file: start -->
+
     <!-- BODY HEADER: Start -->
     <?php 
       $title = "Thanh toán";
@@ -265,5 +269,9 @@
       <!-- CHECKOUT BODY: End -->
     </div>
     <!-- CHECKOUT'S MAIN CONTENT: End -->
+
+    <!-- page footer : start -->
+      <?php include('footer.php');?>
+      <!-- page footer : end -->
   </body>
 </html>

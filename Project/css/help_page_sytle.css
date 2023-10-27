@@ -1,6 +1,6 @@
 .contentBox {
     background-color: #FFFFFF;
-    padding: 0 100px 100px 100px;
+    padding: 20px 100px 100px 100px;
 }
 
 .contentBox h2 {
@@ -25,7 +25,7 @@
     width: 200px;
 }
 
-img {
+.contactBox img {
     width: 100px;
     height: 100px;
 }

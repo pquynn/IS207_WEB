@@ -1,8 +1,14 @@
+
 <?php
     $title = "Danh sách đơn hàng của tôi";
     include("header.php");
 ?>
 
+<!-- MAIN SECTION START -->
+  <!-- NAVIGATION ACCOUNT START -->
+    <?php include("navigation-account.php");?>
+  <!-- NAVIGATION ACCOUNT START -->
+    
   <!--LIST-ORDERS START-->
     <div class="list-orders">
       <!--breadscrumb-->

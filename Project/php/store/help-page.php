@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+    <link rel="stylesheet" href="../../css/help_page_sytle.css">
+    <!-- Start of header -->
+    <?php 
+        $title = "Hỗ trợ";
+        include("header.php"); ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="help_page_sytle.css">
-    <title>Document</title>
-</head>
-
-<body>
+    
+    <!-- End of header -->
 
     <div class="contentBox">
         <h2>HỖ TRỢ</h2>
@@ -46,17 +42,17 @@
 
             <div class="contactBox">
                 <div class="centerBox">
-                    <img src="" alt="" width="10px" height="10px">
+                    <img src="../../img/chat.png" alt="">
                     <p>EMAIL</p>
                     <p>215215xx@gm.uit.edu.vn</p>
                 </div>
                 <div class="centerBox">
-                    <img src="/img/telephone.png" alt="">
+                    <img src="../../img/telephone.png" alt="">
                     <p>ĐIỆN THOẠI</p>
                     <p>0913567184</p>
                 </div>
                 <div class="centerBox">
-                    <img src="../img/location.png" alt="">
+                    <img src="../../img/location.png" alt="">
                     <p>ĐỊA CHỈ</p>
                     <p>Khu phố 6, P.Linh Trung, Tp.Thủ Đức, Tp.Hồ Chí Minh</p>
                 </div>
@@ -65,6 +61,9 @@
 
     </div>
 
+    <!-- Start of footer -->
+        <?php include("footer.php"); ?>
+    <!-- End of footer -->
 </body>
 
 </html>

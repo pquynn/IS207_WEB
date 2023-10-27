@@ -10,18 +10,22 @@
     <!-- css file -->
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../css/header.css" />
-    <link rel="stylesheet" href="../../css/cart.css" />
-    <link rel="stylesheet" href="../../css/checkout.css" />
+    <link rel="stylesheet" href="../../css/footer.css"/> 
+    <link rel="stylesheet" href="../../css/pagination.css"/>
 
     <!-- icon -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <script src="https://kit.fontawesome.com/f7fcb1a9ac.js"crossorigin="anonymous"></script>
 
     <!-- font-family -->
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
     </style>
+
+
   </head>
   <body>
     <ul class="header">

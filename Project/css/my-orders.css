@@ -37,7 +37,6 @@
 /*Style main section --start*/
 .section {
     display:flex;
-    margin-top: 15px;
     border-bottom: var(--line-border-color);
 }
 
@@ -70,12 +69,6 @@
     padding-left: 80px;
     padding-top: 30px;
     padding-bottom: 30px;
-}
-
-.search-bar {
-    position: absolute;
-    top: 140px;
-    left: 875px;
 }
 
 .table-list-orders {

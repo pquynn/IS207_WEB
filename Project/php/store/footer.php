@@ -26,11 +26,11 @@
         <div class="FooterBox__two__rightpayment">
             <p>2022 ALL RIGHT RESERVE</p>
             <div>
-                <img src="../img/footer_image/visa.png" alt="" width="49.375px" height="33.125px">
-                <img src="../img/footer_image/paypal.png" alt="" width="49.375px" height="33.125px">
-                <img src="../img/footer_image/mastercard.png" alt="" width="49.375px" height="33.125px">
-                <img src="../img/footer_image/momo.png" alt="" width="33.125px" height="33.125px">
-                <img src="../img/footer_image/napas.png" alt="" width="33.125px" height="33.125px">
+                <img src="../../img/footer_image/visa.png" alt="" width="49.375px" height="33.125px">
+                <img src="../../img/footer_image/paypal.png" alt="" width="49.375px" height="33.125px">
+                <img src="../../img/footer_image/mastercard.png" alt="" width="49.375px" height="33.125px">
+                <img src="../../img/footer_image/momo.png" alt="" width="33.125px" height="33.125px">
+                <img src="../../img/footer_image/napas.png" alt="" width="33.125px" height="33.125px">
             </div>
         </div>
     </div>

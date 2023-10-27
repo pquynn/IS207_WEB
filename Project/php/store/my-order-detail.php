@@ -3,11 +3,16 @@
     include("header.php");
 ?>
 
+<!-- MAIN SECTION START -->
+  <!-- NAVIGATION ACCOUNT START -->
+  <?php include("navigation-account.php");?>
+  <!-- NAVIGATION ACCOUNT START -->
+
 <!--DETAIL ORDER--START-->
 <div class="my-order-detail">
       <!--breadcrumb-->
       <ul class="breadcrumb-my-order">
-        <li><a href="../php/my-orders.php">Danh sách đơn hàng</a> / </li>
+        <li><a href="my-orders.php">Danh sách đơn hàng</a> / </li>
         <li class="breadcrumb-current-page">Chi tiết đơn hàng</li>
       </ul>
 

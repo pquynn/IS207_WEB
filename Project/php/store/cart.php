@@ -1,4 +1,8 @@
-    <!-- page header: start -->
+   <!-- Add particular css link to file: start -->
+    <link rel="stylesheet" href="../../css/cart.css" />
+   <!-- Add particular css link to file: start -->
+   
+   <!-- page header: start -->
     <?php 
       $title = "Giỏ hàng";
       include("header.php");
@@ -161,5 +165,9 @@
       </div>
       <!-- CART-BODY: End -->
     </div>
+
+    <!-- page footer: start -->
+    <?php include("footer.php");?>
+    <!-- page footer: start -->
   </body>
 </html>

@@ -7,7 +7,7 @@
 }
 
 .pagination a{
- padding: 8px 20px;
+ padding: 8px 20;
   text-decoration: none;
   border-radius: 20%;
   border: 2px solid #000000;
@@ -15,7 +15,7 @@
 }
 
 .pagination a.active {
-  background-color: var(--orange);
+  background-color: #000;
   color: white;
 }
 
@@ -26,6 +26,10 @@ padding: 15px 5px;
 .pagination a:hover:not(.active) {background-color: #ddd;}
 
 /* admin -> change color */
+.pagination.admin{
+  border: none;
+}
+
 .pagination.admin a.active {
   background-color: var(--admin-primary);
 }

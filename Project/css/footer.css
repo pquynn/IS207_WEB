@@ -5,6 +5,7 @@
     justify-content: space-evenly;
     margin-bottom: 50px;
     padding: 10px 0;
+   
 }
 
 .FooterBox__one h3 {
@@ -27,7 +28,7 @@
     justify-content: space-between;
 }
 
-.FooterBox__two hr {
+.FooterBox__two hr{
     width: 100%;
 }
 
