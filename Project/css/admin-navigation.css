@@ -11,7 +11,7 @@
     background-color: var(--nav-admin-bg); 
 }
 
-a{
+.nav-admin a{
   color: #fff;
 }
 
@@ -46,6 +46,14 @@ a{
   }
   
   .nav-admin-menu li a:hover {
+    background-color: var(--admin-primary);
+  }
+
+  .nav-admin-menu li a:hover:not(a.active){
+    background-color: var(--admin-primary);
+  }
+
+  .nav-admin-menu li a.active {
     background-color: var(--admin-primary);
   }
   

@@ -1,0 +1,62 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  </head>
+
+  <body>
+    <div class="calculator">
+      <div class="display">
+        <div class="input-line">
+          <input type="text" value="0" disabled />
+        </div>
+        <div class="output-line">
+          <input type="text" value="0" disabled />
+        </div>
+      </div>
+      <div class="button-row">
+        <button class="ce" style="background-color: #d9534f">CE</button>
+        <button class="del" style="background-color: #f0ad4e">
+          DEL
+        </button>
+        <button class="operation">+</button>
+      </div>
+      <div class="button-row">
+        <button class="operation">-</button>
+        <button class="operation">*</button>
+        <button class="operation">/</button>
+      </div>
+      <div class="button-row">
+        <button class="number">9</button>
+        <button class="number">8</button>
+        <button class="number">7</button>
+      </div>
+      <div class="button-row">
+        <button class="number">6</button>
+        <button class="number">5</button>
+        <button class="number">4</button>
+      </div>
+      <div class="button-row">
+        <button class="number">3</button>
+        <button class="number">2</button>
+        <button class="number">1</button>
+      </div>
+      <div class="button-row">
+        <button class="number">0</button>
+        <button class="decimal-point" style="background-color: #5bc0de">.</button>
+        <button class="equal" style="background-color: #5bc0de">
+          =
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
