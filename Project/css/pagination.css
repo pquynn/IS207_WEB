@@ -7,28 +7,34 @@
 }
 
 .pagination a{
- padding: 8px 20;
+ padding: 8px 20px;
   text-decoration: none;
   border-radius: 20%;
-  border: 2px solid #000000;
   margin: 5px;
 }
 
+/* delete border of admin pagination. modified 10.27 by Quyen */
+.pagination a:not(.admin){
+  border: 1.5px solid #000000;
+}
+
+.pagination.admin a{
+  border: none;
+}
+
+/* change orange to black when a is active. modified 10.27 by Quyen */
 .pagination a.active {
   background-color: #000;
   color: white;
 }
 
-.ellipsis {
+.ellipsis { 
 padding: 15px 5px;
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
 
 /* admin -> change color */
-.pagination.admin{
-  border: none;
-}
 
 .pagination.admin a.active {
   background-color: var(--admin-primary);

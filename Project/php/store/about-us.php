@@ -11,7 +11,7 @@
         <h2>About us</h2>
         <p>Tên Shop: Cửa hàng bán giày Nike.</p>
         
-        <img src="../img/store.jpg" alt="" width="760px" height="442px" style="transform: translateX(50%);">
+        <img src="../../img/store.jpg" alt="" width="760px" height="442px" style="transform: translateX(50%);">
     </div>
 
     <!-- Start of footer -->

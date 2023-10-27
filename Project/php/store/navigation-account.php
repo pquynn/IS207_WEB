@@ -1,5 +1,4 @@
 <!-- Add particular css link to file: start -->
-    <link rel="stylesheet" href="../../css/pagination.css"/>
     <link rel="stylesheet" href="../../css/table.css"/>
     <link rel="stylesheet" href="../../css/my-orders.css"/>
     <link rel="stylesheet" href="../../css/my-order-detail.css"/>

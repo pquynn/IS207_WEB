@@ -1,3 +1,7 @@
+<!-- CSS feat -->
+    <link rel="stylesheet" href="../../css/admin-orders.css"/>
+    <link rel="stylesheet" href="../../css/admin-order-detail.css"/>
+
 <?php
     $title = "Chi tiết đơn hàng";
     include("admin-nav.php");

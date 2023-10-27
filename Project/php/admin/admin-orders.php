@@ -1,3 +1,6 @@
+<!-- CSS feat -->
+<link rel="stylesheet" href="../../css/admin-orders.css"/>
+
 <?php
     $title = "Danh sách đơn hàng";
     include("admin-nav.php");
