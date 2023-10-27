@@ -1,4 +1,5 @@
 /* Refactoring code. Modified 10/13/2023 by Quyen */
+
 .nav-admin {
     display: flex;
     flex-direction: column;
@@ -9,6 +10,8 @@
     width: 240px;
     height: 100vh;
     background-color: var(--nav-admin-bg); 
+
+    font-size: 16px;
 }
 
 .nav-admin a{
@@ -44,13 +47,11 @@
     cursor: pointer;
     transition: transform 0.3s ease;
   }
-  
-  .nav-admin-menu li a:hover {
-    background-color: var(--admin-primary);
-  }
 
-  .nav-admin-menu li a:hover:not(a.active){
-    background-color: var(--admin-primary);
+  /* Change background-color when hover on navigation. Modified 10/18/2023 by Quyen */
+  .nav-admin-menu li a:hover:not(a.active),
+  .nav-admin-account #logout:hover{
+    background-color: rgba(84, 160, 232, 0.2); 
   }
 
   .nav-admin-menu li a.active {
@@ -70,10 +71,6 @@
     transition: transform 0.3 ease;
     width: 180px;
     margin-top: 12px;
-  }
-
-  .nav-admin-account #logout:hover {
-    background-color: var(--admin-primary);
   }
 
   .nav-admin-account #account {

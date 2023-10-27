@@ -1,12 +1,6 @@
-<!-- Init basic layout, components. Modified 10/23/2023 by Quyen. 
-    Not have: 
-    + export button event
-    + filter button event
-    + responsive
--->
     <!-- start: admin navigation -->
     <?php 
-        $title = "Quản lý sản phẩm";
+        $title = "Quản lý khách hàng";
         include("AdminNavigation.php");
     ?>
     <!-- end: admin navigation -->
@@ -14,7 +8,7 @@
 
     <!-- start: main section -->
     <div class="section">
-        <h2 class="section_heading">Sản phẩm</h2>
+        <h2 class="section_heading">Khách hàng</h2>
         
         <!-- start: search bar, button section -->
             <?php include("SectionTopContent.php"); ?>
@@ -27,18 +21,26 @@
                 <table>
                     <tr>
                         <th>#</th>
-                        <th>Ảnh</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Giá</th>
-                        <th>...</th>
+                        <th>Điện thoại</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Ngày sinh</th>
+                        <th>Giới tính</th>
+                        <th>Địa chỉ</th>
+                        <th>Đơn hàng</th>
+                        <th>Ngày thêm</th>
                         <th>Thao tác</th>
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td><div class="table-img"></div></td>
-                        <td> Giày ... </td>
-                        <td>10000đ</td>
-                        <td>...</td>
+                        <td>0123456789</td>
+                        <td>Nguyễn Văn</td>
+                        <td>nguyenvan@gmail.com</td>
+                        <td>13/07/2000</td>
+                        <td>Nữ</td>
+                        <td>Linh Trung, Thủ Đức</td>
+                        <td>30</td>
+                        <td>18/10/2023</td>
                         <td class="action">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
                             <a href="#" data-bs-toggle="modal" data-bs-target="#alert"><i class="fa-solid fa-trash"></i></a>
@@ -67,12 +69,12 @@
 
 
     <!-- start of Modal of Add new elements. Modified 10/22/2023 by Quyen -->
-        <?php include("ModalAddNewProduct.php"); ?>
+    <?php include("ModalAddNewCustomer.php"); ?>
     <!-- end of Modal of Add new elements-->
 
     <!-- start of warning message when click del-btn -->
         <?php 
-            $alert_message = "xóa sản phẩm";
+            $alert_message = "xóa khách hàng";
             $alert_action = "Xóa";
             include("ModalAlert.php"); 
         ?>

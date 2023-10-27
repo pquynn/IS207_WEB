@@ -9,7 +9,7 @@ table{
 
 th, td{
     border-bottom: 1px solid var(--table-border);
-    padding: 10px 25px;
+    padding: 10px;
 
 }
 
