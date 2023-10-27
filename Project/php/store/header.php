@@ -5,11 +5,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title><?php echo $title; ?></title>
 
     <!-- css file -->
-    <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../css/header.css" />
+    <link rel="stylesheet" href="../../css/cart.css" />
+    <link rel="stylesheet" href="../../css/checkout.css" />
 
     <!-- icon -->
     <link
@@ -23,41 +25,40 @@
   </head>
   <body>
     <ul class="header">
-      
       <!-- LOGO: start -->
       <li class="nav-logo">
-        <a href="#"><img src="../img/logo.png" /></a>
+        <a href="#"><img src="../../img/logo.png" /></a>
       </li>
       <!-- LOGO: End -->
 
       <!-- LINK (HOME, SHOP, CATEGORY,....): Start -->
       <ul class="nav-link">
-        <li class="nav-link--item hover-underline"><a href="#">HOME</a></li>
-        <li class="nav-link--item hover-underline"><a href="#">SHOP</a></li>
+        <li class="nav-link--item hover-underline"><a href="#">TRANG CHỦ</a></li>
+        <li class="nav-link--item hover-underline"><a href="#">MUA SẮM</a></li>
 
         <!-- category sub navigation -->
         <li class="nav-link--item primary-nav hover-underline a">
-          <a href="#">CATEGORY</a>
+          <a href="#">LOẠI SP</a>
           <ul class="sub-nav">
             <li class="sub-nav--item hover-underline">
-              <a href="#">SUB-CATEGORY</a>
+              <a href="#">LOẠI 1</a>
             </li>
             <li class="sub-nav--item hover-underline">
-              <a href="#">SUB-CATEGORY</a>
+              <a href="#">LOẠI 2</a>
             </li>
             <li class="sub-nav--item hover-underline">
-              <a href="#">SUB-CATEGORY</a>
+              <a href="#">LOẠI 3</a>
             </li>
             <li class="sub-nav--item hover-underline">
-              <a href="#">SUB-CATEGORY</a>
+              <a href="#">LOẠI 4</a>
             </li>
             <li class="sub-nav--item hover-underline">
-              <a href="#">SUB-CATEGORY</a>
+              <a href="#">LOẠI 5</a>
             </li>
           </ul>
         </li>
 
-        <li class="nav-link--item hover-underline"><a href="#">PAGES</a></li>
+        <li class="nav-link--item hover-underline"><a href="#">TRANG</a></li>
         <li class="nav-link--item hover-underline"><a href="#">BLOGS</a></li>
       </ul>
       <!-- LINK (HOME, SHOP, CATEGORY,....): End -->
@@ -98,5 +99,3 @@
       </ul>
       <!-- ICON (ACCOUNT, CART): End -->
     </ul>
-  </body>
-</html>
