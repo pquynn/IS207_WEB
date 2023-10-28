@@ -39,7 +39,6 @@
 /*Style main section --start*/
 .section {
   display: flex;
-  border-bottom: var(--line-border-color);
 }
 
 /*breadcrumb*/
