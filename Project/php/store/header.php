@@ -10,7 +10,7 @@
     <!-- css file -->
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../css/header.css" />
-    <link rel="stylesheet" href="../../css/footer.css"/> 
+    <link rel="stylesheet" href="../../css/footer.css"> 
     <link rel="stylesheet" href="../../css/pagination.css"/>
 
     <!-- icon -->
@@ -83,7 +83,7 @@
           </a>
           <ul class="sub-nav">
             <li class="sub-nav--item hover-underline">
-              <a href="#">TÀI KHOẢN</a>
+              <a href="../store/account-profile.php">TÀI KHOẢN</a>
             </li>
             <li class="sub-nav--item hover-underline">
               <a href="../admin/Dashboard.php">QUẢN LÝ</a>

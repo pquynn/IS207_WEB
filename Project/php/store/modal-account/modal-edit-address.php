@@ -1,9 +1,6 @@
 <!-- Start of edit address modal -->
     <!-- use modal of bootstrap to style edit address. modified 10/27/2023 by Quyen -->
     <!-- Button trigger modal -->
-
-    <a href="" data-bs-toggle="modal" data-bs-target="#edit-address">sửa</a>
-    
     <!-- Modal -->
     <div class="modal fade" id="edit-address" tabindex="-1" aria-labelledby="modal-address" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

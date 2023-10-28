@@ -1,5 +1,8 @@
+<link rel="stylesheet" href="../../css/footer.css"/> 
+
 <!--FOOTER START-->
 <div class="FooterBox">
+    <hr>
     <div class="FooterBox__one">
         <div class="FooterBox__one__left">
             <h3>Our Team</h3>
