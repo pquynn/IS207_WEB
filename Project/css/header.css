@@ -1,6 +1,9 @@
-/*
+/**
  * Refactoring code. Modified 10/13/2023 by Quyen
+ *
+ * @format
  */
+
 /* ************GENERAL************ */
 .nav-link--item a,
 .sub-nav-link--item a,
@@ -17,7 +20,6 @@
   background-color: white;
   padding: 0 20px 5px 20px;
   border-bottom: solid 1px #c8c8c8;
-
 }
 
 /* logo */
@@ -66,7 +68,7 @@
   pointer-events: none;
   top: 100%;
   right: 50%;
-  transform: translateX(50%);
+  transform: translate(50%, -3px);
   background-color: white;
   padding: 20px 10px 10px 10px;
   transition: all 0.3s;
