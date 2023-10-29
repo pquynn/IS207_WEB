@@ -1,4 +1,4 @@
-    <link rel="stylesheet" href="../../css/admin-blog-style.css">
+    <link rel="stylesheet" href="../../css/admin/admin-blog-style.css">
     
     <!-- start: admin navigation -->
     <?php 
