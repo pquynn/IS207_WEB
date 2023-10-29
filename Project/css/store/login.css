@@ -1,0 +1,18 @@
+body{
+    background-color: var(--table-border);
+}
+
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 600px;
+    width: 450px;
+    padding: 50px;
+}
+
+form{
+    margin-top: 50px;
+}
