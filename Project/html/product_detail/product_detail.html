@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Detail</title>
+
+    <!-- css file -->
+    <link rel="stylesheet" href="/Project/css/base.css" />
+    <link rel="stylesheet" href="/Project/css/header.css" />
+    <link rel="stylesheet" href="/Project/css/footer.css" />
+    <link rel="stylesheet" href="/Project/css/product_detail.css" />
+
+    <!-- icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  </head>
+  <body>
+    <ul class="header">
+      <!-- logo -->
+      <li class="nav-logo">
+        <a href="#"><img src="/Project/img/logo.png" /></a>
+      </li>
+
+      <!-- link (home, shop, category,....) -->
+      <ul class="nav-link">
+        <li class="nav-link--item hover-underline"><a href="#">HOME</a></li>
+        <li class="nav-link--item hover-underline"><a href="#">SHOP</a></li>
+
+        <!-- category sub navigation -->
+        <li class="nav-link--item primary-nav hover-underline a">
+          <a href="#">CATEGORY</a>
+          <ul class="sub-nav">
+            <li class="sub-nav--item hover-underline">
+              <a href="#">SUB-CATEGORY</a>
+            </li>
+            <li class="sub-nav--item hover-underline">
+              <a href="#">SUB-CATEGORY</a>
+            </li>
+            <li class="sub-nav--item hover-underline">
+              <a href="#">SUB-CATEGORY</a>
+            </li>
+            <li class="sub-nav--item hover-underline">
+              <a href="#">SUB-CATEGORY</a>
+            </li>
+            <li class="sub-nav--item hover-underline">
+              <a href="#">SUB-CATEGORY</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-link--item hover-underline"><a href="#">PAGES</a></li>
+        <li class="nav-link--item hover-underline"><a href="#">BLOGS</a></li>
+      </ul>
+
+      <!-- icon (accoutn, cart) -->
+      <ul class="nav-icon">
+        <!-- search -->
+        <li class="nav-icon--item">
+          <a>
+            <span class="material-symbols-outlined"> search </span>
+          </a>
+        </li>
+
+        <!-- account -->
+        <ul class="nav-icon--item primary-nav">
+          <a>
+            <span class="material-symbols-outlined"> account_circle </span>
+          </a>
+          <ul class="sub-nav">
+            <li class="sub-nav--item hover-underline">
+              <a href="#">TÀI KHOẢN</a>
+            </li>
+            <li class="sub-nav--item hover-underline">
+              <a href="#">QUẢN LÝ</a>
+            </li>
+            <li class="sub-nav--item hover-underline">
+              <a href="#">LOG OUT</a>
+            </li>
+          </ul>
+        </ul>
+
+        <!-- cart -->
+        <li class="nav-icon--item">
+          <a>
+            <span class="material-symbols-outlined"> shopping_bag </span>
+          </a>
+        </li>
+      </ul>
+    </ul>
+    
+    <!--Product Detail Nav-->
+    <div class="product-nav">
+        <h1>For Shoes</h1>
+        <div class="product-detail-link">
+            <ul>
+                <li><a>For Shoes</a></li>
+                <li><a>Sneaker</a></li>
+                <li>Adidas</li>
+                
+            </ul>
+        </div>
+    </div>
+    <div class="main-info">
+<!--Khung giới thiệu ảnh sản phẩm-->
+<div class="product-image">
+    <div class="product-main-img">
+        <img src="/Project/img/blog_img/blog2.jpg">
+    </div>
+
+    <div class="product-img-slider">
+        <div class="img-slider">
+            <img src="/Project/img/blog_img/blog2.jpg">
+            <img src="/Project/img/blog_img/blog2.jpg">
+            <img src="/Project/img/blog_img/blog2.jpg">
+            <img src="/Project/img/blog_img/blog2.jpg">
+        </div>
+    </div>
+    </div>
+
+    <!--Khung giới thiệu thông tin sản phẩm-->
+    <div class="product-info">
+        <div id="product-name"><h2>Adidas</h2></div>
+        <div id="product-price"><h3>500000 VND</h3></div>
+        <div id="product-intro">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non sit adipiscing at habitasse lorem volutpat id. Ipsum urna tortor tempus hendrerit mauris, diam, ante. Sit ultricies sed mauri-s, consequat. Urna, eu tortor, feugiat id in. Pulvinar sit quis nibh mauris non cursus blandit. Vel amet malesuada vulputate auctor enim vitae. Enim mi et, fermentum imperdiet. Faucibus tellus a tincidunt arcu proin mattis egestas varius amet. Tortor tellus lobortis ut pretium nunc elit, ornare.</p>
+
+        </div>
+        <div class="product-color">
+         <h4>Available Colors:</h4>
+         <div class="btn-color-main">
+            <button class="btn-color" style="background-color: #7F6000"></button>
+                <button class="btn-color" style="background-color: #762E54"></button>
+                <button class="btn-color" style="background-color: #762E54"></button>
+                <button class="btn-color" style="background-color: #008000"></button>
+                <button class="btn-color" style="background-color: #D2F58D"></button>
+                <button class="btn-color" style="background-color: #324A7B"></button>
+         </div>
+            
+        </div>
+        <div class="product-size">
+            <h4>Size:</h4>
+            
+                <button class="btn-size">XXS</button>
+                <button class="btn-size">XS</button>
+                <button class="btn-size">S</button>
+                <button class="btn-size">M</button>
+                <button class="btn-size">L</button>
+                <button class="btn-size">XL</button>
+                
+        </div>
+        <div class="product-quantity">
+            <h4>Quantity:</h4>
+            <div class="quantity">
+            <span class="minus">-</span>
+            <span class="number">1</span>
+            <span class="plus">+</span>
+            </div>
+            
+        </div>
+        <div class="shopping-btn">
+            <button class="whishlist-btn">Add To Whishlist</button>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+    </div>
+    </div>
+    
+    <!--Khung mô tả và đánh giá-->
+    <div class="second-info-nav">
+        <div class="info-nav-container">
+            
+                <a id="description">Description</a>
+                <a id="detail">Detail</a>
+                <a id="shipping">Shipping</a>
+                <a id="review">Review</a>
+            
+        </div>
+        <div class="info-container">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mi lectus elementum quis sit vulputate malesuada. Non ut vitae quis quis et. Arcu, augue feugiat ultrices aenean adipiscing nunc. Dui fames commodo, sed malesuada neque, volutpat morbi sit. Tellus tempus id magna at duis diam adipiscing. Eu posuere dolor, non pellentesque eget neque, aliquet malesuada suspendisse. Arcu enim leo dignissim diam aliquam habitant tempus. Bibendum sagittis tincidunt interdum risus. Mauris ultrices id consectetur est. Nibh diam, nisi et, porttitor at amet. Aliquet eget fames neque nibh viverra donec odio iaculis.</p>
+        </div>
+    </div>
+
+    <script>
+        const plus = document.querySelector(".plus"),
+        minus = document.querySelector(".minus"),
+        number = document.querySelector(".number");
+        let a = 1;
+        plus.addEventListener("click", ()=>{
+            a++;
+            number.innerText = a;
+        })
+        minus.addEventListener("click", ()=>{
+            if(a > 1) {
+                a--;
+                number.innerText = a;
+            }
+           
+        })
+    </script>
+
+    <div class="FooterBox">
+        <div class="FooterBox__one">
+            <div class="FooterBox__one__left">
+                <h3>Our Team</h3>
+                <p>Home</p>
+                <p>Shop</p>
+                <p>About</p>
+                <p>Contact</p>
+            </div>
+            <div class="FooterBox__one__center">
+                <h3>Explore</h3>
+                <p>FAQ</p>
+                <p>Shipping & Return</p>
+                <p>Store Policy</p>
+                <p>Payment methods</p>
+            </div>
+            <div class="FooterBox__one__right">
+                <h3>Follow us</h3>
+                <p class="span-container">Facebook<span><i class="fa-brands fa-square-facebook"></i></span></p>
+                <p class="span-container">Instagram<span><i class="fa-brands fa-instagram"></i></span></p>
+            </div>
+        </div>
+        <div class="FooterBox__two">
+            <hr>
+            <div class="FooterBox__two__rightpayment">
+                <p>2022 ALL RIGHT RESERVE</p>
+                <div>
+                    <img src="../img/footer_image/visa.png" alt="" width="49.375px" height="33.125px">
+                    <img src="../img/footer_image/paypal.png" alt="" width="49.375px" height="33.125px">
+                    <img src="../img/footer_image/mastercard.png" alt="" width="49.375px" height="33.125px">
+                    <img src="../img/footer_image/momo.png" alt="" width="33.125px" height="33.125px">
+                    <img src="../img/footer_image/napas.png" alt="" width="33.125px" height="33.125px">
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+  </html>
