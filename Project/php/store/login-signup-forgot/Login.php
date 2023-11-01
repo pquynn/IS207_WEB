@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="col-6">
-                    <a href="" class="float-end" style="color: var(--light-text);">Quên mật khẩu?</a>
+                    <a href="" class="float-end" style="color: var(--light-text);" data-bs-toggle="modal" data-bs-target="#forgetpass">Quên mật khẩu?</a>
                 </div>
 
                 <div class="col-12">
@@ -39,6 +39,7 @@
         </form>
     </div>
    
+    <?php include("Forgetpass1.php"); ?>
 </body>
 
 </html>
