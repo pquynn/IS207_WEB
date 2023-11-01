@@ -212,6 +212,10 @@
   transition: all 0.3s;
 }
 
+.collection-text a:hover {
+  color: var(--orange);
+}
+
 .collection-text a span {
   font-size: 15px;
   font-weight: 600;
