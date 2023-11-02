@@ -73,7 +73,7 @@ select {
 }
 
 .square-radio[type="radio"]:checked {
-  background: url("../img/checkout/square-radio.svg");
+  background: url("../../img/checkout/square-radio.svg");
 }
 
 /* verical center ('flex' class required}*/
