@@ -29,14 +29,15 @@
                 <td>Nhân viên quản lý</td>
                 <td><input type="checkbox" name="checkNVQL"></td>
             </tr>
-
             <tr>
                 <td colspan="2"><input type="Submit" value="Lương tháng" name="Submit"></td>
             </tr>
         </table>
-    </form>   
-    
-    <?php
+    </form> 
+</body>
+</html>
+
+<?php
         include("nhanvien.php");
 
         if(isset($_GET["Submit"]) && $_GET["Submit"] == "Lương tháng") {
@@ -45,30 +46,19 @@
             $songaylv = $_GET["songay"];
             $luongngay = $_GET["luongngay"];
 
-            if(isset($_GET["checkNVQL"])) {
+            if(isset($_GET["checkNVQL"])) 
                 $nv = new nhanvienQL();
-                
-            }
-            else {
+            else 
                 $nv = new nhanvien();
                
-            }
-
             $nv->Gan($manv, $ten, $songaylv, $luongngay);
             $nv->TinhLuong();
         
             echo "<table>";
             echo "<tr>";
             echo    "<td>";
-            echo            
-                $nv->InNhanVien();       
-            echo        "</td>";
-            echo    "</tr>";
+            echo $nv->InNhanVien();
+            echo    "</td>";
+            echo "</tr>";
         }
-    ?>
-
-
-
-
-</body>
-</html>
+    ?>  
