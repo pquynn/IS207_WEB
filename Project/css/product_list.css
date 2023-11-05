@@ -40,7 +40,7 @@
     justify-content: space-between;
 }
 .shop-search-intro {
-    padding: 30px;
+    padding-bottom: 30px;
 }
 .price {
     height: 80px;
@@ -163,9 +163,49 @@
 .page-number-btn {
     position: absolute;
     right: 50px;
-    top: 520px;
+    top: 500px;
     
 }
+.pagination {
+    display: flex;
+    justify-content: right;
+    color: black;
+    padding-right: 30px;
+  }
+  
+  .pagination a{
+   padding: 8px 20px;
+    text-decoration: none;
+    border-radius: 20%;
+    margin: 5px;
+  }
+  
+  /* delete border of admin pagination. modified 10.27 by Quyen */
+  .pagination a:not(.admin){
+    border: 1.5px solid #000000;
+  }
+  
+  .pagination.admin a{
+    border: none;
+  }
+  
+  /* change orange to black when a is active. modified 10.27 by Quyen */
+  .pagination a.active {
+    background-color: #000;
+    color: white;
+  }
+  
+  .ellipsis { 
+  padding: 15px 5px;
+  }
+  
+  .pagination a:hover:not(.active) {background-color: #ddd;}
+  
+  /* admin -> change color */
+  
+  .pagination.admin a.active {
+    background-color: var(--admin-primary);
+  }
 
 
 
