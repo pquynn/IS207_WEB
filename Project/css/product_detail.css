@@ -38,13 +38,14 @@ body {
 }
 
 .quantity {
-    width: 100px;
+    width: 80px;
     height: 30px;
     background-color: #f67c31;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
     border-radius: 10%;
 }
+
 .quantity span {
     width: 100%;
     text-align: center;
@@ -52,9 +53,16 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+.minus {
+    padding-right: 10px;
+    padding-left: 5px;
+}
+.number {
+    padding: 10px;
+    padding: 10px;
+}
 .quantity span.number {
-    border-right: 2px solid rgba(0,0,0,0.2);
-    border-left: 2px solid rgba(0,0,0,0.2);
+    
     pointer-events: none;
 }
 .whishlist-btn {
@@ -105,6 +113,7 @@ body {
 
 .info-nav-container {
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 .info-nav-container a {
    
@@ -135,5 +144,45 @@ body {
 .info-container {
     margin-top: 30px;
 }
+#review {
+    color: #E96D00;
+    font-weight: bold;
+    border-bottom: 2px solid;
+    border-color: #E96D00;
+    
+}
 
+.review-rating, .people-rating, .person-rate-star, .name-date {
+    display: flex;
+}
+.img-rv {
+    width: 120px;
+    height: 120px;
+    margin-left: 20px;
+    border: 1px solid;
+    border-radius: 10%;
+
+}
+.review-img a {
+    color: #E96D00;
+    text-decoration-line: underline;
+}
+.name {
+    padding-right: 10px;
+    font-style: italic;
+}
+.date {
+    padding-left: 10px;
+    border-left: 1px solid;
+    font-style: italic;
+}
+.more-review {
+    text-align: center;
+}
+.star-rate, .people-rating p, .star-number {
+    padding-left: 10px;
+}
+.person-rating, .review-img {
+    margin-top: 20px;
+}
 
