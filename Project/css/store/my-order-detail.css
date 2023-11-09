@@ -1,0 +1,131 @@
+:root {
+    --border-box-info: 1px solid #cfc7c7;
+    --icon-bgcolor: #4A69E2;
+}
+/*main section*/
+.my-order-detail {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    height: auto;
+    margin-bottom: 15px;
+}
+/*TITLE ORDER DETAIL + DATE*/
+.title-order-detail {    
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    margin-left: 40px;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+#date-create-order {
+    margin-left: 650px;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/*Style for div of 3 box infomation*/
+.info-customer {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    margin-left: 80px;
+}
+/*Style for each box*/
+.box-info {
+    position: relative;
+    display: flex;
+    border: var(--border-box-info);
+    border-radius: 4px;
+    width: 350px;
+    flex-direction: row;
+    margin-right: 24px;
+}
+
+/*icon in each box*/
+.icon-info{
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    border-radius: 4px;
+    padding: 15px;
+    background-color: var(--icon-bgcolor);
+    color: #fff;
+    margin: 5px 15px 0 5px;
+    display: flex !important;
+    justify-content: center;
+}
+
+/*infomation in each box*/
+.info {
+    align-items: flex-start;
+    display: inline-flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.header-info {
+    font-weight:bolder;
+    font-size:120%;
+}
+/*-----*/
+
+/*TABLE DETAIL ORDER*/
+.table-detail-order {
+    width: 90%;
+    margin: 50px;
+    margin-left: 80px;
+}
+
+/*box order cost*/
+.order-cost{
+    min-width: 50px !important;
+    width: 300px;
+    margin-left: 880px;
+}
+.order-cost td, tr{
+    border: none;
+    color: #000 !important;
+}
+
+.order-cost td.cost {
+    text-align: right;
+    font-weight: bolder;
+}
+
+.order-cost tr.total-cost {
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+.total-cost td.total {
+    color:#FF0000 !important;
+}
+/*------*/
+
+/*div of 3 button*/
+.order-selection{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: 200px;
+}
+
+/*Style for each button*/
+.order-option {
+    width: 200px;    
+    padding: 5px 10px;
+    margin-right: 150px;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/*Style for button "Hủy đơn hàng"*/
+.cancel-order {
+    border: none;
+    background-color:#D00000;
+}
