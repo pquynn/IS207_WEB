@@ -1,0 +1,134 @@
+/**
+ * Refactoring code. Modified 10/13/2023 by Quyen
+ *
+ * @format
+ */
+
+/* ************GENERAL************ */
+.nav-link--item a,
+.sub-nav-link--item a,
+.nav-icon--item a {
+  cursor: pointer;
+}
+
+/* ************STYLING************ */
+/* header-container */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 0 20px 5px 20px;
+  border-bottom: solid 1px #c8c8c8;
+}
+
+/* logo */
+.nav-logo {
+  margin-top: 5px;
+}
+
+.nav-logo a img {
+  width: 40px !important;
+}
+
+/* icon */
+.nav-icon {
+  display: flex;
+  margin-left: 25px;
+  gap: 12px;
+}
+
+/* home, shop, category,.... */
+.nav-link {
+  display: flex;
+  gap: 30px;
+  margin-top: 5px;
+}
+
+/* ************POP-UP SUB-NAV************ */
+.primary-nav {
+  /* width: fit-content;
+  height: fit-content; */
+  /* overflow: hidden; */
+  /* transition: width 0.3s; */
+  position: relative;
+}
+
+.primary-nav a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* hide sub-nav when not hovered */
+/* sub-nav have height=0 when not hovered */
+.sub-nav {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  top: 100%;
+  right: 50%;
+  transform: translate(50%, -3px);
+  background-color: white;
+  padding: 20px 10px 10px 10px;
+  transition: all 0.3s;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 10;
+}
+
+/* sub-nav have width=130px when being hovered */
+.primary-nav:hover .sub-nav {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* show nav's underline when being hover*/
+.hover-underline a {
+  position: relative;
+}
+
+.hover-underline a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--orange);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* **********NAV ICON********* */
+.nav-icon--item a {
+  transition: all 0.3s;
+}
+
+.nav-icon--item a:hover {
+  color: var(--orange);
+}
+
+
+/* **********STORE LAYOUT: MAIN SECTION********* */
+.main-section {
+  padding: 20px;
+  padding-top: 0;
+}
+
+.main-section-header {
+  margin: 20px 0 20px 30px;
+  text-align: center;
+}
+
+.mainsection-body {
+  margin: 50px;
+}
