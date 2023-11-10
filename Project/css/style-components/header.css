@@ -5,9 +5,17 @@
  */
 
 /* ************GENERAL************ */
-a {
-  color: black !important;
-  text-decoration: none !important;
+p a,
+li a,
+div a {
+  color: black;
+  text-decoration: none;
+}
+
+.nav-icon--item a,
+.nav-link--item a {
+  color: black;
+  text-decoration: none;
 }
 
 .nav-link--item a,
