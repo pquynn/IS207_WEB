@@ -1,111 +1,12 @@
-<!-- @format -->
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-
-    <!-- css file -->
-    <link rel="stylesheet" href="../../../css/style-components/base.css" />
-    <link rel="stylesheet" href="../../../css/style-components/header.css" />
-    <link rel="stylesheet" href="../../../css/style-components/footer.css" />
-    <link rel="stylesheet" href="../../../css/style-components/homepage.css" />
-    <link rel="stylesheet" href="../../../css/store/blog.css">
-
-    <!-- icon -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
-      rel="stylesheet" />
-  </head>
-  <body>
-    <!-- HEADER: START -->
-    <ul class="header">
-      <!-- logo -->
-      <li class="nav-logo">
-        <a href="#"><img src="../../../img/logo.png" /></a>
-      </li>
-
-      <!-- link (home, shop, category,....) -->
-      <ul class="nav-link">
-        <li class="nav-link--item hover-underline"><a href="#">HOME</a></li>
-        <li class="nav-link--item hover-underline"><a href="#">SHOP</a></li>
-
-        <!-- category sub navigation -->
-        <li class="nav-link--item primary-nav hover-underline a">
-          <a href="#">CATEGORY</a>
-          <ul class="sub-nav">
-            <li class="sub-nav--item hover-underline">
-              <a href="#">SUB-CATEGORY</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="#">SUB-CATEGORY</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="#">SUB-CATEGORY</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="#">SUB-CATEGORY</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="#">SUB-CATEGORY</a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="nav-link--item hover-underline"><a href="#">PAGES</a></li>
-        <li class="nav-link--item hover-underline"><a href="#">BLOGS</a></li>
-      </ul>
-
-      <!-- icon (accoutn, cart) -->
-      <ul class="nav-icon">
-        <!-- search -->
-        <li class="nav-icon--item">
-          <a>
-            <span class="material-symbols-outlined"> search </span>
-          </a>
-        </li>
-
-        <!-- account -->
-        <ul class="nav-icon--item primary-nav">
-          <a>
-            <span class="material-symbols-outlined"> account_circle </span>
-          </a>
-          <ul class="sub-nav">
-            <li class="sub-nav--item hover-underline">
-              <a href="#">TÀI KHOẢN</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="#">QUẢN LÝ</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="#">LOG OUT</a>
-            </li>
-          </ul>
-        </ul>
-
-        <!-- cart -->
-        <li class="nav-icon--item">
-          <a>
-            <span class="material-symbols-outlined"> shopping_bag </span>
-          </a>
-        </li>
-      </ul>
-    </ul>
-    <!-- HEADER: END -->
+<link rel="stylesheet" href="../../../css/style-components/homepage.css">
+<link rel="stylesheet" href="../../../css/store/blog.css">
+    
+    <!-- Start of header -->
+    <?php 
+        $title = "Trang chủ";
+        include("../header-footer-nav/header.php"); ?>
+    <!-- End of header -->
 
     <!-- MAIN SLIDER: START -->
     <div class="main-slider">
@@ -116,19 +17,13 @@
         <img id="slider-1" src="../../../img/slider_img/slider2.webp" alt="" />
         <img id="slider-1" src="../../../img/slider_img/slider3.jpg" alt="" />
 
-        <!-- content -->
-        <div class="slider-content">
-          <p>Lorem ipsum dolor sit amet consectetur</p>
-          <button class="buy-btn">MUA NGAY</button>
-        </div>
-
         <!-- slider btn -->
         <div class="slider-bnt">
-          <button class="btn-next">
-            <span class="material-symbols-outlined"> chevron_right </span>
-          </button>
           <button class="btn-back">
             <span class="material-symbols-outlined"> keyboard_arrow_left </span>
+          </button>
+          <button class="btn-next">
+            <span class="material-symbols-outlined"> chevron_right </span>
           </button>
         </div>
       </div>
@@ -481,67 +376,6 @@
     </div>
     <!-- MAIN SLIDER: END -->
 
-    <!-- FOOTER: START -->
-    <div class="FooterBox">
-      <div class="FooterBox__one">
-        <div class="FooterBox__one__left">
-          <h3>Our Team</h3>
-          <p>Home</p>
-          <p>Shop</p>
-          <p>About</p>
-          <p>Contact</p>
-        </div>
-        <div class="FooterBox__one__center">
-          <h3>Explore</h3>
-          <p>FAQ</p>
-          <p>Shipping & Return</p>
-          <p>Store Policy</p>
-          <p>Payment methods</p>
-        </div>
-        <div class="FooterBox__one__right">
-          <h3>Follow us</h3>
-          <p class="span-container">
-            Facebook<span><i class="fa-brands fa-square-facebook"></i></span>
-          </p>
-          <p class="span-container">
-            Instagram<span><i class="fa-brands fa-instagram"></i></span>
-          </p>
-        </div>
-      </div>
-      <div class="FooterBox__two">
-        <hr />
-        <div class="FooterBox__two__rightpayment">
-          <p>2022 ALL RIGHT RESERVE</p>
-          <div>
-            <img
-              src="../../../img/footer_image/visa.png"
-              alt=""
-              width="49.375px"
-              height="33.125px" />
-            <img
-              src="../../../img/footer_image/paypal.png"
-              alt=""
-              width="49.375px"
-              height="33.125px" />
-            <img
-              src="../../../img/footer_image/mastercard.png"
-              alt=""
-              width="49.375px"
-              height="33.125px" />
-            <img
-              src="../../../img/footer_image/momo.png"
-              alt=""
-              width="33.125px"
-              height="33.125px" />
-            <img
-              src="../../../img/footer_image/napas.png"
-              alt=""
-              width="33.125px"
-              height="33.125px" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- FOOTER: END -->
-  </body>
-</html>
+    <!-- Start of footer -->
+    <?php include("../header-footer-nav/footer.php"); ?>
+        <!-- End of footer -->
