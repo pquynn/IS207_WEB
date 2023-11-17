@@ -11,6 +11,7 @@
 p.container-heading{
     font-size: 18px;
     font-weight: bold;
+    
 }
 
 p.container-heading:not(.card-title){
