@@ -43,7 +43,7 @@
 
         <!-- category sub navigation -->
         <li class="nav-link--item primary-nav hover-underline a">
-          <a href="#">LOẠI SP</a>
+          <a href="#">LOẠI SẢN PHẨM</a>
           <ul class="sub-nav">
             <li class="sub-nav--item hover-underline">
               <a href="#">LOẠI 1</a>
@@ -63,7 +63,7 @@
           </ul>
         </li>
 
-        <li class="nav-link--item hover-underline"><a href="#">TRANG</a></li>
+        <li class="nav-link--item hover-underline"><a href="../blog-info/about-us.php">ABOUT US</a></li>
         <li class="nav-link--item hover-underline"><a href="../blog-info/blog.php">BLOGS</a></li>
       </ul>
       <!-- LINK (HOME, SHOP, CATEGORY,....): End -->

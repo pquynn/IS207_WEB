@@ -18,7 +18,6 @@
 
       <div class="title-order-detail">
           <h2>Chi tiết đơn hàng #A123</h2>
-          <!-- TODO: order status??? -->
           <p id="date-create-order">
             Ngày tạo: dd/mm/yyyy
           </p>
