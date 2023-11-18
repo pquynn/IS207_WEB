@@ -222,7 +222,8 @@ select {
 }
 
 /* buy btn */
-.buy-btn {
+.buy-section .buy-btn {
+  border-radius: 0;
   width: 100% !important;
   transition: all 0.3s;
   display: block;
@@ -231,8 +232,9 @@ select {
   transition: all 0.3s;
 }
 
-.buy-btn:hover {
+.buy-section .buy-btn:hover {
   background-color: var(--orange);
+  color: white;
 }
 
 /* avaiable payment method */
