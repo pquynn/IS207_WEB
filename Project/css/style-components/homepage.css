@@ -127,13 +127,13 @@
 
 /* product */
 .product{
-  width: 200px;
+  width: 270px;
   margin: 0 auto;
 }
 
 .product-img {
   width: 100%;
-  height: 250px;
+  height: 300px;
   transition: all 0.3s;
 }
 
@@ -256,3 +256,6 @@
   opacity: 0.8;
 }
 /* COLLECTION: end */
+ul{
+  margin-bottom: 0 !important;
+}

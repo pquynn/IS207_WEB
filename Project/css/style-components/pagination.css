@@ -33,7 +33,9 @@
 padding: 15px 5px;
 }
 
-.pagination a:hover:not(.active) {background-color: #ddd;}
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  color: #000 !important;}
 
 /* admin -> change color */
 

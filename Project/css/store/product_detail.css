@@ -24,7 +24,6 @@ body p {
 /* Add a color on mouse-over */
 .product-detail-link li a:hover {
   color: #f67c31;
-  text-decoration: underline;
 }
 
 /* PRODUCT-DETAIL--BODY: start */
@@ -53,6 +52,8 @@ body p {
 .main-info {
   display: flex;
   gap: 55px;
+  justify-content: space-around;
+  
 }
 
 /* img (left-col) */
@@ -68,8 +69,12 @@ body p {
   gap: 20px;
 }
 
+.product-name h2{
+  font-size: 40px !important;
+}
+
 .product-price h3 {
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 600;
   color: black;
   margin-bottom: 0;
@@ -84,7 +89,8 @@ body p {
 
 /* size */
 .product-size h4,
-.product-quantity h4 {
+.product-quantity h4,
+.product-category h4 {
   font-size: 17px;
   font-weight: 700;
   margin-bottom: 0;
@@ -102,6 +108,7 @@ body p {
   border: 1px solid;
   background-color: #ffffff;
   transition: all 0.3s;
+
 }
 
 /* change size btn when hover */
@@ -139,21 +146,10 @@ body p {
   transition: all 0.3s;
 }
 
-.wishlist-btn {
-  border-color: black;
-  background-color: #ffffff;
-  margin-right: 10px;
-}
-.cart-btn {
-  color: #ffffff;
-  background-color: black;
+button.btn{
+  border-radius: 0 !important;
 }
 
-.cart-btn:hover,
-.wishlist-btn:hover {
-  color: white;
-  background-color: var(--orange);
-}
 /* BUTTON (buy & add to cart): END */
 /* PRODUCT-DETAIL--BODY: end */
 
@@ -246,6 +242,7 @@ body p {
   height: 120px;
   border: 1px solid;
   border-radius: 10%;
+  object-fit: cover;
 }
 .name {
   padding-right: 10px;
