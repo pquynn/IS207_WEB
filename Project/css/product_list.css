@@ -53,22 +53,19 @@ body p {
   margin-bottom: 30px;
 }
 /* breadcrumb: start */
-nav .breadcrumb {
-  background-color: white;
-  padding: 0;
-  padding-bottom: 30px;
-  border-bottom: solid 2px #a1a1a1;
-  border-radius: 0;
+.product-list-link ul {
+  padding-left: 0;
 }
 
-.breadcrumb-item a {
+.product-list-link li {
+  display: inline;
+  font-size: 18px;
+}
+
+.product-list-link li + li:before {
+  padding: 8px;
   color: black;
-  text-decoration: none;
-}
-
-.breadcrumb-item a:hover {
-  color: orange;
-  text-decoration: none;
+  content: "/\00a0";
 }
 /* breadcrumb: end */
 /* HEADER: END */
