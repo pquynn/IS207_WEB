@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,12 +12,24 @@
     <link rel="stylesheet" href="../../../css/style-components/header.css" />
     <link rel="stylesheet" href="../../../css/style-components/footer.css" />
     <link rel="stylesheet" href="../../../css/product_list.css" />
-    
 
     <!-- icon -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous" />
   </head>
   <body>
     <ul class="header">
@@ -91,284 +105,441 @@
       </ul>
     </ul>
 
-      <!--Shop Header-->
-    <div class="shop-intro">
-        <div class="shop-block">
-            <h1>SHOP</h1>
-        </div>
-        
-        <div class="shop-slider">
-            <div class="shop-slider-container">
-              <img id="slider1" src="/Project/img/blog_img/blog2.webp" alt="" >
-              <img id="slider2" src="/Project/img/blog_img/blog2.webp" alt="" >
-              <img id="slider3" src="/Project/img/blog_img/blog2.webp" alt="" >
-            </div>
-        </div>
-    </div>
+    <!-- PRODUCT-LIST--BODY: start -->
+    <div class="product-list--body">
+      <!-- CATEGORY-HEADER: START -->
+      <div class="category-header">
+        <!-- TITLE -->
+        <h1 class="category-title">For Shoes</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item" aria-current="page">
+              <a href="#">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              <a href="#">Danh mục</a>
+            </li>
+          </ol>
+        </nav>
+        <!-- DESCRIPTION -->
+        <p class="category-search-intro">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non sit
+          adipiscing at habitasse lorem volutpat id. Ipsum urna tortor tempus
+          hendrerit mauris, diam, ante. Sit ultricies sed mauri-s, consequat.
+          Urna, eu tortor, feugiat id in. Pulvinar sit quis nibh mauris non
+          cursus blandit. Vel amet malesuada vulputate auctor enim vitae. Enim
+          mi et, fermentum imperdiet. Faucibus tellus a tincidunt arcu proin
+          mattis egestas varius amet. Tortor tellus lobortis ut pretium nunc
+          elit, ornare.
+        </p>
+      </div>
+      <!-- CATEGORY-HEADER: ENS -->
 
-    <div class="shop-header">
-        <div class="shop-title">
-            <h1>For Shoes</h1>
-        </div>
-        <div class="shop-search">
-            
-            <div class="shop-search-intro">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non sit adipiscing at habitasse lorem volutpat id. Ipsum urna tortor tempus hendrerit mauris, diam, ante. Sit ultricies sed mauri-s, consequat. Urna, eu tortor, feugiat id in. Pulvinar sit quis nibh mauris non cursus blandit. Vel amet malesuada vulputate auctor enim vitae. Enim mi et, fermentum imperdiet. Faucibus tellus a tincidunt arcu proin mattis egestas varius amet. Tortor tellus lobortis ut pretium nunc elit, ornare.</p>
-            </div>
-        </div>
-    </div>
-
-    
-
- <!--Khung Filter và Sản phẩm-->
-    <div class="filter-product">
+      <!--Khung Filter và Sản phẩm-->
+      <div class="filter-product">
         <!--Khung Filter-->
         <div class="shop-filter">
-            <h3>Filter By</h3>
-            <hr>
-            <div class="collection">
-                <h4>COLLECTION</h4>
-                
-                <ul>
-                    <li><a>All</a></li>
-                    <li><a>Sneakers</a></li>
-                    <li><a>Hiking Shoes</a></li>
-                    <li><a>Walking Shoes</a></li>
-                    <li><a>Wireless Shoes</a></li>
-                    <li><a>Best Seller</a></li>
-                </ul>
-                <hr>
+          <h3>Lọc theo</h3>
+
+          <!-- accordion: start -->
+          <div class="accordion" id="accordionPanelsStayOpenExample">
+            <!-- collection: start -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                <!-- accordion-item header:start -->
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseOne"
+                  aria-expanded="true"
+                  aria-controls="panelsStayOpen-collapseOne">
+                  Bộ sưu tập
+                </button>
+                <!-- accordion-item header:end -->
+              </h2>
+
+              <!-- accordion-item body: start  -->
+              <div
+                id="panelsStayOpen-collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="panelsStayOpen-headingOne">
+                <a href="#" class="accordion-body"> Sneaker </a>
+                <a href="#" class="accordion-body"> Sneaker </a>
+                <a href="#" class="accordion-body"> Sneaker </a>
+                <a href="#" class="accordion-body"> Sneaker </a>
+                <a href="#" class="accordion-body"> Sneaker </a>
+                <a href="#" class="accordion-body see-more"> Xem thêm </a>
+              </div>
+              <!-- accordion-item body: start  -->
             </div>
-    
-            <div class="price">
-                <h4>PRICE</h4>
-                <div class="price-range">
-                <div class="slider-value">
-                    <span>1450000</span>
-                </div>
-                <div class="field">
+            <!-- collection: end -->
+
+            <!-- price: start -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseTwo">
+                  Giá
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingTwo">
+                <div class="accordion-body">
+                  <div class="price-range">
                     <div class="value-left">100</div>
-                    <input type="range" min="100" max="3000000" value="1450000" steps="1">
+                    <input
+                      type="range"
+                      min="100"
+                      max="3000000"
+                      value="1450000"
+                      steps="1" />
                     <div class="value-right">3000000</div>
+                  </div>
                 </div>
-                </div>
-                <hr>
-            </div>
-    
-            <div class="color">
-                <h4>COLOR</h4>
-                <button class="btn-color" style="background-color: #7F6000"></button>
-                <button class="btn-color" style="background-color: #762E54"></button>
-                <button class="btn-color" style="background-color: #762E54"></button>
-                <button class="btn-color" style="background-color: #008000"></button>
-                <button class="btn-color" style="background-color: #D2F58D"></button>
-                <button class="btn-color" style="background-color: #324A7B"></button>
-            </div>
-            <hr>
-            <div class="size">
-                <h4>SIZE</h4>
-                <div class="large">
-                    <input type="checkbox" name="" value="Large">
-                    <p>Large</p>
-                </div>
-                <div class="medium">
-                    <input type="checkbox" name="" value="Medium">
-                    <p>Medium</p>
-                </div>
-                <div class="small">
-                    <input type="checkbox" name="" value="Small">
-                    <p>Small</p>
-                </div>
-                
-                
-            </div>
-            <hr>
-            <div class="rating">
-              <h4>ĐÁNH GIÁ</h4>
-              <div class="5-star">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-              </div>
-              <div class="4-star">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#b8b8b8" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#b8b8b8" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-            
-              </div>
-              <div class="3-star">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#b8b8b8" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#b8b8b8" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#b8b8b8" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#b8b8b8" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
               </div>
             </div>
-    
-        </div>
-    
-        
-       <!--Khung Sản phẩm-->
-        <div class="product">
-            <div class="product-row">
-                <div class="product-detail">
-                    <img src="/Project/img/blog_img/blog2.webp">
-                    <a>Adidas Sneaker</a>
-                    <p>500000 VND</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                </div>
-    
-                <div class="product-detail">
-                    <img src="/Project/img/blog_img/blog2.webp">
-                    <a>Adidas Sneaker</a>
-                    <p>500000 VND</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                </div>
-    
-                <div class="product-detail">
-                    <img src="/Project/img/blog_img/blog2.webp">
-                    <a>Adidas Sneaker</a>
-                    <p>500000 VND</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                </div>
-            </div>
-            
+            <!-- price: end -->
 
-            <div class="product-row">
-                <div class="product-detail">
-                    <img src="/Project/img/blog_img/blog2.webp">
-                    <a>Adidas Sneaker</a>
-                    <p>500000 VND</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
+            <!-- color: start -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseThree">
+                  Màu
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingThree">
+                <div class="accordion-body color-list">
+                  <button
+                    class="btn-color"
+                    style="background-color: #7f6000"></button>
+                  <button
+                    class="btn-color"
+                    style="background-color: #762e54"></button>
+                  <button
+                    class="btn-color"
+                    style="background-color: #762e54"></button>
+                  <button
+                    class="btn-color"
+                    style="background-color: #008000"></button>
+                  <button
+                    class="btn-color"
+                    style="background-color: #d2f58d"></button>
+                  <button
+                    class="btn-color"
+                    style="background-color: #324a7b"></button>
                 </div>
-    
-                <div class="product-detail">
-                    <img src="/Project/img/blog_img/blog2.webp">
-                    <a>Adidas Sneaker</a>
-                    <p>500000 VND</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                </div>
-    
-                <div class="product-detail">
-                    <img src="/Project/img/blog_img/blog2.webp">
-                    <a>Adidas Sneaker</a>
-                    <p>500000 VND</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                </div>
+              </div>
             </div>
+            <!-- color: end -->
 
-            <div class="product-row">
-                <div class="product-detail">
-                    <img src="/Project/img/blog_img/blog2.webp">
-                    <a>Adidas Sneaker</a>
-                    <p>500000 VND</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
+            <!-- size: start -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseFour"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseFour">
+                  Kích cỡ
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseFour"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingFour">
+                <div class="accordion-body size color-list">
+                  <div class="size-option">
+                    <input
+                      type="checkbox"
+                      name=""
+                      value="Small"
+                      id="small"
+                      class="square-checkbox" />
+                    <label for="small">S</label>
+                  </div>
+                  <div class="size-option">
+                    <input
+                      type="checkbox"
+                      name=""
+                      value="Medium"
+                      id="large"
+                      class="square-checkbox" />
+                    <label for="medium">M</label>
+                  </div>
+                  <div class="size-option">
+                    <input
+                      type="checkbox"
+                      name=""
+                      value="Large"
+                      id="large"
+                      class="square-checkbox" />
+                    <label for="large">L</label>
+                  </div>
+                  <a href="#" class="accordion-body see-more"> Xem thêm </a>
                 </div>
-    
-                <div class="product-detail">
-                    <img src="/Project/img/blog_img/blog2.webp">
-                    <a>Adidas Sneaker</a>
-                    <p>500000 VND</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                </div>
-    
-                <div class="product-detail">
-                    <img src="/Project/img/blog_img/blog2.webp">
-                    <a>Adidas Sneaker</a>
-                    <p>500000 VND</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 12 12" class="star-icon"><g fill="none" fill-rule="evenodd"><path fill="#fdd835" transform="matrix(-1 0 0 1 11 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path><path fill="#fdd835" transform="translate(1 1)" d="M5 0v8.476L1.91 10l.424-3.562L0 3.821l3.353-.678L5 0z"></path></g></svg>
-                </div>
+              </div>
             </div>
+            <!-- size: end -->
+          </div>
+          <!-- accordion: end -->
+
+          <!-- rating-filter: start -->
+          <div class="rating">
+            <h4>ĐÁNH GIÁ</h4>
+            <div class="5-star">
+              <ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon>
+            </div>
+            <div class="4-star">
+              <ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-outline"></ion-icon>
+            </div>
+            <div class="3-star">
+              <ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-outline"></ion-icon
+              ><ion-icon name="star-outline"></ion-icon>
+            </div>
+            <a href="#" class="see-more">Xem thêm</a>
+          </div>
+          <!-- rating-filter: end -->
         </div>
+
+        <!--Khung Sản phẩm-->
+        <div class="product-list">
+          <div class="product-detail">
+            <div class="product-img--container">
+              <img src="/Project/img/blog_img/blog2.webp" />
+            </div>
+            <a href="#">Adidas Sneaker</a>
+            <p>500000 VND</p>
+            <div class="product-star">
+              <ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon>
+            </div>
+          </div>
+
+          <div class="product-detail">
+            <div class="product-img--container">
+              <img src="/Project/img/blog_img/blog2.webp" />
+            </div>
+            <a href="#">Adidas Sneaker</a>
+            <p>500000 VND</p>
+            <div class="product-star">
+              <ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon>
+            </div>
+          </div>
+
+          <div class="product-detail">
+            <div class="product-img--container">
+              <img src="/Project/img/blog_img/blog2.webp" />
+            </div>
+            <a href="#">Adidas Sneaker</a>
+            <p>500000 VND</p>
+            <ion-icon name="star-sharp"></ion-icon
+            ><ion-icon name="star-sharp"></ion-icon
+            ><ion-icon name="star-sharp"></ion-icon
+            ><ion-icon name="star-sharp"></ion-icon
+            ><ion-icon name="star-sharp"></ion-icon>
+          </div>
+
+          <div class="product-detail">
+            <div class="product-img--container">
+              <img src="/Project/img/blog_img/blog2.webp" />
+            </div>
+            <a href="#">Adidas Sneaker</a>
+            <p>500000 VND</p>
+            <div class="product-star">
+              <ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon>
+            </div>
+          </div>
+          <div class="product-detail">
+            <div class="product-img--container">
+              <img src="/Project/img/blog_img/blog2.webp" />
+            </div>
+            <a href="#">Adidas Sneaker</a>
+            <p>500000 VND</p>
+            <div class="product-star">
+              <ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon>
+            </div>
+          </div>
+          <div class="product-detail">
+            <div class="product-img--container">
+              <img src="/Project/img/blog_img/blog2.webp" />
+            </div>
+            <a href="#">Adidas Sneaker</a>
+            <p>500000 VND</p>
+            <div class="product-star">
+              <ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon>
+            </div>
+          </div>
+          <div class="product-detail">
+            <div class="product-img--container">
+              <img src="/Project/img/blog_img/blog2.webp" />
+            </div>
+            <a href="#">Adidas Sneaker</a>
+            <p>500000 VND</p>
+            <div class="product-star">
+              <ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon>
+            </div>
+          </div>
+          <div class="product-detail">
+            <div class="product-img--container">
+              <img src="/Project/img/blog_img/blog2.webp" />
+            </div>
+            <a href="#">Adidas Sneaker</a>
+            <p>500000 VND</p>
+            <div class="product-star">
+              <ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon>
+            </div>
+          </div>
+          <div class="product-detail">
+            <div class="product-img--container">
+              <img src="/Project/img/blog_img/blog2.webp" />
+            </div>
+            <a href="#">Adidas Sneaker</a>
+            <p>500000 VND</p>
+            <div class="product-star">
+              <ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon
+              ><ion-icon name="star-sharp"></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    
-      <div class="pagination">
-        <a href="#">&laquo;</a>
-        <a class="active" href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <span class="ellipsis">...</span>
-        <a href="#">10</a>
-        <a href="#">&raquo;</a>
+    <!-- PRODUCT-LIST--BODY: end -->
+    <div class="pagination">
+      <a href="#">&laquo;</a>
+      <a class="active" href="#">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <span class="ellipsis">...</span>
+      <a href="#">10</a>
+      <a href="#">&raquo;</a>
     </div>
-    
+
     <div class="FooterBox">
-        <div class="FooterBox__one">
-            <div class="FooterBox__one__left">
-                <h3>Our Team</h3>
-                <p>Home</p>
-                <p>Shop</p>
-                <p>About</p>
-                <p>Contact</p>
-            </div>
-            <div class="FooterBox__one__center">
-                <h3>Explore</h3>
-                <p>FAQ</p>
-                <p>Shipping & Return</p>
-                <p>Store Policy</p>
-                <p>Payment methods</p>
-            </div>
-            <div class="FooterBox__one__right">
-                <h3>Follow us</h3>
-                <p class="span-container">Facebook<span><i class="fa-brands fa-square-facebook"></i></span></p>
-                <p class="span-container">Instagram<span><i class="fa-brands fa-instagram"></i></span></p>
-            </div>
+      <div class="FooterBox__one">
+        <div class="FooterBox__one__left">
+          <h3>Our Team</h3>
+          <p>Home</p>
+          <p>Shop</p>
+          <p>About</p>
+          <p>Contact</p>
         </div>
-        <div class="FooterBox__two">
-            <hr>
-            <div class="FooterBox__two__rightpayment">
-                <p>2022 ALL RIGHT RESERVE</p>
-                <div>
-                    <img src="../img/footer_image/visa.png" alt="" width="49.375px" height="33.125px">
-                    <img src="../img/footer_image/paypal.png" alt="" width="49.375px" height="33.125px">
-                    <img src="../img/footer_image/mastercard.png" alt="" width="49.375px" height="33.125px">
-                    <img src="../img/footer_image/momo.png" alt="" width="33.125px" height="33.125px">
-                    <img src="../img/footer_image/napas.png" alt="" width="33.125px" height="33.125px">
-                </div>
-            </div>
+        <div class="FooterBox__one__center">
+          <h3>Explore</h3>
+          <p>FAQ</p>
+          <p>Shipping & Return</p>
+          <p>Store Policy</p>
+          <p>Payment methods</p>
         </div>
+        <div class="FooterBox__one__right">
+          <h3>Follow us</h3>
+          <p class="span-container">
+            Facebook<span><i class="fa-brands fa-square-facebook"></i></span>
+          </p>
+          <p class="span-container">
+            Instagram<span><i class="fa-brands fa-instagram"></i></span>
+          </p>
+        </div>
+      </div>
+      <div class="FooterBox__two">
+        <hr />
+        <div class="FooterBox__two__rightpayment">
+          <p>2022 ALL RIGHT RESERVE</p>
+          <div>
+            <img
+              src="../img/footer_image/visa.png"
+              alt=""
+              width="49.375px"
+              height="33.125px" />
+            <img
+              src="../img/footer_image/paypal.png"
+              alt=""
+              width="49.375px"
+              height="33.125px" />
+            <img
+              src="../img/footer_image/mastercard.png"
+              alt=""
+              width="49.375px"
+              height="33.125px" />
+            <img
+              src="../img/footer_image/momo.png"
+              alt=""
+              width="33.125px"
+              height="33.125px" />
+            <img
+              src="../img/footer_image/napas.png"
+              alt=""
+              width="33.125px"
+              height="33.125px" />
+          </div>
+        </div>
+      </div>
     </div>
-    </body>
-  </html>
+    <!-- js: start -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+    <!-- js: end -->
+  </body>
+</html>
