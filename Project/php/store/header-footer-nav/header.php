@@ -25,7 +25,8 @@
       @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
     </style>
 
-
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
     <ul class="header">
@@ -42,7 +43,7 @@
 
         <!-- category sub navigation -->
         <li class="nav-link--item primary-nav hover-underline a">
-          <a href="#">LOẠI SP</a>
+          <a href="#">LOẠI SẢN PHẨM</a>
           <ul class="sub-nav">
             <li class="sub-nav--item hover-underline">
               <a href="#">LOẠI 1</a>
@@ -62,7 +63,7 @@
           </ul>
         </li>
 
-        <li class="nav-link--item hover-underline"><a href="#">TRANG</a></li>
+        <li class="nav-link--item hover-underline"><a href="../blog-info/about-us.php">ABOUT US</a></li>
         <li class="nav-link--item hover-underline"><a href="../blog-info/blog.php">BLOGS</a></li>
       </ul>
       <!-- LINK (HOME, SHOP, CATEGORY,....): End -->

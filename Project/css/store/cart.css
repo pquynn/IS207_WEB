@@ -5,6 +5,10 @@
 }
 
 /* general */
+p {
+  margin-bottom: 0 !important;
+}
+
 .gray-text {
   color: var(--light-text);
   font-weight: 300;
@@ -151,15 +155,20 @@
   justify-content: space-between;
 }
 
+.total {
+  font-size: 20px;
+  font-weight: 600;
+}
 /* checkout-btn */
 .checkout-bnt {
   width: 100% !important;
   transition: all 0.3s;
   display: block;
-  background-color: black;
-  color: white;
+  background-color: black !important;
+  color: white !important;
+  border-radius: 0 !important;
 }
 
 .checkout-bnt:hover {
-  background-color: var(--orange);
+  background-color: var(--orange) !important;
 }

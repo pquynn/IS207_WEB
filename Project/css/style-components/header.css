@@ -5,6 +5,19 @@
  */
 
 /* ************GENERAL************ */
+p a,
+li a,
+div a {
+  color: black;
+  text-decoration: none;
+}
+
+.nav-icon--item a,
+.nav-link--item a {
+  color: black;
+  text-decoration: none;
+}
+
 .nav-link--item a,
 .sub-nav-link--item a,
 .nav-icon--item a {
@@ -34,13 +47,17 @@
 /* icon */
 .nav-icon {
   display: flex;
-  margin-left: 25px;
   gap: 12px;
+  padding-left: 0;
+}
+
+.nav-icon ul {
+  padding-left: 0;
 }
 
 /* home, shop, category,.... */
 .nav-link {
-  display: flex;
+  display: flex !important;
   gap: 30px;
   margin-top: 5px;
 }
@@ -109,14 +126,13 @@
 }
 
 /* **********NAV ICON********* */
-.nav-icon--item a {
+/* .nav-icon--item {
   transition: all 0.3s;
 }
 
-.nav-icon--item a:hover {
+.nav-icon--item:hover {
   color: var(--orange);
-}
-
+} */
 
 /* **********STORE LAYOUT: MAIN SECTION********* */
 .main-section {

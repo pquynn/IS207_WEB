@@ -18,7 +18,6 @@
 
 .main-slider {
   position: relative;
-  padding: 20px;
 }
 
 /* SLIDER-CONTAINER: start */
@@ -36,7 +35,8 @@
 
 /* img */
 .slider-container img {
-  opacity: 45%;
+  object-fit: cover;
+  opacity: 90%;
   width: 100%;
   height: 450px;
   flex: 1 0 100%;
@@ -65,37 +65,13 @@
   margin: 15px;
 }
 
-/* slogan */
-.slider-content {
-  position: absolute;
-  font-size: 50px;
-  text-transform: uppercase;
-  width: 55%;
-  left: 10%;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* buy btn */
-.buy-btn {
-  background-color: transparent;
-  border: solid 1.2px black;
-  padding: 15px 40px;
-  font-size: 18px;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-
-.buy-btn:hover {
-  background-color: black;
-  color: white;
-}
 /* SLIDER-CONTAINER: END */
 
 /* BLOG: start */
-.blog {
-  display: flex;
-  gap: 25px;
+
+.blog-content{
+  width: 90%;
+  margin: 0 auto;
 }
 
 .blog-img {
@@ -146,18 +122,26 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 70px;
+  row-gap: 40px;
 }
 
 /* product */
+.product{
+  width: 200px;
+  margin: 0 auto;
+}
+
 .product-img {
   width: 100%;
+  height: 250px;
   transition: all 0.3s;
 }
 
 .product-name {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
-  padding-bottom: 5px;
+  padding-top: 15px;
+  margin-bottom: 5px !important;
 }
 
 .product-price {
@@ -166,12 +150,54 @@
   color: var(--orange);
   margin-bottom: 10px;
 }
+
+/* product responsive: start */
+@media(max-width: 1300px) {
+  .product-list{
+      display: grid;
+      column-gap: 40px;
+      grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .product{
+      margin: 0 auto;
+  }
+}
+
+@media(max-width: 900px) {
+  .product-list{
+      display: grid;
+      column-gap: 40px;
+      grid-template-columns: 1fr 1fr;
+  }
+
+  .product{
+      /* width: 440px; */
+      margin: 0 auto;
+  }
+}
+@media(max-width: 600px) {
+  .product-list{
+      display: grid;
+      column-gap: 40px;
+      grid-template-columns: 1fr;
+  }
+
+  .product{
+      /* width: 440px; */
+      margin: 0 auto;
+  }
+}
+/* product responsive: start */
+
 /* GALLERY: end */
 
 /* COLLECTION: start */
 .collection {
   display: flex;
   gap: 40px;
+  width: 95%;
+  margin: 0 auto;
 }
 
 .collection-item {
@@ -181,6 +207,8 @@
 
 .collection-img {
   width: 100%;
+  height: 400px;
+  object-fit: cover;
   transition: all 0.5s;
 }
 
