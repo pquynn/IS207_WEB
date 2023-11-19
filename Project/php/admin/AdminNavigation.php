@@ -30,16 +30,17 @@
             </a>
     
             <ul class="nav-admin-menu">
-                <li><a href="#">Về Cửa Hàng</a></li>
-                <li><a href="Dashboard.php">Thống Kê</a></li>
-                <li><a href="CategoriesManagement.php">Danh Mục</a></li>
-                <li><a href="ProductsManagement.php" class="active">Sản Phẩm</a></li>
-                <li><a href="OrdersManagement.php">Đơn Hàng</a></li>
-                <li><a href="CustomersManagement.php">Khách Hàng</a></li>
-                <li><a href="EmployeesManagement.php">Nhân Viên</a></li>
-                <li><a href="BlogManagement.php">Blog</a></li>
+                <li><a class="nav-item" href="#">Về Cửa Hàng</a></li>
+                <li><a class="nav-item" href="Dashboard.php">Thống Kê</a></li>
+                <li><a class="nav-item" href="CategoriesManagement.php">Danh Mục</a></li>
+                <li><a class="nav-item" href="ProductsManagement.php">Sản Phẩm</a></li>
+                <li><a class="nav-item" href="OrdersManagement.php">Đơn Hàng</a></li>
+                <li><a class="nav-item" href="CustomersManagement.php">Khách Hàng</a></li>
+                <li><a class="nav-item" href="EmployeesManagement.php">Nhân Viên</a></li>
+                <li><a class="nav-item" href="BlogManagement.php">Blog</a></li>
             </ul>
     
+            
             <div class="nav-admin-account">
                 <a href="#" id="account">
                         <img src="../../img/user.png" alt="Your account">
@@ -52,3 +53,4 @@
     <!-- end: admin navigation -->
 
    
+    <script src="../../js/admin/admin-nav"></script>
