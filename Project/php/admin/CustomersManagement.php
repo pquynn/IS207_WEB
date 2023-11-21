@@ -67,7 +67,7 @@
                         <td>18/10/2023</td>
                         <td class="action">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#alert"><i class="fa-solid fa-trash"></i></a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#alert" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                 </table>
@@ -98,11 +98,12 @@
 
     <!-- start of warning message when click del-btn -->
         <?php 
-            $alert_message = "xóa khách hàng";
-            $alert_action = "Xóa";
-            include("ModalAlert.php"); 
+            // $alert_message = "xóa khách hàng";
+            // $alert_action = "Xóa";
+            // include("ModalAlert.php"); 
         ?>
     <!-- end of warning message when click del-btn -->
-
+    <script src="../../js/admin/form-validation"></script>
+    <script src="../../js/admin/categories-management"></script>
 </body>
 </html>
