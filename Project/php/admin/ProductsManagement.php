@@ -30,7 +30,10 @@
                         <th>Ảnh</th>
                         <th>Tên sản phẩm</th>
                         <th>Giá</th>
-                        <th>...</th>
+                        <th>Kích thước</th>
+                        <th>Phân loại</th>
+                        <th>Màu sắc</th>
+                        <th>Mô tả</th>
                         <th>Thao tác</th>
                     </tr>
                     <tr>
@@ -38,7 +41,10 @@
                         <td><div class="table-img"></div></td>
                         <td> Giày ... </td>
                         <td>10000đ</td>
-                        <td>...</td>
+                        <td>xl</td>
+                        <td>Giày thể thao</td>
+                        <td>Trắng</td>
+                        <td>giày đẹp</td>
                         <td class="action">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
                             <a href="#" data-bs-toggle="modal" data-bs-target="#alert" class="btn-delete"><i class="fa-solid fa-trash"></i></a>

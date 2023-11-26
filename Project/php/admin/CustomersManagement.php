@@ -45,9 +45,9 @@
                 <table>
                     <tr>
                         <th>#</th>
+                        <th>Tên đăng nhập</th>
                         <th>Điện thoại</th>
                         <th>Họ tên</th>
-                        <th>Email</th>
                         <th>Ngày sinh</th>
                         <th>Giới tính</th>
                         <th>Địa chỉ</th>
@@ -57,9 +57,9 @@
                     </tr>
                     <tr>
                         <td>1</td>
+                        <td>nguyenvan</td>
                         <td>0123456789</td>
                         <td>Nguyễn Văn</td>
-                        <td>nguyenvan@gmail.com</td>
                         <td>13/07/2000</td>
                         <td>Nữ</td>
                         <td>Linh Trung, Thủ Đức</td>

@@ -1,5 +1,5 @@
-import { jsPDF } from "jsPDF";
-
+const page_name = $('.section_heading').text();
+const table = document.querySelector('.admin-table table');
 // add new
 
 
@@ -15,7 +15,7 @@ const deleteButtons = document.querySelectorAll('.btn-delete');
 // Add a click event listener to each delete button
 deleteButtons.forEach(function(button) {
     button.addEventListener('click', function() {
-        if (confirm('Xác nhận xóa ' + $('.section_heading').text() + ' ?')) {
+        if (confirm('Xác nhận xóa ' + page_name + ' ?')) {
             // Get the parent row of the clicked delete button
             const row = this.closest('tr'); 
 
@@ -35,85 +35,41 @@ deleteButtons.forEach(function(button) {
 
 
 // export file
-// document.getElementsByClassName('btn-export').addEventListener('click', function() {
-//     // Create a new jsPDF instance
-//     const doc = new jsPDF();
-
-//     // Add the table content to the PDF
-//     doc.autoTable({ html: '#category-table'});
-
-//     // Save the PDF file
-//     // doc.save('product_table.pdf');
-
-//      // Save the PDF file with user-defined name and location
-//      doc.saveAs({ content: 'table.pdf' });
-//   });
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     const exportButton = document.querySelector('.btn-export');
-  
-//     exportButton.addEventListener('click', function() {
-//       const table = document.querySelector('.category-table');
-  
-//       if (table) {
-//         const doc = new jsPDF();
-//         doc.autoTable({ html: table });
-  
-//         // Save the PDF file with user-defined name and location
-//         doc.saveAs({ content: 'admin_table.pdf'});
-//       } else {
-//         console.error('Table not found');
-//       }
-//     });
-//   });
 // Converting HTML table to EXCEL File
 
-const excel_btn = document.querySelector('.btn-export');
+const export_btn = document.querySelector('.btn-export');
 
-const toExcel = function (table) {
-    // Code For SIMPLE TABLE
-    // const t_rows = table.querySelectorAll('tr');
-    // return [...t_rows].map(row => {
-    //     const cells = row.querySelectorAll('th, td');
-    //     return [...cells].map(cell => cell.textContent.trim()).join('\t');
-    // }).join('\n');
+const toExcel = function (table, includeImages) {
+    const t_heads = table.querySelectorAll('th');
+    const tbody_rows = table.querySelectorAll('tr');
 
-    const t_heads = table.querySelectorAll('th'),
-        tbody_rows = table.querySelectorAll('tbody tr');
-
-    const headings = [...t_heads].map(head => {
+    const headings = [...t_heads].slice(0, -1).map(head => {
         let actual_head = head.textContent.trim().split(' ');
-        return actual_head.splice(0, actual_head.length - 1).join(' ').toLowerCase();
-    }).join('\t') + '\t' + 'image name';
+        return actual_head.join(' ');
+    });
 
     const table_data = [...tbody_rows].map(row => {
-        const cells = row.querySelectorAll('td'),
-            img = decodeURIComponent(row.querySelector('img').src),
-            data_without_img = [...cells].map(cell => cell.textContent.trim()).join('\t');
+        const cells = row.querySelectorAll('td');
+        const data_without_img = [...cells].slice(0, -1).map(cell => cell.textContent.trim());
+        return data_without_img;
+    });
 
-        return data_without_img + '\t' + img;
-    }).join('\n');
-
-    return headings + '\n' + table_data;
-}
-
-excel_btn.onclick = () => {
-    const excel = toExcel(customers_table);
-    downloadFile(excel, 'excel');
-}
-
-const downloadFile = function (data, fileType, fileName = '') {
-    const a = document.createElement('a');
-    a.download = fileName;
-    const mime_types = {
-        'json': 'application/json',
-        'csv': 'text/csv',
-        'excel': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    if (includeImages) {
+        // TODO:Include logic to handle exporting images if needed
     }
-    a.href = `
-        data:${mime_types[fileType]};charset=utf-8,${encodeURIComponent(data)}
-    `;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+
+    const data = [headings, ...table_data];
+    return data;
 }
+
+export_btn.addEventListener('click', () => {
+    const data = toExcel(table, true);
+    const worksheet = XLSX.utils.aoa_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    var file_name = page_name + '.xlsx';
+    XLSX.writeFile(workbook, file_name);
+});
+
+
+

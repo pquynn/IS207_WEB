@@ -18,7 +18,7 @@
         <div class="section_bottom-content">
             <!-- start: admin table -->
             <div class="admin-table">
-                <table id="category-table">
+                <table>
                     <tr>
                         <th>#</th>
                         <th>Tên danh mục</th>
@@ -86,6 +86,6 @@
     <!-- end of warning message when click del-btn -->
 
     <script src="../../js/admin/form-validation"></script>
-    <script src="../../js/admin/categories-management"></script>
+    <script type="module" src="../../js/admin/categories-management"></script>
 </body>
 </html>
