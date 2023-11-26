@@ -6,20 +6,22 @@
 
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="add-employee">Thêm mới nhân viên</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
             </div>
 
-            <div class="modal-body">
-                <form action="" class="add-new-employee">
-                
-                    <label for="employee-phone" class="form-label">Điện thoại</label>
-                    <input type="tel" id="employee-phone" class="form-control">
+            <form action="" class="add-new-employee need-validation" novalidate>
+                <div class="modal-body">
+                    <label for="employee-username" class="form-label">Tên đăng nhập</label>
+                    <input type="text" id="employee-username" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Yêu cầu nhập tên đăng nhập.
+                    </div>
 
                     <label for="employee-name" class="form-label">Tên nhân viên</label>
                     <input type="text" id="employee-name" class="form-control">
 
-                    <label for="employee-email" class="form-label">Email</label>
-                    <input type="email" id="employee-email" class="form-control">
+                    <label for="employee-phone" class="form-label">Điện thoại</label>
+                    <input type="tel" id="employee-phone" class="form-control">
 
                     <div class="row g-2">
                         <div class="col">
@@ -48,15 +50,13 @@
                         <option value="Quản lý">Quản lý</option>
                         <option value="Nhân viên">Nhân viên</option>
                     </select>
-                        
-                </form>
-            </div>
-            
-            <div class="modal-footer">
-                <button type="button" class="btn btn-cancel admin" data-bs-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-confirm admin">Thêm mới</button>
-            </div>
-
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel admin">Hủy</button>
+                    <button type="submit" class="btn btn-confirm admin">Thêm mới</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
