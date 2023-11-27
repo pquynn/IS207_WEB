@@ -29,7 +29,23 @@
                         <td> Giày thể thao </td>
                         <td class="action">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#alert"><i class="fa-solid fa-trash"></i></a>
+                            <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td> Giày thể thao </td>
+                        <td class="action">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
+                            <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td> Giày thể thao </td>
+                        <td class="action">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
+                            <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                 </table>
@@ -59,12 +75,17 @@
     <!-- end of Modal of Add new elements-->
 
     <!-- start of warning message when click del-btn -->
-        <?php 
-            $alert_message = "xóa danh mục";
+       
+       <?php 
+            /*$alert_message = "xóa danh mục";
             $alert_action = "Xóa";
-            include("ModalAlert.php"); 
+            include("ModalAlert.php");
+            */ 
         ?>
+        
     <!-- end of warning message when click del-btn -->
 
+    <script src="../../js/admin/form-validation"></script>
+    <script type="module" src="../../js/admin/categories-management"></script>
 </body>
 </html>

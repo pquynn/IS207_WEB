@@ -9,7 +9,6 @@
     
     <link rel="stylesheet" href="../../css/admin/Dashboard.css">
 
-
     <!-- start: main section -->
     <div class="section">
         <h2 class="section_heading">Thống kê</h2>
@@ -108,19 +107,24 @@
 
             <div class="row">
                 <!-- start: revenue by categories chart -->
-                <div class="col revenue-by-categories-pie-chart-container">
+                <div class="col-5 revenue-by-categories-pie-chart-container">
                     <p class="container-heading">Doanh thu theo loại sản phẩm</p>
 
-                    <div class="card">
+                    <!-- Donut Chart -->
+                    <div class="card shadow mb-4 mt-2">
+                        <!-- Card Body -->
                         <div class="card-body">
-                            *javascript
+                            <div class="chart-pie pt-4">
+                                <canvas id="myPieChart" style="height:295px;"></canvas>
+                            </div>
                         </div>
                     </div>
+                       
                 </div>
                 <!-- end: revenue by categories chart -->
 
                 <!-- start: best seller table -->
-                <div class="col best-seller">
+                <div class="col-7 best-seller">
                     <p class="container-heading">Sản phẩm bán chạy</p>
 
                     <div class="admin-table">
@@ -132,31 +136,31 @@
                                 <th>Giá</th>
                             </tr>
                             <tr>
-                                <td>Ảnh</td>
+                                <td><div class="table-img"></div></td>
                                 <td>Giày thể thao </td>
                                 <td>400</td>
                                 <td>100000 đ</td>
                             </tr>
                             <tr>
-                                <td>Ảnh</td>
+                                <td><div class="table-img"></div></td>
                                 <td>Giày thể thao </td>
                                 <td>400</td>
                                 <td>100000 đ</td>
                             </tr>
                             <tr>
-                                <td>Ảnh</td>
+                                <td><div class="table-img"></div></td>
                                 <td>Giày thể thao </td>
                                 <td>400</td>
                                 <td>100000 đ</td>
                             </tr>
                             <tr>
-                                <td>Ảnh</td>
+                                <td><div class="table-img"></div></td>
                                 <td>Giày thể thao </td>
                                 <td>400</td>
                                 <td>100000 đ</td>
                             </tr>
                             <tr>
-                                <td>Ảnh</td>
+                                <td><div class="table-img"></div></td>
                                 <td>Giày thể thao </td>
                                 <td>400</td>
                                 <td>100000 đ</td>
@@ -172,11 +176,16 @@
                 <div class="col revenue-line-chart-container">
                     <p class="container-heading">Thống kê doanh thu</p>
 
-                    <div class="card">
+                    <!-- Area Chart -->
+                    <div class="card shadow mb-4">
                         <div class="card-body">
-                            *javascript
+                            <div class="chart-area">
+                                <canvas id="myAreaChart" style="height: 400px"></canvas>
+                            </div>
                         </div>
                     </div>
+
+                            
                 </div>
             </div>
             <!-- end: statistic line chart -->
@@ -185,5 +194,9 @@
     <!-- end: section bottom content -->
 
 
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script>
+    <script src="../../js/admin/chart/chart-pie.js"></script>
+    <script src="../../js/admin/chart/chart-area.js"></script>
 </body>
 </html>
