@@ -33,10 +33,11 @@
                         <th>Kích thước</th>
                         <th>Phân loại</th>
                         <th>Màu sắc</th>
+                        <th>Giới tính</th>
                         <th>Mô tả</th>
                         <th>Thao tác</th>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td>1</td>
                         <td><div class="table-img"></div></td>
                         <td> Giày ... </td>
@@ -49,7 +50,7 @@
                             <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
                             <a href="#" data-bs-toggle="modal" data-bs-target="#alert" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
                         </td>
-                    </tr>
+                    </tr> -->
                 </table>
             </div>
             <!-- end: admin table -->
@@ -84,6 +85,6 @@
         ?>
     <!-- end of warning message when click del-btn -->
     <script src="../../js/admin/form-validation"></script>
-    <script src="../../js/admin/categories-management"></script>
+    <script src="../../js/admin/products-management"></script>
 </body>
 </html>

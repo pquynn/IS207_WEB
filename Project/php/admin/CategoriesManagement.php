@@ -24,30 +24,6 @@
                         <th>Tên danh mục</th>
                         <th>Thao tác</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td> Giày thể thao </td>
-                        <td class="action">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                            <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td> Giày thể thao </td>
-                        <td class="action">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                            <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td> Giày thể thao </td>
-                        <td class="action">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                            <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
                 </table>
             </div>
             <!-- end: admin table -->
@@ -73,17 +49,6 @@
     <!-- start of Modal of Add new elements. Modified 10/22/2023 by Quyen -->
     <?php include("ModalAddNewCategory.php"); ?>
     <!-- end of Modal of Add new elements-->
-
-    <!-- start of warning message when click del-btn -->
-       
-       <?php 
-            /*$alert_message = "xóa danh mục";
-            $alert_action = "Xóa";
-            include("ModalAlert.php");
-            */ 
-        ?>
-        
-    <!-- end of warning message when click del-btn -->
 
     <script src="../../js/admin/form-validation"></script>
     <script type="module" src="../../js/admin/categories-management"></script>
