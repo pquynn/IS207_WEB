@@ -9,7 +9,7 @@
                 <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
             </div>
 
-            <form action="" class="add-new-employee need-validation" novalidate>
+            <form action="" id="modal-form" class="add-new-employee need-validation" novalidate>
                 <div class="modal-body">
                     <label for="employee-username" class="form-label">Tên đăng nhập</label>
                     <input type="text" id="employee-username" class="form-control" required>

@@ -2,10 +2,34 @@
 // Include the database configuration file
 include '../connect.php';
 
+//FETCH DATA
 function fetchCategories() {
     global $conn;
-    
-    $sql = "SELECT category_id, category_name FROM category";
+
+    // Define the number of records per page
+    $records_per_page = 20;
+
+    // Get the current page number from the URL
+    if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+        $page = intval($_GET['page']);
+    } else {
+        $page = 1;
+    }
+
+    // Get the total number of records from the database
+    $totalRecordsQuery = "SELECT COUNT(*) as total FROM category";
+    $totalRecordsResult = $conn->query($totalRecordsQuery);
+    $totalRecords = $totalRecordsResult->fetch_assoc()['total'];
+
+    // Calculate the total number of pages
+    $totalPages = ceil($totalRecords / $records_per_page);
+
+
+    // Calculate the offset for the query
+    $offset = ($page - 1) * $records_per_page;
+
+    // Fetch data from the database with pagination
+    $sql = "SELECT category_id, category_name FROM category LIMIT $offset, $records_per_page";
     $result = $conn->query($sql);
 
     $data = [];
@@ -16,30 +40,96 @@ function fetchCategories() {
         }
     }
 
-    return $data;
+    // Create an associative array with multiple values
+    $response = array(
+        'data' => $data,
+        'totalPages' => $totalPages
+    );
+
+        //return ['data' => $data, 'totalPages' => $totalPages];
+        return $response;
 }
 
-function insertCategory($categoryName) {
+
+//INSERT 
+function insertCategory() {
     global $conn;
 
-    // Validate input, perform the insertion, handle errors, etc.
-    // Example:
-    // $sql = "INSERT INTO category (category_name) VALUES ('$categoryName')";
-    // $result = $conn->query($sql);
-    // return $result;
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $categoryName = $_GET['category_name'];
+
+        $exist = checkCategory($categoryName);
+        if($exist){
+            return false;
+        }
+        else{
+            $sql = "INSERT INTO category (category_name) VALUES ('$categoryName')";
+            $result = $conn->query($sql);
+
+            return $result; 
+        }
+    }
+    else
+    return false;
+}
+
+//UPDATE 
+function updateCategory() {
+    global $conn;
+
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $categoryName = $_GET['category_name'];
+        $categoryId = $_GET['category_id'];
+
+        $exist = checkCategory($categoryName);
+        if($exist){
+            return false;
+        }
+        else{
+            $sql = "UPDATE category SET category_name = '$categoryName' WHERE category_id = '$categoryId'";
+            $result = $conn->query($sql);
+            return $result;
+        }
+    }
+    else
+        return false;
+}
+
+//DELETE
+function deleteCategory() {
+    global $conn;
+
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $categoryId = $_GET['category_id'];
     
-    //return ['success' => true, 'message' => 'Category inserted successfully'];
+        $sql = "DELETE FROM category WHERE category_id = '$categoryId'";
+        $result = $conn->query($sql);
 
+        return $result; 
+    }
+    else
+        return ['result' => false];
 }
 
-function deleteCategory($categoryId) {
-    global $conn;
 
-    // Validate input, perform the deletion, handle errors, etc.
-    // Example:
-    // $sql = "DELETE FROM category WHERE category_id = $categoryId";
-    // $result = $conn->query($sql);
-    // return $result;
+//CHECK VALIDATION
+function checkCategory($categoryName) { 
+    global $conn;
+    // Check if the category name already exists
+    $sql = "SELECT COUNT(*) as count FROM category WHERE category_name = '$categoryName'";
+    $result = $conn->query($sql);
+
+    if ($result) {
+        $row = $result->fetch_assoc();
+        if($row['count'] > 0)
+            return true;
+        else
+            return false;
+        
+    } else {
+        // Error in the query
+        return true;
+    }
 }
 
 // Check the action parameter in the request
@@ -53,17 +143,14 @@ if (isset($_GET['action'])) {
             echo json_encode(fetchCategories());
             break;
         case 'insert':
-            // Check if required parameters are present
-
-            // if (isset($_POST['category_name'])) {
-            //     $categoryName = $_POST['category_name'];
-            //     echo json_encode(insertCategory($categoryName));
-            // } else {
-            //     echo json_encode(['success' => false, 'message' => 'Category name not provided']);
-            // }
+            echo json_encode(insertCategory());
             break;
-        // Add more cases for other actions if needed
-        // ...
+        case 'delete':
+            echo json_encode(deleteCategory());
+            break;
+        case 'update':
+            echo json_encode(updateCategory());
+            break;
         default:
             echo json_encode(['success' => false, 'message' => 'Invalid action']);
     }

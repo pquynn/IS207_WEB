@@ -6,7 +6,7 @@ include '../connect.php';
 function fetchProducts() {
     global $conn;
     
-    $sql = $sql = " SELECT DISTINCT products.product_id, products.product_name, products.color, 
+    $sql = " SELECT DISTINCT products.product_id, products.product_name, products.color, 
                           products.price, products.description, products.gender, 
                           category.category_name, products.image 
                     FROM products

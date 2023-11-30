@@ -25,46 +25,35 @@
             <!-- start: admin table -->
             <div class="admin-table">
                 <table>
-                    <tr>
-                        <th>#</th>
-                        <th>Ảnh</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Giá</th>
-                        <th>Kích thước</th>
-                        <th>Phân loại</th>
-                        <th>Màu sắc</th>
-                        <th>Giới tính</th>
-                        <th>Mô tả</th>
-                        <th>Thao tác</th>
-                    </tr>
-                    <!-- <tr>
-                        <td>1</td>
-                        <td><div class="table-img"></div></td>
-                        <td> Giày ... </td>
-                        <td>10000đ</td>
-                        <td>xl</td>
-                        <td>Giày thể thao</td>
-                        <td>Trắng</td>
-                        <td>giày đẹp</td>
-                        <td class="action">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#alert" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr> -->
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Kích thước</th>
+                            <th>Phân loại</th>
+                            <th>Màu sắc</th>
+                            <th>Giới tính</th>
+                            <th>Mô tả</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
                 </table>
             </div>
             <!-- end: admin table -->
 
             <!-- start: pagination in admin -->
             <div class="pagination admin">
-                <a href="#">&laquo;</a>
+                <!-- <a href="#">&laquo;</a>
                 <a class="active" href="#">1</a>
                 <a href="#">2</a>
                 <a href="#">3</a>
                 <a href="#">4</a>
                 <a href="#">5</a>
                 <a href="#">6</a>
-                <a href="#">&raquo;</a>
+                <a href="#">&raquo;</a> -->
             </div>
             <!-- end: pagination in admin -->
         </div>
@@ -84,7 +73,7 @@
             // include("ModalAlert.php"); 
         ?>
     <!-- end of warning message when click del-btn -->
-    <script src="../../js/admin/form-validation"></script>
-    <script src="../../js/admin/products-management"></script>
+    <script src="../../js/admin/common.js"></script>
+    <script src="../../js/admin/products-management.js"></script>
 </body>
 </html>
