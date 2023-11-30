@@ -123,6 +123,26 @@ $(document).ready(function () {
 
     });
 
+    //  // Event listener for the "Search" button
+    //  $('.btn-search').on('click', function () {
+    //     var searchTerm = $('#search').val();
+
+    //     // Fetch data based on the search term
+    //     if(searchTerm.localeCompare('') != 0)
+    //         fetchSearchData(searchTerm, currentPage);
+    // });
+
+    // Event listener for the "Search" button
+    $('#search').on('keyup', function () {
+        var searchTerm = $('#search').val();
+
+        // Fetch data based on the search term
+        if(searchTerm.localeCompare('') != 0)
+            fetchSearchData(searchTerm, currentPage);
+        else
+            fetchData(currentPage);
+    });
+
 })
 
 //function to fetch data in database to table
@@ -278,9 +298,43 @@ function deleteCategory(categoryId) {
 }
 
 
+// Function to fetch data based on search term (category name)
+function fetchSearchData(searchTerm, page) {
+    $.ajax({
+        url: '../../php/controller/admin/category-controller.php?action=search',
+        type: 'GET',
+        data: { searchTerm: searchTerm, page: page },
+        dataType: 'json',
+        success: function (response) {
+            console.log(data);
+            console.log(totalPages);
+            var data = response.data;
+            var totalPages = response.totalPages;
 
-// function to search categories
+            var table_body = $('.admin-table table tbody');
+            table_body.empty();
 
+            data.forEach(function (row) {
+                // Append rows to the table
+                table_body.append(`
+                    <tr>
+                        <td>${row.category_id}</td>
+                        <td>${row.category_name}</td>
+                        <td class="action">
+                            <a href="#" class="btn-edit" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
+                            <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                `);
+            });
+
+            updatePagination(page, totalPages);
+        },
+        error: function () {
+            console.error('Failed to fetch data from the server.');
+        }
+    });
+}
 
 
 

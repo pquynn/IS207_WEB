@@ -132,6 +132,54 @@ function checkCategory($categoryName) {
     }
 }
 
+//SEARCH CATEGORIES
+function searchCategories(){
+    global $conn;
+
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $searchTerm = $_GET['searchTerm'];
+        $records_per_page = 20;
+
+        // Get the current page number from the URL
+        if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+            $page = intval($_GET['page']);
+        } else {
+            $page = 1;
+        }
+
+        // Get the total number of records from the database
+        $totalRecordsQuery = "SELECT COUNT(*) as total FROM category WHERE category_name LIKE '%$searchTerm%'";
+        $totalRecordsResult = $conn->query($totalRecordsQuery);
+        $totalRecords = $totalRecordsResult->fetch_assoc()['total'];
+
+        // Calculate the total number of pages
+        $totalPages = ceil($totalRecords / $records_per_page);
+
+
+        // Calculate the offset for the query
+        $offset = ($page - 1) * $records_per_page;
+
+        // Fetch data from the database with pagination
+        $sql = "SELECT category_id, category_name FROM category WHERE category_name LIKE '%$searchTerm%' LIMIT $offset, $records_per_page";
+        $result = $conn->query($sql);
+
+        $data = [];
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        }
+
+        // Create an associative array with multiple values
+        $response = array(
+            'data' => $data,
+            'totalPages' => $totalPages
+        );
+        return $response;
+    }
+}
+
 // Check the action parameter in the request
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -150,6 +198,9 @@ if (isset($_GET['action'])) {
             break;
         case 'update':
             echo json_encode(updateCategory());
+            break;
+        case 'search':
+            echo json_encode(searchCategories());
             break;
         default:
             echo json_encode(['success' => false, 'message' => 'Invalid action']);
