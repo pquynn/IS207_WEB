@@ -1,5 +1,5 @@
-var tbl_category_id;
-var tbl_category_name;
+var tbl_employee_id;
+var tbl_employee_name;
 
 $(document).ready(function () {
     var namePage = $('.section_heading').text();
@@ -29,17 +29,23 @@ $(document).ready(function () {
     
         var form = $(this);
         var btn_name = $('#modal-form .btn-confirm').text();
-        var categoryName = $('#category-name').val();
+        var username = $('#employee-username').val();
+        var name = $('#employee-name').val();
+        var phone = $('#employee-phone').val();
+        var date_of_birth = $('#employee-date-of-birth').val();
+        var gender = $('#employee-gender').val();
+        var address = $('#employee-address').val();
+        var role = $('#employee-role').val();
     
         if(btn_name.localeCompare("Thêm mới") == 0){
             //insert 
             Array.from(form).forEach(form_element => {
             
                 if (form_element.checkValidity() === false) {
-                    $('.invalid-feedback').html('Yêu cầu nhập tên danh mục');
+                    $('.invalid-feedback').html('Yêu cầu nhập tên nhân viên!');
                     event.stopPropagation();
                 } else 
-                    insertCategory(categoryName);
+                    insertemployee(employeeName);
                 
                 form.addClass('was-validated');
             })
@@ -49,11 +55,11 @@ $(document).ready(function () {
             Array.from(form).forEach(form_element => {
             
                 if (form_element.checkValidity() === false) {
-                    $('.invalid-feedback').html('Yêu cầu nhập tên danh mục!');
+                    $('.invalid-feedback').html('Yêu cầu nhập tên nhân viên!');
                     event.stopPropagation();
                 } 
                 else 
-                    updateCategory(categoryName);
+                    updateemployee(employeeName);
         
                 form.addClass('was-validated');
             })
@@ -70,10 +76,10 @@ $(document).ready(function () {
 
         // Show a confirmation dialog
         if (confirm('Xác nhận xóa ' + namePage + ' ?')) {
-            // Get the category_id from the first column of the row
-            var categoryId = $(this).closest('tr').find('td:first').text();
+            // Get the employee_id from the first column of the row
+            var employeeId = $(this).closest('tr').find('td:first').text();
             // User confirmed, proceed with deletion
-            deleteCategory(categoryId);
+            deleteemployee(employeeId);
 
             $(this).closest('tr').remove();
         }
@@ -87,8 +93,8 @@ $(document).ready(function () {
         // Get the closest row to the clicked button
         var closest_row = $(this).closest('tr');
         // Get the datas from the row
-        tbl_category_id = closest_row.find('td:first').text();
-        tbl_category_name = closest_row.find('td:eq(1)').text();
+        tbl_employee_id = closest_row.find('td:first').text();
+        tbl_employee_name = closest_row.find('td:eq(1)').text();
 
         // Remove the is-invalid class in form-controls
         var modal = document.getElementById('add-new');
@@ -96,28 +102,28 @@ $(document).ready(function () {
             element.classList.remove('is-invalid'); // Clear Bootstrap form validation classes
         });
         
-        $('#category-name').val(tbl_category_name);
-        // Populate the modal form with the fetched category_name
+        $('#employee-name').val(tbl_employee_name);
+        // Populate the modal form with the fetched employee_name
         $('h1.modal-title').text('Thông tin ' + namePage);
         $('.btn-confirm').text('Thay đổi');
 
         
 
-        // Fetch the current category_name for the selected category_id
+        // Fetch the current employee_name for the selected employee_id
         // $.ajax({
-        //     url: 'get_category.php',
+        //     url: 'get_employee.php',
         //     type: 'POST',
-        //     data: { category_id: category_id },
+        //     data: { employee_id: employee_id },
         //     dataType: 'json',
         //     success: function (response) {
-        //         // Populate the modal form with the fetched category_name
-        //         $('#category-name').val(response.category_name);
+        //         // Populate the modal form with the fetched employee_name
+        //         $('#employee-name').val(response.employee_name);
 
         //         // Show the modal
         //         $('#add-new').modal('show');
         //     },
         //     error: function () {
-        //         console.error('Failed to fetch category data.');
+        //         console.error('Failed to fetch employee data.');
         //     }
         // });
 
@@ -139,7 +145,7 @@ $(document).ready(function () {
 //function to fetch data in database to table
 function fetchData(page){
     $.ajax({
-        url: '../../php/controller/admin/category-controller.php?action=fetch', //TODO: nhớ sửa lại nếu đổi thành post
+        url: '../../php/controller/admin/employee-controller.php?action=fetch', //TODO: nhớ sửa lại nếu đổi thành post
         type: 'GET',
         data: { page: page },
         dataType: 'json',
@@ -154,8 +160,8 @@ function fetchData(page){
             data.forEach(function (row) {
                 table_body.append(`
                     <tr>
-                        <td>${row.category_id}</td>
-                        <td>${row.category_name}</td>
+                        <td>${row.employee_id}</td>
+                        <td>${row.employee_name}</td>
                         <td class="action">
                             <a href="#" class="btn-edit" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
                             <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
@@ -202,97 +208,97 @@ function updatePagination(currentPage, totalPages) {
   }
 
 
-// Function to insert category into the database
-function insertCategory(categoryName) {
+// Function to insert employee into the database
+function insertemployee(employeeName) {
     $.ajax({
-        url: '../../php/controller/admin/category-controller.php?action=insert',
+        url: '../../php/controller/admin/employee-controller.php?action=insert',
         type: 'GET',
-        data: { category_name: categoryName },
+        data: { employee_name: employeeName },
         dataType: 'json',
         success: function (result) {
         if (result === true) {
             //TODO: THÔNG BÁO THÊM THÀNH CÔNG
-            // Category inserted successfully, close the modal and perform any other necessary actions
+            // employee inserted successfully, close the modal and perform any other necessary actions
             $('#add-new').modal('hide');
 
             var current_page = parseInt($('.pagination a.active').data('page'));
             fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
         } 
         else {
-            // Category name exists, show an error message
-            $('#category-name').addClass('is-invalid');//TODO: border-color of form-control is not change into red
-            $('.invalid-feedback').html('Danh mục đã có trong hệ thống!');
+            // employee name exists, show an error message
+            $('#employee-name').addClass('is-invalid');//TODO: border-color of form-control is not change into red
+            $('.invalid-feedback').html( 'Nhân viên đã có trong hệ thống!');
             // $('#modal-form').addClass('was-validated');
         }
         },
         error: function () {
-            console.error('Failed to insert category.');
+            console.error('Failed to insert employee.');
         }
     });
 }
 
-// function to update a category
-function updateCategory(categoryName){
-    // check if the new category name is the old category name
-    console.log(categoryName);
-    console.log(tbl_category_name);
-    console.log(categoryName.localeCompare(tbl_category_name));
-    if(categoryName.localeCompare(tbl_category_name) != 0){
-        // Check if the category name already exists
+// function to update a employee
+function updateemployee(employeeName){
+    // check if the new employee name is the old employee name
+    console.log(employeeName);
+    console.log(tbl_employee_name);
+    console.log(employeeName.localeCompare(tbl_employee_name));
+    if(employeeName.localeCompare(tbl_employee_name) != 0){
+        // Check if the employee name already exists
         $.ajax({
-            url: '../../php/controller/admin/category-controller.php?action=update',
+            url: '../../php/controller/admin/employee-controller.php?action=update',
             type: 'GET',
-            data: { category_name: categoryName, category_id: tbl_category_id },
+            data: { employee_name: employeeName, employee_id: tbl_employee_id },
             dataType: 'json',
             success: function (result) {
                 if (result == true) {
                     //TODO: THÔNG BÁO cập nhật THÀNH CÔNG
-                    // Category inserted successfully, close the modal and perform any other necessary actions
+                    // employee inserted successfully, close the modal and perform any other necessary actions
                     $('#add-new').modal('hide');
         
                     var current_page = parseInt($('.pagination a.active').data('page'));
                     fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
                 } 
                 else {
-                    // Category name exists, show an error message
-                    $('#category-name').addClass('is-invalid');//TODO: border-color of form-control is not change into red
-                    $('.invalid-feedback').html('Danh mục đã có trong hệ thống!');
+                    // employee name exists, show an error message
+                    $('#employee-name').addClass('is-invalid');//TODO: border-color of form-control is not change into red
+                    $('.invalid-feedback').html( 'Nhân viên đã có trong hệ thống!');
                     $('#modal-form').addClass('was-validated');
                 }
                 },
                 error: function () {
-                    console.error('Failed to insert category.');
+                    console.error('Failed to insert employee.');
                 }
         });
     }
     else{
         //TODO: THÔNG BÁO cập nhật THÀNH CÔNG
-        // Category inserted successfully, close the modal and perform any other necessary actions
+        // employee inserted successfully, close the modal and perform any other necessary actions
         // Clear the data and reset the form validation in the modal
         $('#add-new').modal('hide');
     }
 }
 
-// Function to delete category by category_id
-function deleteCategory(categoryId) {
+// Function to delete employee by employee_id
+function deleteemployee(employeeId) {
     $.ajax({
-        url: '../../php/controller/admin/category-controller.php?action=delete',
+        url: '../../php/controller/admin/employee-controller.php?action=delete',
         type: 'GET',
-        data: { category_id: categoryId },
+        data: { employee_id: employeeId },
         success: function () {
             //TODO: hiện thông báo xóa thành công
         },
         error: function () {
-            console.error('Failed to delete category.');
+            console.error('Failed to delete employee.');
         }
     });
 }
 
 
-// Function to fetch data based on search term (category name)
+// Function to fetch data based on search term (employee name)
 function fetchSearchData(searchTerm, page) {
     $.ajax({
-        url: '../../php/controller/admin/category-controller.php?action=search',
+        url: '../../php/controller/admin/employee-controller.php?action=search',
         type: 'GET',
         data: { searchTerm: searchTerm, page: page },
         dataType: 'json',
@@ -309,8 +315,8 @@ function fetchSearchData(searchTerm, page) {
                 // Append rows to the table
                 table_body.append(`
                     <tr>
-                        <td>${row.category_id}</td>
-                        <td>${row.category_name}</td>
+                        <td>${row.employee_id}</td>
+                        <td>${row.employee_name}</td>
                         <td class="action">
                             <a href="#" class="btn-edit" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
                             <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>

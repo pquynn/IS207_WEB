@@ -32,7 +32,7 @@
                         <div class="col">
                             <label for="employee-gender" class="form-label">Giới tính</label>
                             <select id="employee-gender" class="form-select">
-                                <option value="" disabled selected hidden></option>
+                                <option value="" disabled selected hidden>Chọn giới tính</option>
                                 <option value="Nam">Nam</option>
                                 <option value="Nữ">Nữ</option>
                                 <option value="Khác">Khác</option>
@@ -46,7 +46,7 @@
 
                     <label for="employee-role" class="form-label">Vai trò</label>
                     <select id="employee-role" class="form-select">
-                        <option value="" disabled selected hidden></option>
+                        <option value="" disabled selected hidden>Chọn vai trò</option>
                         <option value="Quản lý">Quản lý</option>
                         <option value="Nhân viên">Nhân viên</option>
                     </select>
