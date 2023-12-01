@@ -17,7 +17,10 @@
       </ul>
 
       <div class="title-order-detail">
-          <h2>Chi tiết đơn hàng #A123</h2>
+          <h2>Chi tiết đơn hàng #A123            
+          <span id="order-status">Giao hàng thành công</span>
+          </h2>
+          <!-- TODO: order status??? -->
           <p id="date-create-order">
             Ngày tạo: dd/mm/yyyy
           </p>
@@ -53,14 +56,14 @@
             </li>
       </ul>
       
-      <table class="table-detail-order">
+      <table class="store-table">
         <tr>
-          <td>Mã sản phẩm</td>
-          <td>Kích thước</td>
-          <td>Tên sản phẩm</td>
-          <td>Hình ảnh</td>
-          <td>Số lượng</td>
-          <td>Tổng tiền</td>
+          <th>Mã sản phẩm</th>
+          <th>Kích thước</th>
+          <th>Tên sản phẩm</th>
+          <th>Hình ảnh</th>
+          <th>Số lượng</th>
+          <th>Tổng tiền</th>
         </tr>
 
         <tr>
@@ -90,27 +93,36 @@
         </tr>
       </table>
 
-
-      <ul class="order-selection">
-        <li class="order-option">
-          <a href="#">
+      <!--Modified. Change to <button>-->
+      <div class="order-selection">
+        <button class="order-option">
+          <a href="../account-management/my-order-feedback.php" >
             <i class="fa-solid fa-star" style="color:#FEC30D"></i>
             ĐÁNH GIÁ
           </a>
-        </li>
+        </button>
 
-        <li class="order-option">
-          <a href="#">BÁO CÁO</a>
-        </li>
-
-        <li class="order-option cancel-order">
-          <a href="#" style="color:#fff;">HỦY ĐƠN HÀNG</a>
-        </li>
-      </ul>
+        <button class="order-option" id="order-report">BÁO CÁO</button>                  
+        <!--START - Modal "Report"-->
+          <div id="modal-report-container">
+            <form id="modal-report">
+                <button id="close-report"><i class="fa-solid fa-xmark"></i></button><br>
+                <label>Email liên hệ</label><br>
+                <input type="email" placeholder="Email của bạn" id="customer-email"><br>
+                
+                <label>Báo cáo</label><br>
+                <textarea placeholder="Nhập vấn đề của bạn" id="report-textfield"></textarea><br>
+                
+                <input type="Submit" id="btn-submit-report" value="Báo cáo">
+            </form>
+          </div>
+        <!--END - Modal "Report"-->
+        <button class="order-option cancel-order" onclick="confirm_cancel()">HỦY ĐƠN HÀNG</button>
+      </div>
     </div>
   <!--DETAIL ORDER--END-->  
 </div>
-
+<script src="../../../js/my-order/detail.js"></script>
 <?php
     include("../header-footer-nav/footer.php");
 ?>

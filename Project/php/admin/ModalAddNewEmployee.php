@@ -9,7 +9,7 @@
                 <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
             </div>
 
-            <form action="" class="add-new-employee need-validation" novalidate>
+            <form action="" id="modal-form" class="add-new-employee need-validation" novalidate>
                 <div class="modal-body">
                     <label for="employee-username" class="form-label">Tên đăng nhập</label>
                     <input type="text" id="employee-username" class="form-control" required>
@@ -32,7 +32,7 @@
                         <div class="col">
                             <label for="employee-gender" class="form-label">Giới tính</label>
                             <select id="employee-gender" class="form-select">
-                                <option value="" disabled selected hidden></option>
+                                <option value="" disabled selected hidden>Chọn giới tính</option>
                                 <option value="Nam">Nam</option>
                                 <option value="Nữ">Nữ</option>
                                 <option value="Khác">Khác</option>
@@ -46,7 +46,7 @@
 
                     <label for="employee-role" class="form-label">Vai trò</label>
                     <select id="employee-role" class="form-select">
-                        <option value="" disabled selected hidden></option>
+                        <option value="" disabled selected hidden>Chọn vai trò</option>
                         <option value="Quản lý">Quản lý</option>
                         <option value="Nhân viên">Nhân viên</option>
                     </select>
