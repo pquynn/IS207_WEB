@@ -1,0 +1,16 @@
+table {
+    background-color: #FC9A00;
+    border: 1px solid black;
+    padding: 10px;
+    margin: auto;
+    width: 350px;
+}
+
+input[type=Submit] {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+input[type=checkbox] {
+    cursor: pointer;
+}
