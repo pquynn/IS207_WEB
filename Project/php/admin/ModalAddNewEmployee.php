@@ -13,15 +13,21 @@
                 <div class="modal-body">
                     <label for="employee-username" class="form-label">Tên đăng nhập</label>
                     <input type="text" id="employee-username" class="form-control" required>
-                    <div class="invalid-feedback">
+                    <div class="invalid-feedback username">
                         Yêu cầu nhập tên đăng nhập.
                     </div>
 
                     <label for="employee-name" class="form-label">Tên nhân viên</label>
-                    <input type="text" id="employee-name" class="form-control">
+                    <input type="text" id="employee-name" class="form-control" required>
+                    <div class="invalid-feedback name">
+                        Yêu cầu nhập tên nhân viên.
+                    </div>
 
                     <label for="employee-phone" class="form-label">Điện thoại</label>
-                    <input type="tel" id="employee-phone" class="form-control">
+                    <input type="tel" id="employee-phone" class="form-control" required>
+                    <div class="invalid-feedback phone">
+                        Yêu cầu nhập số điện thoại.
+                    </div>
 
                     <div class="row g-2">
                         <div class="col">
@@ -35,7 +41,6 @@
                                 <option value="" disabled selected hidden>Chọn giới tính</option>
                                 <option value="Nam">Nam</option>
                                 <option value="Nữ">Nữ</option>
-                                <option value="Khác">Khác</option>
                             </select>
                         </div>
                     
@@ -45,11 +50,15 @@
                             <textarea id="employee-address" class="form-control"></textarea>
 
                     <label for="employee-role" class="form-label">Vai trò</label>
-                    <select id="employee-role" class="form-select">
+                    <select id="employee-role" class="form-select" required>
                         <option value="" disabled selected hidden>Chọn vai trò</option>
                         <option value="Quản lý">Quản lý</option>
                         <option value="Nhân viên">Nhân viên</option>
                     </select>
+                    <div class="invalid-feedback role">
+                        Yêu cầu chọn vai trò.
+                    </div>
+
                 </div>
                 
                 <div class="modal-footer">

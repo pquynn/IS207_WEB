@@ -1,5 +1,6 @@
-var tbl_employee_id;
-var tbl_employee_name;
+var tbl_id, tbl_login, tbl_name, tbl_phone, tbl_birthday, tbl_gender,
+tbl_address, tbl_dayadd, tbl_role_name;
+
 
 $(document).ready(function () {
     var namePage = $('.section_heading').text();
@@ -23,29 +24,49 @@ $(document).ready(function () {
         });
     })
 
+
     // when submit #modal-form
     $('#modal-form').submit(function (event) { 
         event.preventDefault();
     
+        
+
         var form = $(this);
         var btn_name = $('#modal-form .btn-confirm').text();
-        var username = $('#employee-username').val();
-        var name = $('#employee-name').val();
-        var phone = $('#employee-phone').val();
-        var date_of_birth = $('#employee-date-of-birth').val();
-        var gender = $('#employee-gender').val();
-        var address = $('#employee-address').val();
-        var role = $('#employee-role').val();
+        // Create a temp_employee object
+        var temp_employee = {
+            username: $('#employee-username').val(),
+            name: $('#employee-name').val(),
+            phone: $('#employee-phone').val(),
+            date_of_birth: $('#employee-date-of-birth').val(),
+            gender: $('#employee-gender').val(),
+            address: $('#employee-address').val(),
+            role: $('#employee-role').val()
+        };
     
         if(btn_name.localeCompare("Thêm mới") == 0){
             //insert 
             Array.from(form).forEach(form_element => {
             
                 if (form_element.checkValidity() === false) {
-                    $('.invalid-feedback').html('Yêu cầu nhập tên nhân viên!');
+                    //TODO: PHẢI CHECK ĐỂ HIỆN LỖI TỪNG CÁI THOI
+                    //TODO: CHECK LẠI FORM-VALIDATION
                     event.stopPropagation();
+                    $('.invalid-feedback.username').html('Yêu cầu nhập tên đăng nhập!');
+                    $('.invalid-feedback.name').html('Yêu cầu nhập tên nhân viên!');
+                    $('.invalid-feedback.phone').html('Yêu cầu nhập số điện thoại!');
+                    $('.invalid-feedback.role').html('Yêu cầu chọn vai trò!');
+
+                    var isValid = /^0[0-9]{9}$/.test(temp_employee.phone);
+                    if(!isValid)
+                    {
+                        $('#employee-name').addClass('is-invalid');
+                        $('.invalid-feedback.phone').html('Điện thoại phải có 10 số và bắt đầu = 0!');
+                    }
                 } else 
-                    insertemployee(employeeName);
+                {
+                    insertemployee(temp_employee);
+                }
                 
                 form.addClass('was-validated');
             })
@@ -55,11 +76,14 @@ $(document).ready(function () {
             Array.from(form).forEach(form_element => {
             
                 if (form_element.checkValidity() === false) {
-                    $('.invalid-feedback').html('Yêu cầu nhập tên nhân viên!');
                     event.stopPropagation();
+                    $('.invalid-feedback.username').text('Yêu cầu nhập tên đăng nhập!');
+                    $('.invalid-feedback.name').text('Yêu cầu nhập tên nhân viên!');
+                    $('.invalid-feedback.phone').text('Yêu cầu nhập số điện thoại!');
+                    $('.invalid-feedback.role').text('Yêu cầu chọn vai trò!');
                 } 
                 else 
-                    updateemployee(employeeName);
+                    updateemployee(temp_employee);
         
                 form.addClass('was-validated');
             })
@@ -77,11 +101,12 @@ $(document).ready(function () {
         // Show a confirmation dialog
         if (confirm('Xác nhận xóa ' + namePage + ' ?')) {
             // Get the employee_id from the first column of the row
-            var employeeId = $(this).closest('tr').find('td:first').text();
-            // User confirmed, proceed with deletion
-            deleteemployee(employeeId);
+            tbl_id = $(this).closest('tr').find('td:first').text();
+            tbl_login = $(this).closest('tr').find('td:eq(1)').text();
 
-            $(this).closest('tr').remove();
+            // User confirmed, proceed with deletion
+            deleteemployee(tbl_id, tbl_login);
+            // $(this).closest('tr').remove(); //TODO: PHẢI DELETE THÀNH CÔNG MS ĐC REMOVE ROW
         }
     });
 
@@ -135,9 +160,9 @@ $(document).ready(function () {
 
         // Fetch data based on the search term
         if(searchTerm.localeCompare('') != 0)
-            fetchSearchData(searchTerm, currentPage);
+            fetchSearchData(searchTerm, 1);
         else
-            fetchData(currentPage);
+            fetchData(1);
     });
 
 })
@@ -152,7 +177,7 @@ function fetchData(page){
         success: function (response) {
             var data = response.data;
             var totalPages = response.totalPages;
-
+            
             // Populate the table with fetched data
             var table_body = $('.admin-table table tbody');
             table_body.empty(); 
@@ -160,8 +185,15 @@ function fetchData(page){
             data.forEach(function (row) {
                 table_body.append(`
                     <tr>
-                        <td>${row.employee_id}</td>
-                        <td>${row.employee_name}</td>
+                        <td> ${row.USER_ID} </td>
+                        <td> ${row.USER_LOGIN} </td>
+                        <td> ${row.USER_TELEPHONE} </td>
+                        <td> ${row.USER_NAME} </td>
+                        <td> ${row.BIRTHDAY} </td>
+                        <td> ${row.GENDER} </td>
+                        <td style="max-width: 130px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"> ${row.ADDRESSS} </td>
+                        <td> ${row.DAY_ADD} </td>
+                        <td> ${row.NAME_ROLE} </td>
                         <td class="action">
                             <a href="#" class="btn-edit" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
                             <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
@@ -209,11 +241,11 @@ function updatePagination(currentPage, totalPages) {
 
 
 // Function to insert employee into the database
-function insertemployee(employeeName) {
+function insertemployee(employee) {
     $.ajax({
         url: '../../php/controller/admin/employee-controller.php?action=insert',
         type: 'GET',
-        data: { employee_name: employeeName },
+        data: { employee: employee },
         dataType: 'json',
         success: function (result) {
         if (result === true) {
@@ -238,17 +270,14 @@ function insertemployee(employeeName) {
 }
 
 // function to update a employee
-function updateemployee(employeeName){
+function updateemployee(employee){
     // check if the new employee name is the old employee name
-    console.log(employeeName);
-    console.log(tbl_employee_name);
-    console.log(employeeName.localeCompare(tbl_employee_name));
-    if(employeeName.localeCompare(tbl_employee_name) != 0){
+    if(employeeName.localeCompare(tbl_employee_name) != 0){ //TODO: có nên so sánh các giá trị
         // Check if the employee name already exists
         $.ajax({
             url: '../../php/controller/admin/employee-controller.php?action=update',
             type: 'GET',
-            data: { employee_name: employeeName, employee_id: tbl_employee_id },
+            data: { employee: employee},
             dataType: 'json',
             success: function (result) {
                 if (result == true) {
@@ -280,11 +309,11 @@ function updateemployee(employeeName){
 }
 
 // Function to delete employee by employee_id
-function deleteemployee(employeeId) {
+function deleteemployee(employeeId, employeeLogin) {
     $.ajax({
         url: '../../php/controller/admin/employee-controller.php?action=delete',
         type: 'GET',
-        data: { employee_id: employeeId },
+        data: { employee_id: employeeId, employee_login: employeeLogin },
         success: function () {
             //TODO: hiện thông báo xóa thành công
         },
@@ -303,8 +332,6 @@ function fetchSearchData(searchTerm, page) {
         data: { searchTerm: searchTerm, page: page },
         dataType: 'json',
         success: function (response) {
-            console.log(data);
-            console.log(totalPages);
             var data = response.data;
             var totalPages = response.totalPages;
 
@@ -312,11 +339,17 @@ function fetchSearchData(searchTerm, page) {
             table_body.empty();
 
             data.forEach(function (row) {
-                // Append rows to the table
                 table_body.append(`
                     <tr>
-                        <td>${row.employee_id}</td>
-                        <td>${row.employee_name}</td>
+                        <td> ${row.USER_ID} </td>
+                        <td> ${row.USER_LOGIN} </td>
+                        <td> ${row.USER_TELEPHONE} </td>
+                        <td> ${row.USER_NAME} </td>
+                        <td> ${row.BIRTHDAY} </td>
+                        <td> ${row.GENDER} </td>
+                        <td style="max-width: 130px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"> ${row.ADDRESSS} </td>
+                        <td> ${row.DAY_ADD} </td>
+                        <td> ${row.NAME_ROLE} </td>
                         <td class="action">
                             <a href="#" class="btn-edit" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
                             <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
@@ -334,6 +367,40 @@ function fetchSearchData(searchTerm, page) {
 }
 
 
+
+
+// // Function to fetch roles from the server
+// function fetchRoles() {
+//     $.ajax({
+//         url: '../../php/controller/admin/employee-controller.php?action=fetch-roles',
+//         type: 'GET',
+//         dataType: 'json',
+//         success: function (data) {
+//             var selectElement = $('#employee-role');
+//             selectElement.empty();
+//             selectElement.append(`<option value="" disabled selected hidden>Chọn vai trò</option>`);
+
+//             data.forEach(function (row) {
+//                 selectElement.append(
+//                     `<option value="${row.role_id}">${row.role_name}</option>`
+//             );});
+//         },
+//         error: function () {
+//             console.error('Failed to fetch roles from the server.');
+//         }
+//     });
+// }
+
+// // Handle "Save Changes" button click
+// // $('#saveChanges').on('click', function () {
+// //     var selectedRoleId = $('#employee-role').val();
+// //     if (selectedRoleId) {
+// //         console.log('Selected Role ID:', selectedRoleId);
+// //         // Add your logic here to handle the selected role ID
+// //     } else {
+// //         console.log('Please select a role.');
+// //     }
+// // });
 
 
 
