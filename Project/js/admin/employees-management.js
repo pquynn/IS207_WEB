@@ -1,6 +1,6 @@
 var tbl_id, tbl_login, tbl_name, tbl_phone, tbl_birthday, tbl_gender,
 tbl_address, tbl_dayadd, tbl_role_name;
-
+var closest_row;
 
 $(document).ready(function () {
     var namePage = $('.section_heading').text();
@@ -103,9 +103,9 @@ $(document).ready(function () {
             // Get the employee_id from the first column of the row
             tbl_id = $(this).closest('tr').find('td:first').text();
             tbl_login = $(this).closest('tr').find('td:eq(1)').text();
-
+            closest_row = $(this).closest('tr');
             // User confirmed, proceed with deletion
-            deleteemployee(tbl_id, tbl_login);
+            deleteemployee(tbl_id, tbl_login, closest_row);
             // $(this).closest('tr').remove(); //TODO: PHẢI DELETE THÀNH CÔNG MS ĐC REMOVE ROW
         }
     });
@@ -309,13 +309,17 @@ function updateemployee(employee){
 }
 
 // Function to delete employee by employee_id
-function deleteemployee(employeeId, employeeLogin) {
+function deleteemployee(employeeId, employeeLogin, closest_row) {
     $.ajax({
         url: '../../php/controller/admin/employee-controller.php?action=delete',
         type: 'GET',
         data: { employee_id: employeeId, employee_login: employeeLogin },
-        success: function () {
+        success: function (response) {
             //TODO: hiện thông báo xóa thành công
+            console.log('login ' + response);
+            //console.log(response.employeeId);
+            //console.log(response.employeeLogin);
+            // closest_row.remove();
         },
         error: function () {
             console.error('Failed to delete employee.');
@@ -402,5 +406,21 @@ function fetchSearchData(searchTerm, page) {
 // //     }
 // // });
 
-
-
+// function formatNumber(input) {
+//     let strNumber = String(input);
+  
+//     // Split the string into groups of 3 characters from the right
+//     let chunks = [];
+//     while (strNumber.length > 0) {
+//       chunks.push(strNumber.slice(-3));
+//       strNumber = strNumber.slice(0, -3);
+//     }
+  
+//     // Reverse the chunks and join them with dots
+//     let formattedStr = chunks.reverse().join('.');
+  
+//     return formattedStr;
+//   }
+//   // Example usage
+//   let result = formatNumber(1000000);
+//   console.log(result); // Output: '1.000.000'

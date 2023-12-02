@@ -38,6 +38,7 @@ function fetchEmployees() {
             WHERE users.user_login = login.user_login
             and login.role_id = role.role_id
             and (role.role_id = 1 or role.role_id = 2)
+            ORDER BY user_id
             LIMIT $offset, $records_per_page";
 
     $result = $conn->query($sql);
@@ -137,13 +138,15 @@ function deleteEmployee() {
         if($result1){
             $sql2 = "DELETE FROM `login` WHERE user_login LIKE '$employeeLogin'";
             $result2 = $conn->query($sql2);
-            return $result2;
+            //return $result2;
         }
-        else
-            return $result1; 
+        //else
+            //return $result1; 
+    
+    return $employeeLogin;
     }
     
-         return ['result' => false];
+         //return ['result' => false];
 }
 
 
