@@ -246,20 +246,6 @@
 
           <!-- product-list: start -->
           <div class="product-list">
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp">
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
           </div>
           <!-- product-list: end -->
 

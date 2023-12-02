@@ -1,44 +1,56 @@
 // Fetch data using AJAX
 $(document).ready(function () {
     $.ajax({
-        url: '../../php/controller/homepage-shopping/product_list-controller.php?action=fetch', 
+        url: '../../controller/homepage-shopping/product_list-controller.php?action=fetch',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
             data.forEach(function (row) {
                 var imageUrl = 'data:first_picture/png;base64,' + row.first_picture;
-
+                var moneyString = formatNumber(row.price);
                 $('.product-list').append(`
-                    <div class="product-detail">
+                    <div class="product-detail" id="${row.product_id}">
                         <div class="product-img--container">
-                            <img src="/Project/img/blog_img/blog2.webp">
+                            <img src="${imageUrl}">
                         </div>
-                        <a href="#">${row.product_id}</a>
-                        <p>${row.price} VND</p>
+                        <a href="#">${row.product_name}</a> 
+                        <p>${moneyString} VND</p>
                     </div>
                 `);
-                // Build the HTML for the table row
-                // $('.admin-table table').append( `
-                //     <tr>
-                //         <td>${row.product_id}</td>
-                //         <td><div class="table-img" style="background-image: url(${imageUrl})"></div></td>
-                //         <td>${row.product_name}</td>
-                //         <td>${row.price}</td>
-                //         <td>xl</td>
-                //         <td>${row.category_name}</td>
-                //         <td>${row.color}</td>
-                //         <td>${row.gender}</td>
-                //         <td>${row.description}</td>
-                //         <td class="action">
-                //             <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                //             <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
-                //         </td>
-                //     </tr>
-                // `);
             });
         },
         error: function () {
             console.error('Failed to fetch data from the server.');
         }
     });
+
+    function formatNumber(input) {
+        let strNumber = String(input);
+
+        // Split the string into groups of 3 characters from the right
+        let chunks = [];
+        while (strNumber.length > 0) {
+            chunks.push(strNumber.slice(-3));
+            strNumber = strNumber.slice(0, -3);
+        }
+
+        // Reverse the chunks and join them with dots
+        let formattedStr = chunks.reverse().join('.');
+
+        return formattedStr;
+    }
+    function myFuntion() {
+        alert("You'd clicked a Product!");
+    }
+
 });
+
+// $('.product-list').click(function () {
+//     //event.preventDefault();
+//     alert("product-list");
+// });
+
+// $('.product-detail').click(function () {
+//     //event.preventDefault();
+//     alert("product-detail");
+// });
