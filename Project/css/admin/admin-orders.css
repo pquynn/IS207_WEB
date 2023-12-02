@@ -76,3 +76,7 @@ body{
     top: 7px !important;
 }
 
+.btn-delete {
+    border: none;
+    background: none;
+}

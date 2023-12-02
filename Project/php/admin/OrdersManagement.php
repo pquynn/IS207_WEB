@@ -69,7 +69,7 @@
                 <td>$9999</td> 
                 <td class="action">
                     <a href="OrderDetail.php"><i class="fa-solid fa-pen"></i></a>
-                    <a href="#"><i class="fa-solid fa-trash"></i></a>
+                    <button class="btn-delete" onclick="btn_trash_order()"><i class="fa-solid fa-trash"></i></button>
                 </td> 
             </tr>
         </table>
@@ -89,3 +89,5 @@
     </div>
 </div>
 <!--MAIN SECTION----END-->
+
+<script src="../../js/admin/Order/order"></script>

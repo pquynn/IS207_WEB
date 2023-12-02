@@ -143,6 +143,12 @@
     width: 15px;
 }
 
+.btn-edit-info {
+    color: #a2a9ac;
+    border: none;
+    background-color: #fff;
+    font-size: 15px;
+}
 /*order cost*/
 .order-cost{
     min-width: 50px !important;
@@ -151,7 +157,7 @@
     margin-left: 880px;
 }
 .order-cost td, tr{
-    border: none;
+    border: none !important;
     color: #000 !important;
 }
 
@@ -167,4 +173,18 @@
 
 .total-cost td.total {
     color:#FF0000 !important;
+}
+
+/*Modal*/
+.modal-footer.edit {
+    border-top: none !important;
+    justify-content: center !important;
+}
+
+h4.modal-title{
+    font-weight: bolder;
+}
+
+#payment-information {
+    display: none;
 }

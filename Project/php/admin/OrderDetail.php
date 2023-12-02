@@ -48,7 +48,11 @@
             <i class="fa-solid fa-user icon-info"></i>
                     
                 <ul class="info">
-                    <li class="header-info">Thông tin người nhận</li>
+                    <li class="header-info">Thông tin người nhận 
+                        <button class="btn-edit-info" data-bs-toggle="modal" data-bs-target="#edit-customer-info">
+                            <i class="fa-solid fa-pen "></i>
+                        </button>
+                    </li>
                     <li>Họ tên: </li>
                     <li>SĐT: </li> 
                 </ul>
@@ -58,7 +62,11 @@
                 <i class="fa-solid fa-location-dot icon-info"></i>
                     
                 <ul class="info">
-                    <li class="header-info">Địa chỉ người nhận</li>
+                    <li class="header-info">Địa chỉ người nhận
+                        <button class="btn-edit-info" data-bs-toggle="modal" data-bs-target="#edit-customer-address">
+                            <i class="fa-solid fa-pen "></i>
+                        </button>
+                    </li>
                     <li> 123 ABC</li>
                 </ul>
             </li>
@@ -67,7 +75,11 @@
             <i class="fa-solid fa-credit-card icon-info"></i>
                     
                 <ul class="info">
-                    <li class="header-info">Phương thức thanh toán</li>
+                    <li class="header-info">Phương thức thanh toán
+                        <button class="btn-edit-info" data-bs-toggle="modal" data-bs-target="#edit-customer-payment">
+                            <i class="fa-solid fa-pen "></i>
+                        </button>
+                    </li>
                     <li>Momo: 09123456789</li>
                 </ul>
             </li>
@@ -81,17 +93,17 @@
         <table>
             <td colspan="8">Sản phẩm</td>
             <tr>
-                <td colspan="2">Mã đơn hàng</td>
+                <td>Mã đơn hàng</td>
                 <td>Mã sản phẩm</td>
                 <td>Kích thước</td>
                 <td>Tên sản phẩm</td>
                 <td>Hình ảnh</td>
                 <td>Số lượng</td>
                 <td>Tổng tiền</td>
+                <td></td>
             </tr>
 
             <tr>
-                <td class="col-checkbox"><input type="checkbox"></td>
                 <td>#A123</td>
                 <td>SS001</td>
                 <td>38</td>
@@ -99,9 +111,12 @@
                 <td>xem hình ảnh</td>
                 <td>1</td>
                 <td>$9999</td>
+                <td class="action">
+                    <a href="#"><i class="fa-solid fa-pen"></i></a>
+                    <button class="btn-delete" onclick="btn_trash_order()"><i class="fa-solid fa-trash"></i></button>
+                </td>
             </tr>
             <tr>
-                <td class="col-checkbox"><input type="checkbox"></td>
                 <td>#A123</td>
                 <td>SS001</td>
                 <td>38</td>
@@ -109,9 +124,12 @@
                 <td>xem hình ảnh</td>
                 <td>1</td>
                 <td>$9999</td>
+                <td class="action">
+                    <a href="#"><i class="fa-solid fa-pen"></i></a>
+                    <button class="btn-delete" onclick="btn_trash_order()"><i class="fa-solid fa-trash"></i></button>
+                </td>
             </tr>
             <tr>
-                <td class="col-checkbox"><input type="checkbox"></td>
                 <td>#A123</td>
                 <td>SS001</td>
                 <td>38</td>
@@ -119,6 +137,10 @@
                 <td>xem hình ảnh</td>
                 <td>1</td>
                 <td>$9999</td>
+                <td class="action">
+                    <a href="#"><i class="fa-solid fa-pen"></i></a>
+                    <button class="btn-delete" onclick="btn_trash_order()"><i class="fa-solid fa-trash"></i></button>
+                </td>
             </tr>
         </table>
 
@@ -142,3 +164,13 @@
     </div>
 </div>
 <!--MAIN SECTION----END-->
+
+<!--Modal edit customer's information-->
+<?php
+    include("./ModalEditCustomerInfor.php");
+    include("./ModalEditCustomerAddress.php");
+    include("./ModalEditCustomerPayment.php");
+?>
+<!---->
+
+<script src="../../js/admin/Order/order"></script>
