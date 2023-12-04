@@ -14,6 +14,7 @@ const plusBtn = document.querySelectorAll(".plus");
 // delete product
 const productList = document.querySelectorAll(".product");
 const removeBtn = document.querySelectorAll(".remove-btn");
+console.log(removeBtn);
 
 // when cart is empty
 let amount = productList.length;
@@ -41,14 +42,28 @@ function calcSubTotal() {
 
 // update money when change amount
 function updateMoney(index) {
-  displayMoney(
-    productTotal[index],
-    calcProductTotal(price[index], productAmount[index].value)
-  );
+  // prevent <1 product quantity
+  // if (Number(productAmount[index].value) < 1) {
+  //   productAmount[index].value = 1;
+  // } else {
+  //   // update money amount in UI
+  //   displayMoney(
+  //     productTotal[index],
+  //     calcProductTotal(price[index], productAmount[index].value)
+  //   );
+  //   displayMoney(subTotal, calcSubTotal());
+  //   displayMoney(total, calcSubTotal() * 1.02);
 
-  displayMoney(subTotal, calcSubTotal());
-  console.log(calcSubTotal());
-  displayMoney(total, calcSubTotal() * 1.02);
+  var xmlHttp;
+  // Khở tạo đối tượng xmlHttp
+  xmlHttp.open("GET", "URL", true);
+  xmlHttp.send(null);
+
+  xmlHttp.onreadystatechange = function () {
+    if (xmlHttp.readystate == 4) {
+      console.log(xmlHttp.responseText);
+    }
+  };
 }
 
 // DISPLAY MONEY
@@ -97,6 +112,12 @@ function removeProduct(index) {
 // WHEN CART IS EMPTY: START
 removeBtn.forEach((remove, i) => {
   remove.addEventListener("click", function () {
+    // confirm delete product
+    const agree = confirm("Xác nhận xóa sản phẩm?");
+    if (agree === false) {
+      return 1;
+    }
+
     amount--;
     removeProduct(i);
 
@@ -115,4 +136,16 @@ removeBtn.forEach((remove, i) => {
 // WHEN CART IS EMPTY: END
 // DELETE PRODUCT: END
 
+// PREVENT SUBMIT: START
+// when click enter
+$(document).ready(function () {
+  $(window).keydown(function (event) {
+    if (event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+
+// PREVENT SUBMIT: END
 // FUNCTION: END

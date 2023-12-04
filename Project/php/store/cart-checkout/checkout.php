@@ -64,6 +64,7 @@
               <input
                 type="text"
                 placeholder="SĐT*"
+                aria-required="true"
                 required
                 class="input-char" 
                 pattern="(\+84|0)\d{7,10}"/>
