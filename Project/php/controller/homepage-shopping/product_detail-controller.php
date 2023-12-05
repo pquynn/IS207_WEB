@@ -2,8 +2,8 @@
 include '../connect.php';
 
 // Check the product name parameter in the request
-if (isset($_GET['name'])) {
-    $productName = $_GET['name'];
+if (isset($_GET['product'])) {
+    $productName = $_GET['product'];
        
     global $conn;
 

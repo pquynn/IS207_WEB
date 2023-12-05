@@ -3,6 +3,8 @@ $(document).ready(function () {
 
     // Lấy giá trị của tham số 'product' từ URL
     var productName = getParameterByName('product');
+    
+    alert(productName);
 
     $.ajax({
         url: '../../controller/homepage-shopping/product_detail-controller.php?name=' + encodeURIComponent(productName),
@@ -48,7 +50,7 @@ $(document).ready(function () {
         return formattedStr;
     }
 
-    // Lấy tên sản phẩm
+    // Lấy tên sản phẩm từ URL
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, "\\$&");

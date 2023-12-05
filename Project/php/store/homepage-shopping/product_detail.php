@@ -1,4 +1,5 @@
   <link rel="stylesheet" href="../../../css/store/product_detail.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <!-- Start of header -->
   <?php 
     $title = "Chi tiết sản phẩm";
