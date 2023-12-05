@@ -13,7 +13,7 @@ if (isset($_GET['product'])) {
     //echo $productName;
         $sql = "SELECT product_name, price
             FROM products
-            WHERE products.product_id=$productName";
+            WHERE products.product_name=$productName";
 
         $result = $conn->query($sql);
 
