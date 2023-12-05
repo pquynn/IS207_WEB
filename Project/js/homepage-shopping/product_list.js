@@ -1,5 +1,6 @@
 // Fetch data using AJAX
 $(document).ready(function () {
+
     $.ajax({
         url: '../../controller/homepage-shopping/product_list-controller.php?action=fetch',
         type: 'GET',
@@ -9,7 +10,7 @@ $(document).ready(function () {
                 var imageUrl = 'data:first_picture/png;base64,' + row.first_picture;
                 var moneyString = formatNumber(row.price);
                 $('.product-list').append(`
-                    <div class="product-detail" id="${row.product_id}">
+                    <div class="product-detail">
                         <div class="product-img--container">
                             <img src="${imageUrl}">
                         </div>
@@ -39,18 +40,15 @@ $(document).ready(function () {
 
         return formattedStr;
     }
-    function myFuntion() {
-        alert("You'd clicked a Product!");
-    }
+    
+    $('.product-list').on('click', '.product-detail', function () {
+        let productName = $(this).find('a').text();
+
+        // Tạo URL mới với tham số truyền vào là tên sản phẩm
+        var url = '../../store/homepage-shopping/product_detail.php?product=' + encodeURIComponent(productName);
+
+        // Chuyển hướng đến trang mới
+        window.location.href = url;
+    });
 
 });
-
-// $('.product-list').click(function () {
-//     //event.preventDefault();
-//     alert("product-list");
-// });
-
-// $('.product-detail').click(function () {
-//     //event.preventDefault();
-//     alert("product-detail");
-// });
