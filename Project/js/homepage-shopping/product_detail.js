@@ -2,53 +2,44 @@
 $(document).ready(function () {
 
     // Lấy giá trị của tham số 'product' từ URL
-    var productName = getParameterByName('product');
+    //var productName = getParameterByName('product');
     
-    alert(productName);
+    //alert(productName);
 
     $.ajax({
-        url: '../../controller/homepage-shopping/product_detail-controller.php?name=' + encodeURIComponent(productName),
+        url: '../../controller/homepage-shopping/product_detail-controller.php',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            $('.product-info').append(`
-                <div class="product-name"><h2>HELLO</h2></div>
-                <div class="product-price"><h3>500000 VND</h3></div>
-            `);
-            // data.forEach(function (row) {
-            //     var imageUrl = 'data:first_picture/png;base64,' + row.first_picture;
-            //     var moneyString = row.price;
-            //     $('.product-info').append(`
-            //         <div class="product-detail">
-            //             <div class="product-img--container">
-            //             <img src="${imageUrl}">
-            //             </div>
-            //             <a href="#">${row.product_name}</a> 
-            //             <p>${row.price} VND</p>
-            //         </div>
-            //     `);
-            // });
+          if (data){
+            alert('Have data');
+            $('.product-info .product-name h2').text(data.PRODUCT_NAME);
+            $('.product-info .product-price h3').text(data.PRICE + ' VND');
+          }
+          else {
+            console.error('Empty data received from the server.');
+          }
         },
         error: function () {
             console.error('Failed to fetch data from the server.');
         }
     });
 
-    function formatNumber(input) {
-        let strNumber = String(input);
+    // function formatNumber(input) {
+    //     let strNumber = String(input);
 
-        // Split the string into groups of 3 characters from the right
-        let chunks = [];
-        while (strNumber.length > 0) {
-            chunks.push(strNumber.slice(-3));
-            strNumber = strNumber.slice(0, -3);
-        }
+    //     // Split the string into groups of 3 characters from the right
+    //     let chunks = [];
+    //     while (strNumber.length > 0) {
+    //         chunks.push(strNumber.slice(-3));
+    //         strNumber = strNumber.slice(0, -3);
+    //     }
 
-        // Reverse the chunks and join them with dots
-        let formattedStr = chunks.reverse().join('.');
+    //     // Reverse the chunks and join them with dots
+    //     let formattedStr = chunks.reverse().join('.');
 
-        return formattedStr;
-    }
+    //     return formattedStr;
+    // }
 
     // Lấy tên sản phẩm từ URL
     function getParameterByName(name, url) {

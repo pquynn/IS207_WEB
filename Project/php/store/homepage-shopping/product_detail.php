@@ -29,8 +29,8 @@
 
         <!--Khung giới thiệu thông tin sản phẩm-->
         <div class="product-info">
-          <!-- <div class="product-name"><h2>Adidas</h2></div>
-          <div class="product-price"><h3>500000 VND</h3></div> -->
+          <div class="product-name"><h2></h2></div>
+          <div class="product-price"><h3></h3></div>
           <div class="product-rating">
             <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon
             ><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon

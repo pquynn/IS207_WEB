@@ -46,6 +46,7 @@ $(document).ready(function () {
 
         // Tạo URL mới với tham số truyền vào là tên sản phẩm
         var url = '../../store/homepage-shopping/product_detail.php?product=' + encodeURIComponent(productName);
+        //var url = '../../store/homepage-shopping/product_detail.php';
 
         // Chuyển hướng đến trang mới
         window.location.href = url;
