@@ -2,7 +2,7 @@
 // Render cart row: start
 function fetchData(page) {
   $.ajax({
-    url: "../../php/controller/admin/product-controller.php?action=fetch",
+    url: "cartFeat.php",
     type: "GET",
     data: { page: page },
     dataType: "json",
@@ -10,7 +10,7 @@ function fetchData(page) {
       var data = response.data;
 
       // Populate the table with fetched data
-      const tbCart = $(".product-list--cart");
+      const tbCart = $(".product-list--cart tb");
       tbCart.empty();
 
       data.forEach(function (row) {
@@ -20,11 +20,11 @@ function fetchData(page) {
         <!-- infor -->
         <td class="product-infor">
           <img 
-            src=".$imgUrl."
+            src="${imageUrl}"
             class="product-img"
-            alt='". $orderDetail["PRODUCT_NAME"]. "' />
+            alt="${orderDetail["PRODUCT_NAME"]}" />
           <div class="product-descr">
-            <a href="#">". $orderDetail["PRODUCT_NAME"]. "</a>
+            <a href="#">${orderDetail["PRODUCT_NAME"]}</a>
             <small class="gray-text">Size ". $orderDetail["SIZE"]. "</small>
           </div>
         </td>
@@ -65,6 +65,7 @@ function fetchData(page) {
     },
   });
 }
+fetchData(1);
 // Render cart row: end
 
 // UPDATE AMOUNT IN UI: START
@@ -83,7 +84,6 @@ const plusBtn = document.querySelectorAll(".plus");
 // delete product
 const productList = document.querySelectorAll(".product");
 const removeBtn = document.querySelectorAll(".remove-btn");
-console.log(removeBtn);
 
 // when cart is empty
 let amount = productList.length;

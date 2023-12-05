@@ -10,17 +10,18 @@
     // echo "Kết nối thành công";
   }
 
-  // order's detail
-  $orderDetailList = $conn->query("SELECT DISTINCT * FROM orders INNER JOIN orders_detail ON orders_detail.ORDER_ID = orders.ORDER_ID WHERE STATUS='Đang mua hàng' AND orders.ORDER_ID=9");
+//   SELECT TABLE: START
+// order's detail
+$orderDetailList = $conn->query("SELECT DISTINCT * FROM orders INNER JOIN orders_detail ON orders_detail.ORDER_ID = orders.ORDER_ID WHERE STATUS='Đang mua hàng' AND orders.ORDER_ID=9");
 
-  // product pricture
-  $productPictureList = $conn->query("SELECT * FROM product_pictures INNER JOIN orders_detail ON orders_detail.product_id = product_pictures.product_id WHERE ORDER_ID=1");
-
-  $productPicture = $productPictureList -> fetch_assoc();
+// product pricture
+$productPictureList = $conn->query("SELECT * FROM product_pictures INNER JOIN orders_detail ON orders_detail.product_id = product_pictures.product_id WHERE ORDER_ID=1");
+$productPicture = $productPictureList -> fetch_assoc();
+//   SELECT TABLE: END
+//   connect to sever: end
 ?>
-<!-- connect to sever: end -->
 
-<!-- Add particular css link to file: start -->
+// <!-- Add particular css link to file: start -->
   <link rel="stylesheet" href="../../../css/store/cart.css" />
   <!-- Add particular css link to file: start -->
   
@@ -56,6 +57,7 @@
         </tr>
 
         <!-- product -->
+        <tbody class="product-list--body"> 
         <?php
         // product index
           $index = 0;
@@ -112,6 +114,7 @@
           }
           // RENDER PRODUCT: end
         ?>
+        </tbody>
         
       </table>
       <!-- PRODUCT-LIST: End -->
@@ -163,7 +166,8 @@
   <!-- page footer: start -->
 
   <!-- js: start -->
-  <script src="../../../js/store/cart-checkout/cart/ "></script> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="../../../js/store/cart-checkout/cart/cart"></script>
   <!-- js: end -->
 </body>
 </html>
