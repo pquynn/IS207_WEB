@@ -1,4 +1,73 @@
 /** @format */
+// Render cart row: start
+function fetchData(page) {
+  $.ajax({
+    url: "../../php/controller/admin/product-controller.php?action=fetch",
+    type: "GET",
+    data: { page: page },
+    dataType: "json",
+    success: function (response) {
+      var data = response.data;
+
+      // Populate the table with fetched data
+      const tbCart = $(".product-list--cart");
+      tbCart.empty();
+
+      data.forEach(function (row) {
+        var imageUrl = "data:image/png;base64," + row.first_picture;
+        tbCart.append(`
+        <tr class="product">
+        <!-- infor -->
+        <td class="product-infor">
+          <img 
+            src=".$imgUrl."
+            class="product-img"
+            alt='". $orderDetail["PRODUCT_NAME"]. "' />
+          <div class="product-descr">
+            <a href="#">". $orderDetail["PRODUCT_NAME"]. "</a>
+            <small class="gray-text">Size ". $orderDetail["SIZE"]. "</small>
+          </div>
+        </td>
+
+        <!-- price -->
+        <td class="price">" .$orderDetail["PRICE"]. "</td>
+
+        <!-- amount -->
+        <td>
+          <div class="flex amount">
+            <button 
+            class="amount-btn pointer minus" onClick="changeAmount(-1, ".$index.")">-</button >
+            <input 
+              type="number" onClick="updateAmount()"
+              min="1" 
+              value=" .$orderDetail["QUANTITY"]." 
+              onChange="updateMoney(" .$index. ")"/>
+            <button class="amount-btn pointer plus" onClick="changeAmount(1, ".$index.")">+</button>
+          </div>
+        </td>
+
+        <!-- total -->
+        <td class="product-total">199000</td>
+
+        <!-- remove from cart -->
+        <td>
+          <button class="remove-btn pointer">
+            <span class="material-symbols-outlined"> delete </span>
+          </button>
+        </td>
+      </tr>`);
+      });
+
+      updatePagination(page, totalPages);
+    },
+    error: function () {
+      console.error("Failed to fetch data from the server.");
+    },
+  });
+}
+// Render cart row: end
+
+// UPDATE AMOUNT IN UI: START
 // SELECT COMPONENTS: START
 // update total money
 const subTotal = document.querySelector(".sub-total--amount");
@@ -43,27 +112,17 @@ function calcSubTotal() {
 // update money when change amount
 function updateMoney(index) {
   // prevent <1 product quantity
-  // if (Number(productAmount[index].value) < 1) {
-  //   productAmount[index].value = 1;
-  // } else {
-  //   // update money amount in UI
-  //   displayMoney(
-  //     productTotal[index],
-  //     calcProductTotal(price[index], productAmount[index].value)
-  //   );
-  //   displayMoney(subTotal, calcSubTotal());
-  //   displayMoney(total, calcSubTotal() * 1.02);
-
-  var xmlHttp;
-  // Khở tạo đối tượng xmlHttp
-  xmlHttp.open("GET", "URL", true);
-  xmlHttp.send(null);
-
-  xmlHttp.onreadystatechange = function () {
-    if (xmlHttp.readystate == 4) {
-      console.log(xmlHttp.responseText);
-    }
-  };
+  if (Number(productAmount[index].value) < 1) {
+    productAmount[index].value = 1;
+  } else {
+    // update money amount in UI
+    displayMoney(
+      productTotal[index],
+      calcProductTotal(price[index], productAmount[index].value)
+    );
+    displayMoney(subTotal, calcSubTotal());
+    displayMoney(total, calcSubTotal() * 1.02);
+  }
 }
 
 // DISPLAY MONEY
@@ -149,3 +208,24 @@ $(document).ready(function () {
 
 // PREVENT SUBMIT: END
 // FUNCTION: END
+// UPDATE AMOUNT IN UI: START
+
+// Update amount to db
+function updateAmount() {
+  // Khở tạo đối tượng xhr
+  var xhr = new XMLHttpRequest();
+
+  // callback funtion on onreadystatechange event
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        console.log(xhr.responseText);
+      } else {
+        console.log(`Có lỗi xảy ra: ${xhr.status}`);
+      }
+    }
+  };
+
+  xhr.open("GET", "cartFeat.php", true);
+  xhr.send(null);
+}

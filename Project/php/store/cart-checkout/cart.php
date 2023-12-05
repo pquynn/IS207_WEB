@@ -1,25 +1,22 @@
 <!-- connect to database: start -->
 <?php
-$conn=new mysqli('localhost', 'root', '', 'shoe_shop_db');
+  $conn=new mysqli('localhost', 'root', '', 'shoe_shop_db');
 
-// check connection
-if(!$conn){
-  die("Kết nối thất bại: ". mysqli_connect_error());
-}
-else{
-  // echo "Kết nối thành công";
-}
+  // check connection
+  if(!$conn){
+    die("Kết nối thất bại: ". mysqli_connect_error());
+  }
+  else{
+    // echo "Kết nối thành công";
+  }
 
-// order's detail
-$orderDetailList = $conn->query("SELECT DISTINCT * FROM orders INNER JOIN orders_detail ON orders_detail.ORDER_ID = orders.ORDER_ID WHERE STATUS='Đang mua hàng' AND orders.ORDER_ID=1");
+  // order's detail
+  $orderDetailList = $conn->query("SELECT DISTINCT * FROM orders INNER JOIN orders_detail ON orders_detail.ORDER_ID = orders.ORDER_ID WHERE STATUS='Đang mua hàng' AND orders.ORDER_ID=9");
 
-// product pricture
-$productPictureList = $conn->query("SELECT * FROM product_pictures INNER JOIN orders_detail ON orders_detail.product_id = product_pictures.product_id WHERE ORDER_ID=1");
+  // product pricture
+  $productPictureList = $conn->query("SELECT * FROM product_pictures INNER JOIN orders_detail ON orders_detail.product_id = product_pictures.product_id WHERE ORDER_ID=1");
 
-$productPicture = $productPictureList -> fetch_assoc();
-// while ($productPicture = $productPictureList -> fetch_assoc()){
-
-// }
+  $productPicture = $productPictureList -> fetch_assoc();
 ?>
 <!-- connect to sever: end -->
 
@@ -60,17 +57,20 @@ $productPicture = $productPictureList -> fetch_assoc();
 
         <!-- product -->
         <?php
-        // src=" .$productPicture["first_picture"]. "
-        
         // product index
           $index = 0;
 
           // RENDER PRODUCT: start
           while ($orderDetail = $orderDetailList -> fetch_assoc()){
+            // product-img
+            $productPicture['first_picture'] = base64_encode($productPicture['first_picture']);
+            $imgUrl = 'data:image/png;base64,' . $productPicture['first_picture'];
+
             echo "<tr class=\"product\">
             <!-- infor -->
             <td class=\"product-infor\">
               <img 
+                src=".$imgUrl."
                 class=\"product-img\"
                 alt='". $orderDetail["PRODUCT_NAME"]. "' />
               <div class=\"product-descr\">
@@ -85,9 +85,14 @@ $productPicture = $productPictureList -> fetch_assoc();
             <!-- amount -->
             <td>
               <div class=\"flex amount\">
-                <button class=\"amount-btn pointer minus\">-</button>
-                <input type=\"number\" min=\"1\" value=" .$orderDetail["QUANTITY"]." onChange=\"updateMoney(" .$index. ")\"/>
-                <button class=\"amount-btn pointer plus\">+</button>
+                <button 
+                class=\"amount-btn pointer minus\" onClick=\"changeAmount(-1, ".$index.")\">-</button >
+                <input 
+                  type=\"number\" onClick=\"updateAmount()\"
+                  min=\"1\" 
+                  value=" .$orderDetail["QUANTITY"]." 
+                  onChange=\"updateMoney(" .$index. ")\"/>
+                <button class=\"amount-btn pointer plus\" onClick=\"changeAmount(1, ".$index.")\">+</button>
               </div>
             </td>
   
@@ -158,13 +163,12 @@ $productPicture = $productPictureList -> fetch_assoc();
   <!-- page footer: start -->
 
   <!-- js: start -->
-  <script src="../../../js/store/cart-checkout/cart/cart.js"></script> 
+  <script src="../../../js/store/cart-checkout/cart/ "></script> 
   <!-- js: end -->
 </body>
 </html>
 
 <!-- push value to database: start -->
 <?php
-
 ?>
 <!-- push value to database: end -->
