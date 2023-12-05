@@ -10,44 +10,8 @@ $(document).ready(function () {
         dataType: 'json',
         success: function (data) {
             $('.product-info').append(`
-                <div class="product-name"><h2>HELOO</h2></div>
+                <div class="product-name"><h2>HELLO</h2></div>
                 <div class="product-price"><h3>500000 VND</h3></div>
-                <div class="product-rating">
-                  <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon
-                  ><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon
-                  ><ion-icon name="star"></ion-icon>
-                </div>
-                <div class="product-category">
-                  <h4>Phân loại: </h4>
-                  <p>
-                    Loại giày
-                  </p>
-                </div>
-      
-                <div class="product-size">
-                  <h4>Kích cỡ:</h4>
-      
-                  <div class="size">
-                    <button class="btn-size">XXS</button>
-                    <button class="btn-size">XS</button>
-                    <button class="btn-size">S</button>
-                    <button class="btn-size">M</button>
-                    <button class="btn-size">L</button>
-                    <button class="btn-size">XL</button>
-                  </div>
-                </div>
-                <div class="product-quantity">
-                  <h4>Số lượng:</h4>
-                  <div class="quantity">
-                    <span class="minus change-amount-btn">-</span>
-                    <span class="number">1</span>
-                    <span class="plus change-amount-btn">+</span>
-                  </div>
-                </div>
-                <div class="shopping-btn">
-                  <button class="btn btn-cancel">Thêm vào giỏ hàng</button>
-                  <button class="btn btn-confirm">Mua ngay</button>
-                </div>
             `);
             // data.forEach(function (row) {
             //     var imageUrl = 'data:first_picture/png;base64,' + row.first_picture;

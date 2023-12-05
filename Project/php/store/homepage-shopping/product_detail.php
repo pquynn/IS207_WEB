@@ -29,7 +29,7 @@
         <!--Khung giới thiệu thông tin sản phẩm-->
         <div class="product-info">
           <!-- <div class="product-name"><h2>Adidas</h2></div>
-          <div class="product-price"><h3>500000 VND</h3></div>
+          <div class="product-price"><h3>500000 VND</h3></div> -->
           <div class="product-rating">
             <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon
             ><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon
@@ -65,7 +65,7 @@
           <div class="shopping-btn">
             <button class="btn btn-cancel">Thêm vào giỏ hàng</button>
             <button class="btn btn-confirm">Mua ngay</button>
-          </div> -->
+          </div>
         </div>
       </div>
       <!--Khung mô tả và đánh giá-->
@@ -362,6 +362,8 @@
         }
       });
     </script>
+
+    <script src="../../../js/homepage-shopping/product_detail.js"></script>
 
     <!-- bootstrap -->
     <script

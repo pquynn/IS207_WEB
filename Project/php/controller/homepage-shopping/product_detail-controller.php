@@ -1,46 +1,40 @@
 <?php
 include '../connect.php';
 
-function fetchProducts() {
+// Check the product name parameter in the request
+if (isset($_GET['name'])) {
+    $productName = $_GET['name'];
+       
     global $conn;
+
+    // Lấy dữ liệu từ biến $productName và tránh SQL injection
+    $productName = mysqli_real_escape_string($conn, $productName);
     
-    $sql = " SELECT products.product_id, product_name, price, first_picture
+    $sql = "SELECT product_name, price, first_picture
                     FROM products
                     INNER JOIN product_pictures ON products.product_id = product_pictures.product_id
-                    ORDER BY products.product_id";
+                    WHERE product_name = $productName";
     $result = $conn->query($sql);
 
-    $data = [];
+    $data = array();
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $row['first_picture'] = base64_encode($row['first_picture']); //end code image data
-            $data[] = $row;
-        }
+    if ($result && $result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+    
+        // Chuyển đổi thành JSON
+        $json_data = json_encode($data);
+    
+        // In JSON hoặc trả về cho client tùy vào yêu cầu
+        echo $json_data;
+    
+        // Đóng kết nối CSDL (nếu bạn không sử dụng Persistent Connections)
+        $conn->close();
+    } else {
+        // Không tìm thấy dữ liệu, có thể thực hiện các xử lý khác tùy thuộc vào yêu cầu của bạn
+        echo json_encode(['error' => 'Không tìm thấy dữ liệu']);
     }
 
-    return $data;
-}
-
-
-// Check the action parameter in the request
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
-
-    // Execute the corresponding function based on the action
-    switch ($action) {
-        case 'fetch':
-            // Return the fetched data as JSON response
-            echo json_encode(fetchProducts());
-            break;
-        
-        default:
-            echo json_encode(['success' => false, 'message' => 'Invalid action']);
-    }
 } else {
     echo json_encode(['success' => false, 'message' => 'Action not specified']);
 }
-
-// Close the database connection
-$conn->close();
 ?>
