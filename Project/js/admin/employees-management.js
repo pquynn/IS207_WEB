@@ -119,11 +119,17 @@ $(document).ready(function () {
         });
         
         //fetch data from admin-table into modal
-        $('#employee-username').val(tbl_username);
+        $('#employee-username').val(tbl_login);
         $('#employee-name').val(tbl_name);
         $('#employee-phone').val(tbl_phone);
         $('#employee-date-of-birth').val(tbl_birthday);
+        console.log(tbl_gender);
         // $('#employee-gender').val(tbl_gender);
+        $("select#employee-gender option").filter(function() {
+            //may want to use $.trim in here
+            return $(this).text() == $.trim(tbl_gender);
+          }).prop('selected', true);
+
         $('#employee-address').val(tbl_address);
         // $('#employee-role').val(tbl_role_name); //todo: set ten vai tro
 
