@@ -87,20 +87,144 @@ function insertEmployee() {
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $employee = $_GET['employee'];
 
-        $exist = checkExist($employee);
+        if (checkExist($employee[username])) {
+            return (['success' => false, 'message' => 'Tên đăng nhập đã có trong hệ thống']);
+        } 
+        else {
+            $sql = "INSERT INTO users (username, name, phone, date_of_birth, gender, address, role) 
+                    VALUES ('$employee[username]', '$employee[name]', '$employee[phone]', 
+                            '$employee[date_of_birth]', '$employee[gender]', '$employee[address]', '$employee[role]')";
 
-        if($exist){
-            return false;
-        }
-        else{
-            $sql = "INSERT INTO category (category_name) VALUES ('')";
             $result = $conn->query($sql);
 
-            return $result; 
+            if ($result) {
+                return ['success' => true, 'message' => 'Employee inserted successfully.'];
+            } else {
+                return ['success' => false, 'message' => 'Failed to insert employee.'];
+            }
         }
     }
-    else
-    return false;
+}
+
+
+
+        // $employee = json_decode($_GET['employee'], true);
+
+        // echo $employee;
+        // if(checkExist($employee)){
+        //     // $message = 'Tên đăng nhập đã có trong hệ thống';
+        //     // result = false; 
+        //     return false;
+        // }
+        // else
+        // {
+        //     //TODO: CHECK LẠI NHỮNG CÁI NGƯỜI DÙNG NHẬP VÀO VÀ NGĂN CHẶN SQL INJECTION
+        //     $sql1 = "INSERT INTO login (user_login, user_password role_id)
+        //             VALUES (
+        //                 '".$employee['username']."',
+        //                 '".generateRandomPassword()."',
+        //                 '".$employee['role']."'
+        //             )";
+        //     $result1 = $conn->query($sql1);
+        //     $row = $result1->fetch_assoc();
+    
+        //     if($row['count'] > 0){
+        //         $sql2 = "INSERT INTO users (user_id, user_login, user_name, user_telephone, birthday, gender, address)
+        //             VALUES (
+        //                 '".generateUserId()."',
+        //                 '".$employee['username']."',
+        //                 '".$employee['name']."',
+        //                 '".$employee['phone']."',
+        //                 '".$employee['date_of_birth']."',
+        //                 '".$employee['gender']."',
+        //                 '".$employee['address']."'
+        //             )";
+        //         $result2 = $conn->query($sql2);
+                // if(($result2->fetch_assoc())['count'] > 0){
+                //     $message = 'Thêm thành công';
+                //     $result = true; 
+                // }
+                // else
+                // {
+                //     $message = 'Thêm không thành công';
+                //     $result = false; 
+                // }
+                
+            // }
+            // else
+            // {
+            //     $message = 'Thêm không thành công';
+            //     $result = false; 
+            // }
+
+
+            // $sql1 = "INSERT INTO login (user_login, user_password role_id)
+            //         VALUES (
+            //             '" . mysqli_real_escape_string($conn, $employee['username']) . "',
+            //             '".generateRandomPassword()."',
+            //             '" . mysqli_real_escape_string($conn, $employee['role']) . "'
+            //         )";
+            // $result1 = $conn->query($sql1);
+            // $row = $result1->fetch_assoc();
+    
+            // if($row['count'] > 0){
+            //     $sql2 = "INSERT INTO users (username, name, phone, date_of_birth, gender, address, role_id)
+            //         VALUES (
+            //             '" . mysqli_real_escape_string($conn, $employee['username']) . "',
+            //             '" . mysqli_real_escape_string($conn, $employee['name']) . "',
+            //             '" . mysqli_real_escape_string($conn, $employee['phone']) . "',
+            //             '" . mysqli_real_escape_string($conn, $employee['date_of_birth']) . "',
+            //             '" . mysqli_real_escape_string($conn, $employee['gender']) . "',
+            //             '" . mysqli_real_escape_string($conn, $employee['address']) . "',
+            //             '" . mysqli_real_escape_string($conn, $employee['role']) . "'
+            //         )";
+            //     $result2 = $conn->query($sql2);
+            // }
+            // else
+            //     return false; 
+        // }
+
+        // return array('message' => $message, 'result' => $result);
+    // }
+    // else
+    // return false;
+// }
+
+//function to automatically generate password
+function generateRandomPassword() {
+    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $password = '';
+
+    for ($i = 0; $i < 10; $i++) {
+        $index = rand(0, strlen($characters) - 1);
+        $password .= $characters[$index];
+    }
+
+    return $password;
+}
+//function to automatically generate user_id
+function generateUserId($prefix = 'NV') {
+    // Use a combination of prefix and a unique identifier (timestamp and random number)
+    $uniqueId = time() . mt_rand(1000, 9999);
+
+    // Concatenate the prefix and unique identifier to create the user_id
+    $userId = $prefix . $uniqueId;
+
+    return $userId;
+}
+
+//CHECK VALIDATION
+function checkExist($username) { 
+    global $conn;
+    // Check if the category name already exists
+    // $user_login = trim(mysqli_real_escape_string($conn, $employee['username']). " ");
+    // $user_login = trim($u['username'], " ");
+    // $sql = "SELECT COUNT(*) as count FROM login WHERE user_login = '$user_login'";
+    // $result = $conn->query($sql);
+
+    // $row = $result->fetch_assoc();
+    // echo 'login find '. $row['count'];
+    // return  $row['count'] > 0;
 }
 
 //UPDATE 
@@ -130,45 +254,27 @@ function deleteEmployee() {
     global $conn;
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $employeeId = $_GET['employee_id'];
-        $employeeLogin = $_GET['employee_login'];
-        $sql1 = "DELETE FROM users WHERE user_id LIKE '$employeeId'";
-        $result1 = $conn->query($sql1);
-
-        if($result1){
-            $sql2 = "DELETE FROM `login` WHERE user_login LIKE '$employeeLogin'";
-            $result2 = $conn->query($sql2);
-            //return $result2;
-        }
-        //else
-            //return $result1; 
-    
-    return $employeeLogin;
-    }
-    
-         //return ['result' => false];
-}
-
-
-//CHECK VALIDATION
-function checkExist($categoryName) { 
-    global $conn;
-    // Check if the category name already exists
-    $sql = "SELECT COUNT(*) as count FROM category WHERE category_name = '$categoryName'";
-    $result = $conn->query($sql);
-
-    if ($result) {
-        $row = $result->fetch_assoc();
-        if($row['count'] > 0)
-            return true;
-        else
-            return false;
+        $employeeId = trim($_GET['employee_id'], " ");
+        $employeeLogin = trim($_GET['employee_login'], " ");
         
-    } else {
-        // Error in the query
-        return true;
+        $sql1 = "DELETE FROM users WHERE user_id LIKE '$employeeId'";
+        // $sql1 = "SELECT count(*) as total from users WHERE user_id LIKE '$employeeId' ";
+        $result1 = $conn->query($sql1);
+        // $totalRecordsResult = $conn->query($sql1);
+        // $totalRecords = $totalRecordsResult->fetch_assoc()['total'];
+        if($result1){
+            $sql2 = "DELETE FROM login WHERE user_login LIKE '$employeeLogin'";
+            $result2 = $conn->query($sql2);
+            return $result2;
+        }
+        else
+            return ['result' => false]; 
     }
+    
+         return ['result' => false];
 }
+
+
 
 //SEARCH CATEGORIES
 function searchEmployees(){
@@ -210,6 +316,7 @@ function searchEmployees(){
         and login.role_id = role.role_id
         and (role.role_id = 1 or role.role_id = 2) 
         and user_name LIKE '%$searchTerm%'
+        ORDER BY user_id
         LIMIT $offset, $records_per_page";
 
         $result = $conn->query($sql);

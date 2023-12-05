@@ -17,7 +17,7 @@
         <div class="section_top-content dashboard">
             <div class="btn-container">
                 <!-- calendar nên dùng button hay input date? -->
-                <div class="dropdown">
+                <!-- <div class="dropdown">
                     <button class="btn-admin btn-calendar dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-regular fa-calendar"></i>Thời gian
                     </button>
@@ -27,7 +27,7 @@
                       <li><a class="dropdown-item" href="#">3 tháng trước</a></li>
                       <li><a class="dropdown-item" href="#">1 năm trước</a></li>
                     </ul>
-                  </div>
+                  </div> -->
         
                 <button class="btn-admin btn-export admin">
                     <i class="fa-solid fa-download"></i>Export
@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col pending-box">
                             <p class="number-display">0</p>
-                            <p>Chờ xác nhận</p>
+                            <p>Đang chuẩn bị hàng</p>
                         </div>
 
                         <div class="col delivering-box">
@@ -55,7 +55,7 @@
 
                         <div class="col canceling-box">
                             <p class="number-display">0</p>
-                            <p>Đơn bị hủy</p>
+                            <p>Đã hủy</p>
                         </div>
 
                         <div class="col out-of-stock-box">
@@ -107,7 +107,7 @@
 
             <div class="row">
                 <!-- start: revenue by categories chart -->
-                <div class="col-5 revenue-by-categories-pie-chart-container">
+                <div class="col-6 revenue-by-categories-pie-chart-container">
                     <p class="container-heading">Doanh thu theo loại sản phẩm</p>
 
                     <!-- Donut Chart -->
@@ -124,7 +124,7 @@
                 <!-- end: revenue by categories chart -->
 
                 <!-- start: best seller table -->
-                <div class="col-7 best-seller">
+                <div class="col-6 best-seller">
                     <p class="container-heading">Sản phẩm bán chạy</p>
 
                     <div class="admin-table">
@@ -198,5 +198,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script>
     <script src="../../js/admin/chart/chart-pie.js"></script>
     <script src="../../js/admin/chart/chart-area.js"></script>
+    <script scr="../../js/admin/statistic-management.js"></script>
 </body>
 </html>

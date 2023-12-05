@@ -58,47 +58,6 @@ function fetchCustomers() {
         return $response;
 }
 
-//FETCH ROLE TABLE
-// function fetchRoles(){
-//     global $conn;
-
-//     $sql = "SELECT role_id, role_name FROM role";
-//     $result = $conn->query($sql);
-
-//     $data = [];
-
-//     if ($result->num_rows > 0) {
-//         while ($row = $result->fetch_assoc()) {
-//             $data[] = $row;
-//         }
-//     }
-
-//     return $data;
-// }
-
-
-//INSERT 
-// function insertCustomer() {
-//     global $conn;
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-//         $employee = $_GET['employee'];
-
-//         $exist = checkExist($employee);
-
-//         if($exist){
-//             return false;
-//         }
-//         else{
-//             $sql = "INSERT INTO category (category_name) VALUES ('')";
-//             $result = $conn->query($sql);
-
-//             return $result; 
-//         }
-//     }
-//     else
-//     return false;
-// }
 
 //UPDATE 
 function updateCustomer() {
@@ -127,23 +86,23 @@ function deleteCustomer() {
     global $conn;
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $customerId = $_GET['customer_id'];
-        $customerLogin = $_GET['customer_login'];
+        $customerId = trim($_GET['customer_id'], " ");
+        $customerLogin = trim($_GET['customer_login'], " ");
     
         $sql1 = "DELETE FROM users WHERE user_id = '$customerId'";
-        $result = $conn->query($sql1);
+        $result1 = $conn->query($sql1);
 
-        if($result == false){
-            return $result;
+        if($result1){
+            $sql2 = "DELETE FROM login WHERE user_login = '$customerLogin'";
+            $result2 = $conn->query($sql2);
+            return $result2;
         }
-
-        $sql2 = "DELETE FROM login WHERE user_login = '$customerLogin'";
-        $result = $conn->query($sql2);
-
-        return $result; 
+        else
+            return ['result' => false]; 
     }
-    else
-        return ['result' => false];
+    
+         return ['result' => false];
+    
 }
 
 

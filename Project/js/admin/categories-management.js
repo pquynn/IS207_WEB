@@ -1,7 +1,5 @@
-
-
-var tbl_category_id;
-var tbl_category_name;
+var tbl_category_id, tbl_category_name;
+var closest_row;
 
 $(document).ready(function () {
     var namePage = $('.section_heading').text();
@@ -74,10 +72,9 @@ $(document).ready(function () {
         if (confirm('Xác nhận xóa ' + namePage + ' ?')) {
             // Get the category_id from the first column of the row
             var categoryId = $(this).closest('tr').find('td:first').text();
+            closest_row = $(this).closest('tr');
             // User confirmed, proceed with deletion
-            deleteCategory(categoryId);
-
-            $(this).closest('tr').remove();
+            deleteCategory(categoryId, closest_row);
         }
     });
 
@@ -276,13 +273,14 @@ function updateCategory(categoryName){
 }
 
 // Function to delete category by category_id
-function deleteCategory(categoryId) {
+function deleteCategory(categoryId, closest_row) {
     $.ajax({
         url: '../../php/controller/admin/category-controller.php?action=delete',
         type: 'GET',
         data: { category_id: categoryId },
         success: function () {
             //TODO: hiện thông báo xóa thành công
+            closest_row.remove();
         },
         error: function () {
             console.error('Failed to delete category.');
@@ -299,8 +297,6 @@ function fetchSearchData(searchTerm, page) {
         data: { searchTerm: searchTerm, page: page },
         dataType: 'json',
         success: function (response) {
-            console.log(data);
-            console.log(totalPages);
             var data = response.data;
             var totalPages = response.totalPages;
 

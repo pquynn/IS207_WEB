@@ -27,10 +27,7 @@ $(document).ready(function () {
 
     // when submit #modal-form
     $('#modal-form').submit(function (event) { 
-        event.preventDefault();
-    
-        
-
+        e.preventDefault();
         var form = $(this);
         var btn_name = $('#modal-form .btn-confirm').text();
         // Create a temp_employee object
@@ -43,31 +40,20 @@ $(document).ready(function () {
             address: $('#employee-address').val(),
             role: $('#employee-role').val()
         };
-    
+
         if(btn_name.localeCompare("Thêm mới") == 0){
             //insert 
             Array.from(form).forEach(form_element => {
-            
-                if (form_element.checkValidity() === false) {
-                    //TODO: PHẢI CHECK ĐỂ HIỆN LỖI TỪNG CÁI THOI
-                    //TODO: CHECK LẠI FORM-VALIDATION
-                    event.stopPropagation();
-                    $('.invalid-feedback.username').html('Yêu cầu nhập tên đăng nhập!');
-                    $('.invalid-feedback.name').html('Yêu cầu nhập tên nhân viên!');
-                    $('.invalid-feedback.phone').html('Yêu cầu nhập số điện thoại!');
-                    $('.invalid-feedback.role').html('Yêu cầu chọn vai trò!');
 
-                    var isValid = /^0[0-9]{9}$/.test(temp_employee.phone);
-                    if(!isValid)
-                    {
-                        $('#employee-name').addClass('is-invalid');
-                        $('.invalid-feedback.phone').html('Điện thoại phải có 10 số và bắt đầu = 0!');
-                    }
-                } else 
+                // var isValid = /^0[0-9]{9}$/.test(temp_employee.phone);
+                if (form_element.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                }else 
                 {
                     insertemployee(temp_employee);
                 }
-                
                 form.addClass('was-validated');
             })
         }
@@ -97,7 +83,6 @@ $(document).ready(function () {
     // Event listener for the "Delete" button
     $('.admin-table').on('click', '.btn-delete', function (e) {
         e.preventDefault();
-
         // Show a confirmation dialog
         if (confirm('Xác nhận xóa ' + namePage + ' ?')) {
             // Get the employee_id from the first column of the row
@@ -106,7 +91,6 @@ $(document).ready(function () {
             closest_row = $(this).closest('tr');
             // User confirmed, proceed with deletion
             deleteemployee(tbl_id, tbl_login, closest_row);
-            // $(this).closest('tr').remove(); //TODO: PHẢI DELETE THÀNH CÔNG MS ĐC REMOVE ROW
         }
     });
 
@@ -245,22 +229,27 @@ function insertemployee(employee) {
     $.ajax({
         url: '../../php/controller/admin/employee-controller.php?action=insert',
         type: 'GET',
-        data: { employee: employee },
+        data: { employee: JSON.stringify(employee) },
         dataType: 'json',
-        success: function (result) {
-        if (result === true) {
+        success: function (response) {
+            
+        if (response.result === true) {
             //TODO: THÔNG BÁO THÊM THÀNH CÔNG
             // employee inserted successfully, close the modal and perform any other necessary actions
             $('#add-new').modal('hide');
 
             var current_page = parseInt($('.pagination a.active').data('page'));
             fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
+            
+            console.log(response.result);
         } 
         else {
             // employee name exists, show an error message
+            
             $('#employee-name').addClass('is-invalid');//TODO: border-color of form-control is not change into red
-            $('.invalid-feedback').html( 'Nhân viên đã có trong hệ thống!');
+            $('.invalid-feedback').html( response.message);
             // $('#modal-form').addClass('was-validated');
+            console.log(response.message);
         }
         },
         error: function () {
@@ -314,12 +303,9 @@ function deleteemployee(employeeId, employeeLogin, closest_row) {
         url: '../../php/controller/admin/employee-controller.php?action=delete',
         type: 'GET',
         data: { employee_id: employeeId, employee_login: employeeLogin },
-        success: function (response) {
+        success: function () {
             //TODO: hiện thông báo xóa thành công
-            console.log('login ' + response);
-            //console.log(response.employeeId);
-            //console.log(response.employeeLogin);
-            // closest_row.remove();
+            closest_row.remove();
         },
         error: function () {
             console.error('Failed to delete employee.');
@@ -406,21 +392,3 @@ function fetchSearchData(searchTerm, page) {
 // //     }
 // // });
 
-// function formatNumber(input) {
-//     let strNumber = String(input);
-  
-//     // Split the string into groups of 3 characters from the right
-//     let chunks = [];
-//     while (strNumber.length > 0) {
-//       chunks.push(strNumber.slice(-3));
-//       strNumber = strNumber.slice(0, -3);
-//     }
-  
-//     // Reverse the chunks and join them with dots
-//     let formattedStr = chunks.reverse().join('.');
-  
-//     return formattedStr;
-//   }
-//   // Example usage
-//   let result = formatNumber(1000000);
-//   console.log(result); // Output: '1.000.000'

@@ -26,10 +26,6 @@
                 <button class="btn-admin btn-export">
                     <i class="fa-solid fa-download"></i>Export
                 </button>
-<!-- 
-                <button class="btn-admin btn-add" data-bs-toggle="modal" data-bs-target="#add-new">
-                    <i class="fa-solid fa-plus"></i>Thêm mới
-                </button> -->
             </div>
         </div>
         <!-- end: search bar, button section -->
