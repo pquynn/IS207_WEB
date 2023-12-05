@@ -8,12 +8,17 @@ function convertUrlEncodedToPlain($urlEncodedString) {
 }
 
 if (isset($_GET['product'])) {
-    $productName = convertUrlEncodedToPlain($_GET['product']);
+    $productName = $_GET['product'];
+
+    $productName = mysqli_real_escape_string($conn, $productName);
+
+
+    // $productName = convertUrlEncodedToPlain($_GET['product']);
 
     //echo $productName;
         $sql = "SELECT product_name, price
             FROM products
-            WHERE products.product_name=$productName";
+            WHERE products.product_name='$productName'";
 
         $result = $conn->query($sql);
 

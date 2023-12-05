@@ -20,11 +20,11 @@ if (isset($_GET['product'])) {
 
     $productName = $_GET['product'];
 
-    //$productName = mysqli_real_escape_string($conn, $productName);
+    $productName = mysqli_real_escape_string($conn, $productName);
 
     $sql = "SELECT PRODUCT_NAME, PRICE
             FROM PRODUCTS
-            WHERE PRODUCTS.PRODUCT_ID=$productName";
+            WHERE PRODUCTS.PRODUCT_NAME='$productName'";
 
     $result = $conn->query($sql);
 

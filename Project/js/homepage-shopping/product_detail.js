@@ -15,6 +15,7 @@ $(document).ready(function () {
             alert('Have data');
             $('.product-info .product-name h2').text(data.PRODUCT_NAME);
             $('.product-info .product-price h3').text(data.PRICE + ' VND');
+            console.log(data);
           }
           else {
             console.error('Empty data received from the server.');
