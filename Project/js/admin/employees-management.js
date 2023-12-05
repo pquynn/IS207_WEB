@@ -19,6 +19,8 @@ $(document).ready(function () {
         var modal = document.getElementById('add-new');
         modal.querySelector('form').reset(); // Reset the form
 
+        $('#employee-username').removeClass('is-invalid'); //remove class is-invalid if the form was validated before
+
         Array.from(modal.querySelectorAll('.was-validated')).forEach((element) => {
             element.classList.remove('was-validated'); // Clear Bootstrap form validation classes
         });
@@ -27,19 +29,17 @@ $(document).ready(function () {
 
     // when submit #modal-form
     $('#modal-form').submit(function (event) { 
-        e.preventDefault();
+        // e.preventDefault();
         var form = $(this);
         var btn_name = $('#modal-form .btn-confirm').text();
         // Create a temp_employee object
-        var temp_employee = {
-            username: $('#employee-username').val(),
-            name: $('#employee-name').val(),
-            phone: $('#employee-phone').val(),
-            date_of_birth: $('#employee-date-of-birth').val(),
-            gender: $('#employee-gender').val(),
-            address: $('#employee-address').val(),
-            role: $('#employee-role').val()
-        };
+        var username =  $('#employee-username').val();
+        var name =  $('#employee-name').val();
+        var phone =  $('#employee-phone').val();
+        var date_of_birth =  $('#employee-date-of-birth').val();
+        var gender =  $('#employee-gender').val();
+        var address =  $('#employee-address').val();
+        var role =  $('#employee-role').val();
 
         if(btn_name.localeCompare("Thêm mới") == 0){
             //insert 
@@ -49,10 +49,12 @@ $(document).ready(function () {
                 if (form_element.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
-
-                }else 
+                }
+                else 
                 {
-                    insertemployee(temp_employee);
+                    event.preventDefault();
+                    insertemployee(username, name, phone, date_of_birth, gender, address, role);
+                    event.stopPropagation();
                 }
                 form.addClass('was-validated');
             })
@@ -74,8 +76,6 @@ $(document).ready(function () {
                 form.addClass('was-validated');
             })
         }
-
-        
     });
 
     //delete
@@ -100,24 +100,39 @@ $(document).ready(function () {
         e.preventDefault();
 
         // Get the closest row to the clicked button
-        var closest_row = $(this).closest('tr');
+        closest_row = $(this).closest('tr');
         // Get the datas from the row
-        tbl_employee_id = closest_row.find('td:first').text();
-        tbl_employee_name = closest_row.find('td:eq(1)').text();
+        tbl_id = closest_row.find('td:first').text();
+        tbl_login = closest_row.find('td:eq(1)').text();
+        tbl_phone = closest_row.find('td:eq(2)').text();
+        tbl_name = closest_row.find('td:eq(3)').text();
+        tbl_birthday = closest_row.find('td:eq(4)').text();
+        tbl_gender = closest_row.find('td:eq(5)').text();
+        tbl_address = closest_row.find('td:eq(6)').text();
+        tbl_role_name = closest_row.find('td:eq(8)').text();
 
         // Remove the is-invalid class in form-controls
         var modal = document.getElementById('add-new');
         Array.from(modal.querySelectorAll('.is-invalid')).forEach((element) => {
             element.classList.remove('is-invalid'); // Clear Bootstrap form validation classes
+            element.classList.remove('was-validated');
         });
         
-        $('#employee-name').val(tbl_employee_name);
+        //fetch data from admin-table into modal
+        $('#employee-username').val(tbl_username);
+        $('#employee-name').val(tbl_name);
+        $('#employee-phone').val(tbl_phone);
+        $('#employee-date-of-birth').val(tbl_birthday);
+        // $('#employee-gender').val(tbl_gender);
+        $('#employee-address').val(tbl_address);
+        // $('#employee-role').val(tbl_role_name); //todo: set ten vai tro
+
         // Populate the modal form with the fetched employee_name
         $('h1.modal-title').text('Thông tin ' + namePage);
         $('.btn-confirm').text('Thay đổi');
 
         
-
+        
         // Fetch the current employee_name for the selected employee_id
         // $.ajax({
         //     url: 'get_employee.php',
@@ -225,35 +240,31 @@ function updatePagination(currentPage, totalPages) {
 
 
 // Function to insert employee into the database
-function insertemployee(employee) {
+function insertemployee(username, name, phone, birthday, gender, address, role) {
     $.ajax({
         url: '../../php/controller/admin/employee-controller.php?action=insert',
         type: 'GET',
-        data: { employee: JSON.stringify(employee) },
+        data: {username : username, name : name, phone : phone, gender : gender, address : address, birthday : birthday, role : role},
         dataType: 'json',
-        success: function (response) {
-            
-        if (response.result === true) {
-            //TODO: THÔNG BÁO THÊM THÀNH CÔNG
-            // employee inserted successfully, close the modal and perform any other necessary actions
-            $('#add-new').modal('hide');
+        success: function (result) {
+            console.log(result);
+            if (result.result === true) {
+                console.log('aaa');
+                //TODO: THÔNG BÁO THÊM THÀNH CÔNG
+                $('#add-new').modal('hide');
 
-            var current_page = parseInt($('.pagination a.active').data('page'));
-            fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
-            
-            console.log(response.result);
-        } 
-        else {
-            // employee name exists, show an error message
-            
-            $('#employee-name').addClass('is-invalid');//TODO: border-color of form-control is not change into red
-            $('.invalid-feedback').html( response.message);
-            // $('#modal-form').addClass('was-validated');
-            console.log(response.message);
-        }
+                var current_page = parseInt($('.pagination a.active').data('page'));
+                fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
+            } 
+            else {
+                console.log('bbb');
+                // employee name exists, show an error message
+                $('#employee-username').addClass('is-invalid');//TODO: border-color of form-control is not change into red
+                $('#modal-form').addClass('was-validated');
+            }
         },
-        error: function () {
-            console.error('Failed to insert employee.');
+            error: function () {
+                console.error('Failed to insert employee.');
         }
     });
 }

@@ -32,7 +32,7 @@ $(document).ready(function () {
             closest_row = $(this).closest('tr');
             tbl_id = closest_row.find('td:first').text();
             // User confirmed, proceed with deletion
-            deleteemployee(tbl_id, closest_row);
+            deleteProduct(tbl_id, closest_row);
         }
     });
 
@@ -134,7 +134,7 @@ function updatePagination(currentPage, totalPages) {
 
 
 // Function to delete employee by product_id
-function deleteemployee(product_id, closest_row) {
+function deleteProduct(product_id, closest_row) {
     $.ajax({
         url: '../../php/controller/admin/employee-controller.php?action=delete',
         type: 'GET',

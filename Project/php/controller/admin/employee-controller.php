@@ -85,77 +85,47 @@ function insertEmployee() {
     global $conn;
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $employee = $_GET['employee'];
 
-        if (checkExist($employee[username])) {
-            return (['success' => false, 'message' => 'Tên đăng nhập đã có trong hệ thống']);
+        $username = ($_GET['username']);
+        $name = ($_GET['name']);
+        $phone = ($_GET['phone']);
+        $birthday = ($_GET['birthday']);
+        $gender = ($_GET['gender']);
+        $address = ($_GET['address']);
+        $role = ($_GET['role']);
+        $password = generateRandomPassword();
+        $id = generateUserId();
+
+        if (checkExist($username)) {
+            return ['result' => false, 'message' => 'Tên đăng nhập đã có trong hệ thống'];
+            // $response = false;
         } 
         else {
-            $sql = "INSERT INTO users (username, name, phone, date_of_birth, gender, address, role) 
-                    VALUES ('$employee[username]', '$employee[name]', '$employee[phone]', 
-                            '$employee[date_of_birth]', '$employee[gender]', '$employee[address]', '$employee[role]')";
+            //TODO: CHECK LẠI NHỮNG CÁI NGƯỜI DÙNG NHẬP VÀO VÀ NGĂN CHẶN SQL INJECTION
+            //todo csdl phải thêm trigger tạo day_add tự động
+            $sql1 = "INSERT INTO login (user_login, user_password, role_id)
+                    VALUES ('$username', '$password', '$role')";
+            $result1 = $conn->query($sql1);
 
-            $result = $conn->query($sql);
-
-            if ($result) {
-                return ['success' => true, 'message' => 'Employee inserted successfully.'];
-            } else {
-                return ['success' => false, 'message' => 'Failed to insert employee.'];
-            }
-        }
-    }
-}
-
-
-
-        // $employee = json_decode($_GET['employee'], true);
-
-        // echo $employee;
-        // if(checkExist($employee)){
-        //     // $message = 'Tên đăng nhập đã có trong hệ thống';
-        //     // result = false; 
-        //     return false;
-        // }
-        // else
-        // {
-        //     //TODO: CHECK LẠI NHỮNG CÁI NGƯỜI DÙNG NHẬP VÀO VÀ NGĂN CHẶN SQL INJECTION
-        //     $sql1 = "INSERT INTO login (user_login, user_password role_id)
-        //             VALUES (
-        //                 '".$employee['username']."',
-        //                 '".generateRandomPassword()."',
-        //                 '".$employee['role']."'
-        //             )";
-        //     $result1 = $conn->query($sql1);
-        //     $row = $result1->fetch_assoc();
-    
-        //     if($row['count'] > 0){
-        //         $sql2 = "INSERT INTO users (user_id, user_login, user_name, user_telephone, birthday, gender, address)
-        //             VALUES (
-        //                 '".generateUserId()."',
-        //                 '".$employee['username']."',
-        //                 '".$employee['name']."',
-        //                 '".$employee['phone']."',
-        //                 '".$employee['date_of_birth']."',
-        //                 '".$employee['gender']."',
-        //                 '".$employee['address']."'
-        //             )";
-        //         $result2 = $conn->query($sql2);
-                // if(($result2->fetch_assoc())['count'] > 0){
-                //     $message = 'Thêm thành công';
-                //     $result = true; 
-                // }
-                // else
-                // {
-                //     $message = 'Thêm không thành công';
-                //     $result = false; 
-                // }
+            if($result1){
+            $sql2 = "INSERT INTO users (user_id, user_login, user_name, user_telephone, birthday, gender, addresss)
+            VALUES ('$id', '$username', '$name', '$phone', '$birthday', '$gender', '$address')";
+            $result2 = $conn->query($sql2);
                 
-            // }
-            // else
-            // {
-            //     $message = 'Thêm không thành công';
-            //     $result = false; 
-            // }
+            if($result2)
+                return ['result' => true, 'message' => 'Thêm thành công'];
+            else
+                return (['result' => true, 'message' => 'Thêm không thành công']);
+        }
+        else
+            return (['result' => true, 'message' => 'Thêm không thành công']);
+                
+        }
+        // return $response;
+    }
+    else
+        return (['result' => false, 'message' => 'Thêm không thành công']);
+}
 
 
             // $sql1 = "INSERT INTO login (user_login, user_password role_id)
@@ -218,13 +188,12 @@ function checkExist($username) {
     global $conn;
     // Check if the category name already exists
     // $user_login = trim(mysqli_real_escape_string($conn, $employee['username']). " ");
-    // $user_login = trim($u['username'], " ");
-    // $sql = "SELECT COUNT(*) as count FROM login WHERE user_login = '$user_login'";
-    // $result = $conn->query($sql);
+    $sql = "SELECT COUNT(*) as count FROM login WHERE user_login like '$username'";
+    $result = $conn->query($sql);
 
-    // $row = $result->fetch_assoc();
+    $row = $result->fetch_assoc();
     // echo 'login find '. $row['count'];
-    // return  $row['count'] > 0;
+    return  $row['count'] > 0;
 }
 
 //UPDATE 

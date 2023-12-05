@@ -16,7 +16,7 @@
                         <label for="employee-username" class="form-label">Tên đăng nhập*</label>
                         <input type="text" id="employee-username" class="form-control" required>
                         <div class="invalid-feedback username">
-                            Yêu cầu nhập tên đăng nhập.
+                            Yêu cầu nhập tên đăng nhập (Không được trùng với người dùng khác).
                         </div>
                     </div>
 
@@ -30,7 +30,7 @@
 
                     <div class="">
                         <label for="employee-phone" class="form-label">Điện thoại*</label>
-                        <input type="tel" id="employee-phone" class="form-control" required pattern="^0[0-9]{9}$">
+                        <input type="text" id="employee-phone" class="form-control" required pattern="^0[0-9]{9}$">
                         <div class="invalid-feedback phone">
                             Yêu cầu nhập điện thoại có 10 số và bắt đầu = 0.
                         </div>
