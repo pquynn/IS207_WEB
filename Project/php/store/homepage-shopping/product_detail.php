@@ -23,7 +23,7 @@
         <!--Khung giới thiệu ảnh sản phẩm-->
         <div class="product-image">
           <div class="product-main-img">
-            <img src="../../../img/blog_img/blog2.webp" />
+            <img src="" />
           </div>
         </div>
 
@@ -38,21 +38,13 @@
           </div>
           <div class="product-category">
             <h4>Phân loại: </h4>
-            <p>
-              Loại giày
-            </p>
+            <p></p>
           </div>
 
           <div class="product-size">
             <h4>Kích cỡ:</h4>
 
             <div class="size">
-              <button class="btn-size">XXS</button>
-              <button class="btn-size">XS</button>
-              <button class="btn-size">S</button>
-              <button class="btn-size">M</button>
-              <button class="btn-size">L</button>
-              <button class="btn-size">XL</button>
             </div>
           </div>
           <div class="product-quantity">
@@ -84,7 +76,7 @@
             aria-selected="true">
             Mô tả
           </button>
-          <button
+          <!-- <button
             class="nav-link tag-btn"
             id="nav-profile-tab"
             data-bs-toggle="tab"
@@ -94,7 +86,7 @@
             aria-controls="nav-profile"
             aria-selected="false">
             Chi tiết
-          </button>
+          </button> -->
           <button
             class="nav-link tag-btn"
             id="nav-contact-tab"
@@ -118,12 +110,16 @@
           id="nav-home"
           role="tabpanel"
           aria-labelledby="nav-home-tab">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-            autem quibusdam dolorum dolorem pariatur dolores, non ipsum ad nulla
-            magnam veniam dignissimos vero nam alias minima repellat optio,
-            nihil accusantium?
-          </p>
+
+          <!-- Ai đó hãy sữa giùm style chỗ này đc ko :))) -->
+          <div style="display: flex; justify-content: space-around;"> 
+            <p style="flex: 1;"></p>
+            <div style="display: flex; flex-wrap: wrap;">
+              <img src="" alt="" id="second_img" width="450px" height="562.5px">
+              <img src="" alt="" id="third_img" width="450px" height="562.5px">
+            </div>
+          </div>
+          <!-- Ai đó hãy sữa giùm chỗ này đc ko :))) -->
         </div>
         <!-- description's content: end -->
 
@@ -164,18 +160,13 @@
             <div class="rating">
               <!-- rating scrore -->
               <div class="rating-score">
-                <h5>5</h5>
+                <h5></h5>
                 <div class="rating-icon">
-                  <ion-icon name="star"></ion-icon
-                  ><ion-icon name="star"></ion-icon
-                  ><ion-icon name="star"></ion-icon
-                  ><ion-icon name="star"></ion-icon
-                  ><ion-icon name="star"></ion-icon>
                 </div>
               </div>
               <!-- amount of review -->
               <div class="people-rate-num">
-                <small> 40 lượt đánh giá</small>
+                <small></small>
               </div>
             </div>
             <!-- star: start -->
@@ -184,159 +175,6 @@
 
           <!-- PERSONAL RATING: Star -->
           <div class="review-list">
-            <div class="person-review">
-              <!-- star: start -->
-              <div class="review-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon>
-                <span>5.0</span>
-              </div>
-              <!-- star: end -->
-
-              <!-- comment: start -->
-              <div class="review-text">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Cursus tristique in tellus diam, metus sit. Quis venenatis,
-                  neque arcu accumsan sollicitudin aliquet nunc. Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Eos dicta ducimus
-                  adipisci assumenda? Magnam velit repudiandae nihil, ipsum ad
-                  architecto neque est quidem, ratione ullam fuga ipsa?
-                  Officiis, ipsum maiores?
-                </p>
-                <a href="#" class="link">Xem Thêm</a>
-              </div>
-              <!-- comment: end -->
-
-              <!-- img: start -->
-              <div class="review-img">
-                <div class="img-container">
-                  <img
-                    class="img-rv"
-                    src="https://www.side-step.co.za/media/catalog/product/cache/f8df61b05911d279f59846ba6dcb8724/a/d/add3483cw-adidas-niiteball-white-fz5741-v1_jpg.jpg" />
-                  <img
-                    class="img-rv"
-                    src="https://www.side-step.co.za/media/catalog/product/cache/f8df61b05911d279f59846ba6dcb8724/a/d/add3483cw-adidas-niiteball-white-fz5741-v1_jpg.jpg" />
-                  <img
-                    class="img-rv"
-                    src="https://www.side-step.co.za/media/catalog/product/cache/f8df61b05911d279f59846ba6dcb8724/a/d/add3483cw-adidas-niiteball-white-fz5741-v1_jpg.jpg" />
-                </div>
-                <div class="name-date">
-                  <div class="name">
-                    <p>Linh. DTM</p>
-                  </div>
-                  <div class="date">
-                    <p>4/11/2023</p>
-                  </div>
-                </div>
-              </div>
-              <!-- img: end -->
-            </div>
-            <div class="person-review">
-              <!-- star: start -->
-              <div class="review-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon>
-                <span>5.0</span>
-              </div>
-              <!-- star: end -->
-
-              <!-- comment: start -->
-              <div class="review-text">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Cursus tristique in tellus diam, metus sit. Quis venenatis,
-                  neque arcu accumsan sollicitudin aliquet nunc. Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Eos dicta ducimus
-                  adipisci assumenda? Magnam velit repudiandae nihil, ipsum ad
-                  architecto neque est quidem, ratione ullam fuga ipsa?
-                  Officiis, ipsum maiores?
-                </p>
-                <a href="#" class="link">Xem Thêm</a>
-              </div>
-              <!-- comment: end -->
-
-              <!-- img: start -->
-              <div class="review-img">
-                <div class="img-container">
-                  <img
-                    class="img-rv"
-                    src="https://www.side-step.co.za/media/catalog/product/cache/f8df61b05911d279f59846ba6dcb8724/a/d/add3483cw-adidas-niiteball-white-fz5741-v1_jpg.jpg" />
-                  <img
-                    class="img-rv"
-                    src="https://www.side-step.co.za/media/catalog/product/cache/f8df61b05911d279f59846ba6dcb8724/a/d/add3483cw-adidas-niiteball-white-fz5741-v1_jpg.jpg" />
-                  <img
-                    class="img-rv"
-                    src="https://www.side-step.co.za/media/catalog/product/cache/f8df61b05911d279f59846ba6dcb8724/a/d/add3483cw-adidas-niiteball-white-fz5741-v1_jpg.jpg" />
-                </div>
-                <div class="name-date">
-                  <div class="name">
-                    <p>Linh. DTM</p>
-                  </div>
-                  <div class="date">
-                    <p>4/11/2023</p>
-                  </div>
-                </div>
-              </div>
-              <!-- img: end -->
-            </div>
-            <div class="person-review">
-              <!-- star: start -->
-              <div class="review-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon>
-                <span>5.0</span>
-              </div>
-              <!-- star: end -->
-
-              <!-- comment: start -->
-              <div class="review-text">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Cursus tristique in tellus diam, metus sit. Quis venenatis,
-                  neque arcu accumsan sollicitudin aliquet nunc. Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Eos dicta ducimus
-                  adipisci assumenda? Magnam velit repudiandae nihil, ipsum ad
-                  architecto neque est quidem, ratione ullam fuga ipsa?
-                  Officiis, ipsum maiores?
-                </p>
-                <a href="#" class="link">Xem Thêm</a>
-              </div>
-              <!-- comment: end -->
-
-              <!-- img: start -->
-              <div class="review-img">
-                <div class="img-container">
-                  <img
-                    class="img-rv"
-                    src="https://www.side-step.co.za/media/catalog/product/cache/f8df61b05911d279f59846ba6dcb8724/a/d/add3483cw-adidas-niiteball-white-fz5741-v1_jpg.jpg" />
-                  <img
-                    class="img-rv"
-                    src="https://www.side-step.co.za/media/catalog/product/cache/f8df61b05911d279f59846ba6dcb8724/a/d/add3483cw-adidas-niiteball-white-fz5741-v1_jpg.jpg" />
-                  <img
-                    class="img-rv"
-                    src="https://www.side-step.co.za/media/catalog/product/cache/f8df61b05911d279f59846ba6dcb8724/a/d/add3483cw-adidas-niiteball-white-fz5741-v1_jpg.jpg" />
-                </div>
-                <div class="name-date">
-                  <div class="name">
-                    <p>Linh. DTM</p>
-                  </div>
-                  <div class="date">
-                    <p>4/11/2023</p>
-                  </div>
-                </div>
-              </div>
-              <!-- img: end -->
-            </div>
           </div>
           <!-- PERSONAL RATING: End -->
         </div>
@@ -365,6 +203,7 @@
     </script>
 
     <script src="../../../js/homepage-shopping/product_detail.js"></script>
+    <script src="../../../js/card/card.js"></script>
 
     <!-- bootstrap -->
     <script

@@ -238,11 +238,14 @@
         <div class="right-col">
           <!-- sort-option: start -->
           <select name="sort" id="sort">
-            <option value="expensive-to-cheap">Giá thấp đến cao</option>
-            <option value="expensive-to-cheap">Giá cao đến thấp</option>
-            <option value="expensive-to-cheap">Mới đến cũ</option>
+            <option value="cheap-to-expensive" >Sắp xếp theo giá tăng dần</option>
+            <option value="expensive-to-cheap">Sắp xếp theo giá giảm dần</option>
+            <option value="latest-to-oldest">Sắp xếp theo thời gian mới nhất</option>
+            <option value="latest-to-oldest">Sắp xếp theo thời gian cũ nhất</option>
           </select>
           <!-- sort-option: end -->
+
+          <p id="myTest"></p>
 
           <!-- product-list: start -->
           <div class="product-list">
