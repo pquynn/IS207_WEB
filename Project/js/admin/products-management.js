@@ -9,6 +9,24 @@ $(document).ready(function () {
     var currentPage = 1;
     fetchData(currentPage);
 
+    // when btn-add button is clicked
+    $('.btn-add').click(function (event){
+        $('h1.modal-title').text('Thêm mới ' + namePage);
+        $('.btn-confirm').text('Thêm mới');
+
+        // Clear the data and reset the form validation in the modal
+        var modal = document.getElementById('add-new');
+        modal.querySelector('form').reset(); // Reset the form
+
+        $('#employee-username').removeClass('is-invalid'); //remove class is-invalid if the form was validated before
+        $('#employee-username').prop('disabled', false);
+        Array.from(modal.querySelectorAll('.was-validated')).forEach((element) => {
+            element.classList.remove('was-validated'); // Clear Bootstrap form validation classes
+        });
+
+        fetchCategories();
+    })
+
 
     // Event listener for the "Search" button
     $('#search').on('keyup', function () {
@@ -24,7 +42,7 @@ $(document).ready(function () {
     //delete
     //TODO: nên check điều kiên xóa ở csdl nữa
     // Event listener for the "Delete" button
-    $('.admin-table').on('click', '.btn-delete', function (e) {
+    $('.admin-table').on('click', '.btn-delete.btn-table', function (e) {
         e.preventDefault();
         // Show a confirmation dialog
         if (confirm('Xác nhận xóa ' + namePage + ' ?')) {
@@ -37,6 +55,34 @@ $(document).ready(function () {
     });
 
 });
+
+
+// Function to fetch categories from the server
+function fetchCategories() {
+    $.ajax({
+        url: '../../php/controller/admin/product-controller.php',
+        type: 'GET',
+        data: {action: 'fetch-categories'},
+        dataType: 'json',
+        success: function (data) {
+            var selectElement = $('#product-categories');
+            selectElement.empty();
+            selectElement.append(`<option value="" disabled selected hidden></option>`);
+            
+            console.log(data);
+            data.forEach(function (row) {
+                selectElement.append(
+                    `<option value="${row.category_id}">${row.category_name}</option>`
+            );});
+        },
+        error: function () {
+            console.error('Failed to fetch categories from the server.');
+        }
+    });
+}
+
+
+
 
 
 //function to fetch data in database to table
@@ -69,7 +115,7 @@ function fetchData(page){
                         <td>${row.description}</td>
                         <td class="action">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                            <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
+                            <a href="#" class="btn-delete btn-table"><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                 `);
@@ -113,21 +159,6 @@ function updatePagination(currentPage, totalPages) {
   }
 
 // insert a product
-// $.ajax({
-//     url: 'product-controller.php?action=insert',
-//     type: 'POST',
-//     data: {
-//         product_name: 'New product'
-//     },
-//     dataType: 'json',
-//     success: function (response) {
-//         // Handle the insertion response
-//     },
-//     error: function () {
-//         console.error('Failed to insert product.');
-//     }
-// });
-
 
 
 // update a product
@@ -182,7 +213,7 @@ function fetchSearchData(searchTerm, page) {
                         <td>${row.description}</td>
                         <td class="action">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                            <a href="#" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
+                            <a href="#" class="btn-delete btn-table"><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                 `);

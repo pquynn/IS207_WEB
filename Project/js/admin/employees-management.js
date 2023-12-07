@@ -20,7 +20,7 @@ $(document).ready(function () {
         modal.querySelector('form').reset(); // Reset the form
 
         $('#employee-username').removeClass('is-invalid'); //remove class is-invalid if the form was validated before
-
+        $('#employee-username').prop('disabled', false);
         Array.from(modal.querySelectorAll('.was-validated')).forEach((element) => {
             element.classList.remove('was-validated'); // Clear Bootstrap form validation classes
         });
@@ -41,41 +41,29 @@ $(document).ready(function () {
         var address =  $('#employee-address').val();
         var role =  $('#employee-role').val();
 
-        if(btn_name.localeCompare("Thêm mới") == 0){
             //insert 
-            Array.from(form).forEach(form_element => {
+        Array.from(form).forEach(form_element => {
 
-                // var isValid = /^0[0-9]{9}$/.test(temp_employee.phone);
-                if (form_element.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                else 
-                {
+            // var isValid = /^0[0-9]{9}$/.test(temp_employee.phone);
+            if (form_element.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            else 
+            {
+                if(btn_name.localeCompare("Thêm mới") === 0){
                     event.preventDefault();
                     insertemployee(username, name, phone, date_of_birth, gender, address, role);
                     event.stopPropagation();
                 }
-                form.addClass('was-validated');
-            })
-        }
-        else{
-            //update
-            Array.from(form).forEach(form_element => {
-            
-                if (form_element.checkValidity() === false) {
+                else{
+                    event.preventDefault();
+                    updateemployee(username, name, phone, date_of_birth, gender, address, role);
                     event.stopPropagation();
-                    $('.invalid-feedback.username').text('Yêu cầu nhập tên đăng nhập!');
-                    $('.invalid-feedback.name').text('Yêu cầu nhập tên nhân viên!');
-                    $('.invalid-feedback.phone').text('Yêu cầu nhập số điện thoại!');
-                    $('.invalid-feedback.role').text('Yêu cầu chọn vai trò!');
-                } 
-                else 
-                    updateemployee(temp_employee);
-        
-                form.addClass('was-validated');
-            })
-        }
+                }
+            }
+            form.addClass('was-validated');
+        })
     });
 
     //delete
@@ -102,36 +90,37 @@ $(document).ready(function () {
         // Get the closest row to the clicked button
         closest_row = $(this).closest('tr');
         // Get the datas from the row
-        tbl_id = closest_row.find('td:first').text();
-        tbl_login = closest_row.find('td:eq(1)').text();
-        tbl_phone = closest_row.find('td:eq(2)').text();
-        tbl_name = closest_row.find('td:eq(3)').text();
-        tbl_birthday = closest_row.find('td:eq(4)').text();
-        tbl_gender = closest_row.find('td:eq(5)').text();
-        tbl_address = closest_row.find('td:eq(6)').text();
-        tbl_role_name = closest_row.find('td:eq(8)').text();
+        tbl_id = $.trim(closest_row.find('td:first').text());
+        tbl_login = $.trim(closest_row.find('td:eq(1)').text());
+        tbl_phone = $.trim(closest_row.find('td:eq(2)').text());
+        tbl_name = $.trim(closest_row.find('td:eq(3)').text());
+        tbl_birthday = $.trim(closest_row.find('td:eq(4)').text());
+        tbl_gender = $.trim(closest_row.find('td:eq(5)').text());
+        tbl_address = $.trim(closest_row.find('td:eq(6)').text());
+        tbl_role_name = $.trim(closest_row.find('td:eq(8)').text());
 
         // Remove the is-invalid class in form-controls
         var modal = document.getElementById('add-new');
         Array.from(modal.querySelectorAll('.is-invalid')).forEach((element) => {
             element.classList.remove('is-invalid'); // Clear Bootstrap form validation classes
-            element.classList.remove('was-validated');
         });
-        
+        $('#modal-form').removeClass('was-validated');
+
         //fetch data from admin-table into modal
         $('#employee-username').val(tbl_login);
+        $('#employee-username').prop('disabled', true);
         $('#employee-name').val(tbl_name);
         $('#employee-phone').val(tbl_phone);
         $('#employee-date-of-birth').val(tbl_birthday);
-        console.log(tbl_gender);
-        // $('#employee-gender').val(tbl_gender);
+        $('#employee-address').val(tbl_address);
+
         $("select#employee-gender option").filter(function() {
-            //may want to use $.trim in here
-            return $(this).text() == $.trim(tbl_gender);
+            return $(this).text() == tbl_gender;
           }).prop('selected', true);
 
-        $('#employee-address').val(tbl_address);
-        // $('#employee-role').val(tbl_role_name); //todo: set ten vai tro
+        $("select#employee-role option").filter(function() {
+            return $(this).text() == tbl_role_name;
+          }).prop('selected', true);
 
         // Populate the modal form with the fetched employee_name
         $('h1.modal-title').text('Thông tin ' + namePage);
@@ -253,9 +242,7 @@ function insertemployee(username, name, phone, birthday, gender, address, role) 
         data: {username : username, name : name, phone : phone, gender : gender, address : address, birthday : birthday, role : role},
         dataType: 'json',
         success: function (result) {
-            console.log(result);
             if (result.result === true) {
-                console.log('aaa');
                 //TODO: THÔNG BÁO THÊM THÀNH CÔNG
                 $('#add-new').modal('hide');
 
@@ -263,7 +250,6 @@ function insertemployee(username, name, phone, birthday, gender, address, role) 
                 fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
             } 
             else {
-                console.log('bbb');
                 // employee name exists, show an error message
                 $('#employee-username').addClass('is-invalid');//TODO: border-color of form-control is not change into red
                 $('#modal-form').addClass('was-validated');
@@ -276,42 +262,25 @@ function insertemployee(username, name, phone, birthday, gender, address, role) 
 }
 
 // function to update a employee
-function updateemployee(employee){
-    // check if the new employee name is the old employee name
-    if(employeeName.localeCompare(tbl_employee_name) != 0){ //TODO: có nên so sánh các giá trị
-        // Check if the employee name already exists
-        $.ajax({
-            url: '../../php/controller/admin/employee-controller.php?action=update',
-            type: 'GET',
-            data: { employee: employee},
-            dataType: 'json',
-            success: function (result) {
-                if (result == true) {
-                    //TODO: THÔNG BÁO cập nhật THÀNH CÔNG
-                    // employee inserted successfully, close the modal and perform any other necessary actions
-                    $('#add-new').modal('hide');
-        
-                    var current_page = parseInt($('.pagination a.active').data('page'));
-                    fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
-                } 
-                else {
-                    // employee name exists, show an error message
-                    $('#employee-name').addClass('is-invalid');//TODO: border-color of form-control is not change into red
-                    $('.invalid-feedback').html( 'Nhân viên đã có trong hệ thống!');
-                    $('#modal-form').addClass('was-validated');
-                }
-                },
-                error: function () {
-                    console.error('Failed to insert employee.');
-                }
-        });
-    }
-    else{
-        //TODO: THÔNG BÁO cập nhật THÀNH CÔNG
-        // employee inserted successfully, close the modal and perform any other necessary actions
-        // Clear the data and reset the form validation in the modal
-        $('#add-new').modal('hide');
-    }
+function updateemployee(username, name, phone, birthday, gender, address, role){
+    // if(employeeName.localeCompare(tbl_employee_name) != 0){ //TODO: có nên so sánh các giá trị
+    $.ajax({
+        url: '../../php/controller/admin/employee-controller.php?action=update',
+        type: 'GET',
+        data: {id: tbl_id, username: username, name : name, phone : phone, gender : gender, address : address, birthday : birthday, role : role},
+        dataType: 'json',
+        success: function (result) {
+            //TODO: THÔNG BÁO cập nhật THÀNH CÔNG
+            // employee inserted successfully, close the modal and perform any other necessary actions
+            $('#add-new').modal('hide');
+
+            var current_page = parseInt($('.pagination a.active').data('page'));
+            fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
+        },
+        error: function () {
+            console.error('Failed to insert employee.');
+        }
+    });
 }
 
 // Function to delete employee by employee_id
@@ -373,30 +342,6 @@ function fetchSearchData(searchTerm, page) {
     });
 }
 
-
-
-
-// // Function to fetch roles from the server
-// function fetchRoles() {
-//     $.ajax({
-//         url: '../../php/controller/admin/employee-controller.php?action=fetch-roles',
-//         type: 'GET',
-//         dataType: 'json',
-//         success: function (data) {
-//             var selectElement = $('#employee-role');
-//             selectElement.empty();
-//             selectElement.append(`<option value="" disabled selected hidden>Chọn vai trò</option>`);
-
-//             data.forEach(function (row) {
-//                 selectElement.append(
-//                     `<option value="${row.role_id}">${row.role_name}</option>`
-//             );});
-//         },
-//         error: function () {
-//             console.error('Failed to fetch roles from the server.');
-//         }
-//     });
-// }
 
 // // Handle "Save Changes" button click
 // // $('#saveChanges').on('click', function () {

@@ -61,24 +61,6 @@ function fetchEmployees() {
         return $response;
 }
 
-//FETCH ROLE TABLE
-// function fetchRoles(){
-//     global $conn;
-
-//     $sql = "SELECT role_id, role_name FROM role";
-//     $result = $conn->query($sql);
-
-//     $data = [];
-
-//     if ($result->num_rows > 0) {
-//         while ($row = $result->fetch_assoc()) {
-//             $data[] = $row;
-//         }
-//     }
-
-//     return $data;
-// }
-
 
 //INSERT 
 function insertEmployee() {
@@ -102,7 +84,6 @@ function insertEmployee() {
         } 
         else {
             //TODO: CHECK LẠI NHỮNG CÁI NGƯỜI DÙNG NHẬP VÀO VÀ NGĂN CHẶN SQL INJECTION
-            //todo csdl phải thêm trigger tạo day_add tự động
             $sql1 = "INSERT INTO login (user_login, user_password, role_id)
                     VALUES ('$username', '$password', '$role')";
             $result1 = $conn->query($sql1);
@@ -126,8 +107,6 @@ function insertEmployee() {
     else
         return (['result' => false, 'message' => 'Thêm không thành công']);
 }
-
-
             // $sql1 = "INSERT INTO login (user_login, user_password role_id)
             //         VALUES (
             //             '" . mysqli_real_escape_string($conn, $employee['username']) . "',
@@ -201,21 +180,39 @@ function updateEmployee() {
     global $conn;
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $categoryName = $_GET['category_name'];
-        $categoryId = $_GET['category_id'];
 
-        $exist = checkCategory($categoryName);
-        if($exist){
-            return false;
-        }
-        else{
-            $sql = "UPDATE category SET category_name = '$categoryName' WHERE category_id = '$categoryId'";
+        $id = ($_GET['id']);
+        $username = ($_GET['username']);
+        $name = ($_GET['name']);
+        $phone = ($_GET['phone']);
+        $birthday = ($_GET['birthday']);
+        $gender = ($_GET['gender']);
+        $address = ($_GET['address']);
+        $role = ($_GET['role']);
+
+        //TODO: CHECK LẠI NHỮNG CÁI NGƯỜI DÙNG NHẬP VÀO VÀ NGĂN CHẶN SQL INJECTION
+        $sql = "UPDATE users 
+                SET user_name = '$name', user_telephone = '$phone', birthday = '$birthday',
+                gender = '$gender', addresss = '$address'
+                WHERE user_id = '$id'";
+        $result = $conn->query($sql);
+            
+        if($result){
+            $sql = "UPDATE login 
+                SET role_id = '$role'
+                WHERE user_login = '$username'";
             $result = $conn->query($sql);
-            return $result;
-        }
+
+            if($result)
+                return ['result' => true, 'message' => 'Thêm thành công'];
+            else
+                return (['result' => true, 'message' => 'Thêm không thành công']); 
+        } 
+        else
+            return (['result' => true, 'message' => 'Thêm không thành công']); 
     }
     else
-        return false;
+        return (['result' => false, 'message' => 'Thêm không thành công']);
 }
 
 //DELETE

@@ -78,3 +78,6 @@ th, td{
     padding: 7px !important;
 }
 
+table.product-size-table th{
+    font-weight: normal !important;
+}

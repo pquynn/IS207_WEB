@@ -158,6 +158,23 @@ function searchProducts() {
     }
 }
 
+//FETCH category TABLE
+function fetchCategories(){
+    global $conn;
+
+    $sql = "SELECT category_id, category_name FROM category";
+    $result = $conn->query($sql);
+
+    $data = [];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+    }
+
+    return $data;
+}
 
 // Check the action parameter in the request
 if (isset($_GET['action'])) {
@@ -180,6 +197,9 @@ if (isset($_GET['action'])) {
             break;
         case 'search':
             echo json_encode(searchProducts());
+            break;
+        case 'fetch-categories':
+            echo json_encode(fetchCategories());
             break;
         default:
             echo json_encode(['success' => false, 'message' => 'Invalid action']);

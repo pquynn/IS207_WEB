@@ -30,7 +30,7 @@
 
                     <div class="">
                         <label for="employee-phone" class="form-label">Điện thoại*</label>
-                        <input type="text" id="employee-phone" class="form-control" required pattern="^0[0-9]{9}$">
+                        <input type="tel" id="employee-phone" class="form-control" required pattern="^0[0-9]{9}$">
                         <div class="invalid-feedback phone">
                             Yêu cầu nhập điện thoại có 10 số và bắt đầu = 0.
                         </div>

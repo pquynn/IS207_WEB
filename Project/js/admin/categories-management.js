@@ -100,26 +100,6 @@ $(document).ready(function () {
         $('h1.modal-title').text('Thông tin ' + namePage);
         $('.btn-confirm').text('Thay đổi');
 
-        
-
-        // Fetch the current category_name for the selected category_id
-        // $.ajax({
-        //     url: 'get_category.php',
-        //     type: 'POST',
-        //     data: { category_id: category_id },
-        //     dataType: 'json',
-        //     success: function (response) {
-        //         // Populate the modal form with the fetched category_name
-        //         $('#category-name').val(response.category_name);
-
-        //         // Show the modal
-        //         $('#add-new').modal('show');
-        //     },
-        //     error: function () {
-        //         console.error('Failed to fetch category data.');
-        //     }
-        // });
-
     });
 
     // Event listener for the "Search" button
@@ -233,9 +213,6 @@ function insertCategory(categoryName) {
 // function to update a category
 function updateCategory(categoryName){
     // check if the new category name is the old category name
-    console.log(categoryName);
-    console.log(tbl_category_name);
-    console.log(categoryName.localeCompare(tbl_category_name));
     if(categoryName.localeCompare(tbl_category_name) != 0){
         // Check if the category name already exists
         $.ajax({
