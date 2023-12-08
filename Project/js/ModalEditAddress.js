@@ -12,7 +12,7 @@ function savechange() {
     xhr.send(data);
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'php/save_changes.php', true);
+    xhr.open('POST', '../../php/save_changes.php', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
