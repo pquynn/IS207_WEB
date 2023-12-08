@@ -4,7 +4,7 @@ function savechange() {
 
     
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "change_password.php", true);
+    xhr.open("POST", "../../php/ModalEditPass.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("oldPassword=" + oldPassword + "&newPassword=" + newPassword);
     xhr.onreadystatechange = function () {
