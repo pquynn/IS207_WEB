@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $resetLink = "#" . $phoneNumber;
         // Đang phát triển gửi tin nhắn đến sđt
         // Chuyển hướng đến trang thông báo
-        header("Location: Forgetpass2.html");
+        header("Location: ../../html/Forgetpass2.html");
         exit();
     } else {
         // Số điện thoại không tồn tại
