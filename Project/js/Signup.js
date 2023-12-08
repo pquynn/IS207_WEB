@@ -20,7 +20,7 @@ function signup() {
 
     // Gửi dữ liệu đăng ký lên server 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'php/signup.php', true);
+    xhr.open('POST', '../../php/signup.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     
     
