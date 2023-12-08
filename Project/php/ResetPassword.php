@@ -10,8 +10,8 @@ $phoneNumber = $_GET["phone"];
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Forgetpass.css">
-    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="../../css/Forgetpass.css">
+    <link rel="stylesheet" href="../../css/base.css">
 </head>
 <body>
     <form action="ResetPassword.php" method="post">
