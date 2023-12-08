@@ -6,7 +6,7 @@ function savechange() {
 
     
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "php/save_changes.php", true);
+    xhr.open("POST", "../../php/ModalEditDetail.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send(data);
     // Gửi dữ liệu 
