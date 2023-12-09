@@ -16,14 +16,43 @@ body{
     padding: 30px;
 }
 
-/**/
+/*date*/
 .date-orders {
     margin: 10px;
-    margin-left: 1000px
+    margin-left: 0px;
+}
+
+.input-date-range input[type="text"] {
+    border: 0.5px solid #dddd;
+    border-radius: 6px;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-left: 3px;
+    width: 120px;
+    height: 30px;
+}
+
+.input-date-range input[type="button"] {
+    border: 0.5px solid #000;
+    background-color: #ffff;
+    border-radius: 4px;
+    width: 50px;
+    height: 25px;
+}
+.input-date-range input[type="button"]:hover {
+    background-color: #dddd;
+}
+
+.ui-datepicker {
+    width: 350px !important;
+}
+.ui-datepicker-calendar{
+    min-width: 100px !important;
 }
 
 /*dropdown status*/
-.choose-status{
+#choose-status{
     margin: 10px;
     margin-left: 1000px;
     background-color: #e4e4e4;
@@ -33,9 +62,9 @@ body{
     text-align: center;
     cursor: pointer;
     transition: transform 0.5s ease-out;
-    position: relative; 
+    position: relative;
 }
-.list-status {
+/*.list-status {
     display: none;
     position: absolute;
     left: 0;
@@ -53,7 +82,7 @@ body{
 
 .choose-status:hover .list-status {
     display: block;
-}
+}*/
 
 
 /*Search box*/
