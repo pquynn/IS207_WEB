@@ -17,12 +17,13 @@
       </ul>
 
       <div class="title-order-detail">
-          <h2>Chi tiết đơn hàng #A123            
-          <span id="order-status">Giao hàng thành công</span>
+          <h2>Chi tiết đơn hàng #
+            <span id="orderId"></span>
+            <span class="order-status"></span>           
           </h2>
           <!-- TODO: order status??? -->
           <p id="date-create-order">
-            Ngày tạo: dd/mm/yyyy
+            Ngày tạo:
           </p>
       </div>
 
@@ -32,8 +33,8 @@
               
           <ul class="info">
             <li class="header-info">Thông tin người nhận</li>
-            <li>Họ tên: </li>
-            <li>SĐT: </li> 
+            <li id="cus-name">Họ tên: </li>
+            <li id="cus-tel">SĐT: </li> 
           </ul>
         </li>
       
@@ -42,7 +43,7 @@
               
           <ul class="info">
             <li class="header-info">Địa chỉ người nhận</li>
-            <li> 123 ABC</li>
+            <li id="cus-add"></li>
           </ul>
         </li>
 
@@ -50,46 +51,39 @@
             <i class="fa-solid fa-credit-card icon-info"></i>
                 <ul class="info">
                     <li class="header-info">Phương thức thanh toán</li>
-                    <li>Momo: 09123456789</li>
-                    <li>Tên: </li>
+                    <li id="cus-pay"></li>
                 </ul>
             </li>
       </ul>
       
       <table class="store-table">
-        <tr>
-          <th>Mã sản phẩm</th>
-          <th>Kích thước</th>
-          <th>Tên sản phẩm</th>
-          <th>Hình ảnh</th>
-          <th>Số lượng</th>
-          <th>Tổng tiền</th>
-        </tr>
-
-        <tr>
-          <td>SS001</td>
-          <td>38</td>
-          <td>Product name</td>
-          <td>xem hình ảnh</td>
-          <td>1</td>
-          <td>$9999</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Mã sản phẩm</th>
+            <th>Kích thước</th>
+            <th>Tên sản phẩm</th>
+            <th>Hình ảnh</th>
+            <th>Số lượng</th>
+            <th>Tổng tiền</th>
+          </tr>
+        </thead>
+        <tbody class="tbody-product"></tbody>
       </table>
 
       <table class="order-cost">
         <tr>
           <td>Tổng tiền sản phẩm</td>
-          <td class="cost order">$9999</td>
+          <td class="cost order"></td>
         </tr>
         
         <tr>
           <td>Khuyến mãi</td>
-          <td class="cost promotion">$9999</td>
+          <td class="cost promotion"></td>
         </tr>
 
         <tr class="total-cost">
           <td>Tổng tiền thanh toán</td>
-          <td class="cost total">$9999</td>
+          <td class="cost total"></td>
         </tr>
       </table>
 

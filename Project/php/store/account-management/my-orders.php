@@ -19,8 +19,7 @@
       <h2>Danh sách đơn hàng của tôi</h2>
       <!--search bar-->
       <div class="search-bar">
-        <input type="text" name="" placeholder="Tìm kiếm đơn hàng..." class="search-field">
-        <a href="#" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <input type="text" name="" placeholder="Nhập mã đơn hàng" class="search-field" id="search">
       </div>
       <!--          -->
 
@@ -28,6 +27,7 @@
       <!--Table list orders--start-->
       <div class="store-table">
         <table>
+          <thead>
           <tr>  
               <th>Mã đơn hàng</th>
               <th>Ngày hóa đơn</th>   
@@ -39,62 +39,22 @@
               <th>Tổng sản phẩm</th>   
               <th>Tổng tiền</th> 
           </tr>
+          </thead>
 
-          <tr>
-              <td><a href="./my-order-detail.php" class="link-to-detail">A123</a></td>
-              <td>dd/mm/yyyy</td>   
-              <td>0912345678</td>   
-              <td>ABC DEF GHIJK</td>                  
-              <td>123 ABCD</td>
-              <td>Momo</td>               
-              <td>Giao hàng thành công</td>
-              <td>3</td>                 
-              <td>$9999</td>  
-          </tr>
-          <tr>
-              <td><a href="./my-order-detail.php" class="link-to-detail">A123</a></td>
-              <td>dd/mm/yyyy</td>   
-              <td>0912345678</td>   
-              <td>ABC DEF GHIJK</td>                  
-              <td>123 ABCD</td>
-              <td>Momo</td>               
-              <td>Giao hàng thành công</td>
-              <td>3</td>                 
-              <td>$9999</td>   
-          </tr>
-          <tr>
-              <td><a href="./my-order-detail.php" class="link-to-detail">A123</a></td>
-              <td>dd/mm/yyyy</td>   
-              <td>0912345678</td>   
-              <td>ABC DEF GHIJK</td>                  
-              <td>123 ABCD</td>
-              <td>Momo</td>               
-              <td>Giao hàng thành công</td>
-              <td>3</td>                 
-              <td>$9999</td>   
-          </tr>
-
+          <tbody></tbody>
         </table>
       </div>
       <!--Table list orders--end-->
     
       <!--pagination--start-->
       <div class="pagination"  id="pagination-my-orders">
-        <a href="#">&laquo;</a>
-        <a class="active" href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <span class="ellipsis">...</span>
-        <a href="#">10</a>
-        <a href="#">&raquo;</a>
       </div>
       <!--pagiantion--end-->
     </div>
   <!--LIST-ORDERS END-->
 </div>
 <!--MAIN SECTION END-->
-
+<script src="../../../js/my-order/my-order-management"></script>
 <?php
     include("../header-footer-nav/footer.php");
 ?>
