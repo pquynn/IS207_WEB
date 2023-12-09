@@ -25,33 +25,46 @@
 /*customer infomation*/
 /***header*/
 .order-status {
-    background-color: #37cd70;
     color: #ffff;
     font-size: 15px;
     padding: 10px;
     margin: 10px;
     border-radius: 8px;
+    margin-right: 0px;
+}
+.order-status.success {
+    background-color: #37cd70;
+}
+
+.order-status.pending {
+    background-color: #FFC416;
+}
+
+.order-status.cancel {
+    background-color: #FF0000;
 }
 
 /***date*/
 .date-order {
     font-size: 18px;
-    margin-top: 15px;
+    margin-top: 20px;
     margin-left: 0px;
+    margin-bottom: 20px;
 }
 
-/***box-change_status-print-save*/
-.box-change_status-print-save {
-    margin-left: 869px;
+/***box-change_status-print-save
+.box-change_status-print {
+    margin-left: 900px;
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
-}
+}*/
 
 /***change status*/
 .change-status{
     margin: 10px;
-    margin-left: 0px;
+    margin-left: 950px;
+    margin-bottom: 20px;
     background-color: #F4F2F2;
     border-radius: 8px;
     width: 200px;
@@ -153,8 +166,8 @@
 .order-cost{
     min-width: 50px !important;
     margin-top: 20px;
-    width: 300px;
-    margin-left: 880px;
+    width: 400px;
+    margin-left: 800px;
 }
 .order-cost td, tr{
     border: none !important;
