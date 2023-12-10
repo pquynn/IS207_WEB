@@ -71,10 +71,10 @@
 
                             <div class="">
                                 <label for="product-images" class="form-label">Hình ảnh</label>
-                                <input type="file" id="product-images" class="form-control" required multiple>
+                                <input type="file" id="product-images" class="form-control" required multiple accept="image/*">
                                 <div class="image-box"></div>
                                 <div class="invalid-feedback image">
-                                    Yêu cầu chọn 3 hình ảnh cho sản phẩm.
+                                    Yêu cầu chọn 3 file ảnh cho sản phẩm <br> File phải có đuôi .png, .jpg hoặc .jpeg
                                 </div>
                             </div>
                             

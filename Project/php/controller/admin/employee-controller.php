@@ -171,7 +171,6 @@ function checkExist($username) {
     $result = $conn->query($sql);
 
     $row = $result->fetch_assoc();
-    // echo 'login find '. $row['count'];
     return  $row['count'] > 0;
 }
 

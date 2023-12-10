@@ -26,6 +26,9 @@ $(document).ready(function () {
             element.classList.remove('was-validated'); // Clear Bootstrap form validation classes
         });
 
+        // Add the 'required' attribute
+        $('#product-images').attr('required', 'required');
+
         // reset the size input into 1 row
         counter = 1;
         var tbody = $(".product-size-table tbody");
@@ -45,6 +48,8 @@ $(document).ready(function () {
                         <option value="41">41</option>
                         <option value="42">42</option>
                         <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="45">45</option>
                     </select>
                     <div class="invalid-feedback">
                         Yêu cầu chọn kích thuớc (Mỗi kích thước được chọn 1 lần).
@@ -75,6 +80,7 @@ $(document).ready(function () {
 
     // Event listener for the "Edit" button
     $('.admin-table').on('click', '.btn-edit',function (e) {
+        formData = new FormData();
         // e.preventDefault();
         
         // Get the closest row to the clicked button
@@ -96,12 +102,13 @@ $(document).ready(function () {
             element.classList.remove('is-invalid'); // Clear Bootstrap form validation classes
         });
         $('#modal-form').removeClass('was-validated');
+        // Remove the 'required' attribute
+        $('#product-images').removeAttr('required');
 
         //TODO:LOAD TỪ CSDL: ẢNH, CATEGORY, SIZE - QUANTITY
 
         // reset image form-control
         fetchImages(tbl_id);
-
         fetchVariants(tbl_id);
         fetchCategories(tbl_category_name);
 
@@ -149,6 +156,8 @@ $(document).ready(function () {
                                 <option value="41">41</option>
                                 <option value="42">42</option>
                                 <option value="43">43</option>
+                                <option value="44">44</option>
+                                <option value="45">45</option>
                             </select>
                             <div class="invalid-feedback">
                                 Yêu cầu chọn kích thuớc (Mỗi kích thước được chọn 1 lần).
@@ -168,9 +177,6 @@ $(document).ready(function () {
                 // Append the new row HTML to the tbody
                 tbody.append(newRowHtml);
 
-                // Optional: If you want to handle events or validations for the new row
-                // You can add additional code here
-
             } else {
                 // Optional: Show an alert or perform some action if the limit is reached
                 alert('You have reached the maximum limit of rows.');
@@ -181,21 +187,10 @@ $(document).ready(function () {
     // event listener for the 'delete-size' button in table
     $(".product-size-table").on("click", ".delete-size", function (e) {
         e.preventDefault();
-        if(btn_name.localeCompare("Thay đổi") === 0){
             // Show a confirmation dialog
             if (confirm('Xác nhận xóa kích thước?')) {
-                // Get the employee_id from the first column of the row
-                // closest_row = $(this).closest('tr');
-                // tbl_id = closest_row.find('td:first').text();
-                //TODO: khi xóa thì push giá trị vào 1 mảng del_size để nếu lưu thay đổi thì gửi mảng về server để xóa
-                
-                // deleteProduct(tbl_id, closest_row);
-                closest_row.remove();
+                $(this).closest('tr').remove();
             }
-        }
-        else
-            $(this).closest("tr").remove();
-        
     });
     
 
@@ -229,6 +224,8 @@ $(document).ready(function () {
 
     // khi thêm file vào input
     $('#product-images').on('change', function () {
+        // Add the 'required' attribute
+        $('#product-images').attr('required', 'required');
         var fileInput = $(this);
         var imageBox = $('.image-box');
         var invalidFeedback = $('.invalid-feedback.image');
@@ -246,6 +243,23 @@ $(document).ready(function () {
             return;
         } else {
             has_3_images = true;
+            
+            //check file types
+            var files = fileInput[0].files;
+            
+            for (var i = 0; i < 3; i++) {
+                var fileName = files[i].name;
+                var idxDot = fileName.lastIndexOf(".") + 1;
+                var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+                
+                if (extFile !== "jpg" && extFile !== "jpeg" && extFile !== "png"){
+                    fileInput.value = ''; // Clear the file input
+                    fileInput.addClass('is-invalid');
+                    invalidFeedback.show();
+                    return;
+                }
+            }
+
             fileInput.removeClass('is-invalid');
             invalidFeedback.hide();
 
@@ -256,6 +270,7 @@ $(document).ready(function () {
                 var file = fileInput[0].files[i];
                 var reader = new FileReader();
                 formData.append('product-images[]', file);
+                
     
                 // Closure to capture the file information.
                 reader.onload = (function (theFile) {
@@ -263,7 +278,7 @@ $(document).ready(function () {
                         // Create an <img> element and set its source
                         var img = $('<img>')
                             .attr('src', e.target.result)
-                            .attr('width', '100px')
+                            .attr('max-width', '100px')
                             .attr('height', '110px')
                             .css('object-fit', 'contain');
     
@@ -275,33 +290,6 @@ $(document).ready(function () {
                 // Read in the image file as a data URL.
                 reader.readAsDataURL(file);
             }
-
-            // // var fd = new FormData();
-            var name = $('#product-name').val();
-            formData.append('product-name', name);
-            // // fd.append()
-            
-            // $.ajax({
-            //     url: '../../php/controller/admin/update-images.php',
-            //     type: 'POST',
-            //     data: formData,
-            //     contentType: false,
-            //     processData: false,
-            //     success: function (result) {
-            //         console.log(result);
-            //         if (result.result === true) {
-            //             //TODO: THÔNG BÁO THÊM THÀNH CÔNG
-            //             // $('#add-new').modal('hide');
-        
-            //             // var current_page = parseInt($('.pagination a.active').data('page'));
-            //             // fetchData(current_page);
-            //         }
-            //     },
-            //     error: function (error) {
-            //         console.error('Error uploading files: ', error);
-            //     }
-            // });
-
         }
         
     });
@@ -321,9 +309,7 @@ $(document).ready(function () {
         var product_variants = []; //store sizes and quantity of each size
         var isDuplicate = false; // check if there are more than 1 size has the same value
 
-        var action = "insert-images";
         formData.append('name', name);
-        formData.append('action', action);
 
         //function to push size, quantity from sizes and quantities into product_variants array
         $('.product-size-table tbody tr').each(function(index, row) {
@@ -362,14 +348,26 @@ $(document).ready(function () {
             else 
             {
                 if(btn_name.localeCompare("Thêm mới") === 0){
+                    var action = "insert-images";
+                    formData.append('action', action);
+
                     event.preventDefault();
                     insertProduct(name, price, category_id, color, gender, description, product_variants);
-                    event.stopPropagation();
+                    // event.stopPropagation();
                 }
                 else{
+                    var update_images = false;
+
+                    var files = $('#product-images')[0].files;
+                    if (files.length > 0) {
+                        update_images = true;
+                            
+                        var action = "update-images";
+                        formData.append('action', action);
+                    } 
                     event.preventDefault();
-                    // updateProduct(username, name, phone, date_of_birth, gender, address, role);
-                    event.stopPropagation();
+                    updateProduct(update_images, tbl_id, name, price, category_id, color, gender, description, product_variants);
+                    // event.stopPropagation();
                 }
             }
             form.addClass('was-validated');
@@ -473,6 +471,8 @@ function fetchVariants(product_id) {
                             <option value="41">41</option>
                             <option value="42">42</option>
                             <option value="43">43</option>
+                            <option value="44">44</option>
+                            <option value="45">45</option>
                         </select>
                         <div class="invalid-feedback">
                             Yêu cầu chọn kích thuớc (Mỗi kích thước được chọn 1 lần).
@@ -595,10 +595,10 @@ function insertProduct (name, price, category_id, color, gender, description, pr
         success: function (result) {
             if (result.result === true) {
                 insertImages();
-                
+
                 //TODO: THÔNG BÁO THÊM THÀNH CÔNG
                 $('#add-new').modal('hide');
-
+                
                 var current_page = parseInt($('.pagination a.active').data('page'));
                 fetchData(current_page);
             }
@@ -622,9 +622,7 @@ function insertImages () {
         data: formData,
         contentType: false,
         processData: false,
-        success: function (result) {
-            if (result.result === true) {
-            }
+        success: function () {
         },
         error: function (error) {
             console.error('Error uploading files: ', error);
@@ -634,12 +632,13 @@ function insertImages () {
 
 
 // update a product
-function updateProduct (name, price, category_id, color, gender, description, product_variants) {
+function updateProduct (update_images, id, name, price, category_id, color, gender, description, product_variants) {
     $.ajax({
         url: '../../php/controller/admin/product-controller.php',
         type: 'POST',
         data: {
             action: 'update',
+            id: id,
             name: name,
             price: price,
             category_id: category_id,
@@ -651,7 +650,20 @@ function updateProduct (name, price, category_id, color, gender, description, pr
         dataType: 'json',
         success: function (result) {
             if (result.result === true) {
-                updateImages();
+                if(update_images){
+                    updateImages();
+                    //TODO: THÔNG BÁO THÊM THÀNH CÔNG
+                    $('#add-new').modal('hide');
+                    var current_page = parseInt($('.pagination a.active').data('page'));
+                    fetchData(current_page);
+                }
+                else
+                {
+                    $('#add-new').modal('hide');
+                    //TODO: THÔNG BÁO THÊM THÀNH CÔNG
+                    var current_page = parseInt($('.pagination a.active').data('page'));
+                    fetchData(current_page);
+                }
             }
             else{
                 $('#product-name').addClass('is-invalid');
@@ -667,18 +679,13 @@ function updateProduct (name, price, category_id, color, gender, description, pr
 
 function updateImages () {
     $.ajax({
-        url: '../../php/admin/test-controller.php',
+        url: '../../php/controller/admin/product-controller.php',
         type: 'POST',
         data: formData,
         contentType: false,
         processData: false,
         success: function (result) {
             if (result.result === true) {
-                //TODO: THÔNG BÁO THÊM THÀNH CÔNG
-                $('#add-new').modal('hide');
-
-                var current_page = parseInt($('.pagination a.active').data('page'));
-                fetchData(current_page);
             }
         },
         error: function (error) {

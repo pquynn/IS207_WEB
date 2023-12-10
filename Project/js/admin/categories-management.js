@@ -194,8 +194,11 @@ function insertCategory(categoryName) {
             // Category inserted successfully, close the modal and perform any other necessary actions
             $('#add-new').modal('hide');
 
+
             var current_page = parseInt($('.pagination a.active').data('page'));
             fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
+            
+            // Show Bootstrap Toast
         } 
         else {
             // Category name exists, show an error message
@@ -209,6 +212,7 @@ function insertCategory(categoryName) {
         }
     });
 }
+
 
 // function to update a category
 function updateCategory(categoryName){
