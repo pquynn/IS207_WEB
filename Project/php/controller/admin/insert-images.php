@@ -1,9 +1,9 @@
 <?php
-include '../controller/connect.php';
-global $conn;
+include '../connect.php';
+global $conn; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if(isset($_FILES['product-images'])){
+    if(isset($_POST['product-name']) && isset($_FILES['product-images'])&& isset($_POST['action'])){
     $first_pic = $_FILES['product-images']['tmp_name'][0];
     $second_pic = $_FILES['product-images']['tmp_name'][1];
     $third_pic = $_FILES['product-images']['tmp_name'][2];
@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $first_pic_blob = file_get_contents($first_pic);
     $second_pic_blob = file_get_contents($second_pic);
     $third_pic_blob = file_get_contents($third_pic);
-
+  
     $sql = "SELECT product_id FROM products ORDER BY product_id desc LIMIT 1";
     $result = $conn->query($sql);
 
@@ -34,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     else
     echo json_encode (['result' => false, 'message' => 'Không tìm thấy product_id']);
+   
+    // echo json_encode (['result' => true, 'message' => $action]);
 
     }
     else echo json_encode(['result' => false, 'message' => 'Không tìm thấy files']);
@@ -43,3 +45,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
+
+

@@ -134,6 +134,46 @@ function insertProduct() {
 }
 
 
+function insertImages(){
+    global $conn; 
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name = ($_POST['name']);
+
+        $first_pic = $_FILES['product-images']['tmp_name'][0];
+        $second_pic = $_FILES['product-images']['tmp_name'][1];
+        $third_pic = $_FILES['product-images']['tmp_name'][2];
+
+        $first_pic_blob = file_get_contents($first_pic);
+        $second_pic_blob = file_get_contents($second_pic);
+        $third_pic_blob = file_get_contents($third_pic);
+
+        $sql = "SELECT product_id FROM products WHERE product_name like '$name' LIMIT 1";
+        $result = $conn->query($sql);
+
+        if ($result) {
+            $row = $result->fetch_assoc();
+            $id = (int) $row['product_id'];
+
+            $sql = "INSERT INTO product_pictures (product_id, first_picture, second_picture, third_picture)
+            VALUES (?, ?, ?, ?)";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('isss', $id, $first_pic_blob, $second_pic_blob, $third_pic_blob);
+
+            if ($stmt->execute()) 
+                return (['result' => true, 'message' => 'Thêm product_pictures thành công']);
+            else  
+                return (['result' => false, 'message' => 'Thêm product_pictures không thành công']);
+        }
+        else
+        return (['result' => false, 'message' => 'Không tìm thấy product_id']);
+    }
+    else 
+        return(['result' => false, 'message' => 'Thêm không thành công. Không lấy được giá trị']);
+}
+
+
 //INSERT 
 function updateProduct() {
     global $conn;
@@ -300,6 +340,9 @@ if (isset($_POST['action'])) {
             break;
         case 'insert':
             echo json_encode(insertProduct());
+            break;
+        case 'insert-images':
+            echo json_encode(insertImages());
             break;
         case 'delete':
             echo json_encode(deleteProduct());

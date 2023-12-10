@@ -17,7 +17,7 @@
                         <div class="col-6">
                             <div class="">
                                 <label for="product-name" class="form-label">Tên giày</label>
-                                <input type="text" id="product-name" class="form-control" required>
+                                <input type="text" name="product-name" id="product-name" class="form-control" required>
                                 <div class="invalid-feedback">
                                     Yêu cầu nhập tên giày (Không được trùng với tên đã có).
                                 </div>

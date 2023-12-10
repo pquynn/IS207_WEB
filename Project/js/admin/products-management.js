@@ -1,6 +1,6 @@
 var tbl_id, tbl_price, tbl_name, tbl_category_name, tbl_color, tbl_description,
 sizes, quantities, imageURLs, gender;
-var formData = new FormData();
+var formData;
 var has_3_images, counter;
 var closest_row;
 
@@ -248,6 +248,8 @@ $(document).ready(function () {
             has_3_images = true;
             fileInput.removeClass('is-invalid');
             invalidFeedback.hide();
+
+            formData = new FormData();
     
             // Display selected images
             for (var i = 0; i < 3; i++) {
@@ -273,12 +275,39 @@ $(document).ready(function () {
                 // Read in the image file as a data URL.
                 reader.readAsDataURL(file);
             }
+
+            // // var fd = new FormData();
+            var name = $('#product-name').val();
+            formData.append('product-name', name);
+            // // fd.append()
+            
+            // $.ajax({
+            //     url: '../../php/controller/admin/update-images.php',
+            //     type: 'POST',
+            //     data: formData,
+            //     contentType: false,
+            //     processData: false,
+            //     success: function (result) {
+            //         console.log(result);
+            //         if (result.result === true) {
+            //             //TODO: THÔNG BÁO THÊM THÀNH CÔNG
+            //             // $('#add-new').modal('hide');
+        
+            //             // var current_page = parseInt($('.pagination a.active').data('page'));
+            //             // fetchData(current_page);
+            //         }
+            //     },
+            //     error: function (error) {
+            //         console.error('Error uploading files: ', error);
+            //     }
+            // });
+
         }
         
     });
 
     
-    // Event listener for the "submit" button
+    // // Event listener for the "submit" button
     $('#modal-form').submit(function (event) { 
         var form = $(this);
         var btn_name = $('#modal-form .btn-confirm').text();
@@ -291,6 +320,10 @@ $(document).ready(function () {
         var description =  $.trim($('#product-description').val());
         var product_variants = []; //store sizes and quantity of each size
         var isDuplicate = false; // check if there are more than 1 size has the same value
+
+        var action = "insert-images";
+        formData.append('name', name);
+        formData.append('action', action);
 
         //function to push size, quantity from sizes and quantities into product_variants array
         $('.product-size-table tbody tr').each(function(index, row) {
@@ -342,6 +375,7 @@ $(document).ready(function () {
             form.addClass('was-validated');
         })
     });
+
 
 });
 
@@ -561,6 +595,12 @@ function insertProduct (name, price, category_id, color, gender, description, pr
         success: function (result) {
             if (result.result === true) {
                 insertImages();
+                
+                //TODO: THÔNG BÁO THÊM THÀNH CÔNG
+                $('#add-new').modal('hide');
+
+                var current_page = parseInt($('.pagination a.active').data('page'));
+                fetchData(current_page);
             }
             else{
                 $('#product-name').addClass('is-invalid');
@@ -574,20 +614,16 @@ function insertProduct (name, price, category_id, color, gender, description, pr
     
 }
 
+// function to insert product images after product is inserted successfully
 function insertImages () {
     $.ajax({
-        url: '../../php/admin/test-controller.php',
+        url: '../../php/controller/admin/product-controller.php',
         type: 'POST',
         data: formData,
         contentType: false,
         processData: false,
         success: function (result) {
             if (result.result === true) {
-                //TODO: THÔNG BÁO THÊM THÀNH CÔNG
-                $('#add-new').modal('hide');
-
-                var current_page = parseInt($('.pagination a.active').data('page'));
-                fetchData(current_page);
             }
         },
         error: function (error) {
