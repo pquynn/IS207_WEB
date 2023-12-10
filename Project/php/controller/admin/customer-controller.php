@@ -75,7 +75,7 @@ function updateCustomer() {
         //TODO: CHECK LẠI NHỮNG CÁI NGƯỜI DÙNG NHẬP VÀO VÀ NGĂN CHẶN SQL INJECTION
         $sql = "UPDATE users 
                 SET user_name = '$name', user_telephone = '$phone', birthday = '$birthday',
-                gender = '$gender', addresss = '$address'
+                gender = '$gender', address = '$address'
                 WHERE user_id = '$id'";
         $result = $conn->query($sql);
             
@@ -112,26 +112,6 @@ function deleteCustomer() {
     
 }
 
-
-//CHECK VALIDATION
-// function checkExist($categoryName) { 
-//     global $conn;
-//     // Check if the category name already exists
-//     $sql = "SELECT COUNT(*) as count FROM category WHERE category_name = '$categoryName'";
-//     $result = $conn->query($sql);
-
-//     if ($result) {
-//         $row = $result->fetch_assoc();
-//         if($row['count'] > 0)
-//             return true;
-//         else
-//             return false;
-        
-//     } else {
-//         // Error in the query
-//         return true;
-//     }
-// }
 
 //SEARCH CATEGORIES
 function searchCustomers(){

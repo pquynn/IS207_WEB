@@ -151,7 +151,7 @@ function fetchData(page){
                         <td> ${row.USER_NAME} </td>
                         <td> ${row.BIRTHDAY} </td>
                         <td> ${row.GENDER} </td>
-                        <td style="max-width: 130px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"> ${row.ADDRESSS} </td>
+                        <td style="max-width: 130px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"> ${row.ADDRESS} </td>
                         <td> ${row.DAY_ADD} </td>
                         <td class="action">
                             <a href="#" class="btn-edit" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
@@ -258,7 +258,7 @@ function fetchSearchData(searchTerm, page) {
                         <td> ${row.USER_NAME} </td>
                         <td> ${row.BIRTHDAY} </td>
                         <td> ${row.GENDER} </td>
-                        <td style="max-width: 130px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"> ${row.ADDRESSS} </td>
+                        <td style="max-width: 130px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"> ${row.ADDRESS} </td>
                         <td> ${row.DAY_ADD} </td>
                         <td class="action">
                             <a href="#" class="btn-edit" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>

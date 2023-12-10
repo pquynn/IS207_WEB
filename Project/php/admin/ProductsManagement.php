@@ -25,7 +25,6 @@
                             <th>Ảnh</th>
                             <th>Tên sản phẩm</th>
                             <th>Giá</th>
-                            <th>Kích thước</th>
                             <th>Phân loại</th>
                             <th>Màu sắc</th>
                             <th>Giới tính</th>

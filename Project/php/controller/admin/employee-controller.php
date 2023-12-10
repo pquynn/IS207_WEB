@@ -89,7 +89,7 @@ function insertEmployee() {
             $result1 = $conn->query($sql1);
 
             if($result1){
-            $sql2 = "INSERT INTO users (user_id, user_login, user_name, user_telephone, birthday, gender, addresss)
+            $sql2 = "INSERT INTO users (user_id, user_login, user_name, user_telephone, birthday, gender, address)
             VALUES ('$id', '$username', '$name', '$phone', '$birthday', '$gender', '$address')";
             $result2 = $conn->query($sql2);
                 
@@ -193,7 +193,7 @@ function updateEmployee() {
         //TODO: CHECK LẠI NHỮNG CÁI NGƯỜI DÙNG NHẬP VÀO VÀ NGĂN CHẶN SQL INJECTION
         $sql = "UPDATE users 
                 SET user_name = '$name', user_telephone = '$phone', birthday = '$birthday',
-                gender = '$gender', addresss = '$address'
+                gender = '$gender', address = '$address'
                 WHERE user_id = '$id'";
         $result = $conn->query($sql);
             
