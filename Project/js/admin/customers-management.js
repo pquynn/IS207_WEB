@@ -11,22 +11,6 @@ $(document).ready(function () {
     var currentPage = 1;
     fetchData(currentPage);
 
-    // when btn-add button is clicked
-    // $('.btn-add').click(function (event){
-    //     $('h1.modal-title').text('Thêm mới ' + namePage);
-    //     $('.btn-confirm').text('Thêm mới');
-
-    //     // Clear the data and reset the form validation in the modal
-    //     var modal = document.getElementById('add-new');
-    //     modal.querySelector('form').reset(); // Reset the form
-
-    //     Array.from(modal.querySelectorAll('.was-validated')).forEach((element) => {
-    //         element.classList.remove('was-validated'); // Clear Bootstrap form validation classes
-    //     });
-    // })
-
-
-    // when submit #modal-form
     // when submit #modal-form
     $('#modal-form').submit(function (event) { 
         // e.preventDefault();
@@ -130,9 +114,9 @@ $(document).ready(function () {
 //function to fetch data in database to table
 function fetchData(page){
     $.ajax({
-        url: '../../php/controller/admin/customer-controller.php?action=fetch', //TODO: nhớ sửa lại nếu đổi thành post
-        type: 'GET',
-        data: { page: page },
+        url: '../../php/controller/admin/customer-controller.php', //TODO: nhớ sửa lại nếu đổi thành post
+        type: 'POST',
+        data: { action: 'fetch', page: page },
         dataType: 'json',
         success: function (response) {
             var data = response.data;
@@ -201,9 +185,9 @@ function updatePagination(currentPage, totalPages) {
 // function to update a customer
 function updatecustomer(username, name, phone, birthday, gender, address){
     $.ajax({
-        url: '../../php/controller/admin/customer-controller.php?action=update',
-        type: 'GET',
-        data: {id: tbl_id, username: username, name : name, phone : phone, gender : gender, address : address, birthday : birthday},
+        url: '../../php/controller/admin/customer-controller.php',
+        type: 'POST',
+        data: {action: 'update', id: tbl_id, username: username, name : name, phone : phone, gender : gender, address : address, birthday : birthday},
         dataType: 'json',
         success: function (result) {
             //TODO: THÔNG BÁO cập nhật THÀNH CÔNG
@@ -221,9 +205,9 @@ function updatecustomer(username, name, phone, birthday, gender, address){
 // Function to delete customer by customer_id
 function deletecustomer(customerId, customerLogin, closest_row) {
     $.ajax({
-        url: '../../php/controller/admin/customer-controller.php?action=delete',
-        type: 'GET',
-        data: { customer_id: customerId, customer_login: customerLogin },
+        url: '../../php/controller/admin/customer-controller.php',
+        type: 'POST',
+        data: { action: 'delete', customer_id: customerId, customer_login: customerLogin },
         success: function () {
             //TODO: hiện thông báo xóa thành công
             closest_row.remove();
@@ -238,9 +222,9 @@ function deletecustomer(customerId, customerLogin, closest_row) {
 // Function to fetch data based on search term (customer name)
 function fetchSearchData(searchTerm, page) {
     $.ajax({
-        url: '../../php/controller/admin/customer-controller.php?action=search',
-        type: 'GET',
-        data: { searchTerm: searchTerm, page: page },
+        url: '../../php/controller/admin/customer-controller.php',
+        type: 'POST',
+        data: { action: 'search', searchTerm: searchTerm, page: page },
         dataType: 'json',
         success: function (response) {
             var data = response.data;
@@ -275,42 +259,5 @@ function fetchSearchData(searchTerm, page) {
         }
     });
 }
-
-
-
-
-// // Function to fetch roles from the server
-// function fetchRoles() {
-//     $.ajax({
-//         url: '../../php/controller/admin/customer-controller.php?action=fetch-roles',
-//         type: 'GET',
-//         dataType: 'json',
-//         success: function (data) {
-//             var selectElement = $('#customer-role');
-//             selectElement.empty();
-//             selectElement.append(`<option value="" disabled selected hidden>Chọn vai trò</option>`);
-
-//             data.forEach(function (row) {
-//                 selectElement.append(
-//                     `<option value="${row.role_id}">${row.role_name}</option>`
-//             );});
-//         },
-//         error: function () {
-//             console.error('Failed to fetch roles from the server.');
-//         }
-//     });
-// }
-
-// // Handle "Save Changes" button click
-// // $('#saveChanges').on('click', function () {
-// //     var selectedRoleId = $('#customer-role').val();
-// //     if (selectedRoleId) {
-// //         console.log('Selected Role ID:', selectedRoleId);
-// //         // Add your logic here to handle the selected role ID
-// //     } else {
-// //         console.log('Please select a role.');
-// //     }
-// // });
-
 
 

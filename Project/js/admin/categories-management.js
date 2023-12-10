@@ -17,6 +17,7 @@ $(document).ready(function () {
         // Clear the data and reset the form validation in the modal
         var modal = document.getElementById('add-new');
         modal.querySelector('form').reset(); // Reset the form
+        $('#category-name').removeClass('is-invalid'); //remove class is-invalid if the form was validated before
 
         Array.from(modal.querySelectorAll('.was-validated')).forEach((element) => {
             element.classList.remove('was-validated'); // Clear Bootstrap form validation classes
@@ -62,8 +63,6 @@ $(document).ready(function () {
         
     });
 
-    //delete
-    //TODO: nên check điều kiên xóa ở csdl nữa
     // Event listener for the "Delete" button
     $('.admin-table').on('click', '.btn-delete', function (e) {
         e.preventDefault();
@@ -118,11 +117,12 @@ $(document).ready(function () {
 //function to fetch data in database to table
 function fetchData(page){
     $.ajax({
-        url: '../../php/controller/admin/category-controller.php?action=fetch', //TODO: nhớ sửa lại nếu đổi thành post
-        type: 'GET',
-        data: { page: page },
+        url: '../../php/controller/admin/category-controller.php', //TODO: nhớ sửa lại nếu đổi thành post
+        type: 'POST',
+        data: { action: 'fetch', page: page },
         dataType: 'json',
         success: function (response) {
+            console.log(response);
             var data = response.data;
             var totalPages = response.totalPages;
 
@@ -184,9 +184,9 @@ function updatePagination(currentPage, totalPages) {
 // Function to insert category into the database
 function insertCategory(categoryName) {
     $.ajax({
-        url: '../../php/controller/admin/category-controller.php?action=insert',
-        type: 'GET',
-        data: { category_name: categoryName },
+        url: '../../php/controller/admin/category-controller.php',
+        type: 'POST',
+        data: { action: 'insert', category_name: categoryName },
         dataType: 'json',
         success: function (result) {
         if (result === true) {
@@ -198,7 +198,6 @@ function insertCategory(categoryName) {
             var current_page = parseInt($('.pagination a.active').data('page'));
             fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
             
-            // Show Bootstrap Toast
         } 
         else {
             // Category name exists, show an error message
@@ -220,9 +219,9 @@ function updateCategory(categoryName){
     if(categoryName.localeCompare(tbl_category_name) != 0){
         // Check if the category name already exists
         $.ajax({
-            url: '../../php/controller/admin/category-controller.php?action=update',
-            type: 'GET',
-            data: { category_name: categoryName, category_id: tbl_category_id },
+            url: '../../php/controller/admin/category-controller.php',
+            type: 'POST',
+            data: { action: 'update', category_name: categoryName, category_id: tbl_category_id },
             dataType: 'json',
             success: function (result) {
                 if (result == true) {
@@ -256,9 +255,9 @@ function updateCategory(categoryName){
 // Function to delete category by category_id
 function deleteCategory(categoryId, closest_row) {
     $.ajax({
-        url: '../../php/controller/admin/category-controller.php?action=delete',
-        type: 'GET',
-        data: { category_id: categoryId },
+        url: '../../php/controller/admin/category-controller.php',
+        type: 'POST',
+        data: { action: 'delete', category_id: categoryId },
         success: function () {
             //TODO: hiện thông báo xóa thành công
             closest_row.remove();
@@ -273,9 +272,9 @@ function deleteCategory(categoryId, closest_row) {
 // Function to fetch data based on search term (category name)
 function fetchSearchData(searchTerm, page) {
     $.ajax({
-        url: '../../php/controller/admin/category-controller.php?action=search',
-        type: 'GET',
-        data: { searchTerm: searchTerm, page: page },
+        url: '../../php/controller/admin/category-controller.php',
+        type: 'POST',
+        data: { action: 'search', searchTerm: searchTerm, page: page },
         dataType: 'json',
         success: function (response) {
             var data = response.data;
@@ -305,8 +304,4 @@ function fetchSearchData(searchTerm, page) {
         }
     });
 }
-
-
-
-
 

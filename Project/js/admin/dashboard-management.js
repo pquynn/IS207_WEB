@@ -4,7 +4,7 @@
 $(document).ready(function () {
     $.ajax({
         url: '../../php/controller/admin/dashboard-controller.php', 
-        type: 'GET',
+        type: 'POST',
         dataType: 'json',
         success: function (result) {
             //fetch data to the todo-container card
@@ -21,7 +21,6 @@ $(document).ready(function () {
 
             //fetch data to the revenue by categoies pie chart
             displayPieChart(result.pie_chart_data);
-            console.log(result.pie_chart_data);
             //fetch data to the best-seller products table
             // Populate the table with fetched data
             var table_body = $('.admin-table table tbody');
@@ -49,6 +48,11 @@ $(document).ready(function () {
         }
     });
     
+    // $('.btn-export').click(function (event){
+    //   const element = $('.chart-pie');
+
+    //   html2pdf(element);
+    // });
 
     
 });

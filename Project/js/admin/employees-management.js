@@ -66,8 +66,6 @@ $(document).ready(function () {
         })
     });
 
-    //delete
-    //TODO: nên check điều kiên xóa ở csdl nữa
     // Event listener for the "Delete" button
     $('.admin-table').on('click', '.btn-delete', function (e) {
         e.preventDefault();
@@ -126,26 +124,6 @@ $(document).ready(function () {
         $('h1.modal-title').text('Thông tin ' + namePage);
         $('.btn-confirm').text('Thay đổi');
 
-        
-        
-        // Fetch the current employee_name for the selected employee_id
-        // $.ajax({
-        //     url: 'get_employee.php',
-        //     type: 'POST',
-        //     data: { employee_id: employee_id },
-        //     dataType: 'json',
-        //     success: function (response) {
-        //         // Populate the modal form with the fetched employee_name
-        //         $('#employee-name').val(response.employee_name);
-
-        //         // Show the modal
-        //         $('#add-new').modal('show');
-        //     },
-        //     error: function () {
-        //         console.error('Failed to fetch employee data.');
-        //     }
-        // });
-
     });
 
     // Event listener for the "Search" button
@@ -164,9 +142,9 @@ $(document).ready(function () {
 //function to fetch data in database to table
 function fetchData(page){
     $.ajax({
-        url: '../../php/controller/admin/employee-controller.php?action=fetch', //TODO: nhớ sửa lại nếu đổi thành post
-        type: 'GET',
-        data: { page: page },
+        url: '../../php/controller/admin/employee-controller.php', //TODO: nhớ sửa lại nếu đổi thành post
+        type: 'POST',
+        data: { action: 'fetch', page: page },
         dataType: 'json',
         success: function (response) {
             var data = response.data;
@@ -237,9 +215,9 @@ function updatePagination(currentPage, totalPages) {
 // Function to insert employee into the database
 function insertemployee(username, name, phone, birthday, gender, address, role) {
     $.ajax({
-        url: '../../php/controller/admin/employee-controller.php?action=insert',
-        type: 'GET',
-        data: {username : username, name : name, phone : phone, gender : gender, address : address, birthday : birthday, role : role},
+        url: '../../php/controller/admin/employee-controller.php',
+        type: 'POST',
+        data: {action: 'insert', username : username, name : name, phone : phone, gender : gender, address : address, birthday : birthday, role : role},
         dataType: 'json',
         success: function (result) {
             if (result.result === true) {
@@ -265,9 +243,9 @@ function insertemployee(username, name, phone, birthday, gender, address, role) 
 function updateemployee(username, name, phone, birthday, gender, address, role){
     // if(employeeName.localeCompare(tbl_employee_name) != 0){ //TODO: có nên so sánh các giá trị
     $.ajax({
-        url: '../../php/controller/admin/employee-controller.php?action=update',
-        type: 'GET',
-        data: {id: tbl_id, username: username, name : name, phone : phone, gender : gender, address : address, birthday : birthday, role : role},
+        url: '../../php/controller/admin/employee-controller.php',
+        type: 'POST',
+        data: {action: 'update', id: tbl_id, username: username, name : name, phone : phone, gender : gender, address : address, birthday : birthday, role : role},
         dataType: 'json',
         success: function (result) {
             //TODO: THÔNG BÁO cập nhật THÀNH CÔNG
@@ -286,9 +264,9 @@ function updateemployee(username, name, phone, birthday, gender, address, role){
 // Function to delete employee by employee_id
 function deleteemployee(employeeId, employeeLogin, closest_row) {
     $.ajax({
-        url: '../../php/controller/admin/employee-controller.php?action=delete',
-        type: 'GET',
-        data: { employee_id: employeeId, employee_login: employeeLogin },
+        url: '../../php/controller/admin/employee-controller.php',
+        type: 'POST',
+        data: {action: 'delete', employee_id: employeeId, employee_login: employeeLogin },
         success: function () {
             //TODO: hiện thông báo xóa thành công
             closest_row.remove();
@@ -303,9 +281,9 @@ function deleteemployee(employeeId, employeeLogin, closest_row) {
 // Function to fetch data based on search term (employee name)
 function fetchSearchData(searchTerm, page) {
     $.ajax({
-        url: '../../php/controller/admin/employee-controller.php?action=search',
-        type: 'GET',
-        data: { searchTerm: searchTerm, page: page },
+        url: '../../php/controller/admin/employee-controller.php',
+        type: 'POST',
+        data: { action: 'search', searchTerm: searchTerm, page: page },
         dataType: 'json',
         success: function (response) {
             var data = response.data;
@@ -341,16 +319,3 @@ function fetchSearchData(searchTerm, page) {
         }
     });
 }
-
-
-// // Handle "Save Changes" button click
-// // $('#saveChanges').on('click', function () {
-// //     var selectedRoleId = $('#employee-role').val();
-// //     if (selectedRoleId) {
-// //         console.log('Selected Role ID:', selectedRoleId);
-// //         // Add your logic here to handle the selected role ID
-// //     } else {
-// //         console.log('Please select a role.');
-// //     }
-// // });
-
