@@ -4,14 +4,14 @@
 <div class="top-content left">
     <div class="admin-search-container">
         <div class="search-bar-box">
-            <input type="text" id="search" placeholder="Tìm kiếm..." class="form-control ">
-            <a href="#" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <input type="text" id="search" placeholder="Tìm kiếm theo tên" class="form-control ">
+            <!-- <a href="#" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></a> -->
         </div>
     </div>
 
-    <button class="btn-admin btn-filter">
+    <!-- <button class="btn-admin btn-filter">
         <i class="fa-solid fa-filter"></i>Bộ lọc
-    </button>
+    </button> -->
 </div>
 
 <div class="top-content right">

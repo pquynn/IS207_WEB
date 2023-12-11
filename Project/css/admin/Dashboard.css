@@ -11,6 +11,7 @@
 p.container-heading{
     font-size: 18px;
     font-weight: bold;
+    
 }
 
 p.container-heading:not(.card-title){
@@ -43,4 +44,13 @@ p:not(.container-heading){
 
 .todo-container .number-display{
     color: var(--admin-primary);
+}
+
+.best-seller .admin-table table{
+    min-width: 400px !important;
+}
+
+.best-seller .admin-table .table-img{
+    width: 60px;
+    height: 60px;
 }

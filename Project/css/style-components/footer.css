@@ -18,7 +18,7 @@
     transition: 0.2s linear;
 }
 
-.FooterBox__one p:hover {
+.FooterBox__one a:hover {
     color: var(--orange);
 }
 
@@ -27,7 +27,7 @@
     justify-content: space-between;
 }
 
-.FooterBox__two hr{
+.FooterBox__two hr {
     width: 100%;
 }
 
@@ -38,4 +38,9 @@
     align-items: self-end;
 
     margin: 15px;
+}
+
+.FooterBox__two__rightpayment img {
+    width: 49.375px;
+    height: 33.125px;
 }

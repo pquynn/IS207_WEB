@@ -1,9 +1,3 @@
-<!-- Init basic layout, components. Modified 10/23/2023 by Quyen. 
-    Not have: 
-    + export button event
-    + filter button event
-    + responsive
--->
     <!-- start: admin navigation -->
     <?php 
         $title = "Quản lý sản phẩm";
@@ -25,39 +19,26 @@
             <!-- start: admin table -->
             <div class="admin-table">
                 <table>
-                    <tr>
-                        <th>#</th>
-                        <th>Ảnh</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Giá</th>
-                        <th>...</th>
-                        <th>Thao tác</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><div class="table-img"></div></td>
-                        <td> Giày ... </td>
-                        <td>10000đ</td>
-                        <td>...</td>
-                        <td class="action">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#alert"><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Phân loại</th>
+                            <th>Màu sắc</th>
+                            <th>Giới tính</th>
+                            <th>Mô tả</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
                 </table>
             </div>
             <!-- end: admin table -->
 
             <!-- start: pagination in admin -->
             <div class="pagination admin">
-                <a href="#">&laquo;</a>
-                <a class="active" href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">&raquo;</a>
             </div>
             <!-- end: pagination in admin -->
         </div>
@@ -70,13 +51,7 @@
         <?php include("ModalAddNewProduct.php"); ?>
     <!-- end of Modal of Add new elements-->
 
-    <!-- start of warning message when click del-btn -->
-        <?php 
-            $alert_message = "xóa sản phẩm";
-            $alert_action = "Xóa";
-            include("ModalAlert.php"); 
-        ?>
-    <!-- end of warning message when click del-btn -->
-
+    <script src="../../js/admin/common.js"></script>
+    <script src="../../js/admin/products-management.js"></script>
 </body>
 </html>

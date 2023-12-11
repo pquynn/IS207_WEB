@@ -9,7 +9,7 @@
     height: auto;
     margin-bottom: 15px;
 }
-/*TITLE ORDER DETAIL + DATE*/
+/*TITLE ORDER DETAIL + STATUS + DATE*/
 .title-order-detail {    
     display: flex;
     flex-direction: row;
@@ -19,8 +19,17 @@
     text-align: center;
 }
 
+#order-status {
+    background-color: #37cd70;
+    color: #ffff;
+    font-size: 15px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+}
+
 #date-create-order {
-    margin-left: 650px;
+    margin-left: 400px;
     font-size: 20px;
     margin-top: 10px;
 }
@@ -72,10 +81,10 @@
 /*-----*/
 
 /*TABLE DETAIL ORDER*/
-.table-detail-order {
-    width: 90%;
-    margin: 50px;
-    margin-left: 80px;
+.store-table {
+    width: 90% !important;
+    margin: 50px !important;
+    margin-left: 80px !important;
 }
 
 /*box order cost*/
@@ -87,6 +96,7 @@
 .order-cost td, tr{
     border: none;
     color: #000 !important;
+    padding-top: 15px;
 }
 
 .order-cost td.cost {
@@ -95,7 +105,7 @@
 }
 
 .order-cost tr.total-cost {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bolder;
 }
 
@@ -111,6 +121,7 @@
     justify-content: center;
     margin-top: 50px;
     margin-left: 200px;
+
 }
 
 /*Style for each button*/
@@ -122,10 +133,83 @@
     border: 1px solid #000;
     border-radius: 8px;
     cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #fff;
+}
+
+.order-option:hover:not(.cancel-order) {
+    background-color: #e6e6e6;
 }
 
 /*Style for button "Hủy đơn hàng"*/
 .cancel-order {
     border: none;
-    background-color:#D00000;
+    background-color:#D00000 !important;
+    color: #fff;
+}
+/*Modal Report*/
+#modal-report-container {
+    display: none;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#modal-report {
+    background-color: #fff;
+    max-width: 500px;
+    position: relative;
+    top: 200px;
+    left:50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+#modal-report #close-report{
+    border: none;
+    background-color: #fff;
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    cursor: pointer;
+}
+#modal-report #customer-email {
+    width: 450px;
+    height: 25px;
+    border: 1px solid #e6e6e6;
+    font-size: 15px;
+    padding: 10px;
+    margin: 5px 0px 5px 0px;
+}
+
+#modal-report #report-textfield {
+    resize: vertical;
+    width: 450px;
+    font-family: Roboto, San-Serif;
+    font-size: 15px;
+    border: 1px solid #e6e6e6;
+    padding: 10px;
+    margin: 5px 0px 5px 0px;
+}
+
+#modal-report #btn-submit-report {
+    font-size: 15px;
+    width: 120px;
+    margin: 10px;
+    margin-left: 330px;
+    padding: 3px 0 3px 0;
+    border: 0.5px solid #bcbcbc;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#modal-report #btn-submit-report:hover {
+    background-color: #e6e6e6;
 }

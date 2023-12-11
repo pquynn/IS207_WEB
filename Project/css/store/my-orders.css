@@ -40,6 +40,7 @@
 .section {
   display: flex;
   width: 100%;
+  
 }
 
 /*breadcrumb*/
@@ -66,7 +67,7 @@
   display: flex;
   flex-direction: column;
   margin: 0px;
-  width: 100%;
+  width: 82%;
   min-width: 400px;
   height: 100vh;
   padding: 30px 80px;
@@ -77,7 +78,20 @@
   overflow: auto;
 }
 
+.link-to-detail:hover {
+  color: #e96d00;
+}
+
 #pagination-my-orders {
   margin: 0 auto;
 }
 /*Style main section --end*/
+
+hr{
+  margin: 0;
+}
+
+ul{
+  margin-bottom: 0;
+  padding: 0;
+}

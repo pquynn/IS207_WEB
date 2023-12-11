@@ -158,7 +158,7 @@
           <!-- total: End -->
 
           <!-- checkout btn: Start -->
-          <button class="btn checkout-bnt pointer">Tiến hành thanh toán</button>
+          <button class="btn checkout-bnt pointer" onclick="location.href='./checkout.php'">Tiến hành thanh toán</button>
           <!-- checkout btn: End -->
         </div>
         <!-- SUBMIT-SECTION: End -->

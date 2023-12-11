@@ -217,9 +217,9 @@ ul{
     color: var(--orange); 
 }
 
-.admin .btn-search:hover{
+/* .admin .btn-search:hover{
     color: var(--admin-primary); 
-} 
+}  */
 /* ---------------end: search bar */
 
 /* style input, select */

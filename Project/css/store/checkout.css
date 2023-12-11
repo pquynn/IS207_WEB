@@ -73,7 +73,7 @@ select {
 }
 
 .square-radio[type="radio"]:checked {
-  background: url("../img/checkout/square-radio.svg");
+  background: url("../../img/checkout/square-radio.svg");
 }
 
 /* verical center ('flex' class required}*/
@@ -167,6 +167,7 @@ select {
   border-spacing: 10px;
   background-color: var(--gray);
   padding: 10px 20px;
+  border-collapse: unset;
 }
 
 .col-name {
@@ -221,7 +222,8 @@ select {
 }
 
 /* buy btn */
-.buy-btn {
+.buy-section .buy-btn {
+  border-radius: 0;
   width: 100% !important;
   transition: all 0.3s;
   display: block;
@@ -230,8 +232,9 @@ select {
   transition: all 0.3s;
 }
 
-.buy-btn:hover {
+.buy-section .buy-btn:hover {
   background-color: var(--orange);
+  color: white;
 }
 
 /* avaiable payment method */

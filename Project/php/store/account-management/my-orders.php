@@ -41,7 +41,7 @@
           </tr>
 
           <tr>
-              <td>A123</td>
+              <td><a href="./my-order-detail.php" class="link-to-detail">A123</a></td>
               <td>dd/mm/yyyy</td>   
               <td>0912345678</td>   
               <td>ABC DEF GHIJK</td>                  
@@ -52,7 +52,7 @@
               <td>$9999</td>  
           </tr>
           <tr>
-              <td>A123</td>
+              <td><a href="./my-order-detail.php" class="link-to-detail">A123</a></td>
               <td>dd/mm/yyyy</td>   
               <td>0912345678</td>   
               <td>ABC DEF GHIJK</td>                  
@@ -63,7 +63,7 @@
               <td>$9999</td>   
           </tr>
           <tr>
-              <td>A123</td>
+              <td><a href="./my-order-detail.php" class="link-to-detail">A123</a></td>
               <td>dd/mm/yyyy</td>   
               <td>0912345678</td>   
               <td>ABC DEF GHIJK</td>                  
