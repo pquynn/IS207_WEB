@@ -1,5 +1,5 @@
-var tbl_category_id;
-var tbl_category_name;
+var tbl_category_id, tbl_category_name;
+var closest_row;
 
 $(document).ready(function () {
     var namePage = $('.section_heading').text();
@@ -17,6 +17,7 @@ $(document).ready(function () {
         // Clear the data and reset the form validation in the modal
         var modal = document.getElementById('add-new');
         modal.querySelector('form').reset(); // Reset the form
+        $('#category-name').removeClass('is-invalid'); //remove class is-invalid if the form was validated before
 
         Array.from(modal.querySelectorAll('.was-validated')).forEach((element) => {
             element.classList.remove('was-validated'); // Clear Bootstrap form validation classes
@@ -62,8 +63,6 @@ $(document).ready(function () {
         
     });
 
-    //delete
-    //TODO: nên check điều kiên xóa ở csdl nữa
     // Event listener for the "Delete" button
     $('.admin-table').on('click', '.btn-delete', function (e) {
         e.preventDefault();
@@ -72,10 +71,9 @@ $(document).ready(function () {
         if (confirm('Xác nhận xóa ' + namePage + ' ?')) {
             // Get the category_id from the first column of the row
             var categoryId = $(this).closest('tr').find('td:first').text();
+            closest_row = $(this).closest('tr');
             // User confirmed, proceed with deletion
-            deleteCategory(categoryId);
-
-            $(this).closest('tr').remove();
+            deleteCategory(categoryId, closest_row);
         }
     });
 
@@ -101,26 +99,6 @@ $(document).ready(function () {
         $('h1.modal-title').text('Thông tin ' + namePage);
         $('.btn-confirm').text('Thay đổi');
 
-        
-
-        // Fetch the current category_name for the selected category_id
-        // $.ajax({
-        //     url: 'get_category.php',
-        //     type: 'POST',
-        //     data: { category_id: category_id },
-        //     dataType: 'json',
-        //     success: function (response) {
-        //         // Populate the modal form with the fetched category_name
-        //         $('#category-name').val(response.category_name);
-
-        //         // Show the modal
-        //         $('#add-new').modal('show');
-        //     },
-        //     error: function () {
-        //         console.error('Failed to fetch category data.');
-        //     }
-        // });
-
     });
 
     // Event listener for the "Search" button
@@ -139,11 +117,12 @@ $(document).ready(function () {
 //function to fetch data in database to table
 function fetchData(page){
     $.ajax({
-        url: '../../php/controller/admin/category-controller.php?action=fetch', //TODO: nhớ sửa lại nếu đổi thành post
-        type: 'GET',
-        data: { page: page },
+        url: '../../php/controller/admin/category-controller.php', //TODO: nhớ sửa lại nếu đổi thành post
+        type: 'POST',
+        data: { action: 'fetch', page: page },
         dataType: 'json',
         success: function (response) {
+            console.log(response);
             var data = response.data;
             var totalPages = response.totalPages;
 
@@ -205,9 +184,9 @@ function updatePagination(currentPage, totalPages) {
 // Function to insert category into the database
 function insertCategory(categoryName) {
     $.ajax({
-        url: '../../php/controller/admin/category-controller.php?action=insert',
-        type: 'GET',
-        data: { category_name: categoryName },
+        url: '../../php/controller/admin/category-controller.php',
+        type: 'POST',
+        data: { action: 'insert', category_name: categoryName },
         dataType: 'json',
         success: function (result) {
         if (result === true) {
@@ -215,8 +194,10 @@ function insertCategory(categoryName) {
             // Category inserted successfully, close the modal and perform any other necessary actions
             $('#add-new').modal('hide');
 
+
             var current_page = parseInt($('.pagination a.active').data('page'));
             fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
+            
         } 
         else {
             // Category name exists, show an error message
@@ -231,18 +212,16 @@ function insertCategory(categoryName) {
     });
 }
 
+
 // function to update a category
 function updateCategory(categoryName){
     // check if the new category name is the old category name
-    console.log(categoryName);
-    console.log(tbl_category_name);
-    console.log(categoryName.localeCompare(tbl_category_name));
     if(categoryName.localeCompare(tbl_category_name) != 0){
         // Check if the category name already exists
         $.ajax({
-            url: '../../php/controller/admin/category-controller.php?action=update',
-            type: 'GET',
-            data: { category_name: categoryName, category_id: tbl_category_id },
+            url: '../../php/controller/admin/category-controller.php',
+            type: 'POST',
+            data: { action: 'update', category_name: categoryName, category_id: tbl_category_id },
             dataType: 'json',
             success: function (result) {
                 if (result == true) {
@@ -274,13 +253,14 @@ function updateCategory(categoryName){
 }
 
 // Function to delete category by category_id
-function deleteCategory(categoryId) {
+function deleteCategory(categoryId, closest_row) {
     $.ajax({
-        url: '../../php/controller/admin/category-controller.php?action=delete',
-        type: 'GET',
-        data: { category_id: categoryId },
+        url: '../../php/controller/admin/category-controller.php',
+        type: 'POST',
+        data: { action: 'delete', category_id: categoryId },
         success: function () {
             //TODO: hiện thông báo xóa thành công
+            closest_row.remove();
         },
         error: function () {
             console.error('Failed to delete category.');
@@ -292,13 +272,11 @@ function deleteCategory(categoryId) {
 // Function to fetch data based on search term (category name)
 function fetchSearchData(searchTerm, page) {
     $.ajax({
-        url: '../../php/controller/admin/category-controller.php?action=search',
-        type: 'GET',
-        data: { searchTerm: searchTerm, page: page },
+        url: '../../php/controller/admin/category-controller.php',
+        type: 'POST',
+        data: { action: 'search', searchTerm: searchTerm, page: page },
         dataType: 'json',
         success: function (response) {
-            console.log(data);
-            console.log(totalPages);
             var data = response.data;
             var totalPages = response.totalPages;
 
@@ -326,8 +304,4 @@ function fetchSearchData(searchTerm, page) {
         }
     });
 }
-
-
-
-
 

@@ -17,7 +17,7 @@
         <div class="section_bottom-content">
             <!-- start: admin table -->
             <div class="admin-table">
-                <table>
+                <table >
                     <thead>
                         <tr>
                             <th>#</th>
@@ -26,28 +26,13 @@
                             <th>Họ tên</th>
                             <th>Ngày sinh</th>
                             <th>Giới tính</th>
-                            <th>Địa chỉ</th>
+                            <th style="max-width: 100px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">Địa chỉ</th>
                             <th>Ngày thêm</th>
                             <th>Vai trò</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
-                    <!-- <tr>
-                        <td>1</td>
-                        <td>vannguyen</td>
-                        <td>0123456789</td>
-                        <td>Nguyễn Văn</td>
-                        <td>13/07/2000</td>
-                        <td>Nữ</td>
-                        <td>Linh Trung, Thủ Đức</td>
-                        <td>18/10/2023</td>
-                        <td>Nhân viên</td>
-                        <td class="action">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#alert" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr> -->
                 </table>
             </div>
             <!-- end: admin table -->

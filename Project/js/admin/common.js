@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const cancelButton = document.querySelector('.btn-cancel');
 
 cancelButton.addEventListener('click', function() {
-    if (confirm('Xác nhận hủy thêm mới?')) {
+    if (confirm('Những thay đổi của bạn sẽ không được lưu?')) {
     // Dismiss the modal if the user clicks "OK" in the confirm box
     // Replace 'myModal' with the actual ID of your Bootstrap modal
     $('#add-new').modal('hide');
