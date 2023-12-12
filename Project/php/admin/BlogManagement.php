@@ -91,5 +91,6 @@
 
     <script src="../../js/admin/form-validation"></script>
     <script src="../../js/admin/categories-management"></script>
+    <script src="../../js/blog/blog-admin.js"></script>
 </body>
 </html>
