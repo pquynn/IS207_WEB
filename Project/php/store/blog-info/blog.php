@@ -104,5 +104,6 @@
     <!-- Main section: start -->
 
     <!-- Start of footer -->
+    <script src="../../js/blog/blog-detail.js"></script>
     <?php include("../header-footer-nav/footer.php"); ?>
         <!-- End of footer -->

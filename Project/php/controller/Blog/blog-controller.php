@@ -7,7 +7,7 @@ function fetchBlog() {
     global $conn;
 
     // Define the number of records per page
-    $records_per_page = 2;
+    $records_per_page = 3;
 
     // Get the current page number from the URL
     if (isset($_GET['page']) && is_numeric($_GET['page'])) {

@@ -31,12 +31,12 @@ function fetchData(blog_title, page) {
             blog_body.empty();
 
             
-            data.forEach(function () {
+            data.forEach(function (row) {
                 blog_body.append(`
                 
-                    <img src="${BLOG_IMG}" />
-                    <p>${BLOG_TITLE}</p>
-                    <p>${CONTENT}</p>
+                    <img src="${row.BLOG_IMG}" />
+                    <p>${row.BLOG_TITLE}</p>
+                    <p>${row.CONTENT}</p>
                     
                 `);
             });
@@ -94,11 +94,11 @@ function fetchSearchData(searchTerm, page, blog_title) {
             blog_body.empty();
 
             
-            data.forEach(function () {
+            data.forEach(function (row) {
                 blog_body.append(`
-                <img src="${BLOG_IMG}" />
-                <p>${BLOG_TITLE}</p>
-                <p>${CONTENT}</p>
+                <img src="${row.BLOG_IMG}" />
+                <p>${row.BLOG_TITLE}</p>
+                <p>${row.CONTENT}</p>
                 `);
             });
 

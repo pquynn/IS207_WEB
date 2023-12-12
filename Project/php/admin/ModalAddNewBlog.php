@@ -7,7 +7,7 @@
                     <h1 class="modal-title fs-5" id="add-blog">Thêm mới Blog</h1>
                     <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
-                <form action="" class="add-new-blog needs-validation" novalidate>
+                <form action="" id="modal-form" class="add-new-blog needs-validation" novalidate>
                     <div class="modal-body">
                         <label for="blog-name" class="form-label">Tên blog</label>
                         <input type="text" id="blog-name" class="form-control" required>
