@@ -17,7 +17,7 @@
         <div class="section_top-content dashboard">
             <div class="btn-container">
                 <!-- calendar nên dùng button hay input date? -->
-                <div class="dropdown">
+                <!-- <div class="dropdown">
                     <button class="btn-admin btn-calendar dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-regular fa-calendar"></i>Thời gian
                     </button>
@@ -27,11 +27,11 @@
                       <li><a class="dropdown-item" href="#">3 tháng trước</a></li>
                       <li><a class="dropdown-item" href="#">1 năm trước</a></li>
                     </ul>
-                  </div>
+                  </div> -->
         
-                <button class="btn-admin btn-export admin">
+                <!-- <button class="btn-admin btn-export admin">
                     <i class="fa-solid fa-download"></i>Export
-                </button>
+                </button> -->
             </div>
         </div>
         <!-- end: button section -->
@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col pending-box">
                             <p class="number-display">0</p>
-                            <p>Chờ xác nhận</p>
+                            <p>Đang chuẩn bị hàng</p>
                         </div>
 
                         <div class="col delivering-box">
@@ -55,7 +55,7 @@
 
                         <div class="col canceling-box">
                             <p class="number-display">0</p>
-                            <p>Đơn bị hủy</p>
+                            <p>Đã hủy</p>
                         </div>
 
                         <div class="col out-of-stock-box">
@@ -73,30 +73,30 @@
                     <p class="container-heading">Tổng quan</p>
 
                     <div class="row gap-4">
-                        <div class="card col total-revenue">
+                        <div class="card col total-year-revenue">
                             <div class="card-body">
-                                <p>Tổng doanh thu</p>
+                                <p>Tổng doanh thu theo năm</p>
                                 <p class="number-display">20000 đ</p>
                             </div>
                         </div>
 
-                        <div class="card col will-pay">
+                        <div class="card col total-month-revenue">
                             <div class="card-body">
-                                <p>Chưa thanh toán</p>
+                                <p>Tổng doanh thu theo tháng</p>
                                 <p class="number-display">20000 đ</p>
                             </div>
                         </div>
 
-                        <div class="card col paid">
+                        <div class="card col total-year-orders">
                             <div class="card-body">
-                                <p>Đã thanh toán</p>
+                                <p>Tổng số đơn hàng theo năm</p>
                                 <p class="number-display">20000 đ</p>
                             </div>
                         </div>
 
-                        <div class="card col total-orders">
+                        <div class="card col total-month-orders">
                             <div class="card-body">
-                                <p>Tổng số đơn hàng</p>
+                                <p>Tổng số đơn hàng theo tháng</p>
                                 <p class="number-display">300</p>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
 
             <div class="row">
                 <!-- start: revenue by categories chart -->
-                <div class="col-5 revenue-by-categories-pie-chart-container">
+                <div class="col-6 revenue-by-categories-pie-chart-container">
                     <p class="container-heading">Doanh thu theo loại sản phẩm</p>
 
                     <!-- Donut Chart -->
@@ -115,7 +115,7 @@
                         <!-- Card Body -->
                         <div class="card-body">
                             <div class="chart-pie pt-4">
-                                <canvas id="myPieChart" style="height:295px;"></canvas>
+                                <canvas id="myPieChart" style="height:380px;"></canvas>
                             </div>
                         </div>
                     </div>
@@ -124,18 +124,21 @@
                 <!-- end: revenue by categories chart -->
 
                 <!-- start: best seller table -->
-                <div class="col-7 best-seller">
-                    <p class="container-heading">Sản phẩm bán chạy</p>
+                <div class="col-6 best-seller">
+                    <p class="container-heading">Sản phẩm bán chạy trong năm</p>
 
                     <div class="admin-table">
                         <table>
-                            <tr>
-                                <th>Ảnh</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Số lượng bán</th>
-                                <th>Giá</th>
-                            </tr>
-                            <tr>
+                            <thead>
+                                <tr>
+                                    <th>Ảnh</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Số lượng bán</th>
+                                    <th>Giá</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <!-- <tr>
                                 <td><div class="table-img"></div></td>
                                 <td>Giày thể thao </td>
                                 <td>400</td>
@@ -164,7 +167,7 @@
                                 <td>Giày thể thao </td>
                                 <td>400</td>
                                 <td>100000 đ</td>
-                            </tr>
+                            </tr> -->
                         </table>
                     </div>
                 </div>
@@ -194,9 +197,9 @@
     <!-- end: section bottom content -->
 
 
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script>
-    <script src="../../js/admin/chart/chart-pie.js"></script>
-    <script src="../../js/admin/chart/chart-area.js"></script>
+    <script type="module" src="../../js/admin/dashboard-management.js"></script>
+    
 </body>
 </html>
+

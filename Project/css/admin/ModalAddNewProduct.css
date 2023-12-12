@@ -1,6 +1,4 @@
 /* style modal add new. modified 10/22/2023 by Quyen */
-
-
 .add-new-container .modal-header,
 .add-new-container .modal-body,
 .add-new-container .modal-footer{
@@ -34,8 +32,22 @@
 
 .image-box{
     border: 1px solid var(--table-border);
-    height: 90px;
-    width: 80px;
+    height: 120px;
+    max-width: 300px;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
 }
+
+#product-description{
+    height: 50px;
+}
+
+.product-size-table td{
+    padding: 0 7px 15px !important;
+}
+
+.product-size-table th{
+    padding: 0 7px !important;
+}
+
