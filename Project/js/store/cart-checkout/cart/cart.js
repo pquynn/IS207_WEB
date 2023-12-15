@@ -1,231 +1,185 @@
 /** @format */
 // Render cart row: start
-function fetchData(page) {
+$(document).ready(function () {
+  fetchData();
+  // CHANGE PRODUCT'S AMOUNT-BTN: START
+  function changeAmountBtn(btnType, id) {
+    // var id = $(btn).attr("id").slice(4);
+    var value = Number($(`#${id}`).val()) + btnType;
+    if (value >= 1 || btnType != -1) {
+      // const input = $(`#${id}`);
+      $(`#${id}`).val(value).trigger("change");
+    }
+  }
+  // minus
+  $(".product-list--body").on("click", ".minus", function () {
+    var id = $(this).attr("id").slice(10);
+    changeAmountBtn(-1, id);
+  });
+  // plus
+  $(".product-list--body").on("click", ".plus", function () {
+    var id = $(this).attr("id").slice(9);
+    changeAmountBtn(1, id);
+  });
+  // CHANGE PRODUCT'S AMOUNT-BTN: END
+});
+
+function fetchData() {
+  var total = 0;
   $.ajax({
-    url: "cartFeat.php",
-    type: "GET",
-    data: { page: page },
+    url: "../../../../Project/php/store/cart/cartDisplayProduct.php",
     dataType: "json",
+    type: "GET",
     success: function (response) {
       var data = response.data;
 
+      // check if cart is empty
+      if (data[0].STATUS !== "Đang mua hàng") {
+        emptyCart();
+        return 1;
+      }
       // Populate the table with fetched data
-      const tbCart = $(".product-list--cart tb");
-      tbCart.empty();
-
+      const tbCart = $(".product-list--body");
       data.forEach(function (row) {
-        var imageUrl = "data:image/png;base64," + row.first_picture;
+        getRowAmount(data.length);
+
+        var imageUrl = "data:image/png;base64," + row.FIRST_PICTURE;
         tbCart.append(`
-        <tr class="product">
+        <tr 
+          class="product" 
+          id="product-${row.ORDER_DETAIL_ID}">
         <!-- infor -->
         <td class="product-infor">
-          <img 
+          <img
             src="${imageUrl}"
             class="product-img"
-            alt="${orderDetail["PRODUCT_NAME"]}" />
+            alt="${row.PRODUCT_NAME}" />
           <div class="product-descr">
-            <a href="#">${orderDetail["PRODUCT_NAME"]}</a>
-            <small class="gray-text">Size ". $orderDetail["SIZE"]. "</small>
+            <a href="#">${row.PRODUCT_NAME}</a>
+            <small class="gray-text">Size ${row.SIZE}</small>
           </div>
         </td>
 
         <!-- price -->
-        <td class="price">" .$orderDetail["PRICE"]. "</td>
+        <td class="price">${row.PRICE * 1}</td>
 
         <!-- amount -->
-        <td>
+        <td class="product-amount">
           <div class="flex amount">
-            <button 
-            class="amount-btn pointer minus" onClick="changeAmount(-1, ".$index.")">-</button >
-            <input 
-              type="number" onClick="updateAmount()"
-              min="1" 
-              value=" .$orderDetail["QUANTITY"]." 
-              onChange="updateMoney(" .$index. ")"/>
-            <button class="amount-btn pointer plus" onClick="changeAmount(1, ".$index.")">+</button>
+            <button
+            class="amount-btn pointer minus"
+            id="btn-minus-${row.ORDER_DETAIL_ID}">
+            -</button>
+            <input
+              class="amount-feld"
+              type="number"
+              min="1"
+              value="${row.QUANTITY}"
+              id="${row.ORDER_DETAIL_ID}"
+              onChange="changeAmountInpt(${row.ORDER_DETAIL_ID}, ${row.PRICE})">
+            <button
+            class="amount-btn pointer plus"
+            id="btn-plus-${row.ORDER_DETAIL_ID}">
+            +</button>
           </div>
         </td>
 
         <!-- total -->
-        <td class="product-total">199000</td>
+        <td 
+          id="pro-total-${row.ORDER_DETAIL_ID}"
+          class="product-total">
+          ${row.PRICE * row.QUANTITY}
+        </td>
 
         <!-- remove from cart -->
         <td>
-          <button class="remove-btn pointer">
+          <button 
+            class="remove-btn pointer"
+            id="btn-remove-${row.ORDER_DETAIL_ID}"
+            onClick="removeProduct(${row.ORDER_DETAIL_ID})">
             <span class="material-symbols-outlined"> delete </span>
           </button>
         </td>
       </tr>`);
+        total += row.QUANTITY * row.PRICE;
       });
 
-      updatePagination(page, totalPages);
+      // display sub-total
+      document.querySelector(".sub-total--amount").textContent = total;
+
+      // display total
+      document.querySelector(".total-amount").textContent = total * 1.05;
     },
     error: function () {
       console.error("Failed to fetch data from the server.");
     },
   });
 }
-fetchData(1);
 // Render cart row: end
 
-// UPDATE AMOUNT IN UI: START
-// SELECT COMPONENTS: START
-// update total money
-const subTotal = document.querySelector(".sub-total--amount");
-const total = document.querySelector(".total-amount");
-const price = document.querySelectorAll(".price");
-const productTotal = document.querySelectorAll(".product-total");
-
-// change product amount
-const productAmount = document.querySelectorAll(".amount input");
-const minusBtn = document.querySelectorAll(".minus");
-const plusBtn = document.querySelectorAll(".plus");
-
-// delete product
-const productList = document.querySelectorAll(".product");
-const removeBtn = document.querySelectorAll(".remove-btn");
-
-// when cart is empty
-let amount = productList.length;
-const cartBody = document.querySelector(".cart-body");
-const cartEmpty = document.querySelector(".empty-cart");
-// SELECT COMPONENTS: END
-
-// FUNCTION: START
-
-// UPDATE TOTAL MONEY: START
-///// CALC MONEY
-// calc product-total
-function calcProductTotal(price, amount) {
-  return Number(price.textContent.replace(/\s/g, "")) * Number(amount);
-}
-
-// cals sub-total
-function calcSubTotal() {
-  let total = 0;
-  price.forEach((p, i) => {
-    total += calcProductTotal(p, Number(productAmount[i].value));
-  });
-  return total;
-}
-
-// update money when change amount
-function updateMoney(index) {
-  // prevent <1 product quantity
-  if (Number(productAmount[index].value) < 1) {
-    productAmount[index].value = 1;
-  } else {
-    // update money amount in UI
-    displayMoney(
-      productTotal[index],
-      calcProductTotal(price[index], productAmount[index].value)
-    );
-    displayMoney(subTotal, calcSubTotal());
-    displayMoney(total, calcSubTotal() * 1.02);
-  }
-}
-
-// DISPLAY MONEY
-// default
-function displayMoney(priceComponent, price) {
-  priceComponent.textContent = Number(price).toLocaleString("de-AT");
-}
-
-price.forEach((p) => displayMoney(p, p.textContent));
-productTotal.forEach((p, i) => {
-  displayMoney(p, calcProductTotal(price[i], Number(productAmount[i].value)));
-});
-displayMoney(subTotal, calcSubTotal());
-displayMoney(total, calcSubTotal() * 1.02);
-// UPDATE TOTAL MONEY: END
-
 // CHANGE PRODUCT AMOUNT: START
-function changeAmount(operator, index) {
-  const value = Number(productAmount[index].value);
-  if (value === 1 && operator === -1) {
-    return 0;
+function changeAmountInpt(inputId, productPrice) {
+  // check amount input
+  var inputVal = $(`#${inputId}`).val();
+  if (inputVal < 1) {
+    $(`#${inputId}`).val(1);
+    inputVal = 1;
   }
-  productAmount[index].value = operator + value;
 
-  // update money
-  updateMoney(index);
+  // change product's total
+  $(`#pro-total-${inputId}`).text(Number(inputVal) * productPrice);
+
+  // change order's total
+  const productRow = $(".product-total").toArray();
+  var total = 0;
+  for (i = 0; i < productRow.length; i++) {
+    total += Number(productRow[i].textContent);
+  }
+
+  document.querySelector(".sub-total--amount").textContent = total;
+  document.querySelector(".total-amount").textContent = total * 1.05;
+
+  $.ajax({
+    type: "GET",
+    url: "cartChangeAmount.php",
+    data: { inputId: inputId, inputVal: inputVal },
+    success: function () {
+      // console.log(response);
+    },
+  });
 }
-
-minusBtn.forEach((minus, i) => {
-  minus.addEventListener("click", function () {
-    changeAmount(-1, i);
-  });
-});
-plusBtn.forEach((plus, i) => {
-  plus.addEventListener("click", function () {
-    changeAmount(1, i);
-  });
-});
 // CHANGE PRODUCT AMOUNT: END
 
-// DELETE PRODUCT: STARt
-function removeProduct(index) {
-  productList[index].classList.toggle("hidden");
+// REMOVE PRODUCT: START
+function emptyCart() {
+  document.querySelector(".empty-cart").classList.toggle("hidden");
+  document.querySelector(".cart-body").classList.toggle("hidden");
 }
 
-// WHEN CART IS EMPTY: START
-removeBtn.forEach((remove, i) => {
-  remove.addEventListener("click", function () {
-    // confirm delete product
-    const agree = confirm("Xác nhận xóa sản phẩm?");
-    if (agree === false) {
-      return 1;
-    }
-
-    amount--;
-    removeProduct(i);
-
-    // set product amount to 0
-    productAmount[i].value = 0;
-    displayMoney(subTotal, calcSubTotal());
-    displayMoney(total, calcSubTotal() * 1.02);
-
-    // when cart is empty
-    if (amount === 0) {
-      cartBody.classList.toggle("hidden");
-      cartEmpty.classList.toggle("hidden");
-    }
-  });
-});
-// WHEN CART IS EMPTY: END
-// DELETE PRODUCT: END
-
-// PREVENT SUBMIT: START
-// when click enter
-$(document).ready(function () {
-  $(window).keydown(function (event) {
-    if (event.keyCode == 13) {
-      event.preventDefault();
-      return false;
-    }
-  });
-});
-
-// PREVENT SUBMIT: END
-// FUNCTION: END
-// UPDATE AMOUNT IN UI: START
-
-// Update amount to db
-function updateAmount() {
-  // Khở tạo đối tượng xhr
-  var xhr = new XMLHttpRequest();
-
-  // callback funtion on onreadystatechange event
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        console.log(xhr.responseText);
-      } else {
-        console.log(`Có lỗi xảy ra: ${xhr.status}`);
-      }
-    }
-  };
-
-  xhr.open("GET", "cartFeat.php", true);
-  xhr.send(null);
+var rowAmount;
+function getRowAmount(amount) {
+  rowAmount = amount;
 }
+function removeProduct(id) {
+  const confirmResult = confirm("Xác nhận xóa sản phẩm?");
+  if (confirmResult == true) {
+    rowAmount--;
+    $(`#product-${id}`).addClass("hidden");
+    if (rowAmount === 0) {
+      emtyCart();
+    }
+
+    $.ajax({
+      type: "GET",
+      url: "cartRemoveProduct.php",
+      data: { id: id },
+      success: function (response) {
+        console.log(response);
+      },
+      error: function () {
+        console.log("error");
+      },
+    });
+  }
+}
+// REMOVE PRODUCT: END

@@ -5,7 +5,7 @@
     <!-- BODY HEADER: Start -->
     <?php 
       $title = "Thanh toán";
-      include('../header-footer-nav/header.php');
+      include("../header-footer-nav/header.php");
     ?>
     <!-- BODY HEADER: End -->
 
@@ -14,7 +14,7 @@
       <!-- CHECKOUT HEADER: Start -->
       <div class="checkout-header">
         <h2>Thanh toán</h2>
-        <a href="#" onclick="location.href='./cart.php'">
+        <a href="#" onclick="location.href='../cart/cart.php'">
           <span class="material-symbols-outlined"> keyboard_backspace </span
           >Quay về giỏ hàng
         </a>
@@ -22,32 +22,14 @@
       <!-- CHECKOUT's HEADER: End -->
 
       <!-- CHECKOUT BODY: Start -->
-      <form>
+      <form action="checkoutBuy.php" method="get">
         <div class="checkout-body flex">
           <!-- INFOR FORM: Start -->
           <div class="left-col" style="width: 50%;">
             <div class="infor-form flex flex-col">
               <!-- GENDER: Start -->
               <div class="gender flex">
-                <div>
-                  <input
-                    class="square-radio"
-                    type="radio"
-                    name="gender"
-                    id="nam"
-                    required/>
-                  <label for="nam">Nam</label>
-                </div>
-
-                <div>
-                  <input
-                    class="square-radio"
-                    type="radio"
-                    name="gender"
-                    id="nu" 
-                    />
-                  <label for="nu">Nữ</label>
-                </div>
+                <!-- GENDER REDIO HERE -->
               </div>
               <!-- GENDER: End -->
 
@@ -55,54 +37,59 @@
               <input
                 type="text"
                 placeholder="Họ tên*"
+                name="name"
                 required
-                class="input-char" 
+                class="input-char customer-name" 
                 aria-required="true"/>
               <!-- NAME: End -->
 
               <!-- PHONE NUMBER: Start -->
               <input
-                type="text"
+                type="tel"
                 placeholder="SĐT*"
+                name="phone"
                 aria-required="true"
                 required
-                class="input-char" 
+                class="input-char customer-phone" 
                 pattern="(\+84|0)\d{7,10}"/>
               <!-- PHONE NUMBER: End -->
 
               <!-- ADDRESS: Start -->
               <div class="address width-50-30">
                 <!-- City -->
-                <select
+                <input
+                  type="text"
                   class="input-char"
                   id="city"
-                  aria-label=".form-select-sm"
-                  data-live-search="true">
-                  <option value="" selected disabled>Chọn tỉnh thành</option>
-                </select>
+                  name="city"
+                  placeholder="Tỉnh/Thành*"
+                  required/>
 
-                <select
+                  <input
+                  type="text"
                   class="input-char"
                   id="district"
-                  aria-label=".form-select-sm"
-                  data-live-search="true">
-                  <option value="" selected disabled>Chọn quận huyện</option>
+                  name="district"
+                  placeholder="Quận/Huyện*"
+                  required/>
                 </select>
               </div>
 
               <div class="address width-50-50">
-              <select
-                class="input-char"
-                id="ward"
-                aria-label=".form-select-sm"
-                data-live-search="true">
-                <option value="" selected disabled>Chọn phường xã</option>
-              </select>
-              <input
-                type="text"
-                placeholder="Ấp, Hẻm, số nhà,...*"
-                required
-                class="input-char" />
+                <input
+                  type="text"
+                  class="input-char"
+                  id="ward"
+                  name="ward"
+                  placeholder="Xã/Phường*"
+                  required/>
+                <input
+                  type="text"
+                  placeholder="Ấp, Hẻm, số nhà,...*"
+                  required
+                  id="street"
+                  name="street"
+                  class="input-char address-text" />
               </div>             
               <!-- ADDRESS: End -->
 
@@ -118,11 +105,12 @@
               <div class="payment">
                 <div class="payment-header flex vertical-center">
                   <div class="flex vertical-center">
-                    <img src="../../../img/footer_image/paypal.png" />Pay Pal
+                    <!-- <img src="../../../img/footer_image/paypal.png" />Pay Pal -->
+                    <img src="https://cdn-icons-png.flaticon.com/512/5229/5229335.png" />COD
                   </div>
                   <input
                     type="radio"
-                    value="paypal"
+                    value="cod"
                     class="square-radio"
                     name="payment" 
                     required/>
@@ -131,7 +119,7 @@
 
               <!-- master card -->
 
-              <div class="payment">
+              <!-- <div class="payment">
                 <div class="payment-header flex vertical-center">
                   <div class="flex vertical-center">
                     <img src="../../../img/footer_image/mastercard.png" />Master Card
@@ -143,7 +131,7 @@
                     name="payment"
                     required />
                 </div>
-              </div>
+              </div> -->
 
               <!-- Napas -->
               <div class="payment">
@@ -173,71 +161,26 @@
                 <td>Sản phẩm</td>
                 <td>Tổng</td>
               </tr>
-
-              <!-- product -->
-              <tr class="product-checkout">
-                <td class="product-infor">
-                  <img
-                    class="product-img"
-                    src="https://bisuth-store-demo.myshopify.com/cdn/shop/products/14.4.png?v=1657703781" />
-                  <div class="product-descr">
-                    <a href="#">Tên sản phẩm</a>
-                    <small class="gray-text">Màu, size</small>
-                    <small>X1</small>
-                  </div>
-                </td>
-
-                <td>300.000</td>
-              </tr>
-              <!-- product -->
-              <tr class="product-checkout">
-                <td class="product-infor">
-                  <img
-                    class="product-img"
-                    src="https://bisuth-store-demo.myshopify.com/cdn/shop/products/14.4.png?v=1657703781" />
-                  <div class="product-descr">
-                    <a href="#">Tên sản phẩm</a>
-                    <small class="gray-text">Màu, size</small>
-                    <small>X1</small>
-                  </div>
-                </td>
-
-                <td>300.000</td>
-              </tr>
-              <!-- product -->
-              <tr class="product-chekout">
-                <td class="product-infor">
-                  <img
-                    class="product-img"
-                    src="https://bisuth-store-demo.myshopify.com/cdn/shop/products/14.4.png?v=1657703781" />
-                  <div class="product-descr">
-                    <a href="#">Tên sản phẩm</a>
-                    <small class="gray-text">Màu, size</small>
-                    <small>X1</small>
-                  </div>
-                </td>
-
-                <td>300.000</td>
-              </tr>
+              <!-- PRODUCT LIST HERE -->
             </table>
             <!-- PRODUCT LIST: End -->
 
             <!-- BUY SECTION: Start -->
             <div class="buy-section">
               <!-- sub total -->
+
               <div class="sub-total flex">
-                <p>Tạm tính (3 sản phẩm)</p>
-                <p>183.000 đ</p>
+                <!-- SUB TOTAL HERE -->
               </div>
 
               <!-- total -->
               <div class="total flex">
                 <p>Tổng <small>(bao gồm VAT)</small></p>
-                <p>143.910 đ</p>
+                <!-- TOTAL HERE -->
               </div>
 
               <!-- buy -->
-              <input class="buy-btn btn" type="submit" value="Mua" />
+              <input class="buy-btn btn" type="submit" value="Mua"/>
               <!-- accept rule -->
               <input type="checkbox" id="accept-rule" required/>
               <label for="accept-rule" class="gray-text"
@@ -290,7 +233,6 @@
 
     <!-- js: start -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../../../js/store/cart-checkout/checkout/checkout.js"></script>
     <!-- js: end -->
-  </body>
-</html>

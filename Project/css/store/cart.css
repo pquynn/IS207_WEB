@@ -87,7 +87,7 @@ p {
 }
 
 /* amount */
-.product input {
+.amount .amount-feld {
   min-width: 30px;
   max-width: 50px;
   border: none;
@@ -100,7 +100,7 @@ p {
   -webkit-appearance: none;
 }
 
-.amount-btn {
+div > .amount-btn {
   background-color: #d9d9d9;
   border: solid 1px;
   padding: 2px 7px;
