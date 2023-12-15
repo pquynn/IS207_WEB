@@ -1,5 +1,5 @@
 <?php
-    include "../Connect_MySQL.php";
+    include "../connect.php";
 
     function detailOrder() {
         global $conn;
@@ -12,19 +12,29 @@
             orders.address, orders.pay, orders.status, orders.total_products,
             total_price 
                     FROM orders
-                    WHERE order_id = $id";
-            $result1 = mysqli_query($conn, $sql1);
-    
+                    WHERE order_id = ?";
+            //sql injection
+            $stmt1 = $conn->prepare($sql1);
+            $stmt1->bind_param('i', $id);
+            $stmt1->execute();
+            $result1 = $stmt1->get_result();
     
             $sql2 ="SELECT order_detail.product_id, order_detail.product_name, order_detail.size,
             order_detail.quantity, order_detail.price, order_detail.order_id, first_picture
                     FROM order_detail, product_pictures
                     WHERE order_detail.product_id = product_pictures.product_id
-                    AND order_detail.order_id = $id;";
-            $result2 = $conn->query($sql2);        
+                    AND order_detail.order_id = ?;";
+            //sql injection
+            $stmt2 = $conn->prepare($sql2);
+            $stmt2->bind_param('i', $id);
+            $stmt2->execute();
+            $result2 = $stmt2->get_result();
+            $stmt1->close();
+            $stmt2->close();
+
             $data1 = [];
             $data2 =[];
-    
+            
             if($result1 ->num_rows > 0) {
                 while ($row = mysqli_fetch_assoc($result1)) {
                     $data1[] = $row;
@@ -36,62 +46,13 @@
                     $data2[] = $row;
                 }
             }
-    
+
             $response = array(
                 'data1' => $data1, //dữ liệu khách hàng
                 'data2' => $data2 //dữ liệu sản phẩm
             );
     
             return $response;      
-    }
-
-    function UpdateInfoCus() {
-        global $conn;
-
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $CusName = $_GET['name'];
-            $CusTel = $_GET['tel'];
-            $orderID = $_GET['id'];
-            $sql = "UPDATE orders 
-                    SET name = '$CusName', telephone = '$CusTel'
-                    WHERE order_id = '$orderID'";
-            $result = $conn->query($sql);
-            return $result;
-        }
-        else
-            return false;
-    }
-
-    function updateCusAddress() {
-        global $conn;
-
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $CusAddress = $_GET['address'];
-            $orderID = $_GET['id'];
-            $sql = "UPDATE orders 
-                    SET address = '$CusAddress'
-                    WHERE order_id = '$orderID'";
-            $result = $conn->query($sql);
-            return $result;
-        }
-        else
-            return false;        
-    }
-
-    function updateCusPay() {
-        global $conn;
-
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $CusPay = $_GET['pay'];
-            $orderID = $_GET['id'];
-            $sql = "UPDATE orders 
-                    SET pay = '$CusPay'
-                    WHERE order_id = '$orderID'";
-            $result = $conn->query($sql);
-            return $result;
-        }
-        else
-            return false;       
     }
 
     function updateStatus() {
@@ -101,30 +62,40 @@
             $status_get = $_GET['order_status'];
             $orderID = $_GET['id'];
             switch($status_get) {
-                case 'prepare':
+                case 1:
                     $status = 'Đang chuẩn bị hàng';
                     break;
-                case 'shipping':
+                case 2:
                     $status = 'Đang giao hàng';
                     break;
-                case 'order-success':
+                case 3:
                     $status = 'Giao thành công';
                     break;
-                case 'order-cancel':
+                case 4:
                     $status = 'Đã hủy';
                     break;
                 default:
                     $status='';
 
             }
+
+            //sql injection
             $sql = "UPDATE orders 
-                    SET orders.status = '$status'
-                    WHERE order_id = '$orderID'";
-            $result = $conn->query($sql);
-            return $result;
-        }
-        else
-            return false;          
+                    SET orders.status = ?
+                    WHERE order_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('si', $status, $orderID);
+            $result = $stmt->execute();
+            $stmt->close();
+
+            if ($result) {
+                return ['result' => true, 'message' => 'Cập nhật thành công'];
+            } else {
+                return ['result' => false, 'message' => 'Cập nhật không thành công'];
+            }
+        } else {
+            return ['result' => false, 'message' => 'Cập nhật không thành công'];
+        }        
     }
     if (isset($_GET['action'])) {
         $action = $_GET['action'];
@@ -133,15 +104,6 @@
         switch ($action) {
             case 'detail':
                 echo json_encode(detailOrder());
-                break;
-            case 'updateInfoCus':
-                echo json_encode(UpdateInfoCus());
-                break;
-            case 'updateCusAddress':
-                echo json_encode(updateCusAddress());
-                break;
-            case 'updateCusPay':
-                echo json_encode(updateCusPay());
                 break;
             case 'updateStatus':
                 echo json_encode(updateStatus());

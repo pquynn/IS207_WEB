@@ -11,21 +11,21 @@
             <form action class="edit-status">
                 <!--Body-->
                 <div class="modal-body">                    
-                    <input class="form-check-input" type="radio" name="status-order" id="status1" value="prepare">
+                    <input class="form-check-input" type="radio" name="status-order" id="status1" value=1>
                     <label class="form-check-label" for="status1">
                     Đang chuẩn bị hàng
                     </label><br>
-                    <input class="form-check-input" type="radio" name="status-order" id="status2" value="shipping">
+                    <input class="form-check-input" type="radio" name="status-order" id="status2" value=2>
                     <label class="form-check-label" for="status2">
                     Đang giao hàng
                     </label><br>
-                    <input class="form-check-input" type="radio" name="status-order" id="status3" value="order-success">
+                    <input class="form-check-input" type="radio" name="status-order" id="status3" value=3>
                     <label class="form-check-label" for="status3">
                     Giao thành công
                     </label><br>
-                    <input class="form-check-input" type="radio" name="status-order" id="status4" value="order-cancel">
+                    <input class="form-check-input" type="radio" name="status-order" id="status4" value=4>
                     <label class="form-check-label" for="status4">
-                    Đã hủy
+                    Hủy đơn hàng
                     </label>
                 </div>
 

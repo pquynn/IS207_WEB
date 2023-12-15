@@ -4,7 +4,6 @@
 <?php
     $title = "Danh sách đơn hàng";
     include("AdminNavigation.php");
-    include("./Connect_MySQL.php");
 ?>
 
 <!--MAIN SECTION----START-->
@@ -40,7 +39,7 @@
     <!--Search bar-->
     <div class="admin-search-container">
         <div class="search-bar-box">
-            <input type="text" id="search" placeholder="Tìm kiếm..." class="form-control ">
+            <input type="text" id="search" placeholder="Tìm kiếm theo mã đơn hàng" class="form-control ">
             <!--<a href="#" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></a>-->
         </div>
     </div>
@@ -73,4 +72,4 @@
 </div>
 <!--MAIN SECTION----END-->
 
-<script src="../../js/admin/Order/order"></script>
+<script src="../../js/admin/Order/order-management"></script>

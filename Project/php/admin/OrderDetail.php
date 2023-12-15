@@ -37,9 +37,6 @@
                     
                 <ul class="info">
                     <li class="header-info">Thông tin người nhận 
-                        <button class="btn-edit-info" data-bs-toggle="modal" data-bs-target="#edit-customer-info">
-                            <i class="fa-solid fa-pen "></i>
-                        </button>
                     </li>
                     <li> 
                         Họ tên:
@@ -57,9 +54,6 @@
                     
                 <ul class="info">
                     <li class="header-info">Địa chỉ người nhận
-                        <button class="btn-edit-info" data-bs-toggle="modal" data-bs-target="#edit-customer-address">
-                            <i class="fa-solid fa-pen "></i>
-                        </button>
                     </li>
                     <li id="cus-add"></li>
                 </ul>
@@ -70,9 +64,6 @@
                     
                 <ul class="info">
                     <li class="header-info">Phương thức thanh toán
-                        <button class="btn-edit-info" data-bs-toggle="modal" data-bs-target="#edit-customer-payment">
-                            <i class="fa-solid fa-pen "></i>
-                        </button>
                     </li>
                     <li id="cus-pay"></li>
                 </ul>
@@ -124,10 +115,7 @@
 
 <!--Modal edit customer's information-->
 <?php
-    include("./ModalEditCustomerInfor.php");
-    include("./ModalEditCustomerAddress.php");
-    include("./ModalEditCustomerPayment.php");
     include("./ModalEditOrderStatus.php");
 ?>
 <!---->
-<script src="../../js/admin/Order/order-detail"></script>
+<script src="../../js/admin/Order/order-detail-management"></script>

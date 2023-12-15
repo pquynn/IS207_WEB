@@ -75,7 +75,7 @@ $(document).ready(function() {
 
 function detailOrder(id) {
     $.ajax({
-        url: "../../php/admin/ORDERS/orders-controller.php?action=detail",
+        url: "../../php/controller/admin/orders-controller.php?action=detail",
         type: 'GET',
         data: {id: id},
         dataType: 'json',
@@ -91,7 +91,7 @@ function detailOrder(id) {
 
 function fetchData(page) {
     $.ajax({
-        url: "../../php/admin/ORDERS/orders-controller.php?action=fetch",
+        url: "../../php/controller/admin/orders-controller.php?action=fetch",
         type: 'GET',
         data: {page: page},
         dataType: 'json',
@@ -163,7 +163,7 @@ function updatePagination(currentPage, totalPages) {
 
   function deleteOrder(order_id, closest_row){
     $.ajax({
-        url: '../../php/admin/ORDERS/orders-controller.php?action=delete',
+        url: '../../php/controller/admin/orders-controller.php?action=delete',
         type: 'GET',
         data: { order_id: order_id },
         success: function () {
@@ -178,7 +178,7 @@ function updatePagination(currentPage, totalPages) {
 
   function fetchSearchData(searchTerm, page) {
     $.ajax({
-        url: '../../php/admin/ORDERS/orders-controller.php?action=search',
+        url: '../../php/controller/admin/orders-controller.php?action=search',
         type: 'GET',
         data: {searchTerm: searchTerm, page: page},
         dataType: 'json',
@@ -223,7 +223,7 @@ function updatePagination(currentPage, totalPages) {
 
 function filterStatus(chosen_status, page) {
     $.ajax({
-        url: '../../php/admin/ORDERS/orders-controller.php?action=filterstatus',
+        url: '../../php/controller/admin/orders-controller.php?action=filterstatus',
         type: 'GET',
         data: {chosen_status: chosen_status, page: page},
         dataType: 'json',
@@ -268,7 +268,7 @@ function filterStatus(chosen_status, page) {
 
 function filterDateRange(date_data, page) {
     $.ajax({
-        url: '../../php/admin/ORDERS/orders-controller.php?action=filterdate',
+        url: '../../php/controller/admin/orders-controller.php?action=filterdate',
         type: 'GET',
         data: {fromdate: date_data.fromdate, todate: date_data.todate, page: page},
         dataType: 'json',

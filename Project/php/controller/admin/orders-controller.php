@@ -1,5 +1,5 @@
 <?php
-    include "../Connect_MySQL.php";
+    include "../connect.php";
 
 function fetchOrders() {
     global $conn;
