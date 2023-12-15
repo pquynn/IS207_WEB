@@ -29,7 +29,7 @@
     <script
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
 
 
     <!-- font-family -->
@@ -52,26 +52,11 @@
         <li class="nav-link--item hover-underline"><a href="#">MUA SẮM</a></li>
 
         <!-- category sub navigation -->
-        <li class="nav-link--item primary-nav hover-underline a">
+        <!-- <li class="nav-link--item primary-nav hover-underline a">
           <a href="#">LOẠI SẢN PHẨM</a>
-          <ul class="sub-nav">
-            <li class="sub-nav--item hover-underline">
-              <a href="../homepage-shopping/product_list.php">LOẠI 1</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="#">LOẠI 2</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="#">LOẠI 3</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="#">LOẠI 4</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="#">LOẠI 5</a>
-            </li>
+          <ul class="sub-nav" id="listCategory">
           </ul>
-        </li>
+        </li> -->
 
         <li class="nav-link--item hover-underline"><a href="../blog-info/about-us.php">ABOUT US</a></li>
         <li class="nav-link--item hover-underline"><a href="../blog-info/blog.php">BLOGS</a></li>

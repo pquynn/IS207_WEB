@@ -4,6 +4,11 @@ $(document).ready(function () {
     // Lấy giá trị của tham số "gender"
     var genderValue = getParameterByName('gender');
 
+    // var categoryValue = getParameterByName('category');
+
+    // alert(categoryValue);
+
+
     $.ajax({
         url: '../../controller/homepage-shopping/product_list-controller.php?action=fetch',
         type: 'GET',
@@ -32,10 +37,11 @@ $(document).ready(function () {
                                 <p id="${row.gender}">${moneyString} VND</p>
                             </div>
                         `);
-                        countProductHasDisplay++;
-                        if (countProductHasDisplay === limitOfProduct) {
-                            return true;
-                        }
+
+                        // countProductHasDisplay++;
+                        // if (countProductHasDisplay === limitOfProduct) {
+                        //     return true;
+                        // }
                     })
                 }
 //                                 <p>${optionGioiTinh} ${row.gender}</p>
@@ -54,23 +60,23 @@ $(document).ready(function () {
                                 </div>
                             `);
                         }
-                        countProductHasDisplay++;
-                        if (countProductHasDisplay === limitOfProduct) {
-                            return true;
-                        }
+                        // countProductHasDisplay++;
+                        // if (countProductHasDisplay === limitOfProduct) {
+                        //     return true;
+                        // }
                     })
                 }
-                countProductHasDisplay=0;
+                // countProductHasDisplay=0;
             }
 
-            $('.pagination p').click(function(){
-                limitOfProduct *= 2;
-                alert(limitOfProduct);
-                if (limitOfProduct >= totalProducts) {
-                    $(this).hide();
-                    limitOfProduct = 9;
-                }
-            });
+            // $('.pagination p').click(function(){
+            //     limitOfProduct *= 2;
+            //     alert(limitOfProduct);
+            //     if (limitOfProduct >= totalProducts) {
+            //         $(this).hide();
+            //         limitOfProduct = 9;
+            //     }
+            // });
             
 
             // Hàm sắp xếp theo cột "price"
@@ -85,14 +91,23 @@ $(document).ready(function () {
                 });
             }
 
+            // if (categoryValue !== null){
+            //     if (genderValue === "Giày nam")
+            //         InsertData(data, "Nam");
+            //     else
+            //         InsertData(data, "Nữ");
+            // }
+            // else
+            //     InsertData(data, "null");
+
             if (genderValue !== null){
                 if (genderValue === "Giày nam")
-                    InsertData(data, "Nam");
+                    InsertData(data.tableProduct, "Nam");
                 else
-                    InsertData(data, "Nữ");
+                    InsertData(data.tableProduct, "Nữ");
             }
             else
-                InsertData(data, "null");
+                InsertData(data.tableProduct, "null");
 
             $('#sort').val('cheap-to-expensive');
 
@@ -103,21 +118,21 @@ $(document).ready(function () {
 
                 $('.product-list').empty();
                 if (selectedValue==="cheap-to-expensive") {
-                    SapXepTheoGiaTien(data, "asc");
-                    InsertData(data, "null");
+                    SapXepTheoGiaTien(data.tableProduct, "asc");
+                    InsertData(data.tableProduct, "null");
                 }   
                 else if (selectedValue==="expensive-to-cheap") {
-                    SapXepTheoGiaTien(data, "desc");
-                    InsertData(data, "null");
+                    SapXepTheoGiaTien(data.tableProduct, "desc");
+                    InsertData(data.tableProduct, "null");
                 }
                 else if (selectedValue==="male") {
-                    InsertData(data, "Nam");
+                    InsertData(data.tableProduct, "Nam");
                 }
                 else if (selectedValue==="female") {
-                    InsertData(data, "Nữ");
+                    InsertData(data.tableProduct, "Nữ");
                 }
                 else if (selectedValue==="male-female") {
-                    InsertData(data, "Nam, nữ");
+                    InsertData(data.tableProduct, "Nam, nữ");
                 }
             });
         },

@@ -70,7 +70,7 @@
                 <a href="#" class="accordion-body"> Sneaker </a>
                 <a href="#" class="accordion-body"> Sneaker </a>
                 <a href="#" class="accordion-body"> Sneaker </a>
-                <a href="#" class="accordion-body see-more"> Xem thêm </a>
+                <!-- <a href="#" class="accordion-body see-more"> Xem thêm </a> -->
               </div>
               <!-- accordion-item body: start  -->
             </div>
@@ -110,7 +110,7 @@
             <!-- price: end -->
 
             <!-- color: start -->
-            <div class="accordion-item">
+            <!-- <div class="accordion-item">
               <h2 class="accordion-header" id="panelsStayOpen-headingThree">
                 <button
                   class="accordion-button collapsed"
@@ -147,11 +147,11 @@
                     style="background-color: #324a7b"></button>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- color: end -->
 
             <!-- size: start -->
-            <div class="accordion-item">
+            <!-- <div class="accordion-item">
               <h2 class="accordion-header" id="panelsStayOpen-headingFour">
                 <button
                   class="accordion-button collapsed"
@@ -198,13 +198,13 @@
                   <a href="#" class="accordion-body see-more"> Xem thêm </a>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- size: end -->
           </div>
           <!-- accordion: end -->
 
           <!-- rating-filter: start -->
-          <div class="rating">
+          <!-- <div class="rating">
             <h4>ĐÁNH GIÁ</h4>
             <a class="5-star" href="#">
               <ion-icon name="star-sharp"></ion-icon
@@ -228,7 +228,7 @@
               ><ion-icon name="star-outline"></ion-icon>
             </a>
             <a href="#" class="see-more">Xem thêm</a>
-          </div>
+          </div> -->
           <!-- rating-filter: end -->
         </div>
         <!-- left-col: end -->
