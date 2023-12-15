@@ -11,6 +11,7 @@ if (window.location.href.includes("product_detail.php")) {
     let productPrice;
     let numberOfProduct;
     let productSize;
+    let productImage;
 
     $.ajax({
       url: '../../controller/homepage-shopping/product_detail-controller.php',
@@ -93,10 +94,13 @@ if (window.location.href.includes("product_detail.php")) {
             productName = $('.product-name').text();
             productPrice = $('.product-price').text();
             numberOfProduct = $('.number').text();
+            productImage = $('.product-main-img img').attr('src');
 
-            if (productName && productPrice && productSize && numberOfProduct) {
-              let tempProduct = [productName, productPrice, productSize, numberOfProduct];
-              console.log(tempProduct);
+
+            if (productName && productPrice && productSize && numberOfProduct && productImage) {
+              let tempProduct = [productName, productPrice, productSize, numberOfProduct, productImage];
+
+              // Đưa sản phẩm được chọn vào giỏ hàng.
               myCart.push(tempProduct);
 
               localStorage.setItem('myCart', JSON.stringify(myCart));
@@ -110,11 +114,13 @@ if (window.location.href.includes("product_detail.php")) {
             productPrice = $('.product-price').text();
             numberOfProduct = $('.number').text();
 
-            if (productName && productPrice && productSize && numberOfProduct) {
-              let tempProduct = [productName, productPrice, productSize, numberOfProduct];
-              console.log(tempProduct);
+            if (productName && productPrice && productSize && numberOfProduct && productImage) {
+              let tempProduct = [productName, productPrice, productSize, numberOfProduct, productImage];
+
+              // Đưa sản phẩm được chọn vào giỏ hàng.
               myCart.push(tempProduct);
 
+              // Lưu dữ liệu vào localStorage. 
               localStorage.setItem('myCart', JSON.stringify(myCart));
 
               // Tạo URL mới với tham số truyền vào là tên sản phẩm
@@ -180,4 +186,11 @@ else if (window.location.href.includes("cart.php")) {
   myCart = JSON.parse(localStorage.getItem('myCart'));
 
   console.log(myCart);
+}
+
+// Hàm lấy số sản phẩm có trong giỏ hàng.
+function countProductInCart(myCart) {
+  if (myCart !== null)
+    return myCart.length;
+  return 0;
 }
