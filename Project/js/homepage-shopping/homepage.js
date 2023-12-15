@@ -121,10 +121,15 @@ $(document).ready(function () {
     }
     
     $('.collection-item').click(function () {
-        var content = $(this).find('p').text();
-        if (content==="Giày nam")
-            alert('Nam');
-        else
-            alert('Nữ');
+        // Lấy giới tính
+        var gender = $(this).find('p').text();
+
+        // Tạo URL mới với tham số truyền vào là giới tính
+        // var url = '../../store/homepage-shopping/product_list.php?gender=Nam';
+        var url = '../../store/homepage-shopping/product_list.php?gender=' + encodeURIComponent(gender);
+
+
+        // Chuyển hướng đến trang mới
+        window.location.href = url;
     });
 });

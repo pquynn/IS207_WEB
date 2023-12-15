@@ -1,44 +1,50 @@
-// Fetch data using AJAX
-$(document).ready(function () {
+var myCart = [];
 
-  // Lấy giá trị của tham số 'product' từ URL
-  //var productName = getParameterByName('product');
+if (window.location.href.includes("product_detail.php")) {
+  if (localStorage.getItem('myCart') !== null)
+    myCart = JSON.parse(localStorage.getItem('myCart'));
 
-  //alert(productName);
+  // Fetch data using AJAX
+  $(document).ready(function () {
 
-  $.ajax({
-    url: '../../controller/homepage-shopping/product_detail-controller.php',
-    type: 'GET',
-    dataType: 'json',
-    data: { product: getParameterByName('product') },
-    success: function (data) {
-      if (data) {
-        let imageUrlFirst = 'data:FIRST_PICTURE/png;base64,' + data.productInfo.FIRST_PICTURE;
-        let imageUrlSecond = 'data:SECOND_PICTURE/png;base64,' + data.productInfo.SECOND_PICTURE;
-        let imageUrlThird = 'data:THIRD_PICTURE/png;base64,' + data.productInfo.THIRD_PICTURE;
-        $('.product-main-img img').attr('src', imageUrlFirst);
-        $('.product-info .product-name h2').text(data.productInfo.PRODUCT_NAME);
-        $('.product-info .product-price h3').text(formatNumber(data.productInfo.PRICE) + ' VND');
-        $('.product-category p').text(data.productInfo.CATEGORY_NAME);
+    let productName;
+    let productPrice;
+    let numberOfProduct;
+    let productSize;
 
-        $('.tab-pane p').text(data.productInfo.DESCRIPTION);
-        $('.tab-pane #second_img').attr('src', imageUrlSecond);
-        $('.tab-pane #third_img').attr('src', imageUrlThird);
+    $.ajax({
+      url: '../../controller/homepage-shopping/product_detail-controller.php',
+      type: 'GET',
+      dataType: 'json',
+      data: { product: getParameterByName('product') },
+      success: function (data) {
+        if (data) {
+          let imageUrlFirst = 'data:FIRST_PICTURE/png;base64,' + data.productInfo.FIRST_PICTURE;
+          let imageUrlSecond = 'data:SECOND_PICTURE/png;base64,' + data.productInfo.SECOND_PICTURE;
+          let imageUrlThird = 'data:THIRD_PICTURE/png;base64,' + data.productInfo.THIRD_PICTURE;
+          $('.product-main-img img').attr('src', imageUrlFirst);
+          $('.product-info .product-name h2').text(data.productInfo.PRODUCT_NAME);
+          $('.product-info .product-price h3').text(formatNumber(data.productInfo.PRICE) + ' VND');
+          $('.product-category p').text(data.productInfo.CATEGORY_NAME);
 
-        data.tableProductSize.forEach(function (row){
-          $('.size').append(`
+          $('.tab-pane p').text(data.productInfo.DESCRIPTION);
+          $('.tab-pane #second_img').attr('src', imageUrlSecond);
+          $('.tab-pane #third_img').attr('src', imageUrlThird);
+
+          data.tableProductSize.forEach(function (row) {
+            $('.size').append(`
             <button class="btn-size">${row.SIZE}</button>
           `);
-        });
+          });
 
-        let countComment = data.tableComment.length;
-        let avgScore = 0;
-        $('.people-rate-num').text(countComment + " lượt đánh giá");
-        
-        if (countComment > 0){
-          data.tableComment.forEach(function (row){
-            avgScore = row.SCORE;
-            $('.review-list').append(`
+          let countComment = data.tableComment.length;
+          let avgScore = 0;
+          $('.people-rate-num').text(countComment + " lượt đánh giá");
+
+          if (countComment > 0) {
+            data.tableComment.forEach(function (row) {
+              avgScore = row.SCORE;
+              $('.review-list').append(`
               <div class="person-review">
                 <!-- star: start -->
                 <div class="review-star">
@@ -66,54 +72,112 @@ $(document).ready(function () {
                 <!-- img: end -->
               </div>
             `);
-          });
-          avgScore = Math.round(avgScore / countComment);
-          $('.rating-score h5').text(avgScore);
-          $.each(Array(avgScore), function(index) {
-            $('.rating-icon').append(`
+            });
+            avgScore = Math.round(avgScore / countComment);
+            $('.rating-score h5').text(avgScore);
+            $.each(Array(avgScore), function (index) {
+              $('.rating-icon').append(`
             <ion-icon name="star"></ion-icon>
             `);
+            });
+          }
+          else {
+            $('.rating-score h5').text(0);
+          }
+
+          $('.btn-size').click(function () {
+            productSize = $(this).text();
           });
+
+          $('.btn-cancel').click(function () {
+            productName = $('.product-name').text();
+            productPrice = $('.product-price').text();
+            numberOfProduct = $('.number').text();
+
+            if (productName && productPrice && productSize && numberOfProduct) {
+              let tempProduct = [productName, productPrice, productSize, numberOfProduct];
+              console.log(tempProduct);
+              myCart.push(tempProduct);
+
+              localStorage.setItem('myCart', JSON.stringify(myCart));
+            }
+            else
+              alert('Thiếu thông tin!');
+          });
+
+          $('.btn-confirm').click(function () {
+            productName = $('.product-name').text();
+            productPrice = $('.product-price').text();
+            numberOfProduct = $('.number').text();
+
+            if (productName && productPrice && productSize && numberOfProduct) {
+              let tempProduct = [productName, productPrice, productSize, numberOfProduct];
+              console.log(tempProduct);
+              myCart.push(tempProduct);
+
+              localStorage.setItem('myCart', JSON.stringify(myCart));
+
+              // Tạo URL mới với tham số truyền vào là tên sản phẩm
+              var url = '../../store/cart-checkout/cart.php';
+
+              // Chuyển hướng đến trang mới
+              window.location.href = url;
+            }
+            else
+              alert('Thiếu thông tin!');
+          });
+
         }
         else {
-          $('.rating-score h5').text(0);
+          console.error('Empty data received from the server.');
         }
+      },
+      error: function () {
+        console.error('Failed to fetch data from the server.');
+      }
+    });
 
+
+    function formatNumber(input) {
+      let strNumber = String(input);
+
+      // Split the string into groups of 3 characters from the right
+      let chunks = [];
+      while (strNumber.length > 0) {
+        chunks.push(strNumber.slice(-3));
+        strNumber = strNumber.slice(0, -3);
       }
-      else {
-        console.error('Empty data received from the server.');
-      }
-    },
-    error: function () {
-      console.error('Failed to fetch data from the server.');
+
+      // Reverse the chunks and join them with dots
+      let formattedStr = chunks.reverse().join('.');
+
+      return formattedStr;
     }
+
+    // Lấy tên sản phẩm từ URL
+    function getParameterByName(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    // Xem giỏ hàng.
+    $('.material-symbols-outlined').click(function () {
+      // Tạo URL mới với tham số truyền vào là tên sản phẩm
+      var url = '../../store/cart-checkout/cart.php';
+
+      // Chuyển hướng đến trang mới
+      window.location.href = url;
+    });
   });
+}
+else if (window.location.href.includes("cart.php")) {
+  // Chuyển giỏ hàng qua các file có dạng "cart.php"
+  myCart = JSON.parse(localStorage.getItem('myCart'));
 
-  function formatNumber(input) {
-    let strNumber = String(input);
-
-    // Split the string into groups of 3 characters from the right
-    let chunks = [];
-    while (strNumber.length > 0) {
-      chunks.push(strNumber.slice(-3));
-      strNumber = strNumber.slice(0, -3);
-    }
-
-    // Reverse the chunks and join them with dots
-    let formattedStr = chunks.reverse().join('.');
-
-    return formattedStr;
-  }
-
-  // Lấy tên sản phẩm từ URL
-  function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-  }
-
-});
+  console.log(myCart);
+}

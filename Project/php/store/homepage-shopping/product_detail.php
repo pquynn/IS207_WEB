@@ -26,7 +26,6 @@
             <img src="" />
           </div>
         </div>
-
         <!--Khung giới thiệu thông tin sản phẩm-->
         <div class="product-info">
           <div class="product-name"><h2></h2></div>
@@ -203,7 +202,6 @@
     </script>
 
     <script src="../../../js/homepage-shopping/product_detail.js"></script>
-    <script src="../../../js/card/card.js"></script>
 
     <!-- bootstrap -->
     <script

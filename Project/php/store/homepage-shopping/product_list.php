@@ -240,8 +240,9 @@
           <select name="sort" id="sort">
             <option value="cheap-to-expensive" >Sắp xếp theo giá tăng dần</option>
             <option value="expensive-to-cheap">Sắp xếp theo giá giảm dần</option>
-            <option value="latest-to-oldest">Sắp xếp theo thời gian mới nhất</option>
-            <option value="latest-to-oldest">Sắp xếp theo thời gian cũ nhất</option>
+            <option value="male">Giày nam</option>
+            <option value="female">Giày nữ</option>
+            <option value="male-female">Giày nam, nữ</option>
           </select>
           <!-- sort-option: end -->
 
@@ -253,14 +254,15 @@
           <!-- product-list: end -->
 
           <div class="pagination m-5">
-            <a href="#">&laquo;</a>
+            <p>Xem thêm</p>
+            <!-- <a href="#">&laquo;</a>
             <a class="active" href="#">1</a>
             <a href="#">2</a>
             <a href="#">3</a>
             <a href="#">4</a>
             <span class="ellipsis">...</span>
             <a href="#">10</a>
-            <a href="#">&raquo;</a>
+            <a href="#">&raquo;</a> -->
           </div>
         </div>
         <!-- right-col: end -->

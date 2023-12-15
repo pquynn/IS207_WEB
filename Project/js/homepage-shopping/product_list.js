@@ -1,23 +1,124 @@
 // Fetch data using AJAX
 $(document).ready(function () {
 
+    // Lấy giá trị của tham số "gender"
+    var genderValue = getParameterByName('gender');
+
     $.ajax({
         url: '../../controller/homepage-shopping/product_list-controller.php?action=fetch',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            data.forEach(function (row) {
-                var imageUrl = 'data:first_picture/png;base64,' + row.first_picture;
-                var moneyString = formatNumber(row.price);
-                $('.product-list').append(`
-                    <div class="product-detail">
-                        <div class="product-img--container">
-                            <img src="${imageUrl}">
-                        </div>
-                        <a href="#">${row.product_name}</a> 
-                        <p>${moneyString} VND</p>
-                    </div>
-                `);
+            let totalProducts = data.length;
+            // alert(totalProducts);
+
+            let continueLoadProduct = false;
+
+            let countProductHasDisplay = 0;
+            let limitOfProduct = 9;
+
+            // Hàm truyền dữ liệu lên màn hình.
+            function InsertData(data, optionGioiTinh){
+                if (optionGioiTinh==="null"){
+                    data.some(function (row) {
+                        var imageUrl = 'data:first_picture/png;base64,' + row.first_picture;
+                        var moneyString = formatNumber(row.price);
+                        $('.product-list').append(`
+                            <div class="product-detail">
+                                <div class="product-img--container">
+                                    <img src="${imageUrl}" id="${row.product_id}">
+                                </div>
+                                <a href="#">${row.product_name}</a> 
+                                <p id="${row.gender}">${moneyString} VND</p>
+                            </div>
+                        `);
+                        countProductHasDisplay++;
+                        if (countProductHasDisplay === limitOfProduct) {
+                            return true;
+                        }
+                    })
+                }
+//                                 <p>${optionGioiTinh} ${row.gender}</p>
+                else {
+                    data.some(function (row) {
+                        if (optionGioiTinh===row.gender){
+                            var imageUrl = 'data:first_picture/png;base64,' + row.first_picture;
+                            var moneyString = formatNumber(row.price);
+                            $('.product-list').append(`
+                                <div class="product-detail">
+                                    <div class="product-img--container">
+                                        <img src="${imageUrl}" id="${row.product_id}">
+                                    </div>
+                                    <a href="#">${row.product_name}</a> 
+                                <p id="${row.gender}">${moneyString} VND</p>
+                                </div>
+                            `);
+                        }
+                        countProductHasDisplay++;
+                        if (countProductHasDisplay === limitOfProduct) {
+                            return true;
+                        }
+                    })
+                }
+                countProductHasDisplay=0;
+            }
+
+            $('.pagination p').click(function(){
+                limitOfProduct *= 2;
+                alert(limitOfProduct);
+                if (limitOfProduct >= totalProducts) {
+                    $(this).hide();
+                    limitOfProduct = 9;
+                }
+            });
+            
+
+            // Hàm sắp xếp theo cột "price"
+            function SapXepTheoGiaTien(data, condition) {
+                data.sort(function (firstRow, secondRow) {
+                    var columnA = firstRow.price; 
+                    var columnB = secondRow.price;
+            
+                    if (condition === "asc") 
+                        return columnA - columnB; // Sắp xếp tăng dần
+                    return columnB - columnA; // Sắp xếp giảm dần
+                });
+            }
+
+            if (genderValue !== null){
+                if (genderValue === "Giày nam")
+                    InsertData(data, "Nam");
+                else
+                    InsertData(data, "Nữ");
+            }
+            else
+                InsertData(data, "null");
+
+            $('#sort').val('cheap-to-expensive');
+
+            // Xử lý sự kiện khi giá trị của select thay đổi
+            $('#sort').change(function () {
+                // Lấy giá trị được chọn
+                var selectedValue = $(this).val();
+
+                $('.product-list').empty();
+                if (selectedValue==="cheap-to-expensive") {
+                    SapXepTheoGiaTien(data, "asc");
+                    InsertData(data, "null");
+                }   
+                else if (selectedValue==="expensive-to-cheap") {
+                    SapXepTheoGiaTien(data, "desc");
+                    InsertData(data, "null");
+                }
+                else if (selectedValue==="male") {
+                    InsertData(data, "Nam");
+                }
+                else if (selectedValue==="female") {
+                    InsertData(data, "Nữ");
+                }
+                else if (selectedValue==="male-female") {
+                    InsertData(data, "Nam, nữ");
+                }
             });
         },
         error: function () {
@@ -46,64 +147,18 @@ $(document).ready(function () {
 
         // Tạo URL mới với tham số truyền vào là tên sản phẩm
         var url = '../../store/homepage-shopping/product_detail.php?product=' + encodeURIComponent(productName);
-        //var url = '../../store/homepage-shopping/product_detail.php';
 
         // Chuyển hướng đến trang mới
         window.location.href = url;
     });
 
-    $('#sort').val('cheap-to-expensive');
-
-    // Xử lý sự kiện khi giá trị của select thay đổi
-    $('#sort').change(function () {
-        //var selectedValue = $(this).find('option').val();
-        // Lấy giá trị được chọn
-        var selectedValue = $(this).val();
-        //alert(selectedValue);
-        // Sắp xếp sản phẩm trong product-list dựa trên lựa chọn của người dùng
-        sortProducts(selectedValue);
-    });
-
-      // Hàm sắp xếp sản phẩm
-  function sortProducts(sortOption) {
-    var productList = $('.product-list');
-
-    // Lấy danh sách các sản phẩm
-    var products = productList.children('.product-detail');
-
-    // Sắp xếp sản phẩm dựa trên lựa chọn
-    switch (sortOption) {
-        case 'cheap-to-expensive':
-            products.sort(function (a, b) {
-            var priceA = parseFloat($(a).find('.product-price').text());
-            var priceB = parseFloat($(b).find('.product-price').text());
-            return priceA - priceB;
-            });
-            break;
-
-        case 'expensive-to-cheap':
-            products.sort(function (a, b) {
-            var priceA = parseFloat($(a).find('.product-price').text());
-            var priceB = parseFloat($(b).find('.product-price').text());
-            return priceB - priceA;
-            });
-            break;
-
-        case 'new-to-old':
-            // Điều chỉnh logic sắp xếp theo thời gian nếu cần
-            // Ví dụ: sử dụng thuộc tính data-time để so sánh thời gian
-            products.sort(function (a, b) {
-            var timeA = parseInt($(a).data('time'));
-            var timeB = parseInt($(b).data('time'));
-            return timeB - timeA;
-            });
-            break;
-        }
-
-        // Xóa sản phẩm hiện tại trong product-list
-        productList.empty();
-
-        // Thêm lại sản phẩm đã sắp xếp vào product-list
-        productList.append(products);
-  }
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
 });
