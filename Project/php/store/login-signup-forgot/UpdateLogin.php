@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập</title>
-    <link rel="stylesheet" href="Login.css">
-    <link rel="stylesheet" href="base.css">
-    <script src="Login.js"></script>
+    <link rel="stylesheet" href="../../../css/Login.css">
+    <link rel="stylesheet" href="../../../css/base.css">
+    <script src="../../../js/Login.js"></script>
 </head>
 
 <body>
