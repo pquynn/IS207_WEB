@@ -46,9 +46,9 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="Signup.css">
-    <link rel="stylesheet" href="base.css">
-    <script src="Signup.js"></script>
+    <link rel="stylesheet" href="../../../css/Signup.css">
+    <link rel="stylesheet" href="../../../css/base.css">
+    <script src="../../../js/store/my-oder/Signup.js"></script>
 </head>
 
 <body>
