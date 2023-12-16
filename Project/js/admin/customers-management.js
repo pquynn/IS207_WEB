@@ -1,3 +1,4 @@
+import { showToastr } from "./toastr.js";
 var tbl_id, tbl_login, tbl_name, tbl_phone, tbl_birthday, tbl_gender,
 tbl_address, tbl_dayadd;
 var closest_row;
@@ -41,8 +42,6 @@ $(document).ready(function () {
         })
     });
 
-    //delete
-    //TODO: nên check điều kiên xóa ở csdl nữa
     // Event listener for the "Delete" button
     $('.admin-table').on('click', '.btn-delete', function (e) {
         e.preventDefault();
@@ -114,7 +113,7 @@ $(document).ready(function () {
 //function to fetch data in database to table
 function fetchData(page){
     $.ajax({
-        url: '../../php/controller/admin/customer-controller.php', //TODO: nhớ sửa lại nếu đổi thành post
+        url: '../../php/controller/admin/customer-controller.php', 
         type: 'POST',
         data: { action: 'fetch', page: page },
         dataType: 'json',
@@ -148,6 +147,7 @@ function fetchData(page){
             updatePagination(page, totalPages);
         },
         error: function () {
+            showToastr('error', 'Load dữ liệu không thành công');
             console.error('Failed to fetch data from the server.');
         }
     });
@@ -190,13 +190,15 @@ function updatecustomer(username, name, phone, birthday, gender, address){
         data: {action: 'update', id: tbl_id, username: username, name : name, phone : phone, gender : gender, address : address, birthday : birthday},
         dataType: 'json',
         success: function (result) {
-            //TODO: THÔNG BÁO cập nhật THÀNH CÔNG
             $('#add-new').modal('hide');
 
+            showToastr('success', 'Cập nhật khách hàng thành công');
+
             var current_page = parseInt($('.pagination a.active').data('page'));
-            fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
+            fetchData(current_page); 
         },
         error: function () {
+            showToastr('error', 'Cập nhật khách hàng không thành công');
             console.error('Failed to update customer.');
         }
     });
@@ -209,10 +211,11 @@ function deletecustomer(customerId, customerLogin, closest_row) {
         type: 'POST',
         data: { action: 'delete', customer_id: customerId, customer_login: customerLogin },
         success: function () {
-            //TODO: hiện thông báo xóa thành công
             closest_row.remove();
+            showToastr('success', 'Xóa khách hàng thành công');
         },
         error: function () {
+            showToastr('error', 'Xóa khách hàng không thành công');
             console.error('Failed to delete customer.');
         }
     });
@@ -255,6 +258,7 @@ function fetchSearchData(searchTerm, page) {
             updatePagination(page, totalPages);
         },
         error: function () {
+            showToastr('error', 'Load dữ liệu không thành công');
             console.error('Failed to fetch data from the server.');
         }
     });

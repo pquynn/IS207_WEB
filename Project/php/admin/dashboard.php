@@ -1,5 +1,3 @@
- <!--Not have line chart and pie chart. Modified 10/23/2023 by Quyen  -->
- 
  <!-- start: admin navigation -->
     <?php 
         $title = "Thống kê";
@@ -15,24 +13,6 @@
         
         <!-- start: button section -->
         <div class="section_top-content dashboard">
-            <div class="btn-container">
-                <!-- calendar nên dùng button hay input date? -->
-                <!-- <div class="dropdown">
-                    <button class="btn-admin btn-calendar dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-regular fa-calendar"></i>Thời gian
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Ngày hiện tại</a></li>
-                      <li><a class="dropdown-item" href="#">1 tháng trước</a></li>
-                      <li><a class="dropdown-item" href="#">3 tháng trước</a></li>
-                      <li><a class="dropdown-item" href="#">1 năm trước</a></li>
-                    </ul>
-                  </div> -->
-        
-                <!-- <button class="btn-admin btn-export admin">
-                    <i class="fa-solid fa-download"></i>Export
-                </button> -->
-            </div>
         </div>
         <!-- end: button section -->
 
@@ -67,7 +47,7 @@
             </div>
             <!-- end: to do lists -->
                 
-
+            <div id="export-area">
             <!-- start: overview -->
                 <div class="overview-container">
                     <p class="container-heading">Tổng quan</p>
@@ -107,7 +87,7 @@
 
             <div class="row">
                 <!-- start: revenue by categories chart -->
-                <div class="col-6 revenue-by-categories-pie-chart-container">
+                <div class="col-6 revenue-by-categories-pie-chart-container" >
                     <p class="container-heading">Doanh thu theo loại sản phẩm</p>
 
                     <!-- Donut Chart -->
@@ -119,12 +99,11 @@
                             </div>
                         </div>
                     </div>
-                       
                 </div>
                 <!-- end: revenue by categories chart -->
 
                 <!-- start: best seller table -->
-                <div class="col-6 best-seller">
+                <div class="col-6 best-seller" >
                     <p class="container-heading">Sản phẩm bán chạy trong năm</p>
 
                     <div class="admin-table">
@@ -138,36 +117,6 @@
                                 </tr>
                             </thead>
                             <tbody></tbody>
-                            <!-- <tr>
-                                <td><div class="table-img"></div></td>
-                                <td>Giày thể thao </td>
-                                <td>400</td>
-                                <td>100000 đ</td>
-                            </tr>
-                            <tr>
-                                <td><div class="table-img"></div></td>
-                                <td>Giày thể thao </td>
-                                <td>400</td>
-                                <td>100000 đ</td>
-                            </tr>
-                            <tr>
-                                <td><div class="table-img"></div></td>
-                                <td>Giày thể thao </td>
-                                <td>400</td>
-                                <td>100000 đ</td>
-                            </tr>
-                            <tr>
-                                <td><div class="table-img"></div></td>
-                                <td>Giày thể thao </td>
-                                <td>400</td>
-                                <td>100000 đ</td>
-                            </tr>
-                            <tr>
-                                <td><div class="table-img"></div></td>
-                                <td>Giày thể thao </td>
-                                <td>400</td>
-                                <td>100000 đ</td>
-                            </tr> -->
                         </table>
                     </div>
                 </div>
@@ -176,7 +125,7 @@
             
             <!-- start: statistic line chart -->
             <div class="statistic-graph-container">
-                <div class="col revenue-line-chart-container">
+                <div class="col revenue-line-chart-container" >
                     <p class="container-heading">Thống kê doanh thu</p>
 
                     <!-- Area Chart -->
@@ -195,7 +144,6 @@
         </div>
     </div>
     <!-- end: section bottom content -->
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script>
     <script type="module" src="../../js/admin/dashboard-management.js"></script>

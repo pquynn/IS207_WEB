@@ -43,6 +43,7 @@
     <!-- start of Modal of Add new elements. Modified 10/22/2023 by Quyen -->
     <?php include("ModalAddNewCategory.php"); ?>
     <!-- end of Modal of Add new elements-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="../../js/admin/common.js"></script>
     <script type="module" src="../../js/admin/categories-management.js"></script>
     

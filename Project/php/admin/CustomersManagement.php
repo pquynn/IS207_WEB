@@ -16,7 +16,7 @@
             <div class="top-content left">
                 <div class="admin-search-container">
                     <div class="search-bar-box">
-                        <input type="text" id="search" placeholder="Tìm kiếm..." class="form-control ">
+                        <input type="text" id="search" placeholder="Tìm kiếm theo tên" class="form-control ">
                         <!-- <a href="#" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></a> -->
                     </div>
                 </div>
@@ -49,21 +49,6 @@
                         </tr>
                     </thead>
                     <tbody></tbody>
-                    <!-- <tr>
-                        <td>1</td>
-                        <td>nguyenvan</td>
-                        <td>0123456789</td>
-                        <td>Nguyễn Văn</td>
-                        <td>13/07/2000</td>
-                        <td>Nữ</td>
-                        <td>Linh Trung, Thủ Đức</td>
-                        <td>30</td>
-                        <td>18/10/2023</td>
-                        <td class="action">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#alert" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr> -->
                 </table>
             </div>
             <!-- end: admin table -->
@@ -81,8 +66,8 @@
     <!-- start of Modal of Add new elements. Modified 10/22/2023 by Quyen -->
     <?php include("ModalAddNewCustomer.php"); ?>
     <!-- end of Modal of Add new elements-->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="../../js/admin/common.js"></script>
-    <script src="../../js/admin/customers-management.js"></script>
+    <script type="module" src="../../js/admin/customers-management.js"></script>
 </body>
 </html>

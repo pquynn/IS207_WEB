@@ -91,34 +91,6 @@ function updateCustomer() {
     }
 }
 
-// function updateCustomer() {
-//     global $conn;
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-//         $id = ($_POST['id']);
-//         $name = ($_POST['name']);
-//         $phone = ($_POST['phone']);
-//         $birthday = ($_POST['birthday']);
-//         $gender = ($_POST['gender']);
-//         $address = ($_POST['address']);
-
-//         //TODO: CHECK LẠI NHỮNG CÁI NGƯỜI DÙNG NHẬP VÀO VÀ NGĂN CHẶN SQL INJECTION
-//         $sql = "UPDATE users 
-//                 SET user_name = '$name', user_telephone = '$phone', birthday = '$birthday',
-//                 gender = '$gender', address = '$address'
-//                 WHERE user_id = '$id'";
-//         $result = $conn->query($sql);
-            
-//         if($result)
-//             return (['result' => true, 'message' => 'Thêm thành công']);
-//         else
-//             return (['result' => true, 'message' => 'Thêm không thành công']); 
-//     }
-//     else
-//         return (['result' => false, 'message' => 'Thêm không thành công']);
-// }
-
 // //DELETE
 function deleteCustomer() {
     global $conn;
@@ -149,30 +121,6 @@ function deleteCustomer() {
 
     return ['result' => false];
 }
-
-// function deleteCustomer() {
-//     global $conn;
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//         $customerId = trim($_POST['customer_id'], " ");
-//         $customerLogin = trim($_POST['customer_login'], " ");
-    
-//         $sql1 = "DELETE FROM users WHERE user_id = '$customerId'";
-//         $result1 = $conn->query($sql1);
-
-//         if($result1){
-//             $sql2 = "DELETE FROM login WHERE user_login = '$customerLogin'";
-//             $result2 = $conn->query($sql2);
-//             return $result2;
-//         }
-//         else
-//             return ['result' => false]; 
-//     }
-    
-//          return ['result' => false];
-    
-// }
-
 
 // //SEARCH CATEGORIES
 function searchCustomers() {
@@ -239,66 +187,6 @@ function searchCustomers() {
         return $response;
     }
 }
-
-// function searchCustomers(){
-//     global $conn;
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//         $searchTerm = $_POST['searchTerm'];
-//         $records_per_page = 20;
-
-//         // Get the current page number from the URL
-//         if (isset($_POST['page']) && is_numeric($_POST['page'])) {
-//             $page = intval($_POST['page']);
-//         } else {
-//             $page = 1;
-//         }
-
-//         // Get the total number of records from the database
-//         $totalRecordsQuery = "SELECT COUNT(*) as total  
-//                             FROM users, login
-//                             WHERE users.user_login = login.user_login
-//                             and role_id = 3
-//                             and user_name LIKE '%$searchTerm%'";
-
-//         $totalRecordsResult = $conn->query($totalRecordsQuery);
-//         $totalRecords = $totalRecordsResult->fetch_assoc()['total'];
-
-//         // Calculate the total number of pages
-//         $totalPages = ceil($totalRecords / $records_per_page);
-
-
-//         // Calculate the offset for the query
-//         $offset = ($page - 1) * $records_per_page;
-
-//         // Fetch data from the database with pagination
-//         $sql = "SELECT * 
-//                 FROM users, login
-//                 WHERE users.user_login = login.user_login
-//                 and role_id = 3
-//                 and user_name LIKE '%$searchTerm%'
-//                 LIMIT $offset, $records_per_page";
-
-//         $result = $conn->query($sql);
-
-//         $data = [];
-
-//         if ($result->num_rows > 0) {
-//             while ($row = $result->fetch_assoc()) {
-//                 $data[] = $row;
-//             }
-//         }
-
-//         // Create an associative array with multiple values
-//         $response = array(
-//             'data' => $data,
-//             'totalPages' => $totalPages
-//         );
-
-//         return $response;
-//     }
-// }
-// $searchTerm = '%' . $_POST['searchTerm'] . '%';
 
 // Check the action parameter in the request
 if (isset($_POST['action'])) {

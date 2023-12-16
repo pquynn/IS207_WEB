@@ -51,7 +51,8 @@
         <?php include("ModalAddNewProduct.php"); ?>
     <!-- end of Modal of Add new elements-->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="../../js/admin/common.js"></script>
-    <script src="../../js/admin/products-management.js"></script>
+    <script type="module" src="../../js/admin/products-management.js"></script>
 </body>
 </html>
