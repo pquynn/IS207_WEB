@@ -32,6 +32,7 @@ $(document).ready(function () {
         var form = $(this);
         var btn_name = $('#modal-form .btn-confirm').text();
         var categoryName = $('#category-name').val();
+        var searchTerm = $('#search').val();
     
         if(btn_name.localeCompare("Thêm mới") == 0){
             //insert 
@@ -41,7 +42,7 @@ $(document).ready(function () {
                     $('.invalid-feedback').html('Yêu cầu nhập tên danh mục');
                     event.stopPropagation();
                 } else 
-                    insertCategory(categoryName);
+                    insertCategory(categoryName, searchTerm);
                 
                 form.addClass('was-validated');
             })
@@ -55,7 +56,7 @@ $(document).ready(function () {
                     event.stopPropagation();
                 } 
                 else 
-                    updateCategory(categoryName);
+                    updateCategory(categoryName, searchTerm);
         
                 form.addClass('was-validated');
             })
@@ -183,7 +184,7 @@ function updatePagination(currentPage, totalPages) {
 
 
 // Function to insert category into the database
-function insertCategory(categoryName) {
+function insertCategory(categoryName, searchTerm) {
     $.ajax({
         url: '../../php/controller/admin/category-controller.php',
         type: 'POST',
@@ -197,7 +198,7 @@ function insertCategory(categoryName) {
             showToastr('success', 'Thêm danh mục thành công');
 
             var current_page = parseInt($('.pagination a.active').data('page'));
-            fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
+            fetchSearchData(searchTerm, current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
             
         } 
         else {
@@ -218,7 +219,7 @@ function insertCategory(categoryName) {
 
 
 // function to update a category
-function updateCategory(categoryName){
+function updateCategory(categoryName, searchTerm){
     // check if the new category name is the old category name
     if(categoryName.localeCompare(tbl_category_name) != 0){
         // Check if the category name already exists
@@ -235,7 +236,7 @@ function updateCategory(categoryName){
                     showToastr('success', 'Cập nhật danh mục thành công');
 
                     var current_page = parseInt($('.pagination a.active').data('page'));
-                    fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
+                    fetchSearchData(searchTerm, current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
                 } 
                 else {
                     // Category name exists, show an error message

@@ -308,6 +308,7 @@ $(document).ready(function () {
         var description =  $.trim($('#product-description').val());
         var product_variants = []; //store sizes and quantity of each size
         var isDuplicate = false; // check if there are more than 1 size has the same value
+        var searchTerm = $('#search').val();
 
         formData.append('name', name);
 
@@ -352,7 +353,7 @@ $(document).ready(function () {
                     formData.append('action', action);
 
                     event.preventDefault();
-                    insertProduct(name, price, category_id, color, gender, description, product_variants);
+                    insertProduct(name, price, category_id, color, gender, description, product_variants, searchTerm);
                     // event.stopPropagation();
                 }
                 else{
@@ -366,7 +367,7 @@ $(document).ready(function () {
                         formData.append('action', action);
                     } 
                     event.preventDefault();
-                    updateProduct(update_images, tbl_id, name, price, category_id, color, gender, description, product_variants);
+                    updateProduct(update_images, tbl_id, name, price, category_id, color, gender, description, product_variants, searchTerm);
                     // event.stopPropagation();
                 }
             }
@@ -581,7 +582,7 @@ function updatePagination(currentPage, totalPages) {
   }
 
 // Function to insert product into the database
-function insertProduct (name, price, category_id, color, gender, description, product_variants) {
+function insertProduct (name, price, category_id, color, gender, description, product_variants, searchTerm) {
     $.ajax({
         url: '../../php/controller/admin/product-controller.php',
         type: 'POST',
@@ -598,7 +599,7 @@ function insertProduct (name, price, category_id, color, gender, description, pr
         dataType: 'json',
         success: function (result) {
             if (result.result === true) {
-                insertImages();
+                insertImages(searchTerm);
                 $('#add-new').modal('hide');
                 
                 showToastr('success', 'Thêm sản phẩm thành công');
@@ -618,7 +619,7 @@ function insertProduct (name, price, category_id, color, gender, description, pr
 }
 
 // function to insert product images after product is inserted successfully
-function insertImages () {
+function insertImages (searchTerm) {
     $.ajax({
         url: '../../php/controller/admin/product-controller.php',
         type: 'POST',
@@ -627,7 +628,7 @@ function insertImages () {
         processData: false,
         success: function () {
             var current_page = parseInt($('.pagination a.active').data('page'));
-            fetchData(current_page);
+            fetchSearchData(searchTerm, current_page);
         },
         error: function (error) {
             showToastr('error', 'Thêm ảnh không thành công');
@@ -638,7 +639,7 @@ function insertImages () {
 
 
 // update a product
-function updateProduct (update_images, id, name, price, category_id, color, gender, description, product_variants) {
+function updateProduct (update_images, id, name, price, category_id, color, gender, description, product_variants, searchTerm) {
     $.ajax({
         url: '../../php/controller/admin/product-controller.php',
         type: 'POST',
@@ -661,14 +662,14 @@ function updateProduct (update_images, id, name, price, category_id, color, gend
                     $('#add-new').modal('hide');
                     showToastr('success', 'Cập nhật sản phẩm thành công');
                     var current_page = parseInt($('.pagination a.active').data('page'));
-                    fetchData(current_page);
+                    fetchSearchData(searchTerm, current_page);
                 }
                 else
                 {
                     $('#add-new').modal('hide');
                     showToastr('success', 'Cập nhật sản phẩm thành công');
                     var current_page = parseInt($('.pagination a.active').data('page'));
-                    fetchData(current_page);
+                    fetchSearchData(searchTerm, current_page);
                 }
             }
             else{

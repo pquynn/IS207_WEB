@@ -41,6 +41,7 @@ $(document).ready(function () {
         var gender =  $('#employee-gender').val();
         var address =  $('#employee-address').val();
         var role =  $('#employee-role').val();
+        var searchTerm = $('#search').val();
 
             //insert 
         Array.from(form).forEach(form_element => {
@@ -53,12 +54,12 @@ $(document).ready(function () {
             {
                 if(btn_name.localeCompare("Thêm mới") === 0){
                     event.preventDefault();
-                    insertemployee(username, name, phone, date_of_birth, gender, address, role);
+                    insertemployee(username, name, phone, date_of_birth, gender, address, role, searchTerm);
                     event.stopPropagation();
                 }
                 else{
                     event.preventDefault();
-                    updateemployee(username, name, phone, date_of_birth, gender, address, role);
+                    updateemployee(username, name, phone, date_of_birth, gender, address, role, searchTerm);
                     event.stopPropagation();
                 }
             }
@@ -214,7 +215,7 @@ function updatePagination(currentPage, totalPages) {
 
 
 // Function to insert employee into the database
-function insertemployee(username, name, phone, birthday, gender, address, role) {
+function insertemployee(username, name, phone, birthday, gender, address, role, searchTerm) {
     $.ajax({
         url: '../../php/controller/admin/employee-controller.php',
         type: 'POST',
@@ -227,7 +228,7 @@ function insertemployee(username, name, phone, birthday, gender, address, role) 
                 showToastr('success', 'Thêm nhân viên thành công');
 
                 var current_page = parseInt($('.pagination a.active').data('page'));
-                fetchData(current_page); 
+                fetchSearchData(searchTerm, current_page); 
             } 
             else {
                 // employee name exists, show an error message
@@ -245,7 +246,7 @@ function insertemployee(username, name, phone, birthday, gender, address, role) 
 }
 
 // function to update a employee
-function updateemployee(username, name, phone, birthday, gender, address, role){
+function updateemployee(username, name, phone, birthday, gender, address, role, searchTerm){
     $.ajax({
         url: '../../php/controller/admin/employee-controller.php',
         type: 'POST',
@@ -257,7 +258,7 @@ function updateemployee(username, name, phone, birthday, gender, address, role){
             showToastr('success', 'Cập nhật nhân viên thành công');
 
             var current_page = parseInt($('.pagination a.active').data('page'));
-            fetchData(current_page); 
+            fetchSearchData(searchTerm, current_page); 
         },
         error: function () {
             showToastr('error', 'Cập nhật nhân viên không thành công');

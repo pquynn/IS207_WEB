@@ -19,7 +19,7 @@
     //     header("Location: ../store/login-signup-forgot/Login.php");
     //     exit();
     // }
-
+    $role_id = 1;
     $title = "Thống kê";
     include("AdminNavigation.php");
 ?>
