@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,22 +44,31 @@
                 <h1>LOGO</h1>
             </a>
     
-            <ul class="nav-admin-menu">
-                <li><a class="nav-item" href="../store/homepage-shopping/homepage.php">Về Cửa Hàng</a></li>
-                <li><a class="nav-item" href="Dashboard.php">Thống Kê</a></li>
-                <li><a class="nav-item" href="CategoriesManagement.php">Danh Mục</a></li>
-                <li><a class="nav-item" href="ProductsManagement.php">Sản Phẩm</a></li>
-                <li><a class="nav-item" href="OrdersManagement.php">Đơn Hàng</a></li>
-                <li><a class="nav-item" href="CustomersManagement.php">Khách Hàng</a></li>
-                <li><a class="nav-item" href="EmployeesManagement.php">Nhân Viên</a></li>
-                <li><a class="nav-item" href="BlogManagement.php">Blog</a></li>
-            </ul>
-    
+            <div class="admin-menu-container" style="height: 470px;">
+                <ul class="nav-admin-menu">
+                    <li><a class="nav-item" href="../store/homepage-shopping/homepage.php">Về Cửa Hàng</a></li>
+
+                    <?php if ($role_id == 1): ?>
+                        <li><a class="nav-item" href="Dashboard.php">Thống Kê</a></li>
+                    <?php endif; ?>
+
+                    <li><a class="nav-item" href="CategoriesManagement.php">Danh Mục</a></li>
+                    <li><a class="nav-item" href="ProductsManagement.php">Sản Phẩm</a></li>
+                    <li><a class="nav-item" href="OrdersManagement.php">Đơn Hàng</a></li>
+                    <li><a class="nav-item" href="CustomersManagement.php">Khách Hàng</a></li>
+
+                    <?php if ($role_id == 1): ?>
+                        <li><a class="nav-item" href="EmployeeManagement.php">Nhân Viên</a></li>
+                    <?php endif; ?>
+
+                    <li><a class="nav-item" href="BlogManagement.php">Blog</a></li>
+                </ul>
+            </div>
             
             <div class="nav-admin-account">
                 <a href="#" id="account">
                         <img src="../../img/user.png" alt="Your account">
-                        <p>Nguyễn Văn A</p>
+                        <span style="color: #fff; font-size:16px;max-width:130px;text-align:center;"> <?php //echo $user_name; ?></span>
                 </a>
                 <a href="#" id="logout">Đăng Xuất</a>
             </div>
