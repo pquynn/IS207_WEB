@@ -1,4 +1,5 @@
 
+
 <link rel="stylesheet" href="../../../css/store/blog.css">
     
     <!-- Start of header -->
@@ -104,6 +105,6 @@
     <!-- Main section: start -->
 
     <!-- Start of footer -->
-    <script src="../../js/blog/blog-detail.js"></script>
+    <script src="../../../js/blog/blog-detail.js"></script>
     <?php include("../header-footer-nav/footer.php"); ?>
         <!-- End of footer -->

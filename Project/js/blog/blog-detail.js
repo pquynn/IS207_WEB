@@ -1,25 +1,19 @@
+
+
 $(document).ready(function() {
     var currentpage = 1;
     
-    fetchData(BLOG_TITLE, currentpage);
+    fetchData(BLOG_ID, currentpage);
 
-    //SEARCH ORDER
-    $('#search').on('keyup', function () {
-        var searchTerm = $('#search').val();
-
-        // Fetch data based on the search term
-        if(searchTerm.localeCompare('') != 0)
-            fetchSearchData(searchTerm, 1, BLOG_TITLE);
-        else
-            fetchData(BLOG_TITLE, 1);
-    });
+   
+    
 });
 
-function fetchData(blog_title, page) {
+function fetchData(blog_id, page) {
     $.ajax({
         url: "../../../php/controller/Blog/blog-controller.php?action=fetch",
-        type: 'GET',
-        data: {blog_title: BLOG_TITLE, page: page},
+        type: 'POST',
+        data: {blog_id: BLOG_ID, page: page},
         dataType: 'json',
         success: function (response) {
             var data = response.data;
@@ -27,16 +21,20 @@ function fetchData(blog_title, page) {
             
             if(!response.data) console.log("du lieu rong");
             
-            var blog_body = $('.blog blog-content');
+            var blog_body = $('.blog');
             blog_body.empty();
 
             
             data.forEach(function (row) {
                 blog_body.append(`
                 
-                    <img src="${row.BLOG_IMG}" />
-                    <p>${row.BLOG_TITLE}</p>
-                    <p>${row.CONTENT}</p>
+                <a class="blog-link" href="#">
+                <div class="blog-img--container zoom-img--container">
+                    <img class="blog-img zoom-img" src="${row.BLOG_IMG}" alt="" />
+                </div>
+                <p class="blog-title">${row.BLOG_TITLE}</p>
+                <p class="preview-content">${row.CONTENT}</p>
+            </a>
                     
                 `);
             });
@@ -77,35 +75,3 @@ function updatePagination(currentPage, totalPages) {
     });
   }
 
-function fetchSearchData(searchTerm, page, blog_title) {
-    $.ajax({
-        url: '../../../php/controller/Blog/blog-controller.php?action=fetch',
-        type: 'GET',
-        data: {searchTerm: searchTerm, page: page, blog_title: BLOG_TITLE},
-        dataType: 'json',
-        success: function (response) {
-            var data = response.data;
-            var totalPages = response.totalPages;
-            
-            console.log(response.totalPages);
-            if(!response.data) console.log("du lieu rong");
-            
-            var blog_body = $('.blog blog-content');
-            blog_body.empty();
-
-            
-            data.forEach(function (row) {
-                blog_body.append(`
-                <img src="${row.BLOG_IMG}" />
-                <p>${row.BLOG_TITLE}</p>
-                <p>${row.CONTENT}</p>
-                `);
-            });
-
-            updatePagination(page, totalPages);            
-        },
-        error: function() {
-            console.error('Failed to fetch data from the server.');
-        }
-    });
-}
