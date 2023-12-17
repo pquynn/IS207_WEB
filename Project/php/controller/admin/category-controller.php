@@ -50,28 +50,6 @@ function fetchCategories() {
         return $response;
 }
 
-
-// //INSERT 
-// function insertCategory() {
-//     global $conn;
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//         $categoryName = $_POST['category_name'];
-
-//         $exist = checkCategory($categoryName);
-//         if($exist){
-//             return false;
-//         }
-//         else{
-//             $sql = "INSERT INTO category (category_name) VALUES ('$categoryName')";
-//             $result = $conn->query($sql);
-
-//             return $result; 
-//         }
-//     }
-//     else
-//     return false;
-// }
 function insertCategory() {
     global $conn;
 
@@ -102,43 +80,6 @@ function insertCategory() {
     }
 }
 
-//UPDATE 
-// function updateCategory() {
-//     global $conn;
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//         $categoryName = $_POST['category_name'];
-//         $categoryId = $_POST['category_id'];
-
-//         $exist = checkCategory($categoryName);
-//         if($exist){
-//             return false;
-//         }
-//         else{
-//             $sql = "UPDATE category SET category_name = '$categoryName' WHERE category_id = '$categoryId'";
-//             $result = $conn->query($sql);
-//             return $result;
-//         }
-//     }
-//     else
-//         return false;
-// }
-
-// //DELETE
-// function deleteCategory() {
-//     global $conn;
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//         $categoryId = $_POST['category_id'];
-    
-//         $sql = "DELETE FROM category WHERE category_id = '$categoryId'";
-//         $result = $conn->query($sql);
-
-//         return $result; 
-//     }
-//     else
-//         return ['result' => false];
-// }
 // UPDATE
 function updateCategory() {
     global $conn;
@@ -190,10 +131,10 @@ function deleteCategory() {
 
         // Close the statement
         $stmt->close();
-
-        return $result;
+        
+        return true;
     } else {
-        return ['result' => false];
+        return false;
     }
 }
 
@@ -219,52 +160,6 @@ function checkCategory($categoryName) {
 }
 
 //SEARCH CATEGORIES
-// function searchCategories(){
-//     global $conn;
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//         $searchTerm = $_POST['searchTerm'];
-//         $records_per_page = 20;
-
-//         // Get the current page number from the URL
-//         if (isset($_POST['page']) && is_numeric($_POST['page'])) {
-//             $page = intval($_POST['page']);
-//         } else {
-//             $page = 1;
-//         }
-
-//         // Get the total number of records from the database
-//         $totalRecordsQuery = "SELECT COUNT(*) as total FROM category WHERE category_name LIKE '%$searchTerm%'";
-//         $totalRecordsResult = $conn->query($totalRecordsQuery);
-//         $totalRecords = $totalRecordsResult->fetch_assoc()['total'];
-
-//         // Calculate the total number of pages
-//         $totalPages = ceil($totalRecords / $records_per_page);
-
-
-//         // Calculate the offset for the query
-//         $offset = ($page - 1) * $records_per_page;
-
-//         // Fetch data from the database with pagination
-//         $sql = "SELECT category_id, category_name FROM category WHERE category_name LIKE '%$searchTerm%' LIMIT $offset, $records_per_page";
-//         $result = $conn->query($sql);
-
-//         $data = [];
-
-//         if ($result->num_rows > 0) {
-//             while ($row = $result->fetch_assoc()) {
-//                 $data[] = $row;
-//             }
-//         }
-
-//         // Create an associative array with multiple values
-//         $response = array(
-//             'data' => $data,
-//             'totalPages' => $totalPages
-//         );
-//         return $response;
-//     }
-// }
 function searchCategories(){
     global $conn;
 

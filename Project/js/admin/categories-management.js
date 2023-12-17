@@ -1,3 +1,4 @@
+import { showToastr } from "./toastr.js";
 var tbl_category_id, tbl_category_name;
 var closest_row;
 
@@ -31,6 +32,7 @@ $(document).ready(function () {
         var form = $(this);
         var btn_name = $('#modal-form .btn-confirm').text();
         var categoryName = $('#category-name').val();
+        var searchTerm = $('#search').val();
     
         if(btn_name.localeCompare("Thêm mới") == 0){
             //insert 
@@ -40,7 +42,7 @@ $(document).ready(function () {
                     $('.invalid-feedback').html('Yêu cầu nhập tên danh mục');
                     event.stopPropagation();
                 } else 
-                    insertCategory(categoryName);
+                    insertCategory(categoryName, searchTerm);
                 
                 form.addClass('was-validated');
             })
@@ -54,7 +56,7 @@ $(document).ready(function () {
                     event.stopPropagation();
                 } 
                 else 
-                    updateCategory(categoryName);
+                    updateCategory(categoryName, searchTerm);
         
                 form.addClass('was-validated');
             })
@@ -122,7 +124,6 @@ function fetchData(page){
         data: { action: 'fetch', page: page },
         dataType: 'json',
         success: function (response) {
-            console.log(response);
             var data = response.data;
             var totalPages = response.totalPages;
 
@@ -146,6 +147,7 @@ function fetchData(page){
             updatePagination(page, totalPages);
         },
         error: function () {
+            showToastr('error', 'Load dữ liệu không thành công');
             console.error('Failed to fetch data from the server.');
         }
     });
@@ -182,7 +184,7 @@ function updatePagination(currentPage, totalPages) {
 
 
 // Function to insert category into the database
-function insertCategory(categoryName) {
+function insertCategory(categoryName, searchTerm) {
     $.ajax({
         url: '../../php/controller/admin/category-controller.php',
         type: 'POST',
@@ -190,23 +192,26 @@ function insertCategory(categoryName) {
         dataType: 'json',
         success: function (result) {
         if (result === true) {
-            //TODO: THÔNG BÁO THÊM THÀNH CÔNG
             // Category inserted successfully, close the modal and perform any other necessary actions
             $('#add-new').modal('hide');
 
+            showToastr('success', 'Thêm danh mục thành công');
 
             var current_page = parseInt($('.pagination a.active').data('page'));
-            fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
+            fetchSearchData(searchTerm, current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
             
         } 
         else {
+
             // Category name exists, show an error message
             $('#category-name').addClass('is-invalid');//TODO: border-color of form-control is not change into red
             $('.invalid-feedback').html('Danh mục đã có trong hệ thống!');
             // $('#modal-form').addClass('was-validated');
+            showToastr('warning', 'Danh mục đã có trong hệ thống!');
         }
         },
         error: function () {
+            showToastr('error', 'Thêm danh mục không thành công');
             console.error('Failed to insert category.');
         }
     });
@@ -214,7 +219,7 @@ function insertCategory(categoryName) {
 
 
 // function to update a category
-function updateCategory(categoryName){
+function updateCategory(categoryName, searchTerm){
     // check if the new category name is the old category name
     if(categoryName.localeCompare(tbl_category_name) != 0){
         // Check if the category name already exists
@@ -225,29 +230,30 @@ function updateCategory(categoryName){
             dataType: 'json',
             success: function (result) {
                 if (result == true) {
-                    //TODO: THÔNG BÁO cập nhật THÀNH CÔNG
                     // Category inserted successfully, close the modal and perform any other necessary actions
                     $('#add-new').modal('hide');
         
+                    showToastr('success', 'Cập nhật danh mục thành công');
+
                     var current_page = parseInt($('.pagination a.active').data('page'));
-                    fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
+                    fetchSearchData(searchTerm, current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
                 } 
                 else {
                     // Category name exists, show an error message
                     $('#category-name').addClass('is-invalid');//TODO: border-color of form-control is not change into red
                     $('.invalid-feedback').html('Danh mục đã có trong hệ thống!');
                     $('#modal-form').addClass('was-validated');
+                    showToastr('warning', 'Danh mục đã có trong hệ thống');
                 }
                 },
                 error: function () {
+                    showToastr('error', 'Cập nhật danh mục không thành công');
                     console.error('Failed to insert category.');
                 }
         });
     }
     else{
-        //TODO: THÔNG BÁO cập nhật THÀNH CÔNG
-        // Category inserted successfully, close the modal and perform any other necessary actions
-        // Clear the data and reset the form validation in the modal
+        showToastr('success', 'Cập nhật danh mục thành công');
         $('#add-new').modal('hide');
     }
 }
@@ -258,11 +264,12 @@ function deleteCategory(categoryId, closest_row) {
         url: '../../php/controller/admin/category-controller.php',
         type: 'POST',
         data: { action: 'delete', category_id: categoryId },
-        success: function () {
-            //TODO: hiện thông báo xóa thành công
-            closest_row.remove();
+        success: function (result) {
+                closest_row.remove();
+                showToastr('success', 'Xóa danh mục thành công');
         },
         error: function () {
+            showToastr('error', 'Xóa danh mục không thành công');
             console.error('Failed to delete category.');
         }
     });
@@ -300,6 +307,7 @@ function fetchSearchData(searchTerm, page) {
             updatePagination(page, totalPages);
         },
         error: function () {
+            showToastr('error', 'Load dữ liệu không thành công');
             console.error('Failed to fetch data from the server.');
         }
     });

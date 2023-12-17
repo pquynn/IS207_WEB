@@ -1,5 +1,5 @@
-var tbl_id, tbl_price, tbl_name, tbl_category_name, tbl_color, tbl_description,
-sizes, quantities, imageURLs, gender;
+import { showToastr } from "./toastr.js";
+var tbl_id, tbl_price, tbl_name, tbl_category_name, tbl_color, tbl_description, tbl_gender;
 var formData;
 var has_3_images, counter;
 var closest_row;
@@ -20,8 +20,7 @@ $(document).ready(function () {
         var modal = document.getElementById('add-new');
         modal.querySelector('form').reset(); // Reset the form
 
-        $('#employee-username').removeClass('is-invalid'); //remove class is-invalid if the form was validated before
-        $('#employee-username').prop('disabled', false);
+        $('#product-name').removeClass('is-invalid'); 
         Array.from(modal.querySelectorAll('.was-validated')).forEach((element) => {
             element.classList.remove('was-validated'); // Clear Bootstrap form validation classes
         });
@@ -213,7 +212,7 @@ $(document).ready(function () {
         e.preventDefault();
         // Show a confirmation dialog
         if (confirm('Xác nhận xóa ' + namePage + ' ?')) {
-            // Get the employee_id from the first column of the row
+            // Get the product_id from the first column of the row
             closest_row = $(this).closest('tr');
             tbl_id = closest_row.find('td:first').text();
             // User confirmed, proceed with deletion
@@ -297,6 +296,7 @@ $(document).ready(function () {
     
     // // Event listener for the "submit" button
     $('#modal-form').submit(function (event) { 
+        event.preventDefault();
         var form = $(this);
         var btn_name = $('#modal-form .btn-confirm').text();
         // Create a temp_product object
@@ -308,6 +308,7 @@ $(document).ready(function () {
         var description =  $.trim($('#product-description').val());
         var product_variants = []; //store sizes and quantity of each size
         var isDuplicate = false; // check if there are more than 1 size has the same value
+        var searchTerm = $('#search').val();
 
         formData.append('name', name);
 
@@ -352,7 +353,7 @@ $(document).ready(function () {
                     formData.append('action', action);
 
                     event.preventDefault();
-                    insertProduct(name, price, category_id, color, gender, description, product_variants);
+                    insertProduct(name, price, category_id, color, gender, description, product_variants, searchTerm);
                     // event.stopPropagation();
                 }
                 else{
@@ -366,7 +367,7 @@ $(document).ready(function () {
                         formData.append('action', action);
                     } 
                     event.preventDefault();
-                    updateProduct(update_images, tbl_id, name, price, category_id, color, gender, description, product_variants);
+                    updateProduct(update_images, tbl_id, name, price, category_id, color, gender, description, product_variants, searchTerm);
                     // event.stopPropagation();
                 }
             }
@@ -402,6 +403,7 @@ function fetchCategories(category_name) {
             }
         },
         error: function () {
+            showToastr('error', 'Load danh mục không thành công');
             console.error('Failed to fetch categories from the server.');
         }
     });
@@ -437,6 +439,7 @@ function fetchImages(id) {
 
         },
         error: function () {
+            showToastr('error', 'Load hình ảnh không thành công');
             console.error('Failed to fetch categories from the server.');
         }
     });
@@ -496,6 +499,7 @@ function fetchVariants(product_id) {
         
         },
         error: function () {
+            showToastr('error', 'Load kích thước không thành công');
             console.error('Failed to fetch variants from the server.');
         }
     });
@@ -542,6 +546,7 @@ function fetchData(page){
             updatePagination(page, totalPages);
         },
         error: function () {
+            showToastr('error', 'Load dữ liệu không thành công');
             console.error('Failed to fetch data from the server.');
         }
     });
@@ -577,7 +582,7 @@ function updatePagination(currentPage, totalPages) {
   }
 
 // Function to insert product into the database
-function insertProduct (name, price, category_id, color, gender, description, product_variants) {
+function insertProduct (name, price, category_id, color, gender, description, product_variants, searchTerm) {
     $.ajax({
         url: '../../php/controller/admin/product-controller.php',
         type: 'POST',
@@ -594,20 +599,19 @@ function insertProduct (name, price, category_id, color, gender, description, pr
         dataType: 'json',
         success: function (result) {
             if (result.result === true) {
-                insertImages();
-
-                //TODO: THÔNG BÁO THÊM THÀNH CÔNG
+                insertImages(searchTerm);
                 $('#add-new').modal('hide');
                 
-                var current_page = parseInt($('.pagination a.active').data('page'));
-                fetchData(current_page);
+                showToastr('success', 'Thêm sản phẩm thành công');
             }
             else{
+                showToastr('warning', 'Tên giày đã tồn tại');
                 $('#product-name').addClass('is-invalid');
                 $('#modal-form').addClass('was-validated');
             }
         },
         error: function () {
+            showToastr('error', 'Thêm sản phẩm không thành công');
             console.error('Failed to insert product.');
         }
     });
@@ -615,7 +619,7 @@ function insertProduct (name, price, category_id, color, gender, description, pr
 }
 
 // function to insert product images after product is inserted successfully
-function insertImages () {
+function insertImages (searchTerm) {
     $.ajax({
         url: '../../php/controller/admin/product-controller.php',
         type: 'POST',
@@ -623,8 +627,11 @@ function insertImages () {
         contentType: false,
         processData: false,
         success: function () {
+            var current_page = parseInt($('.pagination a.active').data('page'));
+            fetchSearchData(searchTerm, current_page);
         },
         error: function (error) {
+            showToastr('error', 'Thêm ảnh không thành công');
             console.error('Error uploading files: ', error);
         }
     });
@@ -632,7 +639,7 @@ function insertImages () {
 
 
 // update a product
-function updateProduct (update_images, id, name, price, category_id, color, gender, description, product_variants) {
+function updateProduct (update_images, id, name, price, category_id, color, gender, description, product_variants, searchTerm) {
     $.ajax({
         url: '../../php/controller/admin/product-controller.php',
         type: 'POST',
@@ -652,25 +659,27 @@ function updateProduct (update_images, id, name, price, category_id, color, gend
             if (result.result === true) {
                 if(update_images){
                     updateImages();
-                    //TODO: THÔNG BÁO THÊM THÀNH CÔNG
                     $('#add-new').modal('hide');
+                    showToastr('success', 'Cập nhật sản phẩm thành công');
                     var current_page = parseInt($('.pagination a.active').data('page'));
-                    fetchData(current_page);
+                    fetchSearchData(searchTerm, current_page);
                 }
                 else
                 {
                     $('#add-new').modal('hide');
-                    //TODO: THÔNG BÁO THÊM THÀNH CÔNG
+                    showToastr('success', 'Cập nhật sản phẩm thành công');
                     var current_page = parseInt($('.pagination a.active').data('page'));
-                    fetchData(current_page);
+                    fetchSearchData(searchTerm, current_page);
                 }
             }
             else{
                 $('#product-name').addClass('is-invalid');
                 $('#modal-form').addClass('was-validated');
+                showToastr('warning', 'Tên giày đã tồn tại');
             }
         },
         error: function () {
+            showToastr('error', 'Cập nhật sản phẩm không thành công');
             console.error('Failed to update product.');
         }
     });
@@ -689,6 +698,7 @@ function updateImages () {
             }
         },
         error: function (error) {
+            showToastr('error', 'Cập nhật ảnh không thành công');
             console.error('Error uploading files: ', error);
         }
     });
@@ -697,15 +707,16 @@ function updateImages () {
 // Function to delete product by product_id
 function deleteProduct(product_id, closest_row) {
     $.ajax({
-        url: '../../php/controller/admin/employee-controller.php',
+        url: '../../php/controller/admin/product-controller.php',
         type: 'POST',
         data: {action: 'delete', product_id: product_id },
         success: function () {
-            //TODO: hiện thông báo xóa thành công
             closest_row.remove();
+            showToastr('success', 'Xóa sản phẩm thành công');
         },
         error: function () {
-            console.error('Failed to delete employee.');
+            showToastr('error', 'Xóa sản phẩm không thành công');
+            console.error('Failed to delete product.');
         }
     });
 }
@@ -749,7 +760,7 @@ function fetchSearchData(searchTerm, page) {
             updatePagination(page, totalPages);
         },
         error: function () {
-            
+            showToastr('error', 'Load dữ liệu không thành công');
             console.error('Failed to fetch data from the server.');
         }
     });
