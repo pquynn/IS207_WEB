@@ -19,9 +19,9 @@ $(document).ready(function() {
 
 function fetchData(cusID, page) {
     $.ajax({
-        url: "../../../php/Controller/store/my-order-controller.php?action=fetch",
+        url: "../../../php/Controller/store/my-order-controller.php",
         type: 'POST',
-        data: {cusID: cusID, page: page},
+        data: {action:'fetch', cusID: cusID, page: page},
         dataType: 'json',
         success: function (response) {
             var data = response.data;

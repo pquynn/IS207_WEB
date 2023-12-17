@@ -34,8 +34,12 @@
 </div>    
 <!--MY_ORDER-FEEDBACK END-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script type="module" src="../../../js/my-order/my-order-feedback-management"></script>
+<script type="module" src="../../../js/my-order/my-order-feedback-management.js"></script>
+<?php
+    include("ModalOrderFeedback.php");
+    ?>
+    
 <?php
     include("../header-footer-nav/footer.php");
-    include("ModalOrderFeedback.php");
+    
 ?>

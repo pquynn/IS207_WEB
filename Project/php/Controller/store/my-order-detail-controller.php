@@ -4,7 +4,7 @@
     function fetchDetail() {
         global $conn;
     
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['orderId'];
         }
 
@@ -58,7 +58,7 @@
     function deleteOrder(){
         global $conn;
 
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $orderId = $_POST['orderId'];
     
             $sql = "DELETE FROM orders WHERE order_id = ?";

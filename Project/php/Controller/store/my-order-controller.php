@@ -50,7 +50,7 @@
     function searchOrder() {
         global $conn;
     
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $searchTerm = $_POST['searchTerm'];
             $cusID = $_POST['cusID'];
             $records_per_page = 20;

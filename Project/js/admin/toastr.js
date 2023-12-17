@@ -17,5 +17,6 @@ export function showToastr(type, message){
     "hideMethod": "fadeOut"
     }
 
+    console.log('toast');
     toastr[type](message)
 }

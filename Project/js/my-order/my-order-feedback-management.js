@@ -1,4 +1,4 @@
-import { showToastr } from "../admin/toastr";
+import { showToastr } from "../admin/toastr.js";
 $(document).ready(function() {
     const orderId =  new URLSearchParams(window.location.search).get('id');
 
@@ -15,7 +15,7 @@ $(document).ready(function() {
         }
     })
     $('#add-feedback').on('click','.btn-close', function(event) {
-        event.preventDefault();
+        // event.preventDefault();
         if(confirm("Những thay đổi của bạn sẽ không được lưu?")) {
             window.location.href = url;
         }
@@ -47,6 +47,7 @@ $(document).ready(function() {
         }
         
         if(confirm("Xác nhận đánh giá đơn hàng?")) {
+            event.preventDefault();
             addComment(formdata);
         }
     })
@@ -55,9 +56,10 @@ $(document).ready(function() {
 
 function fetchCMT(orderId, product_id){
     $.ajax({
-        url: "../../../php/Controller/store/my-order-feedback-controller.php?action=feedcmt",
-        type: 'GET',
-        data: { orderId: orderId, productId: product_id},
+        url: "../../../php/Controller/store/my-order-feedback-controller.php",
+        type: 'POST',
+        data: { action:'feedcmt',
+            orderId: orderId, productId: product_id},
         dataType: 'json',
         success: function (response) {   
             var data = response.data; //cmt
@@ -90,15 +92,18 @@ function addComment(formdata) {
                 fb_score: formdata.fb_score},
         dataType: 'json',
         success: function (result) {
-            if(result.result==true){                
+            console.log(result);
+            if(result.result===true){      
+                console.log('a');          
                 //$('#add-feedback').modal('hide');
                 showToastr('success', 'Đánh giá thành công!');    
             }
             else {
+                
                 showToastr('error', 'Thêm đánh giá không thành công!');
             }
-            const url ='../../../php/store/account-management/my-order-feedback.php?id=' + formdata.orderId;
-            window.location.href = url;    
+            // const url ='../../../php/store/account-management/my-order-feedback.php?id=' + formdata.orderId;
+            // window.location.href = url;    
         },
         error: function() {
             console.error("Lỗi kết nối: thêm đánh giá");

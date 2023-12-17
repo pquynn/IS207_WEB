@@ -3,8 +3,8 @@
 
     function fetchFeedback() {
         global $conn;
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $id = $_GET['orderId'];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['orderId'];
         }
 
 
@@ -78,11 +78,11 @@
     function addFeedback() {
         global $conn;
 
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $orderId = $_GET['orderId'];
-            $productId = $_GET['productId'];
-            $fb_content = $_GET['fb_content'];
-            $fb_score = $_GET['fb_score'];  
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $orderId = $_POST['orderId'];
+            $productId = $_POST['productId'];
+            $fb_content = $_POST['fb_content'];
+            $fb_score = $_POST['fb_score'];  
         }
 
         //get user_id
@@ -149,9 +149,9 @@
     }
     function fetchCMT(){
         global $conn;
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $orderId = $_GET['orderId'];
-            $productId = $_GET['productId'];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $orderId = $_POST['orderId'];
+            $productId = $_POST['productId'];
         }
         //lấy mã khách hàng
         $sql1 = "SELECT ORDERS.USER_ID
@@ -195,8 +195,8 @@
         return $response;   
     }
     
-    if (isset($_GET['action'])) {
-        $action = $_GET['action'];
+    if (isset($_POST['action'])) {
+        $action = $_POST['action'];
     
         // Execute the corresponding function based on the action
         switch ($action) {
