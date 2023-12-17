@@ -1,28 +1,27 @@
 const table = document.querySelector('.admin-table table');
 const page_name = $('.section_heading').text();
 
-//START: FORM VALIDATION----------
-// disabling form submissions if there are invalid fields
-// (() => {
-//     'use strict'
-  
-//     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-//     const forms = document.querySelectorAll('.needs-validation')
-  
-//     // Loop over them and prevent submission
-//     Array.from(forms).forEach(form => {
-//       form.addEventListener('submit', event => {
-//         if (!form.checkValidity()) {
-//           event.preventDefault()
-//           event.stopPropagation()
-//         }
-  
-//         form.classList.add('was-validated')
-//       }, false)
-//     })
-//   })()
+// export function showToastr(type, message){
+//     toastr.options = {
+//     "closeButton": false,
+//     "debug": false,
+//     "newestOnTop": false,
+//     "progressBar": true,
+//     "positionClass": "toast-top-right",
+//     "preventDuplicates": true,
+//     "onclick": null,
+//     "showDuration": "300",
+//     "hideDuration": "500",
+//     "timeOut": "2100",
+//     "extendedTimeOut": "1000",
+//     "showEasing": "swing",
+//     "hideEasing": "linear",
+//     "showMethod": "fadeIn",
+//     "hideMethod": "fadeOut"
+//     }
 
-//END: FORM VALIDATION----------
+//     toastr[type](message)
+// }
 
 //START: CONFIRMATION POPUP----------
 // exit confirmation popup

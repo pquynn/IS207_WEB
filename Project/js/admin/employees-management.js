@@ -1,3 +1,4 @@
+import { showToastr } from "./toastr.js";
 var tbl_id, tbl_login, tbl_name, tbl_phone, tbl_birthday, tbl_gender,
 tbl_address, tbl_dayadd, tbl_role_name;
 var closest_row;
@@ -29,7 +30,7 @@ $(document).ready(function () {
 
     // when submit #modal-form
     $('#modal-form').submit(function (event) { 
-        // e.preventDefault();
+        event.preventDefault();
         var form = $(this);
         var btn_name = $('#modal-form .btn-confirm').text();
         // Create a temp_employee object
@@ -40,11 +41,11 @@ $(document).ready(function () {
         var gender =  $('#employee-gender').val();
         var address =  $('#employee-address').val();
         var role =  $('#employee-role').val();
+        var searchTerm = $('#search').val();
 
             //insert 
         Array.from(form).forEach(form_element => {
 
-            // var isValid = /^0[0-9]{9}$/.test(temp_employee.phone);
             if (form_element.checkValidity() === false) {
                 event.preventDefault();
                 event.stopPropagation();
@@ -53,12 +54,12 @@ $(document).ready(function () {
             {
                 if(btn_name.localeCompare("Thêm mới") === 0){
                     event.preventDefault();
-                    insertemployee(username, name, phone, date_of_birth, gender, address, role);
+                    insertemployee(username, name, phone, date_of_birth, gender, address, role, searchTerm);
                     event.stopPropagation();
                 }
                 else{
                     event.preventDefault();
-                    updateemployee(username, name, phone, date_of_birth, gender, address, role);
+                    updateemployee(username, name, phone, date_of_birth, gender, address, role, searchTerm);
                     event.stopPropagation();
                 }
             }
@@ -142,7 +143,7 @@ $(document).ready(function () {
 //function to fetch data in database to table
 function fetchData(page){
     $.ajax({
-        url: '../../php/controller/admin/employee-controller.php', //TODO: nhớ sửa lại nếu đổi thành post
+        url: '../../php/controller/admin/employee-controller.php', 
         type: 'POST',
         data: { action: 'fetch', page: page },
         dataType: 'json',
@@ -177,6 +178,7 @@ function fetchData(page){
             updatePagination(page, totalPages);
         },
         error: function () {
+            showToastr('error', 'Load dữ liệu không thành công');
             console.error('Failed to fetch data from the server.');
         }
     });
@@ -213,7 +215,7 @@ function updatePagination(currentPage, totalPages) {
 
 
 // Function to insert employee into the database
-function insertemployee(username, name, phone, birthday, gender, address, role) {
+function insertemployee(username, name, phone, birthday, gender, address, role, searchTerm) {
     $.ajax({
         url: '../../php/controller/admin/employee-controller.php',
         type: 'POST',
@@ -221,41 +223,45 @@ function insertemployee(username, name, phone, birthday, gender, address, role) 
         dataType: 'json',
         success: function (result) {
             if (result.result === true) {
-                //TODO: THÔNG BÁO THÊM THÀNH CÔNG
                 $('#add-new').modal('hide');
 
+                showToastr('success', 'Thêm nhân viên thành công');
+
                 var current_page = parseInt($('.pagination a.active').data('page'));
-                fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
+                fetchSearchData(searchTerm, current_page); 
             } 
             else {
                 // employee name exists, show an error message
-                $('#employee-username').addClass('is-invalid');//TODO: border-color of form-control is not change into red
+                $('#employee-username').addClass('is-invalid');
                 $('#modal-form').addClass('was-validated');
+
+                showToastr('warning', 'Tên đăng nhập đã tồn tại');
             }
         },
             error: function () {
+                showToastr('error', 'Thêm nhân viên không thành công');
                 console.error('Failed to insert employee.');
         }
     });
 }
 
 // function to update a employee
-function updateemployee(username, name, phone, birthday, gender, address, role){
-    // if(employeeName.localeCompare(tbl_employee_name) != 0){ //TODO: có nên so sánh các giá trị
+function updateemployee(username, name, phone, birthday, gender, address, role, searchTerm){
     $.ajax({
         url: '../../php/controller/admin/employee-controller.php',
         type: 'POST',
         data: {action: 'update', id: tbl_id, username: username, name : name, phone : phone, gender : gender, address : address, birthday : birthday, role : role},
         dataType: 'json',
         success: function (result) {
-            //TODO: THÔNG BÁO cập nhật THÀNH CÔNG
-            // employee inserted successfully, close the modal and perform any other necessary actions
             $('#add-new').modal('hide');
 
+            showToastr('success', 'Cập nhật nhân viên thành công');
+
             var current_page = parseInt($('.pagination a.active').data('page'));
-            fetchData(current_page); //TODO: lúc reload thì hiện trang của sp đc thêm hay reload trang hiện tại thoi?
+            fetchSearchData(searchTerm, current_page); 
         },
         error: function () {
+            showToastr('error', 'Cập nhật nhân viên không thành công');
             console.error('Failed to insert employee.');
         }
     });
@@ -268,10 +274,11 @@ function deleteemployee(employeeId, employeeLogin, closest_row) {
         type: 'POST',
         data: {action: 'delete', employee_id: employeeId, employee_login: employeeLogin },
         success: function () {
-            //TODO: hiện thông báo xóa thành công
             closest_row.remove();
+            showToastr('success', 'Xóa nhân viên thành công');
         },
         error: function () {
+            showToastr('error', 'Xóa nhân viên không thành công');
             console.error('Failed to delete employee.');
         }
     });
@@ -315,6 +322,7 @@ function fetchSearchData(searchTerm, page) {
             updatePagination(page, totalPages);
         },
         error: function () {
+            showToastr('error', 'Load dữ liệu không thành công');
             console.error('Failed to fetch data from the server.');
         }
     });

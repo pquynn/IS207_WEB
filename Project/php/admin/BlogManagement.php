@@ -1,6 +1,7 @@
     
     <!-- start: admin navigation -->
     <?php 
+        $role_id = 1;
         $title = "Quản lý Blogs";
         include("AdminNavigation.php");
     ?>
@@ -81,15 +82,6 @@
     <?php include("ModalAddNewBlog.php"); ?>
     <!-- end of Modal of Add new elements-->
 
-    <!-- start of warning message when click del-btn -->
-        <?php 
-            // $alert_message = "xóa blog";
-            // $alert_action = "Xóa";
-            // include("ModalAlert.php"); 
-        ?>
-    <!-- end of warning message when click del-btn -->
-
-    <script src="../../js/admin/form-validation"></script>
-    <script src="../../js/admin/categories-management"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </body>
 </html>
