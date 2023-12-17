@@ -81,9 +81,10 @@ function fetchCMT(orderId, product_id){
 
 function addComment(formdata) {
     $.ajax({
-        url: "../../../php/Controller/store/my-order-feedback-controller.php?action=feedback",
-        type: 'GET',
-        data: { orderId: formdata.orderId,
+        url: "../../../php/Controller/store/my-order-feedback-controller.php",
+        type: 'POST',
+        data: { action: 'feedback',
+                orderId: formdata.orderId,
                 productId: formdata.productId,
                 fb_content: formdata.fb_content,
                 fb_score: formdata.fb_score},
@@ -107,9 +108,9 @@ function addComment(formdata) {
 
 function showFormFb(orderId) {
     $.ajax({
-        url: "../../../php/Controller/store/my-order-feedback-controller.php?action=fetch",
-        type: 'GET',
-        data: {orderId: orderId},
+        url: "../../../php/Controller/store/my-order-feedback-controller.php",
+        type: 'POST',
+        data: {action:'fetch', orderId: orderId},
         dataType: 'json',
         success: function (response) {
             var data1= response.data1; //sản phẩm

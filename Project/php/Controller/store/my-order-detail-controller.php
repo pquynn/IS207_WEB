@@ -5,7 +5,7 @@
         global $conn;
     
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $id = $_GET['orderId'];
+            $id = $_POST['orderId'];
         }
 
             $sql1 = "SELECT order_id, order_date, telephone, orders.name,
@@ -59,7 +59,7 @@
         global $conn;
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $orderId = $_GET['orderId'];
+            $orderId = $_POST['orderId'];
     
             $sql = "DELETE FROM orders WHERE order_id = ?";
 
@@ -78,8 +78,8 @@
         else
             return ['result' => false];
     }
-    if (isset($_GET['action'])) {
-        $action = $_GET['action'];
+    if (isset($_POST['action'])) {
+        $action = $_POST['action'];
     
         // Execute the corresponding function based on the action
         switch ($action) {
