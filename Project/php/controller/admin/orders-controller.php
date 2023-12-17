@@ -6,8 +6,8 @@ function fetchOrders() {
 
     $records_per_page = 20;
 
-    if (isset($_GET['page'])&& is_numeric($_GET['page'])) {
-        $page = intval($_GET['page']);
+    if (isset($_POST['page'])&& is_numeric($_POST['page'])) {
+        $page = intval($_POST['page']);
     }else {
         $page = 1;
     }
@@ -49,7 +49,7 @@ function deleteOrder() {
     global $conn;
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        $orderId = trim($_GET['order_id'], " ");
+        $orderId = trim($_POST['order_id'], " ");
 
         //todo: add constraint in database on delete cascade table product_img;
         //todo: cannot delete because a lot of constraint
@@ -70,11 +70,11 @@ function searchOrder() {
     global $conn;
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        $searchTerm = $_GET['searchTerm'];
+        $searchTerm = $_POST['searchTerm'];
         $records_per_page = 20;
 
-        if (isset($_GET['page']) && is_numeric($_GET['page'])) {
-            $page = intval($_GET['page']);
+        if (isset($_POST['page']) && is_numeric($_POST['page'])) {
+            $page = intval($_POST['page']);
         } else {
             $page = 1;
         }
@@ -123,7 +123,7 @@ function filterStatus(){
     global $conn;
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        $chosen_status = $_GET['chosen_status'];
+        $chosen_status = $_POST['chosen_status'];
         $records_per_page = 20;
 
         switch($chosen_status) {
@@ -144,8 +144,8 @@ function filterStatus(){
                 break;
             
         }
-        if (isset($_GET['page']) && is_numeric($_GET['page'])) {
-            $page = intval($_GET['page']);
+        if (isset($_POST['page']) && is_numeric($_POST['page'])) {
+            $page = intval($_POST['page']);
         } else {
             $page = 1;
         }
@@ -193,12 +193,12 @@ function filterDate() {
     global $conn;
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        $fromdate = $_GET['fromdate'];
-        $todate = $_GET['todate'];
+        $fromdate = $_POST['fromdate'];
+        $todate = $_POST['todate'];
         $records_per_page = 20;
 
-        if (isset($_GET['page']) && is_numeric($_GET['page'])) {
-            $page = intval($_GET['page']);
+        if (isset($_POST['page']) && is_numeric($_POST['page'])) {
+            $page = intval($_POST['page']);
         } else {
             $page = 1;
         }
@@ -243,8 +243,8 @@ function filterDate() {
     }    
 }
 
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
+if (isset($_POST['action'])) {
+    $action = $_POST['action'];
 
     // Execute the corresponding function based on the action
     switch ($action) {

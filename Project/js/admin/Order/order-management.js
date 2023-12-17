@@ -76,7 +76,7 @@ $(document).ready(function() {
 function detailOrder(id) {
     $.ajax({
         url: "../../php/controller/admin/orders-controller.php?action=detail",
-        type: 'GET',
+        type: 'POST',
         data: {id: id},
         dataType: 'json',
         success: function (response) {
@@ -92,7 +92,7 @@ function detailOrder(id) {
 function fetchData(page) {
     $.ajax({
         url: "../../php/controller/admin/orders-controller.php?action=fetch",
-        type: 'GET',
+        type: 'POST',
         data: {page: page},
         dataType: 'json',
         success: function (response) {
@@ -163,9 +163,9 @@ function updatePagination(currentPage, totalPages) {
 
   function deleteOrder(order_id, closest_row){
     $.ajax({
-        url: '../../php/controller/admin/orders-controller.php?action=delete',
-        type: 'GET',
-        data: { order_id: order_id },
+        url: '../../php/controller/admin/orders-controller.php',
+        type: 'POST',
+        data: { action: 'delete',order_id: order_id },
         success: function () {
             alert("Xóa đơn hàng #" + order_id + " thành công!");
             closest_row.remove();
@@ -178,9 +178,9 @@ function updatePagination(currentPage, totalPages) {
 
   function fetchSearchData(searchTerm, page) {
     $.ajax({
-        url: '../../php/controller/admin/orders-controller.php?action=search',
-        type: 'GET',
-        data: {searchTerm: searchTerm, page: page},
+        url: '../../php/controller/admin/orders-controller.php',
+        type: 'POST',
+        data: {action:'search', searchTerm: searchTerm, page: page},
         dataType: 'json',
         success: function (response) {
             var data = response.data;
@@ -223,9 +223,9 @@ function updatePagination(currentPage, totalPages) {
 
 function filterStatus(chosen_status, page) {
     $.ajax({
-        url: '../../php/controller/admin/orders-controller.php?action=filterstatus',
-        type: 'GET',
-        data: {chosen_status: chosen_status, page: page},
+        url: '../../php/controller/admin/orders-controller.php',
+        type: 'POST',
+        data: {action:'filterstatus', chosen_status: chosen_status, page: page},
         dataType: 'json',
         success: function (response) {
             var data = response.data;
@@ -268,9 +268,9 @@ function filterStatus(chosen_status, page) {
 
 function filterDateRange(date_data, page) {
     $.ajax({
-        url: '../../php/controller/admin/orders-controller.php?action=filterdate',
-        type: 'GET',
-        data: {fromdate: date_data.fromdate, todate: date_data.todate, page: page},
+        url: '../../php/controller/admin/orders-controller.php',
+        type: 'POST',
+        data: {action:'filterdate', fromdate: date_data.fromdate, todate: date_data.todate, page: page},
         dataType: 'json',
         success: function (response) {
             var data = response.data;

@@ -61,9 +61,9 @@ $(document).ready(function() {
 
 function fetchData_Customer(orderId) {
     $.ajax({
-        url: "../../php/controller/admin/order-detail-controller.php?action=detail",
-        type: 'GET',
-        data: {orderId: orderId},
+        url: "../../php/controller/admin/order-detail-controller.php",
+        type: 'POST',
+        data: {action:'detail',orderId: orderId},
         dataType: 'json',
         success: function (response) {
             var data_cus = response.data1; //khách hàng
@@ -120,9 +120,9 @@ function fetchData_Customer(orderId) {
 
 function updateStatus(form_data) {
     $.ajax({
-        url: "../../php/controller/admin/order-detail-controller.php?action=updateStatus",
-        type: 'GET',
-        data: {order_status: form_data.order_status, id: form_data.id},
+        url: "../../php/controller/admin/order-detail-controller.php",
+        type: 'POST',
+        data: {action:'updateStatus',order_status: form_data.order_status, id: form_data.id},
         dataType: 'json',
         success: function(result) {
             if(result==true) {

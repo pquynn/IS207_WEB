@@ -5,7 +5,7 @@
         global $conn;
     
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $id = $_GET['orderId'];
+            $id = $_POST['orderId'];
         }
 
             $sql1 = "SELECT order_id, order_date, telephone, orders.name,
@@ -59,8 +59,8 @@
         global $conn;
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $status_get = $_GET['order_status'];
-            $orderID = $_GET['id'];
+            $status_get = $_POST['order_status'];
+            $orderID = $_POST['id'];
             switch($status_get) {
                 case 1:
                     $status = 'Đang chuẩn bị hàng';
@@ -97,8 +97,8 @@
             return ['result' => false, 'message' => 'Cập nhật không thành công'];
         }        
     }
-    if (isset($_GET['action'])) {
-        $action = $_GET['action'];
+    if (isset($_POST['action'])) {
+        $action = $_POST['action'];
     
         // Execute the corresponding function based on the action
         switch ($action) {
