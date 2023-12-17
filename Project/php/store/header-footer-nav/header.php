@@ -101,7 +101,7 @@
         </ul>
 
         <!-- cart -->
-        <li class="nav-icon--item">
+        <li class="nav-icon--item cart">
           <a href="../cart-checkout/cart.php">
             <span class="material-symbols-outlined"> shopping_bag </span>
           </a>

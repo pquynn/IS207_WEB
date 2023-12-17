@@ -52,10 +52,16 @@ div a {
   padding-left: 0;
   justify-content: end;
   width: 220px;
+  align-items: center;
 }
 
 .nav-icon ul {
-  padding-left: 0;
+  padding:6px 0 5px;
+}
+
+.nav-icon--item.cart{
+  padding-top: 5px;
+  padding-left: 7px;
 }
 
 /* home, shop, category,.... */
