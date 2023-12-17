@@ -7,7 +7,6 @@ $(document).ready(function () {
         dataType: 'json',
         success: function (data) {
             if (data) {
-                //let tableBlog = data.tableBlog;
                 data.tableBlog.forEach(function (row) {
                     let imageUrl = 'data:blog_img/png;base64,' + row.BLOG_IMG;
                     $('.blog').append(`
@@ -125,9 +124,12 @@ $(document).ready(function () {
         var gender = $(this).find('p').text();
 
         // Tạo URL mới với tham số truyền vào là giới tính
-        // var url = '../../store/homepage-shopping/product_list.php?gender=Nam';
-        var url = '../../store/homepage-shopping/product_list.php?gender=' + encodeURIComponent(gender);
+        var url = '../../store/homepage-shopping/product_list.php?gender=';
 
+        if (gender === "Giày nam")
+            url += "Nam";
+        else    
+            url += "Nữ";
 
         // Chuyển hướng đến trang mới
         window.location.href = url;

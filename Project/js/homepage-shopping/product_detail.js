@@ -175,8 +175,6 @@ if (window.location.href.includes("product_detail.php")) {
 else if (window.location.href.includes("cart.php")) {
   // Chuyển giỏ hàng qua các file có dạng "cart.php"
   myCart = JSON.parse(localStorage.getItem('myCart'));
-
-  console.log(myCart);
 }
 
 // Hàm lấy số sản phẩm có trong giỏ hàng.
