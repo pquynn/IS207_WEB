@@ -1,27 +1,3 @@
-//Open and close REPORT dialog
-const open_rpt = document.getElementById("order-report");
-const close_rpt = document.getElementById("close-report");
-
-const modal_container = document.getElementById("modal-report-container");
-const modal_report = document.getElementById("modal-report");
-
-open_rpt.addEventListener('click', ()=> {
-    modal_container.style.display = "block";
-});
-
-close_rpt.addEventListener('click', ()=> {
-    modal_container.style.display = "none";
-});
-
-//Confirm or not cancel order
-function confirm_cancel() {
-    var answer = window.confirm("Xác nhận gửi yêu cầu hủy đơn hàng");
-    if(answer)
-        console.log("Đã gửi yêu cầu.");
-    else
-        console.log("Yêu cầu chưa được gửi");
-}
-
 var orderId;
 const showOrderId= $('#orderId');
 const showOrderStatus = $('.order-status');
@@ -37,13 +13,57 @@ const totalOrderPromotion = $('.cost.promotion');
 const totalOrder = $('.cost.total');
 
 $(document).ready(function() {
-    orderId =  new URLSearchParams(window.location.search).get('id');
+    const orderId =  new URLSearchParams(window.location.search).get('id');
+    //const url='../../php/admin/OrderDetail.php?id='+ orderId; 
     fetchData_Customer(orderId);
+
+    //link to feed back
+    var btnFeedback = $('.order-option.feedback');
+    btnFeedback.append(`
+        <a href="../account-management/my-order-feedback.php?id=${orderId}" >
+            <i class="fa-solid fa-star" style="color:#FEC30D"></i>
+            ĐÁNH GIÁ
+        </a>
+    `);
+
+    //hủy đơn hàng
+    $('.order-selection').on('click', '.cancel-order', function(event) {
+        event.preventDefault();
+        if(confirm("Xác nhận hủy đơn hàng?")) {
+            if(showOrderStatus.text() != 'Đang chuẩn bị hàng') {
+                alert("Không thể hủy đơn hàng!");
+            }else {
+                DeleteOrder(orderId);
+            }
+        }
+    });
 });
+
+function DeleteOrder(orderId) {
+    $.ajax({
+        url: "../../../php/Controller/store/my-order-detail-controller.php?action=delete",
+        type: 'GET',
+        data: {orderId: orderId},
+        dataType: 'json',
+        success: function (result) {
+            if(result) {
+                alert("Hủy đơn hàng thành công!");
+                var url = '../../../php/store/account-management/my-orders.php';
+                window.location.href = url;
+            }
+            else {
+                alert("Hủy đơn hàng không thành công");
+            }
+        },
+        error: function() {
+            console.error("Lỗi kết nối: hủy đơn hàng");
+        }
+    }); 
+}
 
 function fetchData_Customer(orderId) {
     $.ajax({
-        url: "../../../php/store/account-management/Controller/my-order-detail-controller.php?action=detail",
+        url: "../../../php/Controller/store/my-order-detail-controller.php?action=detail",
         type: 'GET',
         data: {orderId: orderId},
         dataType: 'json',
@@ -60,6 +80,10 @@ function fetchData_Customer(orderId) {
                 showOrderStatus.text(`${row.status}`);
                 var status = `${row.status}`;
                 editStatus(status);
+                if(status != 'Giao thành công') {
+                    var btnFeedback = $('.order-option.feedback');
+                    btnFeedback.css('display', 'none');
+                }
                 //thêm order date
                 showOrderDate.append(`${row.order_date}`);
 
@@ -92,7 +116,7 @@ function fetchData_Customer(orderId) {
             });
         },
         error: function() {
-            console.error("Loi ket noi");
+            console.error("Lỗi kết nối: fetch data order detail");
         }
     });    
 }

@@ -78,8 +78,11 @@
   overflow: auto;
 }
 
-.link-to-detail:hover {
+.link-to-detail {
   color: #e96d00;
+}
+.link-to-detail:hover{
+  color: #000;
 }
 
 #pagination-my-orders {

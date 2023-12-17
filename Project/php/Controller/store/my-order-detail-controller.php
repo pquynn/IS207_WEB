@@ -1,5 +1,5 @@
 <?php
-    include "../Connect_MySQL.php";
+    include "../connect.php";
 
     function fetchDetail() {
         global $conn;
@@ -12,16 +12,26 @@
             orders.address, orders.pay, orders.status, orders.total_products,
             total_price 
                     FROM orders
-                    WHERE order_id = $id";
-            $result1 = mysqli_query($conn, $sql1);
-    
+                    WHERE order_id = ?";
+
+            //sql injection
+            $stmt1 = $conn->prepare($sql1);
+            $stmt1->bind_param('i', $id);
+            $stmt1->execute();
+            $result1 = $stmt1->get_result();
     
             $sql2 ="SELECT order_detail.product_id, order_detail.product_name, order_detail.size,
             order_detail.quantity, order_detail.price, order_detail.order_id, first_picture
                     FROM order_detail, product_pictures
                     WHERE order_detail.product_id = product_pictures.product_id
-                    AND order_detail.order_id = $id;";
-            $result2 = $conn->query($sql2);        
+                    AND order_detail.order_id = ?;";
+            //sql injection
+            $stmt2 = $conn->prepare($sql2);
+            $stmt2->bind_param('i', $id);
+            $stmt2->execute();
+            $result2 = $stmt2->get_result();
+            $stmt1->close();
+            $stmt2->close();        
             $data1 = [];
             $data2 =[];
     
@@ -45,6 +55,29 @@
             return $response;      
     }
 
+    function deleteOrder(){
+        global $conn;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $orderId = $_GET['orderId'];
+    
+            $sql = "DELETE FROM orders WHERE order_id = ?";
+
+            //sql injection
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('i', $orderId);
+            $result = $stmt->execute();
+            $stmt->close();
+            
+            if($result) {
+                return ['result' => true];
+            } else {
+                return ['result' => false];
+            }
+        }
+        else
+            return ['result' => false];
+    }
     if (isset($_GET['action'])) {
         $action = $_GET['action'];
     
@@ -52,6 +85,9 @@
         switch ($action) {
             case 'detail':
                 echo json_encode(fetchDetail());
+                break;
+            case 'delete':
+                echo json_encode(deleteOrder());
                 break;
             default:
                 echo json_encode(['success' => false, 'message' => 'Invalid action']);

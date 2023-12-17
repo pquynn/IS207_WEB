@@ -19,7 +19,7 @@ $(document).ready(function() {
 
 function fetchData(cusID, page) {
     $.ajax({
-        url: "../../../php/store/account-management/Controller/my-order-controller.php?action=fetch",
+        url: "../../../php/Controller/store/my-order-controller.php?action=fetch",
         type: 'GET',
         data: {cusID: cusID, page: page},
         dataType: 'json',
@@ -87,7 +87,7 @@ function updatePagination(currentPage, totalPages) {
 
 function fetchSearchData(searchTerm, page, cusID) {
     $.ajax({
-        url: '../../../php/store/account-management/Controller/my-order-controller.php?action=search',
+        url: '../../../php/Controller/store/my-order-controller.php?action=search',
         type: 'GET',
         data: {searchTerm: searchTerm, page: page, cusID: cusID},
         dataType: 'json',

@@ -89,34 +89,15 @@
 
       <!--Modified. Change to <button>-->
       <div class="order-selection">
-        <button class="order-option">
-          <a href="../account-management/my-order-feedback.php" >
-            <i class="fa-solid fa-star" style="color:#FEC30D"></i>
-            ĐÁNH GIÁ
-          </a>
+        <button class="order-option feedback">
         </button>
 
-        <button class="order-option" id="order-report">BÁO CÁO</button>                  
-        <!--START - Modal "Report"-->
-          <div id="modal-report-container">
-            <form id="modal-report">
-                <button id="close-report"><i class="fa-solid fa-xmark"></i></button><br>
-                <label>Email liên hệ</label><br>
-                <input type="email" placeholder="Email của bạn" id="customer-email"><br>
-                
-                <label>Báo cáo</label><br>
-                <textarea placeholder="Nhập vấn đề của bạn" id="report-textfield"></textarea><br>
-                
-                <input type="Submit" id="btn-submit-report" value="Báo cáo">
-            </form>
-          </div>
-        <!--END - Modal "Report"-->
-        <button class="order-option cancel-order" onclick="confirm_cancel()">HỦY ĐƠN HÀNG</button>
+        <button class="order-option cancel-order">HỦY ĐƠN HÀNG</button>
       </div>
     </div>
   <!--DETAIL ORDER--END-->  
 </div>
-<script src="../../../js/my-order/detail.js"></script>
+<script src="../../../js/my-order/my-order-detail-management"></script>
 <?php
     include("../header-footer-nav/footer.php");
 ?>
