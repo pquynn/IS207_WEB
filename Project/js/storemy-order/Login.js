@@ -1,13 +1,13 @@
 function validateLogin() {
-  var phonenumber = document.getElementById("phonenumber").value;
+  var userlogin = document.getElementById("userlogin").value;
   var pass = document.getElementById("pass").value;
 
   // gửi dữ liệu đăng nhập lên server
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "../../php/login.php", true);
+  xhr.open("POST", "php/login.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-  var data = "phonenumber=" + encodeURIComponent(phonenumber) + "& pass=" + encodeURIComponent(pass);
+  var data = "userlogin=" + encodeURIComponent(userlogin) + "& pass=" + encodeURIComponent(pass);
   xhr.send(data);
 
   xhr.onreadystatechange = function () {
