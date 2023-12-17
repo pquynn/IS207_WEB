@@ -26,5 +26,5 @@
     </div>
 </div>
 </div>
-
+<script src="../../../js/blog/blog-detail-info.js"></script>
          <?php include("../header-footer-nav/footer.php"); ?>
