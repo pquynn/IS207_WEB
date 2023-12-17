@@ -33,7 +33,8 @@
   </div>  
 </div>    
 <!--MY_ORDER-FEEDBACK END-->
-<script src="../../../js/my-order/my-order-feedback-management"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="module" src="../../../js/my-order/my-order-feedback-management"></script>
 <?php
     include("../header-footer-nav/footer.php");
     include("ModalOrderFeedback.php");

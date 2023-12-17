@@ -35,17 +35,18 @@ function fetchData(cusID, page) {
             
             data.forEach(function (row) {
                 table_body.append(`
-                    <tr>
-                        <td><a href="./my-order-detail.php?id=${row.order_id}" class="link-to-detail">${row.order_id}</td>
-                        <td>${row.order_date}</td>
-                        <td>${row.telephone}</td>
-                        <td>${row.name}</td>
-                        <td style="max-width: 130px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">${row.address}</td>
-                        <td>${row.pay}</td>
-                        <td>${row.status}</td>
-                        <td>${row.total_products}</td>
-                        <td>${row.total_price}</td>
-                    </tr>
+                <tr>
+                    <td>${row.order_id}</td>
+                    <td>${row.order_date}</td>
+                    <td>${row.telephone}</td>
+                    <td>${row.name}</td>
+                    <td style="max-width: 130px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">${row.address}</td>
+                    <td>${row.pay}</td>
+                    <td>${row.status}</td>
+                    <td>${row.total_products}</td>
+                    <td>${row.total_price}</td>
+                    <td><a href="./my-order-detail.php?id=${row.order_id}" class="link-to-detail"><i class="fa-solid fa-eye"></i></a></td>
+                </tr>
                 `);
             });
 
@@ -105,7 +106,7 @@ function fetchSearchData(searchTerm, page, cusID) {
             data.forEach(function (row) {
                 table_body.append(`
                     <tr>
-                        <td><a href="./my-order-detail.php?id=${row.order_id}" class="link-to-detail">${row.order_id}</td>
+                        <td>${row.order_id}</td>
                         <td>${row.order_date}</td>
                         <td>${row.telephone}</td>
                         <td>${row.name}</td>
@@ -114,6 +115,7 @@ function fetchSearchData(searchTerm, page, cusID) {
                         <td>${row.status}</td>
                         <td>${row.total_products}</td>
                         <td>${row.total_price}</td>
+                        <td><a href="./my-order-detail.php?id=${row.order_id}" class="link-to-detail"><i class="fa-solid fa-eye"></i></a></td>
                     </tr>
                 `);
             });

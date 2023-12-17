@@ -25,7 +25,7 @@
 
       <!-- Change table style. modified 10/28 by Quyen --> 
       <!--Table list orders--start-->
-      <div class="store-table">
+      <div class="store-table orders-list">
         <table>
           <thead>
           <tr>  
@@ -37,7 +37,8 @@
               <th>PTTT</th>   
               <th>Trạng thái</th>    
               <th>Tổng sản phẩm</th>   
-              <th>Tổng tiền</th> 
+              <th>Tổng tiền</th>
+              <th></th> 
           </tr>
           </thead>
 

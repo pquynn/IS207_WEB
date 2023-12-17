@@ -20,24 +20,30 @@
         $result1 = $stmt1->get_result();
         $stmt1->close();
 
-        /*$sql = "SELECT ORDERS.USER_ID
-                FROM ORDERS
-                WHERE ORDER_ID = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $get_UserID = $stmt->get_result();
-        $stmt1->close();
-
-        $sql2 = "SELECT comment.score, comment.content
-                    FROM comment
-                    WHERE comment.user_id = ?";
+        //lấy mã khách hàng
+        $sql2 = "SELECT ORDERS.USER_ID
+                    FROM ORDERS
+                    WHERE ORDERS.ORDER_ID = ?";
         $stmt2 = $conn->prepare($sql2);
-        $stmt2->bind_param('s', $get_UserID, );
+        $stmt2->bind_param('i', $id);
         $stmt2->execute();
         $result2 = $stmt2->get_result();
-        $stmt2->close();*/
-        
+        $stmt2->close();
+        if($result2 ->num_rows == 1) {
+            while ($row = mysqli_fetch_assoc($result2)) {
+                $MAKH = $row['USER_ID'];
+            }
+        }
+
+        $sql = "SELECT product_id
+                    FROM COMMENT
+                    WHERE COMMENT.USER_ID = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $MAKH);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+
         $data1 = []; //product
         $data2 = []; //cmt
         
@@ -48,17 +54,23 @@
             }
         }
 
-        /*if($result2 ->num_rows > 0) {
-            while ($row = mysqli_fetch_assoc($result2)) {
-                $row['first_picture'] = base64_encode($row['first_picture']);
+        if($result ->num_rows > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
                 $data2[] = $row;
             }
-        }*/
+        }
+        if($data2) {
+            $response = array(
+                'data1' => $data1,
+                'data2' => $data2
+            );            
+        } else {
+            $response = array(
+                'data1' => $data1,
+                'data2' => null
+            ); 
+        }
 
-        $response = array(
-            'data1' => $data1,
-            'data2' => $data2
-        );
 
         return $response;   
     }
@@ -102,14 +114,32 @@
                 $productName = strval($row['PRODUCT_NAME']);
             }
         }
+        
+        $sql3 = "SELECT * FROM COMMENT WHERE PRODUCT_ID = ? AND USER_ID = ?";
+        $stmt3 = $conn->prepare($sql3);
+        $stmt3->bind_param('is', $productId, $userID);
+        $stmt3->execute();
+        $result3 = $stmt3->get_result();
+        $stmt3->close();
 
         $cmtDay = strval(date("Y-m-d"));
-        $sql = "INSERT INTO comment (PRODUCT_ID, USER_ID, PRODUCT_NAME, USER_NAME, CONTENT, CMT_DAY, SCORE) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('isssssi', $productId, $userID, $productName, $userName, $fb_content, $cmtDay ,$fb_score);
-        $result = $stmt->execute();
-        $stmt->close();
-
+        if($result3 ->num_rows == 0){
+            $sql = "INSERT INTO comment (PRODUCT_ID, USER_ID, PRODUCT_NAME, USER_NAME, CONTENT, CMT_DAY, SCORE) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('isssssi', $productId, $userID, $productName, $userName, $fb_content, $cmtDay ,$fb_score);
+            $result = $stmt->execute();
+            $stmt->close();
+        }
+        else {
+            $sql = "UPDATE COMMENT
+                    SET CONTENT = ?, SCORE = ?
+                    WHERE PRODUCT_ID = ? AND USER_ID = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('siis', $fb_content, $fb_score, $productId, $userID);
+            
+            $result = $stmt->execute();
+            $stmt->close();
+        }
         if($result) {
             return ['result' => true, 'message' => 'Thêm thành công'];
         } else {
@@ -117,6 +147,54 @@
         }
         // 
     }
+    function fetchCMT(){
+        global $conn;
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $orderId = $_GET['orderId'];
+            $productId = $_GET['productId'];
+        }
+        //lấy mã khách hàng
+        $sql1 = "SELECT ORDERS.USER_ID
+                    FROM ORDERS
+                    WHERE ORDERS.ORDER_ID = ?";
+        $stmt1 = $conn->prepare($sql1);
+        $stmt1->bind_param('i', $orderId);
+        $stmt1->execute();
+        $result1 = $stmt1->get_result();
+        $stmt1->close();
+        if($result1 ->num_rows == 1) {
+            while ($row = mysqli_fetch_assoc($result1)) {
+                $MAKH = $row['USER_ID'];
+            }
+        }
+
+        //lấy cmt
+        $sql2 = "SELECT score, content, product_id
+        FROM COMMENT
+        WHERE COMMENT.USER_ID = ?
+        AND COMMENT.PRODUCT_ID = ?";
+        $stmt2 = $conn->prepare($sql2);
+        $stmt2->bind_param('si', $MAKH, $productId);
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        $stmt2->close();
+
+        $data = [];
+
+        if($result2 ->num_rows > 0) {
+            while ($row = mysqli_fetch_assoc($result2)) {
+                $data[] = $row;
+            }
+        }
+
+        $response = array(
+            'data' => $data
+        );            
+
+
+        return $response;   
+    }
+    
     if (isset($_GET['action'])) {
         $action = $_GET['action'];
     
@@ -128,6 +206,9 @@
                 break;
             case 'feedback':
                 echo json_encode(addFeedback());
+                break;
+            case 'feedcmt':
+                echo json_encode(fetchCMT());
                 break;
             default:
                 echo json_encode(['success' => false, 'message' => 'Invalid action']);
