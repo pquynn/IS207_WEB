@@ -38,6 +38,7 @@ div a {
 /* logo */
 .nav-logo {
   margin-top: 5px;
+  margin-right: 150px;
 }
 
 .nav-logo a img {
@@ -49,6 +50,8 @@ div a {
   display: flex;
   gap: 12px;
   padding-left: 0;
+  justify-content: end;
+  width: 220px;
 }
 
 .nav-icon ul {
@@ -147,4 +150,34 @@ div a {
 
 .mainsection-body {
   margin: 50px;
+}
+
+
+
+/* search bar */
+.search-box{
+  height: 35px;
+  display: flex;
+  cursor: pointer;
+  padding: 10px 10px;
+  background-color: #fff;
+  border-radius: 30px;
+  align-items: center;
+  border: none;
+  
+}
+
+.search-box:hover{
+  border: 1px solid var(--table-border);
+}
+.search-box:hover input{
+  width: 200px;
+}
+
+.search-box input{
+  width: 0;
+  outline: none;
+  border: none;
+  transition: 0.8s;
+  background: transparent;
 }
