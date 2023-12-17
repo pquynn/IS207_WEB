@@ -2,15 +2,20 @@
         $title = "Đăng nhập";
         include("./login-head.php"); ?>
  
- <!-- modified 10/28 by Quyen -->
     <div class="container bg-white rounded-4">
         <form>
             <h2 class="p-4 text-center">ĐĂNG NHẬP</h2>
 
             <div class="row g-3">
-                <div class="col-12 form-floating">
+                <!-- <div class="col-12 form-floating">
                     <input class="form-control" type="text" id="phonenumber" placeholder=" Số điện thoại" >
                     <label for="name" class="form-label"> Số điện thoại</label>
+                </div> -->
+                <!-- t đổi thông tin login từ điện thoại thành tên đăng nhập nha,
+                khi quên mật khẩu thì mới cần sđt, kiểu v  -->
+                <div class="col-12 form-floating">
+                    <input class="form-control" type="text" id="login_name" placeholder=" Tên đăng nhập" style="font-size: 12px;">
+                    <label for="login_name" class="form-label">Tên đăng nhập</label>
                 </div>
 
                 <div class="col-12 form-floating" >
@@ -39,7 +44,7 @@
         </form>
     </div>
    
-    <!-- <?php include("Forgetpass1.php"); ?> -->
+
 </body>
 
 </html>

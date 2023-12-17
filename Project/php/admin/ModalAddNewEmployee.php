@@ -11,17 +11,30 @@
 
             <form action="" id="modal-form" class="add-new-employee need-validation" novalidate>
                 <div class="modal-body">
-                    <label for="employee-username" class="form-label">Tên đăng nhập</label>
-                    <input type="text" id="employee-username" class="form-control" required>
-                    <div class="invalid-feedback">
-                        Yêu cầu nhập tên đăng nhập.
+
+                    <div class="">
+                        <label for="employee-username" class="form-label">Tên đăng nhập*</label>
+                        <input type="text" id="employee-username" class="form-control" required>
+                        <div class="invalid-feedback username">
+                            Yêu cầu nhập tên đăng nhập (Không được trùng với người dùng khác).
+                        </div>
                     </div>
 
-                    <label for="employee-name" class="form-label">Tên nhân viên</label>
-                    <input type="text" id="employee-name" class="form-control">
+                    <div class="">
+                        <label for="employee-name" class="form-label">Tên nhân viên*</label>
+                        <input type="text" id="employee-name" class="form-control" required>
+                        <div class="invalid-feedback emp_name">
+                            Yêu cầu nhập tên nhân viên.
+                        </div>
+                    </div>
 
-                    <label for="employee-phone" class="form-label">Điện thoại</label>
-                    <input type="tel" id="employee-phone" class="form-control">
+                    <div class="">
+                        <label for="employee-phone" class="form-label">Điện thoại*</label>
+                        <input type="tel" id="employee-phone" class="form-control" required pattern="^0[0-9]{9}$">
+                        <div class="invalid-feedback phone">
+                            Yêu cầu nhập điện thoại có 10 số và bắt đầu = 0.
+                        </div>
+                    </div>
 
                     <div class="row g-2">
                         <div class="col">
@@ -35,7 +48,6 @@
                                 <option value="" disabled selected hidden>Chọn giới tính</option>
                                 <option value="Nam">Nam</option>
                                 <option value="Nữ">Nữ</option>
-                                <option value="Khác">Khác</option>
                             </select>
                         </div>
                     
@@ -44,12 +56,17 @@
                     <label for="employee-address" class="form-label">Địa chỉ</label>
                             <textarea id="employee-address" class="form-control"></textarea>
 
-                    <label for="employee-role" class="form-label">Vai trò</label>
-                    <select id="employee-role" class="form-select">
-                        <option value="" disabled selected hidden>Chọn vai trò</option>
-                        <option value="Quản lý">Quản lý</option>
-                        <option value="Nhân viên">Nhân viên</option>
-                    </select>
+                    <div class="">
+                        <label for="employee-role" class="form-label">Vai trò*</label>
+                        <select id="employee-role" class="form-select" required>
+                            <option value="" disabled selected hidden>Chọn vai trò</option>
+                            <option value="1">Quản lý</option>
+                            <option value="2">Nhân viên</option>
+                        </select>
+                        <div class="invalid-feedback role">
+                            Yêu cầu chọn vai trò.
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="modal-footer">

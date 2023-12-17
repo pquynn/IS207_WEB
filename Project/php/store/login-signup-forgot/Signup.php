@@ -3,7 +3,7 @@
         include("login-head.php"); ?>
 
     <!-- modified 10/28 by Quyen -->
-    <div class="container bg-white rounded-4">
+    <div class="container bg-white rounded-4"  style="height: 650px;">
         <form>
             <h2 class="p-4 text-center">ĐĂNG KÝ</h2>
 
@@ -16,6 +16,12 @@
                 <div class="col-12 form-floating">
                     <input class="form-control" type="tel" id="phonenumber" placeholder=" Số điện thoại">
                     <label for="phonenumber" class="form-label"> Số điện thoại</label>
+                </div>
+
+                <!-- KIỂM TRA TÊN ĐĂNG NHẬP ĐÃ TỒN TẠI TRONG CSDL CHƯA (tên đăng nhập phải khác nhau)-->
+                <div class="col-12 form-floating">
+                    <input class="form-control" type="text" id="login_name" placeholder=" Tên đăng nhập" style="font-size: 12px;">
+                    <label for="login_name" class="form-label">Tên đăng nhập</label>
                 </div>
 
                 <div class="col-12 form-floating" >

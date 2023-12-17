@@ -9,19 +9,26 @@
                 <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
             </div>
 
-            <form action="" class="add-new-customer need-validation" novalidate>
+            <form action="" id="modal-form" class="add-new-customer need-validation" novalidate>
                 <div class="modal-body">
                     <label for="customer-username" class="form-label">Tên đăng nhập</label>
-                    <input type="text" id="customer-username" class="form-control" required>
-                    <div class="invalid-feedback">
-                        Yêu cầu nhập tên đăng nhập.
+                    <input type="text" id="customer-username" class="form-control">
+
+                    <div class="">
+                        <label for="customer-name" class="form-label">Tên khách hàng*</label>
+                        <input type="text" id="customer-name" class="form-control" required>
+                        <div class="invalid-feedback emp_name">
+                            Yêu cầu nhập tên nhân viên.
+                        </div>
                     </div>
-
-                    <label for="customer-name" class="form-label">Tên khách hàng</label>
-                    <input type="text" id="customer-name" class="form-control">
-
-                    <label for="customer-phone" class="form-label">Điện thoại</label>
-                    <input type="tel" id="customer-phone" class="form-control">
+                    
+                    <div class="">
+                        <label for="customer-phone" class="form-label">Điện thoại*</label>
+                        <input type="tel" id="customer-phone" class="form-control" required pattern="^0[0-9]{9}$">
+                        <div class="invalid-feedback phone">
+                                Yêu cầu nhập điện thoại có 10 số và bắt đầu = 0.
+                        </div>
+                    </div>
 
                     <div class="row g-2">
                         <div class="col">
@@ -35,7 +42,6 @@
                                 <option value="" disabled selected hidden></option>
                                 <option value="Nam">Nam</option>
                                 <option value="Nữ">Nữ</option>
-                                <option value="Khác">Khác</option>
                             </select>
                         </div>
                     </div>
