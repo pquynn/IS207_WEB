@@ -292,7 +292,7 @@ function fetchImages(id) {
 //function to fetch data in database to table
 function fetchData(page){
     $.ajax({
-        url: '../../php/controller/Blog/blog-controller.php', //TODO: nhớ sửa lại nếu đổi thành post
+        url: '../../php/controller/Blog/blog-controller.php', 
         type: 'POST',
         data: {action: 'fetch', page: page },
         dataType: 'json',
@@ -301,12 +301,12 @@ function fetchData(page){
             var totalPages = response.totalPages;
 
             // Populate the table with fetched data
-            var blog_body = $('.blog');
-            blog_body.empty(); 
+            var table_body = $('.admin-table table tbody');
+            table_body.empty(); 
 
             data.forEach(function (row) {
-                var imageUrl = 'data:image/png;base64,' + row.first_picture;
-                blog_body.append(`
+                var imageUrl = 'data:image/png;base64,' + row.BLOG_IMG;
+                table_body.append(`
                 <tr>
                 <td>${row.BLOG_ID}</td>
                 <td><div class="table-img" style="background-image: url(${imageUrl})"></div></td>
