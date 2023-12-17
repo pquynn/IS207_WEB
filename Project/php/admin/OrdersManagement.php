@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="../../css/admin/admin-orders.css"/>
 
 <?php
+    $role_id = 1;
     $title = "Danh sách đơn hàng";
     include("AdminNavigation.php");
 ?>

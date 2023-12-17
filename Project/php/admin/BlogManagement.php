@@ -1,6 +1,7 @@
     
     <!-- start: admin navigation -->
     <?php 
+        $role_id = 1;
         $title = "Quản lý Blogs";
         include("AdminNavigation.php");
     ?>
