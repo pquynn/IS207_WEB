@@ -20,7 +20,7 @@ $(document).ready(function() {
 function fetchData(cusID, page) {
     $.ajax({
         url: "../../../php/Controller/store/my-order-controller.php?action=fetch",
-        type: 'GET',
+        type: 'POST',
         data: {cusID: cusID, page: page},
         dataType: 'json',
         success: function (response) {
@@ -87,9 +87,9 @@ function updatePagination(currentPage, totalPages) {
 
 function fetchSearchData(searchTerm, page, cusID) {
     $.ajax({
-        url: '../../../php/Controller/store/my-order-controller.php?action=search',
-        type: 'GET',
-        data: {searchTerm: searchTerm, page: page, cusID: cusID},
+        url: '../../../php/Controller/store/my-order-controller.php',
+        type: 'POST',
+        data: {action:'search', searchTerm: searchTerm, page: page, cusID: cusID},
         dataType: 'json',
         success: function (response) {
             var data = response.data;

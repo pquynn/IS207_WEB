@@ -9,7 +9,7 @@
 <!-- NAVIGATION ACCOUNT START -->
 
 <!--MY_ORDER-FEEDBACK START-->
-  <div class="my-order-feedback">
+  <div class="my-order-feedback store-table">
         <ul class="breadcrumb-my-order">
           <li><a href="my-orders.php">Danh sách đơn hàng</a> / </li>
           <li id="link-back-order-detail"></li>

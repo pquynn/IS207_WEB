@@ -41,9 +41,9 @@ $(document).ready(function() {
 
 function DeleteOrder(orderId) {
     $.ajax({
-        url: "../../../php/Controller/store/my-order-detail-controller.php?action=delete",
-        type: 'GET',
-        data: {orderId: orderId},
+        url: "../../../php/Controller/store/my-order-detail-controller.php",
+        type: 'POST',
+        data: {action:'delete',orderId: orderId},
         dataType: 'json',
         success: function (result) {
             if(result) {
@@ -63,9 +63,9 @@ function DeleteOrder(orderId) {
 
 function fetchData_Customer(orderId) {
     $.ajax({
-        url: "../../../php/Controller/store/my-order-detail-controller.php?action=detail",
-        type: 'GET',
-        data: {orderId: orderId},
+        url: "../../../php/Controller/store/my-order-detail-controller.php",
+        type: 'POST',
+        data: {action:'detail',orderId: orderId},
         dataType: 'json',
         success: function (response) {
             var data_cus = response.data1; //khách hàng

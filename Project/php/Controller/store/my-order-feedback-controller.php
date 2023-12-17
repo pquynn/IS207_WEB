@@ -4,7 +4,7 @@
     function fetchFeedback() {
         global $conn;
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $id = $_GET['orderId'];
+            $id = $_POST['orderId'];
         }
 
 
@@ -67,10 +67,10 @@
         global $conn;
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $orderId = $_GET['orderId'];
-            $productId = $_GET['productId'];
-            $fb_content = $_GET['fb_content'];
-            $fb_score = $_GET['fb_score'];  
+            $orderId = $_POST['orderId'];
+            $productId = $_POST['productId'];
+            $fb_content = $_POST['fb_content'];
+            $fb_score = $_POST['fb_score'];  
         }
 
         //get user_id
@@ -117,8 +117,8 @@
         }
         // 
     }
-    if (isset($_GET['action'])) {
-        $action = $_GET['action'];
+    if (isset($_POST['action'])) {
+        $action = $_POST['action'];
     
         // Execute the corresponding function based on the action
         switch ($action) {

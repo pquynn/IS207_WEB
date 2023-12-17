@@ -3,11 +3,11 @@
 
     function fetchOrders() {
         global $conn;
-        $cusID = $_GET['cusID'];
+        $cusID = $_POST['cusID'];
         $records_per_page = 20;
     
-        if (isset($_GET['page'])&& is_numeric($_GET['page'])) {
-            $page = intval($_GET['page']);
+        if (isset($_POST['page'])&& is_numeric($_POST['page'])) {
+            $page = intval($_POST['page']);
         }else {
             $page = 1;
         }
@@ -51,12 +51,12 @@
         global $conn;
     
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $searchTerm = $_GET['searchTerm'];
-            $cusID = $_GET['cusID'];
+            $searchTerm = $_POST['searchTerm'];
+            $cusID = $_POST['cusID'];
             $records_per_page = 20;
     
-            if (isset($_GET['page']) && is_numeric($_GET['page'])) {
-                $page = intval($_GET['page']);
+            if (isset($_POST['page']) && is_numeric($_POST['page'])) {
+                $page = intval($_POST['page']);
             } else {
                 $page = 1;
             }
@@ -102,8 +102,8 @@
         }
     }
 
-    if (isset($_GET['action'])) {
-        $action = $_GET['action'];
+    if (isset($_POST['action'])) {
+        $action = $_POST['action'];
     
         // Execute the corresponding function based on the action
         switch ($action) {
