@@ -31,12 +31,9 @@ function fetchBlog() {
     $offset = ($page - 1) * $records_per_page;
 
     // Fetch data from the database with pagination
-    $sql = "SELECT DISTINCT blog.BLOG_ID, blog.BLOG_TITLE, blog.USER_ID, blog.USER_NAME, blog.CONTENT, blog.BLOG_DAY, blog.BLOG_IMG 
-                
-            FROM blog, users
-            WHERE blog.USER_ID = users.USER_ID
-            
-            ORDER BY blog.BLOG_ID
+    $sql = "SELECT DISTINCT BLOG_ID, BLOG_TITLE, USER_ID, USER_NAME, CONTENT, BLOG_DAY, BLOG_IMG 
+            FROM blog
+            ORDER BY BLOG_ID
             LIMIT $offset, $records_per_page";
 
     $result = $conn->query($sql);
@@ -45,7 +42,7 @@ function fetchBlog() {
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $row['first_picture'] = base64_encode($row['first_picture']); //end code image data
+            $row['BLOG_IMG'] = base64_encode($row['BLOG_IMG']); //end code image data
             $data[] = $row;
         }
     }
@@ -168,22 +165,22 @@ function insertBlog() {
                     }
                 }
                 
-                    if ($result2) {
-                        return ['result' => true, 'message' => 'Thêm thành công'];
+                    // if ($result2) {
+                    //     return ['result' => true, 'message' => 'Thêm thành công'];
                    
-                    }
+                    // }
                 }else {
                     return (['result' => false, 'message' => 'Không tìm thấy blog_id']);
                 }
-              else {
-                return (['result' => false, 'message' => 'Thêm bảng Blog không thành công']);
-            }
-        else {
-            return (['result' => false, 'message' => 'Tên Blog đã tồn tại']);
-        }
-    else {
-        return (['result' => false, 'message' => 'Thêm không thành công. Không lấy được giá trị']);
-    }
+    //           else {
+    //             return (['result' => false, 'message' => 'Thêm bảng Blog không thành công']);
+    //         }
+    //     else {
+    //         return (['result' => false, 'message' => 'Tên Blog đã tồn tại']);
+    //     }
+    // else {
+    //     return (['result' => false, 'message' => 'Thêm không thành công. Không lấy được giá trị']);
+    // }
 }
 }
         
@@ -380,7 +377,7 @@ function deleteBlog() {
 
         if ($result1) {
             // Use prepared statement to avoid SQL injection
-            return ['result' => true]
+            return ['result' => true];
         } else {
             return ['result' => false];
         }
@@ -633,7 +630,7 @@ if (isset($_POST['action'])) {
        
             case 'search':
             echo json_encode(searchBlog());
-            break
+            break;
         case 'fetch-images':
             echo json_encode(fetchImages());
             break;

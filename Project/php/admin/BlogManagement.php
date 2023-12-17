@@ -89,8 +89,7 @@
         ?>
     <!-- end of warning message when click del-btn -->
 
-    <script src="../../js/admin/form-validation"></script>
-    <script src="../../js/admin/categories-management"></script>
-    <script src="../../js/blog/blog-admin.js"></script>
+
+    <script type = "module" src="../../js/blog/blog-admin.js"></script>
 </body>
 </html>
