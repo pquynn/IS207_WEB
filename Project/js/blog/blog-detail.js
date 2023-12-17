@@ -4,7 +4,47 @@ $(document).ready(function() {
     var currentpage = 1;
     
     fetchData(BLOG_ID, currentpage);
+    $.ajax({
+        url: '../../controller/Blog/blog-controller.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            if (data) {
+                //let tableBlog = data.tableBlog;
+                data.tableBlog.forEach(function (row) {
+                    let imageUrl = 'data:blog_img/png;base64,' + row.BLOG_IMG;
+                    $('.blog').append(`
+                    <div class="blog-img">
+                    <img src="${imageUrl}">
+                     </div>
+                     <div class="blog-container">
+                     <div class="blog-title">
+                    <h4>${row.BLOG_TITLE}</h4>
+                    </div>
+                   <div class="blog-content">
+                   <p>${row.CONTENT}</p>
+                 </div>
+                 <div class="blog-date">
+                 <p><i>${row.BLOG_DAY}</i></p>
+                 </div>
+                 <div class="blog-author">
+              <p><b>${row.USER_NAME}</b></p>
+              </div>
+     </div>
+                    `);
+                    $('.blog-container').last().on('click', function () { // CHỌN BLOG
+                        var blogTitle = $(this).find('.blog-title').text();
 
+                        // Tạo URL mới với tham số truyền vào là tên blog
+                        var url = '../../store/blog-info/blog-detail.php?blog=?' + encodeURIComponent(blogTitle);
+                        
+                        // Chuyển hướng đến trang mới
+                        window.location.href = url;
+                    });
+                });
+            }
+        }
+    });
    
     
 });
