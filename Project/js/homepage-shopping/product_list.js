@@ -116,7 +116,6 @@ $(document).ready(function () {
             });
 
             $('#clearFilter').click(function () {
-                alert(optionGender + " - " + optionCategory);
                 $('.product-list').empty();
                 optionGender = null;
                 optionCategory = 0;
