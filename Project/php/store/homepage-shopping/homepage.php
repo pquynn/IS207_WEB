@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../../../css/style-components/homepage.css">
 <link rel="stylesheet" href="../../../css/store/blog.css">
 <link rel="stylesheet" href="../../../css/store/slider.css">
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
     
     <!-- Start of header -->
     <?php 

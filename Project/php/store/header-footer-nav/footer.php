@@ -40,6 +40,7 @@
     </div>
 </div>
 <!--FOOTER END-->
+<script src="../../../js/store/my-order/nav-acc.js"></script>
 </body>
 
 </html>

@@ -5,14 +5,16 @@ function savechange() {
     var district = document.getElementById('district').value;
     var specificAddress = document.getElementById('specificaddress').value;
     
-    var data = 'name=' + encodeURIComponent(name) +
+    var data = 'action=' + encodeURIComponent('edit_address') +
+    'name=' + encodeURIComponent(name) +
     '&phoneNumber=' + encodeURIComponent(phoneNumber) +
     '&province=' + encodeURIComponent(province) +
+    '&district=' + encodeURIComponent(district) +
     'specificAddress=' + encodeURIComponent(specificAddress);
     xhr.send(data);
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'php/save_changes.php', true);
+    xhr.open('POST', '../../php/controller/store/login-signup-forgotpw/account-controller.php', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {

@@ -4,6 +4,9 @@
 <link rel="stylesheet" href="../../../css/store/account-profile.css"/>
 
 <?php
+    session_start();
+    // $user_id = $_SESSION['user_id'];
+    $user_id = 'KH0001';
     $title = "Quản lý tài khoản";
     include("../header-footer-nav/header.php");
 ?>
@@ -47,10 +50,16 @@
 </div>
 <!--MAIN SECTION END-->
 
+<?php include("modal-edit-address.php"); ?>
+<?php include("modal-edit-password.php"); ?>
+<?php include("modal-edit-profile.php"); ?>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="module" src="../../../js/storemy-order/ModalEditPass.js"></script>
+<script type="module" src="../../../js/storemy-order/ModalEditDetail.js"></script>
+<script type="module" src="../../../js/storemy-order/ModalEditAddress.js"></script>
 <?php
     include("../header-footer-nav/footer.php");
 ?>
 
-<?php include("modal-edit-address.php"); ?>
-<?php include("modal-edit-password.php"); ?>
-<?php include("modal-edit-profile.php"); ?>
+

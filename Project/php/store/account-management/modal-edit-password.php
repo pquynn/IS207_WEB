@@ -15,19 +15,17 @@
                         <div class="row row-gap-3">
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="oldpassword" placeholder="Mật khẩu cũ*" required>
-                                <label for="name">Mật khẩu cũ*</label>
+                                <label for="oldpassword">Mật khẩu cũ*</label>
                             </div>
 
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="newpassword" placeholder="Mật khẩu mới*" required>
-                                <label for="phonenumber">Mật khẩu mới*</label>
+                                <label for="newpassword">Mật khẩu mới*</label>
                             </div>
 
                             <div class="btn-container">
-                                <button class="btn btn-confirm" onclick="savechange()" style="width: 100%;">Lưu thay
-                                    đổi</button>
-                                <button class="btn btn-cancel" onclick="cancel()" data-bs-dismiss="modal"
-                                    style="width: 100%;">Hủy</button>
+                                <button class="btn btn-confirm" style="width: 100%;">Lưu thay đổi</button>
+                                <button class="btn btn-cancel" style="width: 100%;">Hủy</button>
                             </div>
                         </div>
 

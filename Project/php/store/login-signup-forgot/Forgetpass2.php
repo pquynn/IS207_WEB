@@ -1,6 +1,6 @@
 <?php
 $title = "Quên mật khẩu";
-include("connect.php");
+include("../../controller/connect.php");
 
 // Lấy số điện thoại từ form
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

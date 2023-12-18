@@ -39,8 +39,8 @@
                         </div>
 
                         <div class="btn-container">
-                            <button class="btn btn-confirm" onclick="savechange()" style="width: 100%;">Lưu thay đổi</button>
-                            <button class="btn btn-cancel" onclick="cancel()" data-bs-dismiss="modal" style="width: 100%;">Hủy</button>
+                            <button class="btn btn-confirm" style="width: 100%;">Lưu thay đổi</button>
+                            <button class="btn btn-cancel" data-bs-dismiss="modal" style="width: 100%;">Hủy</button>
                         </div>
                     </div>
 

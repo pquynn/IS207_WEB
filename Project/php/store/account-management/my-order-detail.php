@@ -122,7 +122,7 @@
     </div>
   <!--DETAIL ORDER--END-->  
 </div>
-<script src="../../../js/my-order/detail.js"></script>
+<script src="../../../js/store/my-order/detail.js"></script>
 <?php
     include("../header-footer-nav/footer.php");
 ?>
