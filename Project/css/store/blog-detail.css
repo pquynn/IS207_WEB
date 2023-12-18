@@ -10,3 +10,8 @@
     border-radius: 20px;
     border-color: var(--orange);
 }
+
+.blog-img img {
+    width: 250px;
+    height: 250px;
+  }
