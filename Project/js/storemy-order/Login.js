@@ -1,38 +1,103 @@
-function validateLogin() {
-  var userlogin = document.getElementById("userlogin").value;
-  var pass = document.getElementById("pass").value;
+import { showToastr } from "../admin/toastr.js";
 
-  // gửi dữ liệu đăng nhập lên server
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "php/login.php", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+$(document).ready(function() {
+  // Get the URL parameters
+  var urlParams = new URLSearchParams(window.location.search);
 
-  var data = "userlogin=" + encodeURIComponent(userlogin) + "& pass=" + encodeURIComponent(pass);
-  xhr.send(data);
+  // Check if the parameter exists, 
+  if (urlParams.has('signup')) {
+      // Get the value of signup
+      var signupSuccessValue = urlParams.get('signup');
 
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      var response = JSON.parse(xhr.responseText);
-      if (response.status === "success") {
-        //Phân quyền
-        var role = response.role;
-            if (role === 'admin') {
-                // Link tới admin
-                window.location.href = "#";
-            } else if (role === 'staff') {
-                // Link tới staff
-                window.location.href = "#";
-            } else {
-                // Link tới User
-                window.location.href = "#";
-            }
-        
-      } else {
-        // Đăng nhập thất bại, hiển thị thông báo lỗi
-        document.getElementById("messageContainer").innerHTML =
-          '<p class="error-message">' + response.message + "</p>";
+      // Now you can use signupSuccessValue as needed
+      // console.log('signup_success value:', signupSuccessValue);
+      
+      // Example: Show a message if signup_success is 1
+      if (signupSuccessValue == 1) {
+        showToastr('success', 'Đăng ký thành công.');
       }
+
+            // Get the current URL
+      var currentUrl = window.location.href;
+
+      // Check if the URL contains the signup_success parameter
+      if (currentUrl.includes('signup')) {
+          // Remove the signup parameter
+          var updatedUrl = currentUrl.replace(/(\?|&)signup=[^&]*(&|$)/, '$1');
+
+          // Use replaceState to update the URL without reloading the page
+          window.history.replaceState({}, document.title, updatedUrl);
+      }
+  }
+
+
+  $('.btn-confirm').on('click', function(e){
+    e.preventDefault();
+  //   var userlogin = $.trim(document.getElementById("userlogin").value);
+  //   var pass = $.trim(document.getElementById("pass").value);
+
+  //   if(userlogin.localeCompare('') != 0 && pass.localeCompare('') != 0){
+  //     $.ajax({
+  //       url: '../../controller/store/login-signup-forgotpw/login-controller.php',
+  //       type: 'POST',
+  //       datatype: 'json',
+  //       data: { userlogin: encodeURIComponent(userlogin), pass: encodeURIComponent(pass) },
+  //       success: function (response) {
+  //         console.log('response' + response);
+
+  //           if(response.status == 'success'){
+  //             console.log('success' +response);
+  //             showToastr('success', response['message']);
+  //               // var signup = '1';
+  //               // var encode_signup = encodeURIComponent(signup);
+  //               // window.location.href = "../../store/login-signup-forgot/Login.php?signup=" + encode_signup;  
+  //           }
+  //           else
+  //               showToastr('error', response['message']);
+  //       },
+  //       error: function () {
+  //           showToastr('error', 'Đăng nhập không thành công.');
+  //       }
+  //   });
+  // }
+    var userlogin = document.getElementById("userlogin").value;
+    var pass = document.getElementById("pass").value;
+
+    if(userlogin.localeCompare('') != 0 && pass.localeCompare('') != 0){
+      // gửi dữ liệu đăng nhập lên server
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "../../controller/store/login-signup-forgotpw/login-controller.php", true);
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+      var data = "userlogin=" + encodeURIComponent(userlogin) + "&pass=" + encodeURIComponent(pass);
+      xhr.send(data);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var response = JSON.parse(xhr.responseText);
+          if (response.status === "success") {
+            //Phân quyền
+            var role = response.role;
+            
+            var login = '1';
+            var encode_login = encodeURIComponent(login);
+            window.location.href = "../../store/homepage-shopping/homepage.php?login=" + encode_login;  
+                // if (role === 'admin') {
+                //     // Link tới admin
+                //     window.location.href = "#";
+                // } else if (role === 'staff') {
+                //     // Link tới staff
+                //     window.location.href = "#";
+                // } else {
+                //     // Link tới User
+                //     window.location.href = "#";
+                // }
+          } else {
+            // Đăng nhập thất bại, hiển thị thông báo lỗi
+            showToastr('error', response.message);
+            console.log(response);
+          }
+        }
+      };
     }
-  };
-  return false;
-}
+    })
+});

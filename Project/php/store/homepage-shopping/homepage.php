@@ -86,8 +86,9 @@
     </div>
     <!-- MAIN SLIDER: END -->
 
-    <script src="../../../js/homepage-shopping/homepage.js"></script>
-    <script src="../../../js/homepage-shopping/homepage-slider.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="module" src="../../../js/homepage-shopping/homepage.js"></script>
+    <script type="module" src="../../../js/homepage-shopping/homepage-slider.js"></script>
 
     <!-- Start of footer -->
     <?php include("../header-footer-nav/footer.php"); ?>

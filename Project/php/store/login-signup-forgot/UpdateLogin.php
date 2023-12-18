@@ -13,7 +13,7 @@
 <body>
     <?php
     $title = "Đăng nhập";
-    include("connect.php");
+    include("../../controller/connect.php");
 
     // Xử lý form đăng nhập
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

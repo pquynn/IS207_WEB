@@ -1,7 +1,7 @@
 <?php
 $title = "Đăng kí";
 // Kết nối đến cơ sở dữ liệu
-include("connect.php");
+include("../../controller/connect.php");
 
 // Xử lý form đăng kí
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
