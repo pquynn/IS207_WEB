@@ -58,7 +58,7 @@
                     <li><a class="nav-item" href="CustomersManagement.php">Khách Hàng</a></li>
 
                     <?php if ($role_id == 1): ?>
-                        <li><a class="nav-item" href="EmployeeManagement.php">Nhân Viên</a></li>
+                        <li><a class="nav-item" href="EmployeesManagement.php">Nhân Viên</a></li>
                     <?php endif; ?>
 
                     <li><a class="nav-item" href="BlogManagement.php">Blog</a></li>

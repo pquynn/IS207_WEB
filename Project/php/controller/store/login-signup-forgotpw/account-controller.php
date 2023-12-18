@@ -6,32 +6,104 @@ function editAddress() {
     global $conn;
 
     // Kiểm tra xem request có phải là POST không
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Lấy dữ liệu từ form chỉnh sửa địa chỉ
-    $name = $_POST['name'];
-    $phoneNumber = $_POST['phonenumber'];
-    $province = $_POST['province'];
-    $district = $_POST['district'];
-    $specificAddress = $_POST['specificaddress'];
-    $address = $specificAddress . ', ' . $district . ', ' . $province;
-    // Update user information in the database
-    $sql = "UPDATE users SET USER_NAME=?, USER_TELEPHONE=?, ADDRESSS=? WHERE USER_ID=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssi", $name, $phoneNumber, $address, $user_id);
-    $result = $stmt->execute();
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Lấy dữ liệu từ form chỉnh sửa địa chỉ
+        $user_id = 'KH17028633'; //lấy để test chức năng
+        $name = $_POST['name'];
+        // $phoneNumber = $_POST['phonenumber'];
+        $province = $_POST['province'];
+        $district = $_POST['district'];
+        $ward = $_POST['ward'];
+        $specificAddress = $_POST['specificaddress'];
+        $address = $specificAddress . ', ' . $district . ', ' . $ward . ', ' . $province;
+        // Update user information in the database
+        $sql = "UPDATE users SET USER_NAME=?, ADDRESS=? WHERE USER_ID=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sss", $name, $address, $user_id);
+        $result = $stmt->execute();
 
-    if ($result) {
-        // Cập nhật thành công, có thể thực hiện các hành động khác nếu cần
-        // return "Cập nhật địa chỉ thành công!";
-    } else {
-        // Cập nhật thất bại
-        // return "Cập nhật địa chỉ thất bại. Vui lòng thử lại.";
+        // Kiểm tra và trả về kết quả cập nhật mới
+        if ($result) {
+            return (['status' => 'success', 'message' => 'Cập nhật địa chỉ thành công']);
+        } else {
+            return (['status' => 'error', 'message' => 'Cập nhật địa chỉ không thành công']);
+        }
     }
-
-    $stmt->close();
-    }
-
+    else
+        return (['status' => 'error', 'message' => 'Cập nhật địa chỉ không thành công']);
 }
+
+function editProfile(){
+    global $conn;
+    // Kiểm tra xem request có phải là POST không
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $user_id = 'KH17028633';//id mẫu thoi
+        $name = $_POST["name"];
+        $dateOfBirth = $_POST["dateOfBirth"];
+        $gender = $_POST["gender"];
+        $phonenumber = $_POST['phoneNumber'];
+
+        // Chuẩn bị và thực thi truy vấn SQL để cập nhật thông tin người dùng
+        $sql = "UPDATE users SET USER_NAME=?, USER_TELEPHONE=?, BIRTHDAY=?, GENDER=? WHERE USER_ID=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssss", $name, $phonenumber, $dateOfBirth, $gender, $user_id);
+        $stmt->execute();
+
+        // Kiểm tra và trả về kết quả
+        if ($stmt->affected_rows > 0) {
+            // Cập nhật thành công, có thể thực hiện các hành động khác nếu cần
+            return(['status' => 'success', 'message' => 'Cập nhật thông tin thành công']);
+        } else {
+            // Cập nhật thất bại
+            return(['status' => 'error', 'message' => 'Cập nhật thông tin không thành công.']);
+        }
+    }
+    else
+    return (['status' => 'error', 'message' => 'Cập nhật thông tin không thành công']);
+}
+
+
+function fetchAddress(){
+    global $conn;
+    // Kiểm tra xem request có phải là POST không
+    $user_id = 'KH17028633';//id mẫu thoi
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $sql = "SELECT USER_NAME, ADDRESS FROM users WHERE USER_ID = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $data = $result->fetch_assoc();
+            $response = array('status' => 'success', 'message' => 'Lấy địa chỉ thành công', 'data' => $data);
+            return $response;
+        } else 
+            return(['error' => 'Lấy địa chỉ không thành công']);
+    }
+    else
+        return (['status' => 'error', 'message' => 'Lấy địa chỉ không thành công']);
+}
+
+function fetchProfile(){
+    global $conn;
+    // $user_id = $_POST['user_id'];
+    $user_id = 'KH17028633';//id mẫu thoi
+    $sql = "SELECT USER_NAME, USER_TELEPHONE, BIRTHDAY, GENDER FROM users WHERE USER_ID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        $response = array('status' => 'success', 'message' => 'Lấy thông tin thành công', 'data' => $data);
+        return $response;
+    } else {
+        return (['status' => 'error', 'message' => 'Không thể lấy thông người dùng']);
+    }
+}
+
 
 function editPassword(){
     global $conn;
@@ -78,12 +150,23 @@ function editPassword(){
             
         } else 
             // Mật khẩu cũ không đúng
-            return (['a' => $user_id, 'status' => 'error', 'message' => 'Không tìm thấy người dùng']);
+            return (['status' => 'error', 'message' => 'Không tìm thấy người dùng']);
         
     } else {
         return (['status' => 'error', 'message' => 'Cập nhật mật khẩu không thành công']);
     }
 }
+
+function logout(){
+    session_start();
+
+    // Destroy the session data
+    session_destroy();
+
+    // Return a response to indicate successful logout
+    return (['status' => 'success']);
+}
+
 
 // Check the action parameter in the request
 if (isset($_POST['action'])) {
@@ -91,6 +174,18 @@ if (isset($_POST['action'])) {
 
     // Execute the corresponding function based on the action
     switch ($action) {
+        case 'fetch_profile':
+            // Return the fetched data as JSON response
+            echo json_encode(fetchProfile());
+            break;
+        case 'edit_profile':
+            // Return the fetched data as JSON response
+            echo json_encode(editProfile());
+            break;
+        case 'fetch_address':
+            // Return the fetched data as JSON response
+            echo json_encode(fetchAddress());
+            break;
         case 'edit_address':
             // Return the fetched data as JSON response
             echo json_encode(editAddress());
@@ -99,11 +194,15 @@ if (isset($_POST['action'])) {
             // Return the fetched data as JSON response
             echo json_encode(editPassword());
             break;
+        case 'logout':
+            // Return the fetched data as JSON response
+            echo json_encode(logout());
+            break;
         default:
-            echo json_encode(['success' => false, 'message' => 'Invalid action']);
+            echo json_encode(['status' => 'error', 'message' => 'Invalid action']);
     }
 } else {
-    echo json_encode(['success' => false, 'message' => 'Action not specified']);
+    echo json_encode(['status' => 'error', 'message' => 'Action not specified']);
 }
 // Close the database connection
 $conn->close();
