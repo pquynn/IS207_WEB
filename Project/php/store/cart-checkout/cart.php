@@ -166,6 +166,8 @@
       <!-- CART-BODY: End -->
     </div>
 
+    <script src="../../../js/homepage-shopping/product_detail.js"></script>
+
     <!-- page footer: start -->
     <?php include("../header-footer-nav/footer.php");?>
     <!-- page footer: start -->

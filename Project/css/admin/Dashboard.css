@@ -45,3 +45,12 @@ p:not(.container-heading){
 .todo-container .number-display{
     color: var(--admin-primary);
 }
+
+.best-seller .admin-table table{
+    min-width: 400px !important;
+}
+
+.best-seller .admin-table .table-img{
+    width: 60px;
+    height: 60px;
+}
