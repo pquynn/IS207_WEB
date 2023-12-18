@@ -133,12 +133,12 @@ function insertBlog() {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = ($_POST['BLOG_ID']);
-        $user_id = (int) ($_POST['USER_ID']);
-        $user_name = (int) ($_POST['USER_NAME']);
+        $user_id = ($_POST['USER_ID']);
+        $user_name = ($_POST['USER_NAME']);
         $date = ($_POST['BLOG_DAY']);
-        $content = (int) ($_POST['CONTENT']);
-        $img = (int) ($_POST['BLOG_IMG']);
-        $name = (int) ($_POST['BLOG_title']);
+        $content = ($_POST['CONTENT']);
+        $img = ($_POST['BLOG_IMG']);
+        $name = ($_POST['BLOG_TITLE']);
 
         if (!checkExist($name)) {
             // Use prepared statement to avoid SQL injection

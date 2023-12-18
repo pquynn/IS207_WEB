@@ -1,10 +1,11 @@
 var tbl_id, tbl_img, tbl_title, tbl_username, tbl_date;
 var formData;
-var has_1_images, counter;
+
 var closest_row;
 
 $(document).ready(function () {
     var namePage = $('.section_heading').text();
+
     // Fetch data using AJAX
     // Initialize the page to 1
     var currentPage = 1;
@@ -18,81 +19,89 @@ $(document).ready(function () {
         // Clear the data and reset the form validation in the modal
         var modal = document.getElementById('add-new');
         modal.querySelector('form').reset(); // Reset the form
-
         $('#blog-name').removeClass('is-invalid'); //remove class is-invalid if the form was validated before
-        $('#blog-name').prop('disabled', false);
+
         Array.from(modal.querySelectorAll('.was-validated')).forEach((element) => {
             element.classList.remove('was-validated'); // Clear Bootstrap form validation classes
         });
+    })
 
-        // Add the 'required' attribute
-        $('#blog-img').attr('required', 'required');
+    // when submit #modal-form
+    $('#modal-form').submit(function (event) { 
+        event.preventDefault();
+    
+        var form = $(this);
+        var btn_name = $('#modal-form .btn-confirm').text();
+        var blogName = $('#blog-name').val();
+    
+        if(btn_name.localeCompare("Thêm mới") == 0){
+            //insert 
+            Array.from(form).forEach(form_element => {
+            
+                if (form_element.checkValidity() === false) {
+                    $('.invalid-feedback').html('Yêu cầu nhập tên Blog');
+                    event.stopPropagation();
+                } else 
+                    insertBlog(blogName);
+                
+                form.addClass('was-validated');
+            })
+        }
+        else{
+            //update
+            Array.from(form).forEach(form_element => {
+            
+                if (form_element.checkValidity() === false) {
+                    $('.invalid-feedback').html('Yêu cầu nhập tên Blog!');
+                    event.stopPropagation();
+                } 
+                else 
+                    updateBlog(blogName);
+        
+                form.addClass('was-validated');
+            })
+        }
 
-       
-        // Append the new row HTML to the tbody
-        tbody.append(newRowHtml);
-
-        // reset image form-control
-        $('.image-box').empty();
-
-        has_1_images = false;
-
-
-       
+        
     });
-})
+
+    // Event listener for the "Delete" button
+    $('.admin-table').on('click', '.btn-delete', function (e) {
+        e.preventDefault();
+
+        // Show a confirmation dialog
+        if (confirm('Xác nhận xóa ' + namePage + ' ?')) {
+            // Get the category_id from the first column of the row
+            var blogId = $(this).closest('tr').find('td:first').text();
+            closest_row = $(this).closest('tr');
+            // User confirmed, proceed with deletion
+            deleteCategory(blogId, closest_row);
+        }
+    });
+
 
     // Event listener for the "Edit" button
     $('.admin-table').on('click', '.btn-edit',function (e) {
-        formData = new FormData();
-        // e.preventDefault();
-        
-        // Get the closest row to the clicked button
-        closest_row = $(this).closest('tr');
+        e.preventDefault();
 
+        // Get the closest row to the clicked button
+        var closest_row = $(this).closest('tr');
         // Get the datas from the row
-        tbl_id = $.trim(closest_row.find('td:first').text());
-        tbl_img = $.trim(closest_row.find('td:eq(2)').text());
-        // tbl_phone = $.trim(closest_row.find('td:eq(2)').text());
-        tbl_title = $.trim(closest_row.find('td:eq(3)').text());
-        tbl_username = $.trim(closest_row.find('td:eq(4)').text());
-        tbl_date = $.trim(closest_row.find('td:eq(5)').text());
-        
+        tbl_title = closest_row.find('td:eq(3)').text();
+        tbl_img = closest_row.find('td:eq(2)').text();
 
         // Remove the is-invalid class in form-controls
         var modal = document.getElementById('add-new');
         Array.from(modal.querySelectorAll('.is-invalid')).forEach((element) => {
             element.classList.remove('is-invalid'); // Clear Bootstrap form validation classes
         });
-        $('#modal-form').removeClass('was-validated');
-        // Remove the 'required' attribute
-        $('#blog-img').removeAttr('required');
-
-        //TODO:LOAD TỪ CSDL: ẢNH, CATEGORY, SIZE - QUANTITY
-
-        // reset image form-control
-        fetchImages(tbl_id);
-       
-       
-
-        //fetch data from admin-table into modal
+        
         $('#blog-name').val(tbl_title);
-        // $('#product-username').prop('disabled', true);
-        $('#blog_img').val(tbl_img);
-       
-
-       
-
-          // Populate the modal form with the fetched product_name
+        // Populate the modal form with the fetched category_name
         $('h1.modal-title').text('Thông tin ' + namePage);
         $('.btn-confirm').text('Thay đổi');
-        
+
     });
-
-
-   
-    
-
 
     // Event listener for the "Search" button
     $('#search').on('keyup', function () {
@@ -100,25 +109,12 @@ $(document).ready(function () {
 
         // Fetch data based on the search term
         if(searchTerm.localeCompare('') != 0)
-            fetchSearchData(searchTerm, 1);
+            fetchSearchData(searchTerm, currentPage);
         else
-            fetchData(1);
+            fetchData(currentPage);
     });
 
-    //delete
-    //TODO: nên check điều kiên xóa ở csdl nữa
-    // Event listener for the "Delete" button
-    $('.admin-table').on('click', '.btn-delete.btn-table', function (e) {
-        e.preventDefault();
-        // Show a confirmation dialog
-        if (confirm('Xác nhận xóa ' + namePage + ' ?')) {
-            // Get the blog_id from the first column of the row
-            closest_row = $(this).closest('tr');
-            tbl_id = closest_row.find('td:first').text();
-            // User confirmed, proceed with deletion
-            deleteBlog(tbl_id, closest_row);
-        }
-    });
+})
 
 
     // khi thêm file vào input
@@ -141,8 +137,7 @@ $(document).ready(function () {
             invalidFeedback.show();
             return;
         } else {
-            has_1_images = true;
-            
+           
             //check file types
             var files = fileInput.files;
             
@@ -212,7 +207,7 @@ $(document).ready(function () {
         Array.from(form).forEach(form_element => {
             if (form_element.checkValidity() === false 
             || isDuplicate === true
-            || has_3_images === false) {
+            ) {
                 event.preventDefault();
                 event.stopPropagation();
             }
@@ -252,39 +247,6 @@ $(document).ready(function () {
 // Function to fetch categories from the server
 
 
-function fetchImages(id) {
-    $.ajax({
-        url: '../../php/controller/Blog/blog-controller.php',
-        type: 'POST',
-        data: {action: 'fetch-images', id: id},
-        dataType: 'json',
-        success: function (data) {
-            var imageBox = $('.image-box');
-            
-            imageBox.empty();
-            var imageUrls; // Corrected variable name
-
-            imageUrls.push('data:image/png;base64,' + data.first_picture);
-           
-
-            // Create an <img> element and set its source
-           
-                var img = $('<img>')
-                    .attr('src', imageUrls)
-                    .attr('width', '100px')
-                    .attr('height', '110px')
-                    .css('object-fit', 'contain');
-
-                // Append the <img> element to the imageBox
-                imageBox.append(img);
-            
-
-        },
-        error: function () {
-            console.error('Failed to fetch categories from the server.');
-        }
-    });
-}
 
 
 
@@ -394,20 +356,7 @@ function insertBlog (name, content, img) {
 }
 
 // function to insert product images after product is inserted successfully
-function insertImages () {
-    $.ajax({
-        url: '../../php/controller/Blog/blog-controller.php',
-        type: 'POST',
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function () {
-        },
-        error: function (error) {
-            console.error('Error uploading files: ', error);
-        }
-    });
-}
+
 
 
 // update a product
@@ -452,22 +401,7 @@ function updateBlog (update_images, name, content) {
     
 }
 
-function updateImages () {
-    $.ajax({
-        url: '../../php/controller/Blog/blog-controller.php',
-        type: 'POST',
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function (result) {
-            if (result.result === true) {
-            }
-        },
-        error: function (error) {
-            console.error('Error uploading files: ', error);
-        }
-    });
-}
+
 
 // Function to delete product by product_id
 function deleteBlog(blog_id, closest_row) {
@@ -480,7 +414,7 @@ function deleteBlog(blog_id, closest_row) {
             closest_row.remove();
         },
         error: function () {
-            console.error('Failed to delete employee.');
+            console.error('Failed to delete blog.');
         }
     });
 }
