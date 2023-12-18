@@ -1,28 +1,26 @@
 <link rel="stylesheet" href="../../../css/store/blog-detail.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <?php 
         $title = "Blog";
         include("../header-footer-nav/header.php"); ?>
 
 <div class="blog-detail">
 <div class="blog-img">
-    <img src="../../../img/nike.jpg">
+    <img src="">
 </div>
 <div class="blog-container">
     <div class="blog-title">
-        <h4>Ten Blog</h4>
+        <h4></h4>
     </div>
     <div class="blog-content">
-        <p>In love with the classic look of '80s basketball but have a thing for
-        the fast-paced culture of today's game? Meet the Nike Court Vision Low. A classic remixed with
-        at least 20% recycled materials by weight, its crisp upper and stitched overlays keep the soul
-        of the original style. The plush, low-cut collar keeps it sleek and comfortable for your
-        world.</p>
+        <p></p>
     </div>
     <div class="blog-date">
-        <p><i>1/10/2023</i></p>
+        <p><i></i></p>
     </div>
     <div class="blog-author">
-        <p><b>Nguyen Van A</b></p>
+        <p><b></b></p>
     </div>
 </div>
 </div>
