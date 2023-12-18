@@ -90,6 +90,7 @@
   <!-- js: start -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="../../../js/store/cart-checkout/cart/cart.js"></script>
+  <script src="../../../js/homepage-shopping/product_detail"></script>
   <!-- js: end -->
 <!-- push value to database: start -->
 <?php

@@ -1,5 +1,7 @@
   <link rel="stylesheet" href="../../../css/store/product_list.css">
   <link rel="stylesheet" href="../../../css/style-components/pagination.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
   <!-- Start of header -->
   <?php 
     $title = "Danh mục sản phẩm";
@@ -236,157 +238,31 @@
         <div class="right-col">
           <!-- sort-option: start -->
           <select name="sort" id="sort">
-            <option value="expensive-to-cheap">Giá thấp đến cao</option>
-            <option value="expensive-to-cheap">Giá cao đến thấp</option>
-            <option value="expensive-to-cheap">Mới đến cũ</option>
+            <option value="cheap-to-expensive" >Sắp xếp theo giá tăng dần</option>
+            <option value="expensive-to-cheap">Sắp xếp theo giá giảm dần</option>
+            <option value="male">Giày nam</option>
+            <option value="female">Giày nữ</option>
+            <option value="male-female">Giày nam, nữ</option>
           </select>
           <!-- sort-option: end -->
 
+          <p id="myTest"></p>
+
           <!-- product-list: start -->
           <div class="product-list">
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
           </div>
           <!-- product-list: end -->
 
           <div class="pagination m-5">
-            <a href="#">&laquo;</a>
+            <p>Xem thêm</p>
+            <!-- <a href="#">&laquo;</a>
             <a class="active" href="#">1</a>
             <a href="#">2</a>
             <a href="#">3</a>
             <a href="#">4</a>
             <span class="ellipsis">...</span>
             <a href="#">10</a>
-            <a href="#">&raquo;</a>
+            <a href="#">&raquo;</a> -->
           </div>
         </div>
         <!-- right-col: end -->
@@ -399,6 +275,7 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"></script>
+      <script src="../../../js/homepage-shopping/product_list.js"></script>
     <!-- js: end -->
 
     <!-- Start of footer -->

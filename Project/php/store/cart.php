@@ -1,7 +1,11 @@
-    <!-- page header: start -->
+   <!-- Add particular css link to file: start -->
+    <link rel="stylesheet" href="../../../css/store/cart.css" />
+   <!-- Add particular css link to file: start -->
+   
+   <!-- page header: start -->
     <?php 
       $title = "Giỏ hàng";
-      include("header.php");
+      include("../header-footer-nav/header.php");
     ?>
     <!-- page header: end -->
 
@@ -154,12 +158,16 @@
           <!-- total: End -->
 
           <!-- checkout btn: Start -->
-          <button class="btn checkout-bnt pointer">Tiến hành thanh toán</button>
+          <button class="btn checkout-bnt pointer" onclick="location.href='./checkout.php'">Tiến hành thanh toán</button>
           <!-- checkout btn: End -->
         </div>
         <!-- SUBMIT-SECTION: End -->
       </div>
       <!-- CART-BODY: End -->
     </div>
+
+    <!-- page footer: start -->
+    <?php include("../header-footer-nav/footer.php");?>
+    <!-- page footer: start -->
   </body>
 </html>

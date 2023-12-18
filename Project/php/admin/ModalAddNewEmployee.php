@@ -6,20 +6,22 @@
 
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="add-employee">Thêm mới nhân viên</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
             </div>
 
-            <div class="modal-body">
-                <form action="" class="add-new-employee">
-                
-                    <label for="employee-phone" class="form-label">Điện thoại</label>
-                    <input type="tel" id="employee-phone" class="form-control">
+            <form action="" id="modal-form" class="add-new-employee need-validation" novalidate>
+                <div class="modal-body">
+                    <label for="employee-username" class="form-label">Tên đăng nhập</label>
+                    <input type="text" id="employee-username" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Yêu cầu nhập tên đăng nhập.
+                    </div>
 
                     <label for="employee-name" class="form-label">Tên nhân viên</label>
                     <input type="text" id="employee-name" class="form-control">
 
-                    <label for="employee-email" class="form-label">Email</label>
-                    <input type="email" id="employee-email" class="form-control">
+                    <label for="employee-phone" class="form-label">Điện thoại</label>
+                    <input type="tel" id="employee-phone" class="form-control">
 
                     <div class="row g-2">
                         <div class="col">
@@ -30,7 +32,7 @@
                         <div class="col">
                             <label for="employee-gender" class="form-label">Giới tính</label>
                             <select id="employee-gender" class="form-select">
-                                <option value="" disabled selected hidden></option>
+                                <option value="" disabled selected hidden>Chọn giới tính</option>
                                 <option value="Nam">Nam</option>
                                 <option value="Nữ">Nữ</option>
                                 <option value="Khác">Khác</option>
@@ -44,19 +46,17 @@
 
                     <label for="employee-role" class="form-label">Vai trò</label>
                     <select id="employee-role" class="form-select">
-                        <option value="" disabled selected hidden></option>
+                        <option value="" disabled selected hidden>Chọn vai trò</option>
                         <option value="Quản lý">Quản lý</option>
                         <option value="Nhân viên">Nhân viên</option>
                     </select>
-                        
-                </form>
-            </div>
-            
-            <div class="modal-footer">
-                <button type="button" class="btn btn-cancel admin" data-bs-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-confirm admin">Thêm mới</button>
-            </div>
-
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel admin">Hủy</button>
+                    <button type="submit" class="btn btn-confirm admin">Thêm mới</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

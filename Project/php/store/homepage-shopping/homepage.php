@@ -1,6 +1,7 @@
 
 <link rel="stylesheet" href="../../../css/style-components/homepage.css">
 <link rel="stylesheet" href="../../../css/store/blog.css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     
     <!-- Start of header -->
     <?php 
@@ -28,221 +29,18 @@
         </div>
       </div>
       <!-- SLIDER COTAINER: END -->
-
       <!-- BLOG: START -->
+      <!-- <p class="myText okdc chuaw">HELLO</p> -->
+
       <div class="blog">
-        <div class="blog-content zoom-when--hover">
-          <a class="blog-link" href="#">
-            <div class="blog-img--container zoom-img--container">
-              <img
-                class="blog-img zoom-img"
-                src="../../../img/blog_img/blog1.webp"
-                alt="" />
-            </div>
-            <p class="blog-title">Tên blog</p>
-          </a>
-          <a href="#" class="blog-author">
-            <small>Tên tác giả</small>
-          </a>
-        </div>
-
-        <div class="blog-content zoom-when--hover">
-          <a class="blog-link" href="#">
-            <div class="blog-img--container zoom-img--container">
-              <img
-                class="blog-img zoom-img"
-                src="../../../img/blog_img/blog2.webp"
-                alt="" />
-            </div>
-            <p class="blog-title">Tên blog</p>
-          </a>
-          <a href="#" class="blog-author">
-            <small>Tên tác giả</small>
-          </a>
-        </div>
-
-        <div class="blog-content zoom-when--hover">
-          <a class="blog-link" href="#">
-            <div class="blog-img--container zoom-img--container">
-              <img
-                class="blog-img zoom-img"
-                src="../../../img/blog_img/blog31.jpg"
-                alt="" />
-            </div>
-            <p class="blog-title">Tên blog</p>
-          </a>
-          <a href="#" class="blog-author">
-            <small>Tên tác giả</small>
-          </a>
-        </div>
       </div>
       <!-- BLOG: END -->
 
       <!-- BEST SELLER: START -->
-      <div class="gallery">
+      <div class="gallery" id="galleryBestSeller">
         <h4>BEST SELLER</h4>
 
         <div class="product-list">
-          <a href="#" class="product zoom-when--hover">
-            <div class="product-img--container zoom-img--container">
-              <img
-                class="product-img zoom-img"
-                id="slider1"
-                src="../../../img/blog_img/blog2.webp"
-                alt="" />
-            </div>
-            <div class="product-infor">
-              <p class="product-name">Ten SP</p>
-              <p class="product-price">300.000d</p>
-              <div class="product-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star-half"></ion-icon>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="product zoom-when--hover">
-            <div class="product-img--container zoom-img--container">
-              <img
-                class="product-img zoom-img"
-                id="slider1"
-                src="../../../img/blog_img/blog2.webp"
-                alt="" />
-            </div>
-            <div class="product-infor">
-              <p class="product-name">Ten SP</p>
-              <p class="product-price">300.000d</p>
-              <div class="product-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star-half"></ion-icon>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="product zoom-when--hover">
-            <div class="product-img--container zoom-img--container">
-              <img
-                class="product-img zoom-img"
-                id="slider1"
-                src="../../../img/blog_img/blog2.webp"
-                alt="" />
-            </div>
-            <div class="product-infor">
-              <p class="product-name">Ten SP</p>
-              <p class="product-price">300.000d</p>
-              <div class="product-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star-half"></ion-icon>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="product zoom-when--hover">
-            <div class="product-img--container zoom-img--container">
-              <img
-                class="product-img zoom-img"
-                id="slider1"
-                src="../../../img/blog_img/blog2.webp"
-                alt="" />
-            </div>
-            <div class="product-infor">
-              <p class="product-name">Ten SP</p>
-              <p class="product-price">300.000d</p>
-              <div class="product-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star-half"></ion-icon>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="product zoom-when--hover">
-            <div class="product-img--container zoom-img--container">
-              <img
-                class="product-img zoom-img"
-                id="slider1"
-                src="https://bisuth-store-demo.myshopify.com/cdn/shop/products/13.1.png?v=1657703701"
-                alt="" />
-            </div>
-            <div class="product-infor">
-              <p class="product-name">Ten SP</p>
-              <p class="product-price">300.000d</p>
-              <div class="product-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star-half"></ion-icon>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="product zoom-when--hover">
-            <div class="product-img--container zoom-img--container">
-              <img
-                class="product-img zoom-img"
-                id="slider1"
-                src="https://bisuth-store-demo.myshopify.com/cdn/shop/products/13.1.png?v=1657703701"
-                alt="" />
-            </div>
-            <div class="product-infor">
-              <p class="product-name">Ten SP</p>
-              <p class="product-price">300.000d</p>
-              <div class="product-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star-half"></ion-icon>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="product zoom-when--hover">
-            <div class="product-img--container zoom-img--container">
-              <img
-                class="product-img zoom-img"
-                id="slider1"
-                src="https://bisuth-store-demo.myshopify.com/cdn/shop/products/13.1.png?v=1657703701"
-                alt="" />
-            </div>
-            <div class="product-infor">
-              <p class="product-name">Ten SP</p>
-              <p class="product-price">300.000d</p>
-              <div class="product-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star-half"></ion-icon>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="product zoom-when--hover">
-            <div class="product-img--container zoom-img--container">
-              <img
-                class="product-img zoom-img"
-                id="slider1"
-                src="https://bisuth-store-demo.myshopify.com/cdn/shop/products/13.1.png?v=1657703701"
-                alt="" />
-            </div>
-            <div class="product-infor">
-              <p class="product-name">Ten SP</p>
-              <p class="product-price">300.000d</p>
-              <div class="product-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star-half"></ion-icon>
-              </div>
-            </div>
-          </a>
         </div>
       </div>
       <!-- BEST SELLER: END -->
@@ -286,95 +84,17 @@
       <!-- PRODUCT FOR MEN & WOMAN: end -->
 
       <!-- NEW ARRIVALS: START -->
-      <div class="gallery">
+      <div class="gallery" id="galleryNewProduct">
         <h4>SẢN PHẨM MỚI</h4>
 
         <div class="product-list">
-          <a href="#" class="product zoom-when--hover">
-            <div class="product-img--container zoom-img--container">
-              <img
-                class="product-img zoom-img"
-                id="slider1"
-                src="../../../img/blog_img/blog2.webp"
-                alt="" />
-            </div>
-            <div class="product-infor">
-              <p class="product-name">Ten SP</p>
-              <p class="product-price">300.000d</p>
-              <div class="product-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star-half"></ion-icon>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="product zoom-when--hover">
-            <div class="product-img--container zoom-img--container">
-              <img
-                class="product-img zoom-img"
-                id="slider1"
-                src="../../../img/blog_img/blog2.webp"
-                alt="" />
-            </div>
-            <div class="product-infor">
-              <p class="product-name">Ten SP</p>
-              <p class="product-price">300.000d</p>
-              <div class="product-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star-half"></ion-icon>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="product zoom-when--hover">
-            <div class="product-img--container zoom-img--container">
-              <img
-                class="product-img zoom-img"
-                id="slider1"
-                src="../../../img/blog_img/blog2.webp"
-                alt="" />
-            </div>
-            <div class="product-infor">
-              <p class="product-name">Ten SP</p>
-              <p class="product-price">300.000d</p>
-              <div class="product-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star-half"></ion-icon>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="product zoom-when--hover">
-            <div class="product-img--container zoom-img--container">
-              <img
-                class="product-img zoom-img"
-                id="slider1"
-                src="../../../img/blog_img/blog2.webp"
-                alt="" />
-            </div>
-            <div class="product-infor">
-              <p class="product-name">Ten SP</p>
-              <p class="product-price">300.000d</p>
-              <div class="product-star">
-                <ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star"></ion-icon
-                ><ion-icon name="star-half"></ion-icon>
-              </div>
-            </div>
-          </a>
         </div>
       </div>
       <!-- NEW ARRIVALS: END -->
     </div>
     <!-- MAIN SLIDER: END -->
+
+    <script src="../../../js/homepage-shopping/homepage.js"></script>
 
     <!-- Start of footer -->
     <?php include("../header-footer-nav/footer.php"); ?>

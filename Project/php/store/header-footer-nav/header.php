@@ -29,6 +29,8 @@
     <script
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 
     <!-- font-family -->
     <style>
@@ -111,3 +113,5 @@
       </ul>
       <!-- ICON (ACCOUNT, CART): End -->
     </ul>
+
+    <script src="../../../js/header/header.js"></script>

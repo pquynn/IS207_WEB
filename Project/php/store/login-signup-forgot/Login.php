@@ -39,7 +39,7 @@
         </form>
     </div>
    
-    <?php include("Forgetpass1.php"); ?>
+    <!-- <?php include("Forgetpass1.php"); ?> -->
 </body>
 
 </html>

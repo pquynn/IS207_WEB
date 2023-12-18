@@ -83,11 +83,13 @@
 
     <!-- start of warning message when click del-btn -->
         <?php 
-            $alert_message = "xóa blog";
-            $alert_action = "Xóa";
-            include("ModalAlert.php"); 
+            // $alert_message = "xóa blog";
+            // $alert_action = "Xóa";
+            // include("ModalAlert.php"); 
         ?>
     <!-- end of warning message when click del-btn -->
 
+    <script src="../../js/admin/form-validation"></script>
+    <script src="../../js/admin/categories-management"></script>
 </body>
 </html>

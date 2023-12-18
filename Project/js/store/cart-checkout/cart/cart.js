@@ -25,6 +25,54 @@ $(document).ready(function () {
 });
 
 function fetchData() {
+  // get cart form client
+  const cart = JSON.parse(localStorage.getItem("myCart"));
+  var mergedCart = [];
+
+  // DINH DANG JSON CHO GIO HANG && GOP SAN PHAM TRUNG
+  // kiem tra xem gio hang dax co san pham chua
+  function isInclude(arrayObj, value) {
+    arrayObj.forEach((obj, i) => {
+      if (obj.name == value.name && obj.size == value.size) {
+        console.log(1);
+        return i;
+      }
+    });
+    return false;
+  }
+
+  // dinh dang san pham
+  cart.forEach((product, i) => {
+    // chuyen thanh object
+    var row = {
+      name: product[0],
+      price: product[1],
+      size: Number(product[2]),
+      amount: Number(product[3]),
+      img: product[4],
+    };
+
+    // dua vao day san pham (cart)
+    var varIsInclude = isInclude(mergedCart, row);
+    if (varIsInclude === false) {
+      mergedCart.push(row);
+    } else {
+      mergedCart[varIsInclude].amount += row.amount;
+    }
+  });
+  // console.log(mergedCart, mergedCart[0]);
+  // console.log(isInclude(mergedCart, mergedCart[0]));
+
+  // for (let i = 0; i < cart.length; i++) {
+  //   let product = cart[i];
+  //   if (mergedCart.includes(product) === false) {
+  //     mergedCart[i] = product;
+  //   } else {
+  //     mergedCart[mergedCart.indexOf[product]][3] += product[3];
+  //     console.log(1);
+  //   }
+  // }
+
   var total = 0;
   $.ajax({
     url: "../../../../Project/php/store/cart/cartDisplayProduct.php",
