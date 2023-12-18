@@ -30,6 +30,24 @@ $(document).ready(function() {
       }
   }
 
+  if (urlParams.has('resetpw')) {
+    // Get the value of resetpw
+    var resetpwSuccessValue = urlParams.get('resetpw');
+    if (resetpwSuccessValue == 1) {
+      showToastr('success', 'Đặt lại mật khẩu thành công.');
+    }
+
+          // Get the current URL
+    var currentUrl = window.location.href;
+
+    if (currentUrl.includes('resetpw')) {
+        // Remove the resetpw parameter
+        var updatedUrl = currentUrl.replace(/(\?|&)resetpw=[^&]*(&|$)/, '$1');
+
+        window.history.replaceState({}, document.title, updatedUrl);
+    }
+}
+
 
   $('.btn-confirm').on('click', function(e){
     e.preventDefault();

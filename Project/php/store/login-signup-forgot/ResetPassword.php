@@ -1,75 +1,38 @@
-<?php
-$title="Đặt lại mật khẩu";
-include("connect.php");
-$phoneNumber = $_GET["phone"];
-?>
+<?php 
+    $title = "Đặt lại mật khẩu";
+    include("./login-head.php"); ?>
+ 
+    <div class="container bg-white rounded-4" style="height:480px;">
+        <form>
+            <div class="text-center">
+                <h2 class="p-4 text-center">Đặt lại mật khẩu</h2>
+            </div>
+            <div class="form-floating col-12 m-1 mb-3">
+                <input class="form-control" type="password" id="new_password" placeholder=" Mật khẩu mới" required
+                oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu mới.')" 
+                    oninput="this.setCustomValidity('')">
+                <label for="new_password" class="form-label"> Mật khẩu mới</label>
+            </div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../../css/Forgetpass.css">
-    <link rel="stylesheet" href="../../../css/base.css">
-</head>
-<body>
-    <form action="ResetPassword.php" method="post">
-        <!-- Thêm các trường nhập mật khẩu mới và xác nhận mật khẩu mới -->
-        <table>
-            <tr>
-                <td>
-                <input type="password" name="new_password" placeholder="Mật khẩu mới" required
-                oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu mới.')"
-                oninput="this.setCustomValidity('')">
-                </td>
-            </tr>
-            <tr>
-                <th>
-                <input type="password" name="confirm_password" placeholder="Xác nhận mật khẩu mới" required
-                oninvalid="this.setCustomValidity('Vui lòng nhập lại mật khẩu mới.')"
-                oninput="this.setCustomValidity('')">
-                </th>
-            </tr>
-            <tr>
-                <td colspan="2">
-                <?php if (isset($error) && $error): ?>
-                        <p style="color: red;"><?php echo $error; ?></p>
-                    <?php endif; ?>
-                </td>
-            </tr>
-            <tr>
-                <th colspan="2"><button type="submit" class="btn btn-confirm">Đặt lại mật khẩu</button></th>
-            </tr>
-        </table>
-    </form>
+            <div class="form-floating col-12 m-1 mb-4">
+                <input class="form-control" type="password" id="confirm_password" placeholder=" Nhập lại mật khẩu mới" required 
+                    oninvalid="this.setCustomValidity('Vui lòng nhập lại mật khẩu mới.')" 
+                    oninput="this.setCustomValidity('')">
+                <label for="confirm_password" class="form-label"> Nhập lại mật khẩu mới</label>
+            </div>
+
+            <div class="btn-container col-12 m-1">
+                <button class="btn btn-confirm btn-reset" style="width: 100%;">Lưu thay đổi</button>
+                <a class="btn btn-cancel w-100" href="Login.php">Đi đến Đăng nhập</a>
+            </div>
+            
+        </form>
+    </div>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="module" src="../../../js/store/account-management/ForgetPw.js"></script>
 </body>
+
 </html>
 
-<?php
-// Lấy thông tin từ form đặt lại mật khẩu
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $newPassword = $_POST["new_password"];
-    $confirmPassword = $_POST["confirm_password"];
 
-    // Kiểm tra mật khẩu mới và xác nhận mật khẩu mới
-    if ($newPassword == $confirmPassword) {
-        // Thực hiện cập nhật mật khẩu mới trong cơ sở dữ liệu
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-        //prepared statement
-        $updateSql = "UPDATE users SET USER_PASSWORD = ? WHERE USER_TELEPHONE = ?";
-        $stmt = $conn->prepare($updateSql);
-        $stmt->bind_param("ss", $hashedPassword, $phoneNumber);
-        $stmt->execute();
-        $stmt->close();
-        $conn->close();
-        // Chuyển hướng đến trang chủ
-        header("Location: #.html");
-        exit();
-    } else {
-        $error = "Mật khẩu không trùng khớp. Vui lòng nhập lại";
-    }
-}
 
-$conn->close();
-?>

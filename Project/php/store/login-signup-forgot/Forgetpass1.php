@@ -1,64 +1,37 @@
 
 <?php 
-    include('../../controller/connect.php');
-    global $conn;
-
     $title = "Lấy lại mật khẩu";
-        
-    // Khởi tạo biến error
-    $error = "";
-
-    // Lấy số điện thoại từ form
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $phoneNumber = $_POST["phonenumber"];
-
-        // Kiểm tra số điện thoại trên cơ sở dữ liệu
-        $sql = "SELECT * FROM users WHERE USER_TELEPHONE = '$phoneNumber'";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            // Số điện thoại tồn tại, gửi tin nhắn và tạo link đến trang đặt lại mật khẩu
-            $resetLink = "#" . $phoneNumber;
-            // Đang phát triển gửi tin nhắn đến sđt
-            // Chuyển hướng đến trang thông báo
-            header("Location: Forgetpass2.php");
-            exit();
-        } else {
-            // Số điện thoại không tồn tại
-            $error = "Số điện thoại không tồn tại. Vui lòng kiểm tra lại.";
-        }
-    }
-
-    $conn->close();
-?>
-<?php include("./login-head.php"); ?>
+    include("./login-head.php"); ?>
  
-    <div class="container bg-white rounded-4" style="height:400px;">
+    <div class="container bg-white rounded-4" style="height:480px;">
         <form>
             <div class="text-center">
                 <h2 class="p-4 text-center">Quên mật khẩu?</h2>
-                <p>Nhập số điện thoại để nhận hướng dẫn lấy lại mật khẩu.</p>
+                <p>Nhập tên đăng nhập và số điện thoại để lấy lại mật khẩu.</p>
             </div>
-            
-            <div class="form-floating col-12 m-1 mb-1">
-                <input class="form-control" type="text" id="phonenumber" placeholder=" Số điện thoại" required
-                    oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại.')"
+            <div class="form-floating col-12 m-1 mb-3">
+                <input class="form-control" type="text" id="userlogin" placeholder=" Tên đăng nhập" required
+                    oninvalid="this.setCustomValidity('Vui lòng nhập tên đăng nhập.')"
                     oninput="this.setCustomValidity('')">
+                <label for="userlogin" class="form-label"> Tên đăng nhập</label>
+            </div>
+
+            <div class="form-floating col-12 m-1 mb-2">
+                <input class="form-control" type="text" id="phonenumber" placeholder=" Số điện thoại" required pattern="^0[0-9]{9}$" 
+                oninvalid="this.setCustomValidity('Yêu cầu nhập số điện thoại có 10 số và bắt đầu =0.')" 
+                oninput="this.setCustomValidity('')">
                 <label for="phonenumber" class="form-label"> Số điện thoại</label>
             </div>
 
-            <?php if (isset($error) && $error): ?>
-                <p style="color: red;"><?php echo $error; ?></p>
-            <?php endif; ?>
-
             <div class="btn-container col-12 m-1">
-                <button class="btn btn-confirm" style="width: 100%;">Tiếp tục</button>
-                <a class="btn btn-cancel w-100" href="Login.php" onclick="regturnback()">Quay lại</a>
+                <button class="btn btn-confirm forget-pw" style="width: 100%;">Tiếp tục</button>
+                <a class="btn btn-cancel w-100" href="./Login.php">Quay lại</a>
             </div>
             
         </form>
     </div>
-   
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="module" src="../../../js/store/account-management/ForgetPw.js"></script>
 </body>
 
 </html>

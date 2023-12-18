@@ -167,6 +167,54 @@ function logout(){
     return (['status' => 'success']);
 }
 
+function forgetPassword(){
+    global $conn;
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Lấy dữ liệu từ form
+        $userLogin = $_POST['userlogin'];
+        $phoneNumber = $_POST['phonenumber'];
+
+        // Kiểm tra tên đăng nhập và số điện thoại trong cơ sở dữ liệu
+        $sql = "SELECT * FROM users WHERE USER_LOGIN = '$userLogin' AND USER_TELEPHONE = '$phoneNumber'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            return (['status' => 'success', 'message' => 'Xác thực thành công']);
+        } else {
+            // Tên đăng nhập hoặc số điện thoại không đúng, hiển thị thông báo
+            return (['status' => 'error', 'message' => 'Tên đăng nhập hoặc số điện thoại không đúng.']);
+        }
+    }
+    return (['status' => 'error', 'message' => 'Tên đăng nhập hoặc số điện thoại không đúng.']);
+}
+
+function getNewPassword(){
+    global $conn;
+    // Lấy thông tin từ form đặt lại mật khẩu
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $userLogin = $_POST["userlogin"];
+        $newPassword = $_POST["new_password"];
+        $confirmPassword = $_POST["confirm_password"];
+    
+        // Kiểm tra mật khẩu mới và xác nhận mật khẩu mới
+        if ($newPassword == $confirmPassword) {
+            // Thực hiện cập nhật mật khẩu mới trong cơ sở dữ liệu
+            $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+            //prepared statement
+            $updateSql = "UPDATE login SET USER_PASSWORD = ? WHERE USER_LOGIN= ?";
+            $stmt = $conn->prepare($updateSql);
+            $stmt->bind_param("ss", $hashedPassword, $userLogin);
+            $stmt->execute();
+            $stmt->close();
+            return (['status' => 'success', 'message' => 'Đặt lại mật khẩu thành công']);
+        } else {
+            return (['status' => 'error', 'message' => 'Mật khẩu không trùng khớp. Mời nhập lại']);
+        }
+    }
+    return (['status' => 'error', 'message' => 'Đặt lại mật khẩu không thành công']);
+}
+
 
 // Check the action parameter in the request
 if (isset($_POST['action'])) {
@@ -193,6 +241,14 @@ if (isset($_POST['action'])) {
         case 'reset_password':
             // Return the fetched data as JSON response
             echo json_encode(editPassword());
+            break;
+        case 'forget_password':
+            // Return the fetched data as JSON response
+            echo json_encode(forgetPassword());
+            break;
+        case 'get_newpassword':
+            // Return the fetched data as JSON response
+            echo json_encode(getNewPassword());
             break;
         case 'logout':
             // Return the fetched data as JSON response
