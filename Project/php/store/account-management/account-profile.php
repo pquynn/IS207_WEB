@@ -56,7 +56,7 @@
 <?php include("modal-edit-profile.php"); ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script type="module" src="../../../js/storemy-order/account-management.js"></script>
+<script type="module" src="../../../js/store/account-management/account-management.js"></script>
 <?php
     include("../header-footer-nav/footer.php");
 ?>

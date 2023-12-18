@@ -1,72 +1,3 @@
-<?php
-// Kết nối đến cơ sở dữ liệu
-// include("../../controller/connect.php");
-// global $conn;
-
-// // Xử lý form đăng kí
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     // Lấy dữ liệu từ form đăng kí
-//     $name = trim($_POST['name'], " ");
-//     $userlogin = trim($_POST['userlogin'], " ");
-//     $customerphone = trim($_POST['customerphone'], " ");
-//     $password = trim($_POST['password'], " ");
-//     $userid = generateUserId();
-//     //kiểm tra tên đăng nhập đã tồn tại chưa
-//     $sql = "SELECT COUNT(*) as count FROM login WHERE user_login = '$userlogin'";
-//     $result = $conn->query($sql);
-
-//     if ($result) {
-//         $row = $result->fetch_assoc();
-//         if($row['count'] == 0){ //nếu không tồn tại tên đăng nhập
-//             // Hash mật khẩu nhập vào
-//             $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-
-//             // Thực hiện thêm dữ liệu vào bảng 'login'
-//             $sql_login = "INSERT INTO `login` (USER_LOGIN, USER_PASSWORD, ROLE_ID) VALUES (?, ?, 3)";
-//             $stmt_login = $conn->prepare($sql_login);
-//             $stmt_login->bind_param("ss", $userlogin, $hashedPassword);
-//             $result_login = $stmt_login->execute();
-
-//             if($result_login){
-//                 // Thực hiện thêm dữ liệu vào bảng 'users'
-//                 $sql_users = "INSERT INTO `users` (USER_ID, USER_LOGIN, USER_NAME, USER_TELEPHONE, DAY_ADD) VALUES (?, ?, ?, ?, now())";
-//                 $stmt_users = $conn->prepare($sql_users);
-//                 $stmt_users->bind_param("ssss", $userid, $userlogin, $name, $customerphone);
-//                 $result_users = $stmt_users->execute();
-
-//                 if ($result_users) {
-//                     // echo json_encode(true);
-//                     echo true;
-//                 } else  echo false;
-//                     // echo json_encode(['result' => false, 'message' => 'Đăng ký không thành công']);
-                
-//             }
-//             else echo false;
-//             // echo json_encode(['result' => false, 'message' => 'Đăng ký không thành công']);
-
-//             $stmt_users->close();
-//             $stmt_login->close();
-//         }
-//         else echo false;
-//         // echo json_encode(['result' => false, 'message' => 'Đăng ký không thành công. Tên đăng nhập đã tồn tại']);
-//     } else echo false;
-//         // Error in the query
-//         // echo json_encode(['result' => false, 'message' => 'Đăng ký không thành công']);;
-    
-// }
-
-// function generateUserId($prefix = 'KH') {
-//     // Use a combination of prefix and a unique identifier (timestamp and random number)
-//     $uniqueId = time() . mt_rand(1000, 9999);
-
-//     // Concatenate the prefix and unique identifier to create the user_id
-//     $userId = $prefix . $uniqueId;
-
-//     return $userId;
-// }
-// $conn->close();
-?>
-
 
 <?php 
     $title = "Đăng ký";
@@ -120,7 +51,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script type="module" src="../../../js/storemy-order/Signup.js"></script>
+    <script type="module" src="../../../js/store/account-management/Signup.js"></script>
 </body>
 
 </html>

@@ -14,7 +14,7 @@ function editAddress() {
         $province = $_POST['province'];
         $district = $_POST['district'];
         $ward = $_POST['ward'];
-        $specificAddress = $_POST['specificaddress'];
+        $specificAddress = $_POST['specificAddress'];
         $address = $specificAddress . ', ' . $district . ', ' . $ward . ', ' . $province;
         // Update user information in the database
         $sql = "UPDATE users SET USER_NAME=?, ADDRESS=? WHERE USER_ID=?";
@@ -202,7 +202,7 @@ if (isset($_POST['action'])) {
             echo json_encode(['status' => 'error', 'message' => 'Invalid action']);
     }
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Action not specified']);
+    echo json_encode([ 'status' => 'error', 'message' => 'Action not specified']);
 }
 // Close the database connection
 $conn->close();

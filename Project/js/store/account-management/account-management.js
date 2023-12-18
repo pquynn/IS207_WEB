@@ -1,11 +1,11 @@
-import { showToastr } from "../admin/toastr.js";
+import { showToastr } from "../../admin/toastr.js";
 
 $(document).ready(function() {
     // EDIT ACCOUNT PROFILE-------------------------
     //EVENT WHEN OPEN MODAL
     $('#open-profile').on('click', function(){
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../controller/store/login-signup-forgotpw/account-controller.php", true);
+        xhr.open("POST", "../../../php/controller/store/login-signup-forgotpw/account-controller.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         // Gửi dữ liệu 
         var data = 'action=' + encodeURIComponent('fetch_profile');
@@ -30,17 +30,17 @@ $(document).ready(function() {
 
     //EVENT WHEN CONFIRM EDIT
     $('#edit-profile .btn-confirm').on('click', function(e){
-        e.preventDefault();
         // Lấy giá trị từ các trường nhập liệu
         var name = document.getElementById('name-profile').value;
         var dateOfBirth = document.getElementById('dateofbirth').value;
         var gender = document.querySelector('input[name="gioitinh"]:checked').value;
         var phoneNumber = document.getElementById('phonenumber').value;
+        var phone_input = document.getElementById('phonenumber');
 
-        if(name.localeCompare('') != 0  && phoneNumber.localeCompare('') != 0){
-            console.log('a');
+        if(name.localeCompare('') != 0  && phone_input.checkValidity()){
+            e.preventDefault();
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "../../controller/store/login-signup-forgotpw/account-controller.php", true);
+            xhr.open("POST", "../../../php/controller/store/login-signup-forgotpw/account-controller.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             // Gửi dữ liệu 
             var data = 'action=' + 'edit_profile' +
@@ -55,8 +55,8 @@ $(document).ready(function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     var response = JSON.parse(xhr.responseText);
                     if (response.status === "success") {
-                        $('#edit-profile').modal('hide');
                         showToastr('success', response.message);
+                        $('#edit-profile').modal('hide');
                     }
                     else
                         // Đăng nhập thất bại, hiển thị thông báo lỗi
@@ -81,7 +81,7 @@ $(document).ready(function() {
     //EVENT WHEN OPEN MODAL
     $('#open-address').on('click', function(){
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../controller/store/login-signup-forgotpw/account-controller.php", true);
+        xhr.open("POST", "../../../php/controller/store/login-signup-forgotpw/account-controller.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         // Gửi dữ liệu 
         var data = 'action=' + encodeURIComponent('fetch_address');
@@ -133,30 +133,32 @@ $(document).ready(function() {
         var district = document.getElementById('district').value;
         var ward = document.getElementById('ward').value;
         var specificAddress = document.getElementById('specificaddress').value;
-        if(name.localeCompare('') != 0 
-        && province.localeCompare('') != 0
-        && ward.localeCompare('') != 0
-        && specificAddress.localeCompare('') != 0
-        && district.localeCompare('') != 0)
+        if (name !== '' && province !== '' && ward !== '' && specificAddress !== '' && district !== '') 
         {
+            e.preventDefault();
+            
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '../../../php/controller/store/login-signup-forgotpw/account-controller.php', true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-            var data = 'action=' + encodeURIComponent('edit_address') +
-            '&name=' + encodeURIComponent(name) +
+            // var data = 'action=' + 'edit_profile' +
+            // '&name=' + encodeURIComponent(name) +
             // '&phoneNumber=' + encodeURIComponent(phoneNumber) +
+            // "&dateOfBirth=" + encodeURIComponent(dateOfBirth) +
+            // "&gender=" + encodeURIComponent(gender);
+
+            var data = 'action=' + 'edit_address' +
+            '&name=' + encodeURIComponent(name) +
             '&province=' + encodeURIComponent(province) +
             '&district=' + encodeURIComponent(district) +
             '&ward=' + encodeURIComponent(ward) +
-            'specificAddress=' + encodeURIComponent(specificAddress);
-            xhr.send(data);
+            '&specificAddress=' + encodeURIComponent(specificAddress);
 
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '../../controller/store/login-signup-forgotpw/account-controller.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(data);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     // Handle the response from the server if needed
                     var response = JSON.parse(xhr.responseText);
-                    console.log(response);
                     if (response.status === "success") {
                         console.log(response);
                         $('#edit-address').modal('hide');
@@ -180,17 +182,16 @@ $(document).ready(function() {
     })
 
 
-
     // EDIT PASSWORD-------------------------
     //EVENT WHEN CONFIRM EDIT
     $('#edit-pass .btn-confirm').on('click', function(e){
-        e.preventDefault();
         var oldPassword = document.getElementById('oldpassword').value;
         var newPassword = document.getElementById('newpassword').value;
     
         if(oldPassword.localeCompare('') != 0 && newPassword.localeCompare('') != 0){
+            e.preventDefault();
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "../../controller/store/login-signup-forgotpw/account-controller.php", true);
+            xhr.open("POST", "../../../php/controller/store/login-signup-forgotpw/account-controller.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.send("oldPassword=" + encodeURIComponent(oldPassword) 
                     + "&newPassword=" + encodeURIComponent(newPassword) + "&action=" + 'reset_password');
@@ -224,7 +225,7 @@ $(document).ready(function() {
         var xhr = new XMLHttpRequest();
 
         // Define the request method, URL, and set it to be asynchronous
-        xhr.open('POST', '../../controller/store/login-signup-forgotpw/account-controller.php', true);
+        xhr.open('POST', '../../../php/controller/store/login-signup-forgotpw/account-controller.php', true);
 
         // Set the request header
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -233,7 +234,7 @@ $(document).ready(function() {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 //TODO: Trờ về trang chủ lúc chưa đăng nhập
-                window.location.href = '../../store/homepage-shopping/homepage.php';
+                window.location.href = '../../../php/store/homepage-shopping/homepage.php';
             }
         };
     })

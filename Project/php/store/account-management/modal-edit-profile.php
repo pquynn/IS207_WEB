@@ -20,9 +20,10 @@
                             </div>
 
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="phonenumber" placeholder=" Số điện thoại*" required pattern="^0[0-9]{9}$"
+                                <input type="tel" class="form-control" id="phonenumber" placeholder=" Số điện thoại*" required pattern="^0[0-9]{9}$"
                                     oninvalid="this.setCustomValidity('Yêu cầu nhập số điện thoại có 10 số và bắt đầu =0')"
                                     oninput="this.setCustomValidity('')">
+                                
                                 <label for="phonenumber"> Số điện thoại*</label>
                             </div>
 
@@ -41,8 +42,7 @@
                             </div>
 
                             <div class="btn-container">
-                                <button class="btn btn-confirm" style="width: 100%;">Lưu thay
-                                    đổi</button>
+                                <button class="btn btn-confirm" style="width: 100%;">Lưu thay đổi</button>
                                 <button class="btn btn-cancel" style="width: 100%;">Hủy</button>
                             </div>
                         </div>

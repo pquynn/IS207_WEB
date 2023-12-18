@@ -13,12 +13,16 @@
                     <form>
                         <div class="row row-gap-3">
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="oldpassword" placeholder="Mật khẩu cũ*" required>
+                                <input type="password" class="form-control" id="oldpassword" placeholder="Mật khẩu cũ*" required
+                                oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu cũ.')"
+                                oninput="this.setCustomValidity('')">
                                 <label for="oldpassword">Mật khẩu cũ*</label>
                             </div>
 
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="newpassword" placeholder="Mật khẩu mới*" required>
+                                <input type="password" class="form-control" id="newpassword" placeholder="Mật khẩu mới*" required
+                                oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu mới.')"
+                                oninput="this.setCustomValidity('')">
                                 <label for="newpassword">Mật khẩu mới*</label>
                             </div>
 

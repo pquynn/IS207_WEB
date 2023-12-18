@@ -1,4 +1,4 @@
-import { showToastr } from "../admin/toastr.js";
+import { showToastr } from "../../admin/toastr.js";
 
 $(document).ready(function() {
   // Get the URL parameters
@@ -33,40 +33,14 @@ $(document).ready(function() {
 
   $('.btn-confirm').on('click', function(e){
     e.preventDefault();
-  //   var userlogin = $.trim(document.getElementById("userlogin").value);
-  //   var pass = $.trim(document.getElementById("pass").value);
 
-  //   if(userlogin.localeCompare('') != 0 && pass.localeCompare('') != 0){
-  //     $.ajax({
-  //       url: '../../controller/store/login-signup-forgotpw/login-controller.php',
-  //       type: 'POST',
-  //       datatype: 'json',
-  //       data: { userlogin: encodeURIComponent(userlogin), pass: encodeURIComponent(pass) },
-  //       success: function (response) {
-  //         console.log('response' + response);
-
-  //           if(response.status == 'success'){
-  //             console.log('success' +response);
-  //             showToastr('success', response['message']);
-  //               // var signup = '1';
-  //               // var encode_signup = encodeURIComponent(signup);
-  //               // window.location.href = "../../store/login-signup-forgot/Login.php?signup=" + encode_signup;  
-  //           }
-  //           else
-  //               showToastr('error', response['message']);
-  //       },
-  //       error: function () {
-  //           showToastr('error', 'Đăng nhập không thành công.');
-  //       }
-  //   });
-  // }
     var userlogin = document.getElementById("userlogin").value;
     var pass = document.getElementById("pass").value;
 
     if(userlogin.localeCompare('') != 0 && pass.localeCompare('') != 0){
       // gửi dữ liệu đăng nhập lên server
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", "../../controller/store/login-signup-forgotpw/login-controller.php", true);
+      xhr.open("POST", "../../../php/controller/store/login-signup-forgotpw/login-controller.php", true);
       xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
       var data = "userlogin=" + encodeURIComponent(userlogin) + "&pass=" + encodeURIComponent(pass);
@@ -80,7 +54,7 @@ $(document).ready(function() {
             
             var login = '1';
             var encode_login = encodeURIComponent(login);
-            window.location.href = "../../store/homepage-shopping/homepage.php?login=" + encode_login;  
+            window.location.href = "../../../php/store/homepage-shopping/homepage.php?login=" + encode_login;  
                 // if (role === 'admin') {
                 //     // Link tới admin
                 //     window.location.href = "#";

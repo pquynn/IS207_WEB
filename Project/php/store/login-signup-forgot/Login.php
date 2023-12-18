@@ -45,7 +45,7 @@
     </div>
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script type="module" src="../../../js/storemy-order/Login.js"></script>
+    <script type="module" src="../../../js/store/account-management/Login.js"></script>
 </body>
 
 </html>

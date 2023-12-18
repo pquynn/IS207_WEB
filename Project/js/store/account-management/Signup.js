@@ -1,4 +1,4 @@
-import { showToastr } from "../admin/toastr.js";
+import { showToastr } from "../../admin/toastr.js";
 
 $(document).ready(function () {
     $('.btn-confirm').click(function (event){
@@ -26,7 +26,7 @@ $(document).ready(function () {
                 password=  encodeURIComponent(password);
             
                 $.ajax({
-                    url: '../../controller/store/login-signup-forgotpw/signup-controller.php',
+                    url: '../../../php/controller/store/login-signup-forgotpw/signup-controller.php',
                     type: 'POST',
                     data: { name:name, 
                             userlogin:userlogin, 
@@ -36,7 +36,7 @@ $(document).ready(function () {
                         if(response == true){
                             var signup = '1';
                             var encode_signup = encodeURIComponent(signup);
-                            window.location.href = "../../store/login-signup-forgot/Login.php?signup=" + encode_signup;  
+                            window.location.href = "../../../php/store/login-signup-forgot/Login.php?signup=" + encode_signup;  
                         }
                         else
                             showToastr('error', 'Đăng ký không thành công. Tên người dùng đã tồn tại');
