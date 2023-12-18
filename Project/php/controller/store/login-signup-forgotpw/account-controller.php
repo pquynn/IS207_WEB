@@ -39,23 +39,25 @@ function editPassword(){
     // Kiểm tra xem request có phải là POST không
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Nhận dữ liệu từ yêu cầu AJAX
-        $oldPassword = $_POST['oldpassword'];
-        $newPassword = $_POST['newpassword'];
+        $oldPassword = $_POST['oldPassword'];
+        $newPassword = $_POST['newPassword'];
+        $user_id = 'KH17028633'; //lấy để test chức năng
+    
 
         // Chuẩn bị và thực thi truy vấn SQL để kiểm tra mật khẩu cũ
-        $sql = "SELECT * FROM users, login 
+        $sql = "SELECT users.USER_LOGIN, USER_PASSWORD FROM users, login 
                 WHERE USER_ID = ? 
                 AND users.USER_LOGIN = login.USER_LOGIN";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $user_id);
+        $stmt->bind_param("s", $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
         // Kiểm tra kết quả truy vấn mật khẩu cũ
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $userlogin = $row['user_login'];
-            $passwordFromDB = $row['user_password'];
+            $userlogin = $row['USER_LOGIN'];
+            $passwordFromDB = $row['USER_PASSWORD'];
             if(password_verify($oldPassword, $passwordFromDB)){
                 $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
                 // Mật khẩu cũ đúng, tiến hành cập nhật mật khẩu mới
@@ -76,7 +78,7 @@ function editPassword(){
             
         } else 
             // Mật khẩu cũ không đúng
-            return (['status' => 'error', 'message' => 'Mật khẩu hiện tại không hợp lệ']);
+            return (['a' => $user_id, 'status' => 'error', 'message' => 'Không tìm thấy người dùng']);
         
     } else {
         return (['status' => 'error', 'message' => 'Cập nhật mật khẩu không thành công']);

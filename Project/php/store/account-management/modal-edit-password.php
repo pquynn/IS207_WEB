@@ -14,12 +14,12 @@
                     <form>
                         <div class="row row-gap-3">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="oldpassword" placeholder="Mật khẩu cũ*" required>
+                                <input type="password" class="form-control" id="oldpassword" placeholder="Mật khẩu cũ*" required>
                                 <label for="oldpassword">Mật khẩu cũ*</label>
                             </div>
 
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="newpassword" placeholder="Mật khẩu mới*" required>
+                                <input type="password" class="form-control" id="newpassword" placeholder="Mật khẩu mới*" required>
                                 <label for="newpassword">Mật khẩu mới*</label>
                             </div>
 

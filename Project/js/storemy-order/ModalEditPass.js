@@ -1,7 +1,5 @@
 import { showToastr } from "../admin/toastr.js";
 
-
-// XyZ!aBc@123
 $(document).ready(function() {
     $('#edit-pass .btn-confirm').on('click', function(e){
         e.preventDefault();
@@ -15,10 +13,7 @@ $(document).ready(function() {
             xhr.send("oldPassword=" + oldPassword + "&newPassword=" + newPassword + "&action=" + 'reset_password');
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    
-                    console.log(xhr.responseText);
                     var response = JSON.parse(xhr.responseText);
-                    console.log(response);
                     if (response.status === "success") {
                         $('#edit-pass').modal('hide');
                         showToastr('success', response.message);
@@ -39,5 +34,4 @@ $(document).ready(function() {
         else{
         }
     })
-
 });
