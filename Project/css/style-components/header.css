@@ -38,10 +38,11 @@ div a {
 /* logo */
 .nav-logo {
   margin-top: 5px;
+  margin-right: 150px;
 }
 
 .nav-logo a img {
-  width: 120px !important;
+  width: 40px !important;
 }
 
 /* icon */
@@ -49,10 +50,18 @@ div a {
   display: flex;
   gap: 12px;
   padding-left: 0;
+  justify-content: end;
+  width: 220px;
+  align-items: center;
 }
 
 .nav-icon ul {
-  padding-left: 0;
+  padding:6px 0 5px;
+}
+
+.nav-icon--item.cart{
+  padding-top: 5px;
+  padding-left: 7px;
 }
 
 /* home, shop, category,.... */
@@ -150,17 +159,31 @@ div a {
 }
 
 
-/* **********STORE LAYOUT: MAIN SECTION********* */
-.main-section {
-  padding: 20px;
-  padding-top: 0;
+
+/* search bar */
+.search-box{
+  height: 35px;
+  display: flex;
+  cursor: pointer;
+  padding: 10px 10px;
+  background-color: #fff;
+  border-radius: 30px;
+  align-items: center;
+  border: none;
+  
 }
 
-.main-section-header {
-  margin: 20px 0 20px 30px;
-  text-align: center;
+.search-box:hover{
+  border: 1px solid var(--table-border);
+}
+.search-box:hover input{
+  width: 200px;
 }
 
-.mainsection-body {
-  margin: 50px;
+.search-box input{
+  width: 0;
+  outline: none;
+  border: none;
+  transition: 0.8s;
+  background: transparent;
 }

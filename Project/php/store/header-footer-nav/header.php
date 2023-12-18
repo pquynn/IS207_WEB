@@ -66,9 +66,12 @@
       <ul class="nav-icon">
         <!-- search -->
         <li class="nav-icon--item">
-          <a>
-            <span class="material-symbols-outlined"> search </span>
-          </a>
+          <div class="search-box">
+            <input type="text" class="search-bar" id="search-product" placeholder="Nhập tên giày để tìm kiếm">
+            <a>
+              <span class="material-symbols-outlined"> search </span>
+            </a>
+          </div>
         </li>
 
         <!-- account -->
@@ -90,7 +93,7 @@
         </ul>
 
         <!-- cart -->
-        <li class="nav-icon--item">
+        <li class="nav-icon--item cart">
           <a href="../cart-checkout/cart.php">
             <span class="material-symbols-outlined"> shopping_bag </span>
           </a>
