@@ -114,6 +114,27 @@ $(document).ready(function () {
             fetchData(currentPage);
     });
 
+    // Event listener for the "Cancel" button of modal
+    $('.btn-cancel').on('click', function () {
+        if (confirm('Những thay đổi của bạn sẽ không được lưu?')) {
+            // Dismiss the modal if the user clicks "OK" in the confirm box
+            // Replace 'myModal' with the actual ID of your Bootstrap modal
+            $('#add-new').modal('hide');
+            // Clear the data and reset the form validation in the modal
+            const modal = document.getElementById('add-new');
+            modal.querySelector('form').reset(); // Reset the form
+
+            Array.from(modal.querySelectorAll('.was-validated')).forEach((element) => {
+            element.classList.remove('was-validated'); // Clear Bootstrap form validation classes
+            });
+
+        } else {
+        // Do not dismiss the modal if the user clicks "Cancel" in the confirm box
+        }
+    });
+
+
+
 })
 
 
@@ -276,8 +297,8 @@ function fetchData(page){
                 <td>${row.USER_NAME}</td>
                 <td>${row.BLOG_DAY}</td>
                 <td class="action">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#alert"><i class="fa-solid fa-trash"></i></a>
+                    <a class = 'btn-edit' href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
+                    <a class = 'btn-delete' href="#"><i class="fa-solid fa-trash"></i></a>
                 </td>
             </tr>
                 `);
@@ -445,8 +466,8 @@ function fetchSearchData(searchTerm, page) {
                 <td>${row.USER_NAME}</td>
                 <td>${row.BLOG_DAY}</td>
                 <td class="action">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#alert"><i class="fa-solid fa-trash"></i></a>
+                    <a class = 'btn-edit' href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
+                    <a class = 'btn-delete' href="#" ><i class="fa-solid fa-trash"></i></a>
                 </td>
             </tr>
                 `);

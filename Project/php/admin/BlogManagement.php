@@ -76,7 +76,6 @@
     <?php include("ModalAddNewBlog.php"); ?>
     <!-- end of Modal of Add new elements-->
 
-
     <script type = "module" src="../../js/blog/blog-admin.js"></script>
 </body>
 </html>
