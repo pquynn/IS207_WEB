@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="../../css/admin/admin-order-detail.css"/>
 
 <?php
+
     $title = "Chi tiết đơn hàng";
     include("./AdminNavigation.php");
 ?>
@@ -142,3 +143,11 @@
     </div>
 </div>
 <!--MAIN SECTION----END-->
+
+<!--Modal edit customer's information-->
+<?php
+    include("./ModalEditOrderStatus.php");
+?>
+<!---->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="module" src="../../js/admin/Order/order-detail-management"></script>
