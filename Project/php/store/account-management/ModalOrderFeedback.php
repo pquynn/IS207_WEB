@@ -7,7 +7,7 @@
                 <h4 class="modal-title">Đánh giá sản phẩm 
                     <span id="ModalproductID"></span>
                 </h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close"></button>
             </div>
             
             <form action class="add-order-feedback">
@@ -34,7 +34,7 @@
 
                 <!--Footer-->
                 <div class="modal-footer edit">
-                    <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-cancel">Hủy</button>
                     <input type="submit" class="btn btn-confirm" value="Xác nhận">
                 </div>
             </form>

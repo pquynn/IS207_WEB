@@ -1,7 +1,7 @@
 import { showToastr } from "../admin/toastr.js";
 $(document).ready(function() {
     const orderId =  new URLSearchParams(window.location.search).get('id');
-
+    
     var linkOrderDetail = $('#link-back-order-detail');
     linkOrderDetail.append(`
         <a href="my-order-detail.php?id=${orderId}">Chi tiết đơn hàng</a> / 
@@ -10,14 +10,15 @@ $(document).ready(function() {
     showFormFb(orderId);
     $('#add-feedback').on('click', '.btn-cancel', function(event) {
         event.preventDefault();
-        if(confirm("Những thay đổi của bạn sẽ không được lưu?")) {
-            window.location.href = url;
+        if(confirm("Những thay đổi của bạn sẽ không được lưu?")) {            
+            $('#add-feedback').modal('hide');
         }
     })
+
     $('#add-feedback').on('click','.btn-close', function(event) {
-        // event.preventDefault();
-        if(confirm("Những thay đổi của bạn sẽ không được lưu?")) {
-            window.location.href = url;
+        event.preventDefault();
+        if(confirm("Những thay đổi của bạn sẽ không được lưu?")) {            
+            $('#add-feedback').modal('hide');
         }
     })
 
@@ -26,10 +27,19 @@ $(document).ready(function() {
         event.preventDefault();
         var closest_row = $(this).closest('tr');
         var product_id = closest_row.find('td:first').text();
-           fetchCMT(orderId, product_id);       
+
         $('#ModalproductID').val(product_id);
-        $('#ModalproductID').text(product_id);
-        
+        $('#ModalproductID').text(product_id); 
+        if($(this).text() == "Viết đánh giá") {
+            console.log("rỗng");
+            $('.input-feedback').text('');
+            $("input[type='radio'][name='rating']").attr("checked", false);
+        } else {
+            console.log($(this).text());
+          fetchCMT(orderId, product_id);   
+        }
+                             
+            
     })
 
     $('#add-feedback').on('click','.btn-confirm', function(event){
@@ -95,15 +105,12 @@ function addComment(formdata) {
             console.log(result);
             if(result.result===true){      
                 console.log('a');          
-                //$('#add-feedback').modal('hide');
                 showToastr('success', 'Đánh giá thành công!');    
             }
             else {
                 
                 showToastr('error', 'Thêm đánh giá không thành công!');
             }
-            // const url ='../../../php/store/account-management/my-order-feedback.php?id=' + formdata.orderId;
-            // window.location.href = url;    
         },
         error: function() {
             console.error("Lỗi kết nối: thêm đánh giá");
@@ -132,10 +139,8 @@ function showFormFb(orderId) {
                         <tr class="tbl-fb-row">
                             <td>${row.product_id}</td>
                             <td class="td-img"><div class="table-img" style="background-image: url(${imageUrl})"></div></td>
-                            <td>
-                                ${row.product_name}
-                            <a href="#" class="btn-input-feedback pro-${row.product_id}" data-bs-toggle="modal" data-bs-target="#add-feedback">
-                                Viết đánh giá                            
+                            <td>${row.product_name}
+                            <a href="#" class="btn-input-feedback pro-${row.product_id}" data-bs-toggle="modal" data-bs-target="#add-feedback">Viết đánh giá</a>                            
                             </td>
                             <td>${row.size}</td>
                             <td>${row.quantity}</td>
