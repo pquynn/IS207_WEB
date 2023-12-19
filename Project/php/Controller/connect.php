@@ -1,11 +1,13 @@
 <?php
-        $SERVER = "localhost";
-        $USERNAME = "root";
-        $PASSWORD = "";
-        $DBNAME = "shoe_shop_db";
-        $conn = mysqli_connect($SERVER, $USERNAME, $PASSWORD, $DBNAME);
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "shoe_shop_db";
 
-        if(!$conn) {
-            die("Connection failed");
-        }
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 ?>
