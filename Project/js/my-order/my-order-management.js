@@ -2,7 +2,7 @@
 $(document).ready(function() {
     var currentpage = 1;
     //CustomerId =  new URLSearchParams(window.location.search).get('id');
-    CustomerId='KH0008'; //giả sử
+    CustomerId='KH0038'; //giả sử
     fetchData(CustomerId, currentpage);
 
     //SEARCH ORDER

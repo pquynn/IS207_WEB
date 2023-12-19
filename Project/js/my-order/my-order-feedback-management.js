@@ -62,110 +62,118 @@ $(document).ready(function() {
         }
     })
     
-})
 
-function fetchCMT(orderId, product_id){
-    $.ajax({
-        url: "../../../php/Controller/store/my-order-feedback-controller.php",
-        type: 'POST',
-        data: { action:'feedcmt',
-            orderId: orderId, productId: product_id},
-        dataType: 'json',
-        success: function (response) {   
-            var data = response.data; //cmt
-            var content = $('.input-feedback');
-            if(!data) {
-                console.log("dữ liệu đánh giá rỗng!");
-            }
-            else {           
-                data.forEach(function(row){
-                    var idStr = '#star'+row.score;               
-                    $(idStr).attr('checked', true);
-                    content.text(`${row.content}`);
-                });
-            }
-        },
-        error: function() {
-            console.error("Lỗi kết nối: thêm đánh giá");
-        }
-    }); 
-}
 
-function addComment(formdata) {
-    $.ajax({
-        url: "../../../php/Controller/store/my-order-feedback-controller.php",
-        type: 'POST',
-        data: { action: 'feedback',
-                orderId: formdata.orderId,
-                productId: formdata.productId,
-                fb_content: formdata.fb_content,
-                fb_score: formdata.fb_score},
-        dataType: 'json',
-        success: function (result) {
-            console.log(result);
-            if(result.result===true){      
-                console.log('a');          
-                showToastr('success', 'Đánh giá thành công!');    
+    function fetchCMT(orderId, product_id){
+        $.ajax({
+            url: "../../../php/Controller/store/my-order-feedback-controller.php",
+            type: 'POST',
+            data: { action:'feedcmt',
+                orderId: orderId, productId: product_id},
+            dataType: 'json',
+            success: function (response) {   
+                var data = response.data; //cmt
+                var content = $('.input-feedback');
+                if(!data) {
+                    console.log("dữ liệu đánh giá rỗng!");
+                }
+                else {           
+                    data.forEach(function(row){
+                        var idStr = '#star'+row.score;               
+                        $(idStr).attr('checked', true);
+                        content.text(`${row.content}`);
+                    });
+                }
+            },
+            error: function() {
+                showToastr('error', 'Lỗi kết nối');
+                console.error("Lỗi kết nối: thêm đánh giá");
             }
-            else {
+        }); 
+    }
+
+    function addComment(formdata) {
+        $.ajax({
+            url: "../../../php/Controller/store/my-order-feedback-controller.php",
+            type: 'POST',
+            data: { action: 'feedback',
+                    orderId: formdata.orderId,
+                    productId: formdata.productId,
+                    fb_content: formdata.fb_content,
+                    fb_score: formdata.fb_score},
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+                if(result.result===true){      
+                    console.log('a');          
+                    showToastr('success', 'Đánh giá thành công!');  
+                    $('#add-feedback').modal('hide');  
+                    showFormFb(orderId);
+                }
+                else {
+                    showToastr('error', 'Thêm đánh giá không thành công!');
+                }
+            },
+            error: function() {
+                showToastr('error', 'Lỗi kết nối');
+                console.error("Lỗi kết nối: thêm đánh giá");
+            }
+        });
+    }
+
+    function showFormFb(orderId) {
+        $.ajax({
+            url: "../../../php/Controller/store/my-order-feedback-controller.php",
+            type: 'POST',
+            data: {action:'fetch', orderId: orderId},
+            dataType: 'json',
+            success: function (response) {
+                var data1= response.data1; //sản phẩm
+                var data2 = response.data2; //cmt
+                var listPro = $('.my-order-rating tbody');
+                listPro.empty();
+                var listProID = [];
+                if(!data1) {console.log("dữ liệu sản phẩm rỗng")}
+                else {
+                    
+                    data1.forEach(function(row) {
+                        var imageUrl = 'data:image/png;base64,' + row.first_picture;
+                        listProID.push(row.product_id);
+                        listPro.append(`
+                            <tr class="tbl-fb-row">
+                                <td>${row.product_id}</td>
+                                <td class="td-img"><div class="table-img" style="background-image: url(${imageUrl})"></div></td>
+                                <td>${row.product_name}
+                                <a href="#" class="btn-input-feedback pro-${row.product_id}" data-bs-toggle="modal" data-bs-target="#add-feedback">Viết đánh giá</a>                            
+                                </td>
+                                <td>${row.size}</td>
+                                <td>${row.quantity}</td>
+                                <td>${row.price}đ</td>
+                            </tr>
+                        `);
+                    })                
+                }
                 
-                showToastr('error', 'Thêm đánh giá không thành công!');
-            }
-        },
-        error: function() {
-            console.error("Lỗi kết nối: thêm đánh giá");
-        }
-    });
-}
-
-function showFormFb(orderId) {
-    $.ajax({
-        url: "../../../php/Controller/store/my-order-feedback-controller.php",
-        type: 'POST',
-        data: {action:'fetch', orderId: orderId},
-        dataType: 'json',
-        success: function (response) {
-            var data1= response.data1; //sản phẩm
-            var data2 = response.data2; //cmt
-            var listPro = $('.my-order-rating tbody');
-            var listProID = [];
-            if(!data1) {console.log("dữ liệu sản phẩm rỗng")}
-            else {
-                
-                data1.forEach(function(row) {
-                    var imageUrl = 'data:image/png;base64,' + row.first_picture;
-                    listProID.push(row.product_id);
-                    listPro.append(`
-                        <tr class="tbl-fb-row">
-                            <td>${row.product_id}</td>
-                            <td class="td-img"><div class="table-img" style="background-image: url(${imageUrl})"></div></td>
-                            <td>${row.product_name}
-                            <a href="#" class="btn-input-feedback pro-${row.product_id}" data-bs-toggle="modal" data-bs-target="#add-feedback">Viết đánh giá</a>                            
-                            </td>
-                            <td>${row.size}</td>
-                            <td>${row.quantity}</td>
-                            <td>${row.price}đ</td>
-                        </tr>
-                    `);
-                })                
-            }
-            
-            if(!data2) {console.log("dữ liệu đánh giá rỗng")}
-            else {                
-                data2.forEach(function(row) {
-                    for(var i = 0; i < listProID.length; i++) {
-                        if(row.product_id == listProID[i]) {
-                            var classString = '.btn-input-feedback.pro-' + row.product_id;
-                            $(classString).text("Sửa đánh giá");
+                if(!data2) {console.log("dữ liệu đánh giá rỗng")}
+                else {                
+                    data2.forEach(function(row) {
+                        for(var i = 0; i < listProID.length; i++) {
+                            if(row.product_id == listProID[i]) {
+                                var classString = '.btn-input-feedback.pro-' + row.product_id;
+                                $(classString).text("Sửa đánh giá");
+                            }
                         }
-                    }
-                });
-            }    
+                    });
+                }    
 
 
-        },
-        error: function() {
-            console.error("Lỗi kết nối: fetch data feedback");
-        }
-    });    
-}
+            },
+            error: function() {
+                showToastr('error', 'Lỗi kết nối');
+                console.error("Lỗi kết nối: fetch data feedback");
+            }
+        });    
+    }
+
+
+})
