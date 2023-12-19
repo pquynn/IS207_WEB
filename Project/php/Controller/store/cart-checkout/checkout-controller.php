@@ -75,7 +75,7 @@ if (isset($_POST['submit'])) {
         //Thanh toán bằng ATM MOMO
         elseif ($selectedPayment === 'payUrl') {
             //Cập nhật thông tin đơn hàng
-            $sqlUpdateOrder='UPDATE ORDERS SET ADDRESS=?, NAME=?, TELEPHONE=?, PAY="MoMo" WHERE ORDER_ID=?';
+            $sqlUpdateOrder='UPDATE ORDERS SET ADDRESS=?, NAME=?, TELEPHONE=? WHERE ORDER_ID=?';
            
             $buySql=$conn->prepare($sqlUpdateOrder);
             $buySql->bind_param("sssi", $fixedAddress, $fixedName, $fixedPhone, $order_id);
@@ -116,6 +116,76 @@ if (isset($_POST['submit'])) {
 
                     $requestId = time() . "";
                     $requestType = "payWithATM";
+                    // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
+                    //before sign HMAC SHA256 signature
+                    $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
+                    $signature = hash_hmac("sha256", $rawHash, $serectkey);
+                    $data = array('partnerCode' => $partnerCode,
+                        'partnerName' => "Test",
+                        "storeId" => "MomoTestStore",
+                        'requestId' => $requestId,
+                        'amount' => $amount,
+                        'orderId' => $orderId,
+                        'orderInfo' => $orderInfo,
+                        'redirectUrl' => $redirectUrl,
+                        'ipnUrl' => $ipnUrl,
+                        'lang' => 'vi',
+                        'extraData' => $extraData,
+                        'requestType' => $requestType,
+                        'signature' => $signature);
+                    $result = execPostRequest($endpoint, json_encode($data));
+                    $jsonResult = json_decode($result, true);  // decode json
+
+                    //Just a example, please check more in there
+
+                    header('Location: ' . $jsonResult['payUrl']);
+                }
+            }
+        }
+        //Thanh toán bằng VÍ MOMO - QUÉT MÃ QR
+        elseif ($selectedPayment === 'momo-wallet') {
+            //Cập nhật thông tin đơn hàng
+            $sqlUpdateOrder='UPDATE ORDERS SET ADDRESS=?, NAME=?, TELEPHONE=? WHERE ORDER_ID=?';
+           
+            $buySql=$conn->prepare($sqlUpdateOrder);
+            $buySql->bind_param("sssi", $fixedAddress, $fixedName, $fixedPhone, $order_id);
+            if($buySql->execute()){
+              
+                //Lấy số tiền cần thanh toán 
+                $sql = "SELECT total_price FROM orders WHERE order_id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param('i', $order_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    $total = $row['total_price'];
+
+                    $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+                    $partnerCode = 'MOMOBKUN20180529';
+                    $accessKey = 'klm05TvNBzhg7h7j';
+                    $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+
+                    $orderInfo = "Thanh toán qua MoMo";
+                    $amount = $total;
+                    $orderId = time() ."";
+                    $redirectUrl = "http://localhost/IS207_WEB/IS207_WEB/Project/php/store/checkout/buySuccess.php?id=" . $order_id;
+                    $ipnUrl = "http://localhost/IS207_WEB/IS207_WEB/Project/php/store/checkout/buySuccess.php?id=" . $order_id;
+                    $extraData = "";
+
+                    $partnerCode = $partnerCode;
+                    $accessKey = $accessKey;
+                    $serectkey = $secretKey;
+                    $orderId = $orderId; // Mã đơn hàng
+                    $orderInfo = $orderInfo;
+                    $amount = $amount;
+                    $ipnUrl = $ipnUrl;
+                    $redirectUrl = $redirectUrl;
+                    $extraData = $extraData;
+
+                    $requestId = time() . "";
+                    $requestType = "captureWallet";
                     // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
                     //before sign HMAC SHA256 signature
                     $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;

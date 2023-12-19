@@ -153,21 +153,21 @@
               </div>
 
               <!-- ví momo -->
-              <!-- <div class="payment"> -->
+              <div class="payment">
                 <!-- header -->
-                <!-- <div class="payment-header flex vertical-center">
+                <div class="payment-header flex vertical-center">
                   <div class="flex vertical-center">
                     <img src="../../../img/footer_image/momo.png" />VÍ MOMO
                   </div>
                   <input
                     type="radio"
-                    value="payUrl"
+                    value="momo-wallet"
                     class="square-radio"
                     name="payment"
-                    id="payUrl"
+                    id="momo-wallet"
                      required/>
                 </div>
-              </div> -->
+              </div>
             </div>
           </div>
           <!-- PAYMENT: Start -->

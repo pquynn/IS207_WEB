@@ -72,7 +72,7 @@
     {
     //Thay đổi trạng thái đơn hàng trong csdl
       //Cập nhật thông tin đơn hàng
-      $sqlUpdateOrder='UPDATE ORDERS SET STATUS="Đang chuẩn bị hàng" WHERE ORDER_ID=?';
+      $sqlUpdateOrder='UPDATE ORDERS SET STATUS="Đang chuẩn bị hàng", PAY="MoMo" WHERE ORDER_ID=?';
       $buySql=$conn->prepare($sqlUpdateOrder);
       $buySql->bind_param("i", $data_momo['id']);
       if($buySql->execute()){
