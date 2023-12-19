@@ -22,7 +22,8 @@
       <!-- CHECKOUT's HEADER: End -->
 
       <!-- CHECKOUT BODY: Start -->
-      <form action="checkoutBuy.php" method="get">
+      <!-- <form action="checkoutBuy.php" method="get"> -->
+      <form action="../../Controller/store/cart-checkout/checkout-controller.php" method="post">
         <div class="checkout-body flex">
           <!-- INFOR FORM: Start -->
           <div class="left-col" style="width: 50%;">
@@ -113,6 +114,7 @@
                     value="cod"
                     class="square-radio"
                     name="payment" 
+                    id="cod"
                     required/>
                 </div>
               </div>
@@ -133,21 +135,39 @@
                 </div>
               </div> -->
 
-              <!-- Napas -->
+              <!-- atm momo -->
               <div class="payment">
                 <!-- header -->
                 <div class="payment-header flex vertical-center">
                   <div class="flex vertical-center">
-                    <img src="../../../img/footer_image/napas.png" />Napas
+                    <img src="../../../img/footer_image/momo.png" />ATM MOMO
                   </div>
                   <input
                     type="radio"
-                    value="paypal"
+                    value="payUrl"
                     class="square-radio"
                     name="payment"
-                    required />
+                    id="payUrl"
+                    required/>
                 </div>
               </div>
+
+              <!-- ví momo -->
+              <!-- <div class="payment"> -->
+                <!-- header -->
+                <!-- <div class="payment-header flex vertical-center">
+                  <div class="flex vertical-center">
+                    <img src="../../../img/footer_image/momo.png" />VÍ MOMO
+                  </div>
+                  <input
+                    type="radio"
+                    value="payUrl"
+                    class="square-radio"
+                    name="payment"
+                    id="payUrl"
+                     required/>
+                </div>
+              </div> -->
             </div>
           </div>
           <!-- PAYMENT: Start -->
@@ -180,7 +200,8 @@
               </div>
 
               <!-- buy -->
-              <input class="buy-btn btn" type="submit" value="Mua"/>
+              <input class="buy-btn btn" name="submit" type="submit" value="Mua"/>
+              <!-- <input class="buy-btn btn" name="payUrl" type="submit" value="Thanh toán qua MoMo"/> -->
               <!-- accept rule -->
               <input type="checkbox" id="accept-rule" required/>
               <label for="accept-rule" class="gray-text"
