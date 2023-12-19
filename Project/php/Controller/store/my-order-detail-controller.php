@@ -61,7 +61,7 @@
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $orderId = $_POST['orderId'];
     
-            $sql = "DELETE FROM orders WHERE order_id = ?";
+            $sql = "UPDATE orders SET ORDERS.STATUS = 'Đã hủy' WHERE order_id = ?";
 
             //sql injection
             $stmt = $conn->prepare($sql);
