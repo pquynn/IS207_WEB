@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="../../css/admin/admin-order-detail.css"/>
 
 <?php
+    $role_id = 1;
     $title = "Chi tiết đơn hàng";
     include("./AdminNavigation.php");
 ?>
@@ -91,24 +92,25 @@
 
             <tbody class="tbody-product"></tbody>
         </table>
+        <div class="order-cost-box">
+            <!--Order cost-->
+            <table class="order-cost">
+                <tr>
+                    <td>Tổng tiền sản phẩm</td>
+                    <td class="cost order"></td>
+                </tr>
 
-        <!--Order cost-->
-        <table class="order-cost">
-            <tr>
-                <td>Tổng tiền sản phẩm</td>
-                <td class="cost order"></td>
-            </tr>
+                <tr>
+                    <td>Khuyến mãi</td>
+                    <td class="cost promotion"></td>
+                </tr>
 
-            <tr>
-                <td>Khuyến mãi</td>
-                <td class="cost promotion"></td>
-            </tr>
-
-            <tr class="total-cost">
-                <td>Tổng tiền thanh toán</td>
-                <td class="cost total"></td>
-            </tr>
-        </table>
+                <tr class="total-cost">
+                    <td>Tổng tiền thanh toán</td>
+                    <td class="cost total"></td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 <!--MAIN SECTION----END-->

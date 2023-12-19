@@ -48,7 +48,7 @@ function fetchOrders() {
 function deleteOrder() {
     global $conn;
 
-    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $orderId = trim($_POST['order_id'], " ");
 
         //todo: add constraint in database on delete cascade table product_img;
@@ -69,7 +69,7 @@ function deleteOrder() {
 function searchOrder() {
     global $conn;
 
-    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $searchTerm = $_POST['searchTerm'];
         $records_per_page = 20;
 
@@ -122,7 +122,7 @@ function searchOrder() {
 function filterStatus(){
     global $conn;
 
-    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $chosen_status = $_POST['chosen_status'];
         $records_per_page = 20;
 
@@ -192,7 +192,7 @@ function filterStatus(){
 function filterDate() {
     global $conn;
 
-    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fromdate = $_POST['fromdate'];
         $todate = $_POST['todate'];
         $records_per_page = 20;

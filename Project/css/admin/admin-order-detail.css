@@ -163,11 +163,16 @@
     font-size: 15px;
 }
 /*order cost*/
+.order-cost-box{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
 .order-cost{
-    min-width: 50px !important;
+    min-width: 300px !important;
     margin-top: 20px;
     width: 400px;
-    margin-left: 800px;
+    /* margin-left: 800px; */
 }
 .order-cost td, tr{
     border: none !important;

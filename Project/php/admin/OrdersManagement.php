@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="../../css/admin/admin-orders.css"/>
 
 <?php
+    $role_id =1;
     $title = "Danh sách đơn hàng";
     include("AdminNavigation.php");
 ?>
@@ -20,10 +21,16 @@
             Ngày hóa đơn
         </h6>
 
-        <div class="input-date-range">
-            <input type = "text" id="fromdate" class="input-date" placeholder="Từ ngày">
-            <input type = "text" id="todate" class="input-date" placeholder="Đến ngày">
-            <input type="button" id="btn-filter-date" value="Tìm">
+        <div class="input-date-range row">
+            <div class="col-2">
+                <input type = "date" id="fromdate" class="input-date form-control" placeholder="Từ ngày">
+            </div>
+            <div class="col-2 p-0">
+                <input type = "date" id="todate" class="input-date form-control" placeholder="Đến ngày">
+            </div>
+            <div class="col-1">
+                <button class="btn-admin btn-add" id="btn-filter-date" value="Tìm">Tìm</button>
+            </div>
         </div>
     </div>
 

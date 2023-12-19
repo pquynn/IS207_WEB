@@ -4,7 +4,7 @@
     function detailOrder() {
         global $conn;
     
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['orderId'];
         }
 
@@ -58,7 +58,7 @@
     function updateStatus() {
         global $conn;
 
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $status_get = $_POST['order_status'];
             $orderID = $_POST['id'];
             switch($status_get) {

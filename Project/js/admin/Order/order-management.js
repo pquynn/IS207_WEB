@@ -49,11 +49,11 @@ $(document).ready(function() {
     });
 
     //FILTER BY DATE RANGE
-    $('.input-date').datepicker({
-        "dateFormat": "yy-mm-dd",
-        "changeYear": true,
-        "changeMonth": true
-    });
+    // $('.input-date').datepicker({
+    //     "dateFormat": "yy-mm-dd",
+    //     "changeYear": true,
+    //     "changeMonth": true
+    // });
 
     $('#btn-filter-date').click(function() {
         
@@ -75,9 +75,9 @@ $(document).ready(function() {
 
 function detailOrder(id) {
     $.ajax({
-        url: "../../php/controller/admin/orders-controller.php?action=detail",
+        url: "../../php/controller/admin/orders-controller.php",
         type: 'POST',
-        data: {id: id},
+        data: {action:'detail', id: id},
         dataType: 'json',
         success: function (response) {
             var data = response.data;
@@ -91,16 +91,14 @@ function detailOrder(id) {
 
 function fetchData(page) {
     $.ajax({
-        url: "../../php/controller/admin/orders-controller.php?action=fetch",
+        url: "../../../Project/php/controller/admin/orders-controller.php",
         type: 'POST',
-        data: {page: page},
+        data: {action:'fetch', page: page},
         dataType: 'json',
         success: function (response) {
             var data = response.data;
             var totalPages = response.totalPages;
-            
             if(!response.data) console.log("du lieu rong");
-            
             var table_body = $('.admin-table table tbody');
             table_body.empty();
 
