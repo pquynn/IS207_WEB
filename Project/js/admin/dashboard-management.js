@@ -48,13 +48,7 @@ $(document).ready(function () {
         }
     });
     
-    // $('.btn-export').click(function (event){
-    //   const element = $('.chart-pie');
 
-    //   html2pdf(element);
-    // });
-
-    
 });
 
 

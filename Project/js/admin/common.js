@@ -1,28 +1,6 @@
 const table = document.querySelector('.admin-table table');
 const page_name = $('.section_heading').text();
 
-//START: FORM VALIDATION----------
-// disabling form submissions if there are invalid fields
-// (() => {
-//     'use strict'
-  
-//     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-//     const forms = document.querySelectorAll('.needs-validation')
-  
-//     // Loop over them and prevent submission
-//     Array.from(forms).forEach(form => {
-//       form.addEventListener('submit', event => {
-//         if (!form.checkValidity()) {
-//           event.preventDefault()
-//           event.stopPropagation()
-//         }
-  
-//         form.classList.add('was-validated')
-//       }, false)
-//     })
-//   })()
-
-//END: FORM VALIDATION----------
 
 //START: CONFIRMATION POPUP----------
 // exit confirmation popup

@@ -88,7 +88,7 @@ function insertEmployee() {
             $stmt1->close();
 
             if ($result1) {
-                $sql2 = "INSERT INTO users (user_id, user_login, user_name, user_telephone, birthday, gender, address) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                $sql2 = "INSERT INTO users (user_id, user_login, user_name, user_telephone, birthday, gender, address, day_add) VALUES (?, ?, ?, ?, ?, ?, ?, sysdate())";
                 $stmt2 = $conn->prepare($sql2);
                 $stmt2->bind_param('sssssss', $id, $username, $name, $phone, $birthday, $gender, $address);
                 $result2 = $stmt2->execute();
@@ -108,81 +108,6 @@ function insertEmployee() {
     }
 }
 
-// function insertEmployee() {
-//     global $conn;
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-//         $username = ($_POST['username']);
-//         $name = ($_POST['name']);
-//         $phone = ($_POST['phone']);
-//         $birthday = ($_POST['birthday']);
-//         $gender = ($_POST['gender']);
-//         $address = ($_POST['address']);
-//         $role = ($_POST['role']);
-//         $password = generateRandomPassword();
-//         $id = generateUserId();
-
-//         if (checkExist($username)) {
-//             return ['result' => false, 'message' => 'Tên đăng nhập đã có trong hệ thống'];
-//             // $response = false;
-//         } 
-//         else {
-//             //TODO: CHECK LẠI NHỮNG CÁI NGƯỜI DÙNG NHẬP VÀO VÀ NGĂN CHẶN SQL INJECTION
-//             $sql1 = "INSERT INTO login (user_login, user_password, role_id)
-//                     VALUES ('$username', '$password', '$role')";
-//             $result1 = $conn->query($sql1);
-
-//             if($result1){
-//             $sql2 = "INSERT INTO users (user_id, user_login, user_name, user_telephone, birthday, gender, address)
-//             VALUES ('$id', '$username', '$name', '$phone', '$birthday', '$gender', '$address')";
-//             $result2 = $conn->query($sql2);
-                
-//             if($result2)
-//                 return ['result' => true, 'message' => 'Thêm thành công'];
-//             else
-//                 return (['result' => true, 'message' => 'Thêm không thành công']);
-//         }
-//         else
-//             return (['result' => true, 'message' => 'Thêm không thành công']);
-                
-//         }
-//         // return $response;
-//     }
-//     else
-//         return (['result' => false, 'message' => 'Thêm không thành công']);
-// }
-            // $sql1 = "INSERT INTO login (user_login, user_password role_id)
-            //         VALUES (
-            //             '" . mysqli_real_escape_string($conn, $employee['username']) . "',
-            //             '".generateRandomPassword()."',
-            //             '" . mysqli_real_escape_string($conn, $employee['role']) . "'
-            //         )";
-            // $result1 = $conn->query($sql1);
-            // $row = $result1->fetch_assoc();
-    
-            // if($row['count'] > 0){
-            //     $sql2 = "INSERT INTO users (username, name, phone, date_of_birth, gender, address, role_id)
-            //         VALUES (
-            //             '" . mysqli_real_escape_string($conn, $employee['username']) . "',
-            //             '" . mysqli_real_escape_string($conn, $employee['name']) . "',
-            //             '" . mysqli_real_escape_string($conn, $employee['phone']) . "',
-            //             '" . mysqli_real_escape_string($conn, $employee['date_of_birth']) . "',
-            //             '" . mysqli_real_escape_string($conn, $employee['gender']) . "',
-            //             '" . mysqli_real_escape_string($conn, $employee['address']) . "',
-            //             '" . mysqli_real_escape_string($conn, $employee['role']) . "'
-            //         )";
-            //     $result2 = $conn->query($sql2);
-            // }
-            // else
-            //     return false; 
-        // }
-
-        // return array('message' => $message, 'result' => $result);
-    // }
-    // else
-    // return false;
-// }
 
 //function to automatically generate password
 function generateRandomPassword() {
@@ -260,44 +185,6 @@ function updateEmployee() {
     }
 }
 
-// function updateEmployee() {
-//     global $conn;
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-//         $id = ($_POST['id']);
-//         $username = ($_POST['username']);
-//         $name = ($_POST['name']);
-//         $phone = ($_POST['phone']);
-//         $birthday = ($_POST['birthday']);
-//         $gender = ($_POST['gender']);
-//         $address = ($_POST['address']);
-//         $role = ($_POST['role']);
-
-//         //TODO: CHECK LẠI NHỮNG CÁI NGƯỜI DÙNG NHẬP VÀO VÀ NGĂN CHẶN SQL INJECTION
-//         $sql = "UPDATE users 
-//                 SET user_name = '$name', user_telephone = '$phone', birthday = '$birthday',
-//                 gender = '$gender', address = '$address'
-//                 WHERE user_id = '$id'";
-//         $result = $conn->query($sql);
-            
-//         if($result){
-//             $sql = "UPDATE login 
-//                 SET role_id = '$role'
-//                 WHERE user_login = '$username'";
-//             $result = $conn->query($sql);
-
-//             if($result)
-//                 return ['result' => true, 'message' => 'Thêm thành công'];
-//             else
-//                 return (['result' => true, 'message' => 'Thêm không thành công']); 
-//         } 
-//         else
-//             return (['result' => true, 'message' => 'Thêm không thành công']); 
-//     }
-//     else
-//         return (['result' => false, 'message' => 'Thêm không thành công']);
-// }
 
 // //DELETE
 function deleteEmployee() {
@@ -329,31 +216,6 @@ function deleteEmployee() {
 
     return ['result' => false];
 }
-
-// function deleteEmployee() {
-//     global $conn;
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//         $employeeId = trim($_POST['employee_id'], " ");
-//         $employeeLogin = trim($_POST['employee_login'], " ");
-        
-//         $sql1 = "DELETE FROM users WHERE user_id LIKE '$employeeId'";
-//         // $sql1 = "SELECT count(*) as total from users WHERE user_id LIKE '$employeeId' ";
-//         $result1 = $conn->query($sql1);
-//         // $totalRecordsResult = $conn->query($sql1);
-//         // $totalRecords = $totalRecordsResult->fetch_assoc()['total'];
-//         if($result1){
-//             $sql2 = "DELETE FROM login WHERE user_login LIKE '$employeeLogin'";
-//             $result2 = $conn->query($sql2);
-//             return $result2;
-//         }
-//         else
-//             return ['result' => false]; 
-//     }
-    
-//          return ['result' => false];
-// }
-
 
 
 // //SEARCH CATEGORIES
@@ -426,67 +288,6 @@ function searchEmployees() {
     }
 }
 
-// function searchEmployees(){
-//     global $conn;
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//         $searchTerm = $_POST['searchTerm'];
-//         $records_per_page = 20;
-
-//         // Get the current page number from the URL
-//         if (isset($_POST['page']) && is_numeric($_POST['page'])) {
-//             $page = intval($_POST['page']);
-//         } else {
-//             $page = 1;
-//         }
-
-//         // Get the total number of records from the database
-//         $totalRecordsQuery = "SELECT COUNT(*) as total  
-//                             FROM users, login, role
-//                             WHERE users.user_login = login.user_login
-//                             and login.role_id = role.role_id
-//                             and (role.role_id = 1 or role.role_id = 2) 
-//                             and user_name LIKE '%$searchTerm%'";
-
-//         $totalRecordsResult = $conn->query($totalRecordsQuery);
-//         $totalRecords = $totalRecordsResult->fetch_assoc()['total'];
-
-//         // Calculate the total number of pages
-//         $totalPages = ceil($totalRecords / $records_per_page);
-
-
-//         // Calculate the offset for the query
-//         $offset = ($page - 1) * $records_per_page;
-
-//         // Fetch data from the database with pagination
-//         $sql = "SELECT * 
-//         FROM users, login, role
-//         WHERE users.user_login = login.user_login
-//         and login.role_id = role.role_id
-//         and (role.role_id = 1 or role.role_id = 2) 
-//         and user_name LIKE '%$searchTerm%'
-//         ORDER BY user_id
-//         LIMIT $offset, $records_per_page";
-
-//         $result = $conn->query($sql);
-
-//         $data = [];
-
-//         if ($result->num_rows > 0) {
-//             while ($row = $result->fetch_assoc()) {
-//                 $data[] = $row;
-//             }
-//         }
-
-//         // Create an associative array with multiple values
-//         $response = array(
-//             'data' => $data,
-//             'totalPages' => $totalPages
-//         );
-
-//         return $response;
-//     }
-// }
 
 // Check the action parameter in the request
 if (isset($_POST['action'])) {

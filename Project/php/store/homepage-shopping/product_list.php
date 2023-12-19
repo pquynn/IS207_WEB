@@ -1,5 +1,7 @@
   <link rel="stylesheet" href="../../../css/store/product_list.css">
   <link rel="stylesheet" href="../../../css/style-components/pagination.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
   <!-- Start of header -->
   <?php 
     $title = "Danh mục sản phẩm";
@@ -16,7 +18,7 @@
         <nav class="product-list-link" aria-label="breadcrumb">
           <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="./homepage.php">Trang chủ</a></li>
-            <li><a class="breadcrumb-item active" href="#">Danh mục</a></li>
+            <li><a class="breadcrumb-item active" href="#">Danh sách sản phẩm</a></li>
           </ul>
         </nav>
         <!-- DESCRIPTION -->
@@ -53,7 +55,7 @@
                   data-bs-target="#panelsStayOpen-collapseOne"
                   aria-expanded="true"
                   aria-controls="panelsStayOpen-collapseOne">
-                  Bộ sưu tập
+                  Thể loại
                 </button>
                 <!-- accordion-item header:end -->
               </h2>
@@ -63,171 +65,45 @@
                 id="panelsStayOpen-collapseOne"
                 class="accordion-collapse collapse show"
                 aria-labelledby="panelsStayOpen-headingOne">
-                <a href="#" class="accordion-body"> Sneaker </a>
-                <a href="#" class="accordion-body"> Sneaker </a>
-                <a href="#" class="accordion-body"> Sneaker </a>
-                <a href="#" class="accordion-body"> Sneaker </a>
-                <a href="#" class="accordion-body"> Sneaker </a>
-                <a href="#" class="accordion-body see-more"> Xem thêm </a>
               </div>
               <!-- accordion-item body: start  -->
             </div>
             <!-- collection: end -->
 
-            <!-- price: start -->
+            <!-- gender: start -->
             <div class="accordion-item">
               <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <!-- accordion-item header:start -->
                 <button
                   class="accordion-button collapsed"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#panelsStayOpen-collapseTwo"
-                  aria-expanded="false"
+                  aria-expanded="true"
                   aria-controls="panelsStayOpen-collapseTwo">
-                  Giá
+                  Giới tính
                 </button>
+                <!-- accordion-item header:end -->
               </h2>
+
+              <!-- accordion-item body: start  -->
               <div
                 id="panelsStayOpen-collapseTwo"
                 class="accordion-collapse collapse"
                 aria-labelledby="panelsStayOpen-headingTwo">
-                <div class="accordion-body">
-                  <div class="price-range">
-                    <div class="value-left">100</div>
-                    <input
-                      type="range"
-                      min="100"
-                      max="3000000"
-                      value="1450000"
-                      steps="1" />
-                    <div class="value-right">3000000</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- price: end -->
+                <a style='cursor: pointer;' class="accordion-body categoryGender" id="Nam">Giày nam</a>
+                <a style='cursor: pointer;' class="accordion-body categoryGender" id="Nữ">Giày nữ</a>
+                <a style='cursor: pointer;' class="accordion-body categoryGender" id="Nam, nữ">Giày nam, nữ</a>
 
-            <!-- color: start -->
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseThree"
-                  aria-expanded="false"
-                  aria-controls="panelsStayOpen-collapseThree">
-                  Màu
-                </button>
-              </h2>
-              <div
-                id="panelsStayOpen-collapseThree"
-                class="accordion-collapse collapse"
-                aria-labelledby="panelsStayOpen-headingThree">
-                <div class="accordion-body color-list">
-                  <button
-                    class="btn-color"
-                    style="background-color: #7f6000"></button>
-                  <button
-                    class="btn-color"
-                    style="background-color: #762e54"></button>
-                  <button
-                    class="btn-color"
-                    style="background-color: #762e54"></button>
-                  <button
-                    class="btn-color"
-                    style="background-color: #008000"></button>
-                  <button
-                    class="btn-color"
-                    style="background-color: #d2f58d"></button>
-                  <button
-                    class="btn-color"
-                    style="background-color: #324a7b"></button>
-                </div>
               </div>
+              <!-- accordion-item body: start  -->
             </div>
-            <!-- color: end -->
-
-            <!-- size: start -->
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen-headingFour">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseFour"
-                  aria-expanded="false"
-                  aria-controls="panelsStayOpen-collapseFour">
-                  Kích cỡ
-                </button>
-              </h2>
-              <div
-                id="panelsStayOpen-collapseFour"
-                class="accordion-collapse collapse"
-                aria-labelledby="panelsStayOpen-headingFour">
-                <div class="accordion-body size color-list">
-                  <div class="size-option">
-                    <input
-                      type="checkbox"
-                      name=""
-                      value="Small"
-                      id="small"
-                      class="square-checkbox" />
-                    <label for="small">S</label>
-                  </div>
-                  <div class="size-option">
-                    <input
-                      type="checkbox"
-                      name=""
-                      value="Medium"
-                      id="large"
-                      class="square-checkbox" />
-                    <label for="medium">M</label>
-                  </div>
-                  <div class="size-option">
-                    <input
-                      type="checkbox"
-                      name=""
-                      value="Large"
-                      id="large"
-                      class="square-checkbox" />
-                    <label for="large">L</label>
-                  </div>
-                  <a href="#" class="accordion-body see-more"> Xem thêm </a>
-                </div>
-              </div>
-            </div>
-            <!-- size: end -->
+            <!-- gender: end -->
           </div>
           <!-- accordion: end -->
-
-          <!-- rating-filter: start -->
-          <div class="rating">
-            <h4>ĐÁNH GIÁ</h4>
-            <a class="5-star" href="#">
-              <ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon>
-            </a>
-            <a class="4-star" href="#">
-              <ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-outline"></ion-icon>
-            </a>
-            <a class="3-star" href="#">
-              <ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-outline"></ion-icon
-              ><ion-icon name="star-outline"></ion-icon>
-            </a>
-            <a href="#" class="see-more">Xem thêm</a>
-          </div>
-          <!-- rating-filter: end -->
+            <div style="position: relative; height: 50px;">
+              <button id="clearFilter">Bỏ chọn</button>
+            </div>
         </div>
         <!-- left-col: end -->
 
@@ -236,157 +112,31 @@
         <div class="right-col">
           <!-- sort-option: start -->
           <select name="sort" id="sort">
-            <option value="expensive-to-cheap">Giá thấp đến cao</option>
-            <option value="expensive-to-cheap">Giá cao đến thấp</option>
-            <option value="expensive-to-cheap">Mới đến cũ</option>
+            <option value="cheap-to-expensive" >Sắp xếp theo giá tăng dần</option>
+            <option value="expensive-to-cheap">Sắp xếp theo giá giảm dần</option>
+            <!-- <option value="male">Giày nam</option>
+            <option value="female">Giày nữ</option>
+            <option value="male-female">Giày nam, nữ</option> -->
           </select>
           <!-- sort-option: end -->
 
+          <p id="myTest"></p>
+
           <!-- product-list: start -->
           <div class="product-list">
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon
-              ><ion-icon name="star-sharp"></ion-icon>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
-
-            <div class="product-detail">
-              <div class="product-img--container">
-                <img src="/Project/img/blog_img/blog2.webp" />
-              </div>
-              <a href="#">Adidas Sneaker</a>
-              <p>500000 VND</p>
-              <div class="product-star">
-                <ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon
-                ><ion-icon name="star-sharp"></ion-icon>
-              </div>
-            </div>
           </div>
           <!-- product-list: end -->
 
           <div class="pagination m-5">
-            <a href="#">&laquo;</a>
+            <p id="loadMoreProductList">Xem thêm</p>
+            <!-- <a href="#">&laquo;</a>
             <a class="active" href="#">1</a>
             <a href="#">2</a>
             <a href="#">3</a>
             <a href="#">4</a>
             <span class="ellipsis">...</span>
             <a href="#">10</a>
-            <a href="#">&raquo;</a>
+            <a href="#">&raquo;</a> -->
           </div>
         </div>
         <!-- right-col: end -->
@@ -399,6 +149,7 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"></script>
+      <script src="../../../js/homepage-shopping/product_list.js"></script>
     <!-- js: end -->
 
     <!-- Start of footer -->

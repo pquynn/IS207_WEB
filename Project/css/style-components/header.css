@@ -31,17 +31,18 @@ div a {
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  padding: 0 20px 5px 20px;
+  padding: 10px 20px 10px 20px;
   border-bottom: solid 1px #c8c8c8;
 }
 
 /* logo */
 .nav-logo {
   margin-top: 5px;
+  margin-right: 150px;
 }
 
 .nav-logo a img {
-  width: 40px !important;
+  width: 120px !important;
 }
 
 /* icon */
@@ -49,10 +50,18 @@ div a {
   display: flex;
   gap: 12px;
   padding-left: 0;
+  justify-content: end;
+  width: 220px;
+  align-items: center;
 }
 
 .nav-icon ul {
-  padding-left: 0;
+  padding:6px 5px 10px;
+}
+
+.nav-icon--item.cart{
+  padding-top: 5px;
+  padding-left: 7px;
 }
 
 /* home, shop, category,.... */
@@ -147,4 +156,34 @@ div a {
 
 .mainsection-body {
   margin: 50px;
+}
+
+
+
+/* search bar */
+.search-box{
+  height: 35px;
+  display: flex;
+  cursor: pointer;
+  padding: 10px 10px;
+  background-color: #fff;
+  border-radius: 30px;
+  align-items: center;
+  border: none;
+  
+}
+
+.search-box:hover{
+  border: 1px solid var(--table-border);
+}
+.search-box:hover input{
+  width: 200px;
+}
+
+.search-box input{
+  width: 0;
+  outline: none;
+  border: none;
+  transition: 0.8s;
+  background: transparent;
 }
