@@ -128,7 +128,7 @@ function checkExist($name) {
 //     else
 //     return (['result' => false, 'message' => 'Thêm không thành công. Không lấy được giá trị']);
 // }
-function insertBlog() {
+/*function insertBlog() {
     global $conn;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -183,11 +183,63 @@ function insertBlog() {
     // }
 }
 }
-        
+     */   
     
+function insertBlog() {
+    global $conn;
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+       
+        $user_id = ($_POST['USER_ID']);
+        $user_name = ($_POST['USER_NAME']);
+        $date = ($_POST['BLOG_DAY']);
+        $content = ($_POST['CONTENT']);
+        $img = ($_POST['BLOG_IMG']);
+        $name = ($_POST['BLOG_TITLE']);
 
+        $exist = checkBlog($name);
+        if ($exist) {
+            return false;
+        } else {
+            // Use prepared statement to avoid SQL injection
+            $sql = "INSERT INTO blog (USER_ID, USER_NAME, BLOG_DAY, CONTENT, BLOG_IMG, BLOG_TITLE)
+            VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
 
+            // Bind the parameter
+            $stmt->bind_param('s', $name);
+
+            // Execute the statement
+            $result = $stmt->execute();
+
+            // Close the statement
+            $stmt->close();
+
+            return $result;
+        }
+    } else {
+        return false;
+    }
+}
+
+function checkBlog($name) { 
+    global $conn;
+    // Check if the category name already exists
+    $sql = "SELECT COUNT(*) as count FROM blog WHERE BLOG_TITLE = '$name'";
+    $result = $conn->query($sql);
+
+    if ($result) {
+        $row = $result->fetch_assoc();
+        if($row['count'] > 0)
+            return true;
+        else
+            return false;
+        
+    } else {
+        // Error in the query
+        return true;
+    }
+}
 
 
 //INSERT 
@@ -606,7 +658,28 @@ function fetchImages()
 //     return ['result' => false];
 // }
 
+function fetchContent() {
+    global $conn;
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $id = $_POST['id'];
+
+        // Use prepared statement to avoid SQL injection
+        $sql = "SELECT CONTENT FROM blog WHERE BLOG_ID = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $result = $conn->query($sql);
+
+
+        $stmt->close();
+        return $result;
+    }
+
+    return ['result' => false];
+}
 // Check the action parameter in the request
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
@@ -634,6 +707,9 @@ if (isset($_POST['action'])) {
         case 'fetch-images':
             echo json_encode(fetchImages());
             break;
+            case 'fetch-content':
+                echo json_encode(fetchContent());
+                break;
         default:
             echo json_encode(['success' => false, 'message' => 'Invalid action']);
     }
