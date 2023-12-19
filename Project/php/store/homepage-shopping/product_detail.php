@@ -10,14 +10,7 @@
     <!-- PRODUCT DETAIL'S BODY: START -->
     <div class="product-detail--body">
       <div class="product-nav">
-        <h1>For Shoes</h1>
-        <nav class="product-detail-link" aria-label="breadcrumb">
-          <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">For Shoes</a></li>
-            <li><a class="breadcrumb-item" href="#">Sneaker</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Adidas</li>
-          </ul>
-        </nav>
+        <h1></h1>
       </div>
       <div class="main-info">
         <!--Khung giới thiệu ảnh sản phẩm-->
@@ -75,17 +68,6 @@
             aria-selected="true">
             Mô tả
           </button>
-          <!-- <button
-            class="nav-link tag-btn"
-            id="nav-profile-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-profile"
-            type="button"
-            role="tab"
-            aria-controls="nav-profile"
-            aria-selected="false">
-            Chi tiết
-          </button> -->
           <button
             class="nav-link tag-btn"
             id="nav-contact-tab"
@@ -119,6 +101,7 @@
             </div>
           </div>
           <!-- Ai đó hãy sữa giùm chỗ này đc ko :))) -->
+          
         </div>
         <!-- description's content: end -->
 

@@ -4,12 +4,13 @@
     padding-left: 80px;
     padding-top: 30px;
     padding-bottom: 30px;
+    width: 100%;
 }
 
 /*star feedback*/
 .rating-star {
     display: flex;
-    font-size: 22px;
+    font-size: 20px;
     margin: 15px;
     margin-left: 20px;
 }
@@ -40,7 +41,7 @@
 }
 /*text area feedback*/
 .input-feedback {
-    width: 80%;
+    width: 430px;
     height: 150px;
     border-radius: 6px;
     border-color: #e2e2e2;
@@ -48,14 +49,14 @@
     resize: none;
     padding: 10px;
     font-family: Roboto, San-Serif;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .input-feedback::placeholder {
     position: absolute;
     top: 10px;
     left: 10px;
-    font-size: 20px;
+    font-size: 15px;
     font-family: Roboto, San-Serif;
 }
 
@@ -71,5 +72,60 @@
     border-radius: 8px;
     font-size: 15px;
     cursor: pointer;
+}
+
+
+.form-rating h2{
+    margin-bottom: 15px;
+}
+
+.my-order-rating .table-img {
+    width: 120px !important;
+    height: 100px !important;
+}
+
+.my-order-rating {
+    border: 1px solid #d8d8d8;
+    margin: 20px;
+    padding: 15px;
+    width: 150px;
+}
+
+.my-order-rating tr, td {
+    padding: 10px;
+}
+.my-order-rating th{
+    padding: 10px;
+    border-bottom: 1px solid #d8d8d8;;
+}
+.tbl-fb-row {
+    border-bottom: 1px solid #d8d8d8;
+}
+.td-img {
+    width: 130px;
+}
+
+.btn-input-feedback {
+    display: block;
+    background-color: #ffff;
+    width: 130px;
+    padding: 5px 20px;
+    border: 1px solid var(--orange);
+    border-radius: 8px;
+    color: var(--orange);
+    transition: 0.3s ease;
+    margin-top: 37px;
+}
+.btn-input-feedback:hover{
+    color: #ffff;
+    background-color: var(--orange);
+}
+
+.btn-input-feedback.done {
+    background-color: #dddd;   
+    cursor: context-menu;
+}
+.btn-input-feedback.done:hover{
+    color: var(--orange);
 }
 

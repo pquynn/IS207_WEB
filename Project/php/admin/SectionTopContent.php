@@ -4,7 +4,7 @@
 <div class="top-content left">
     <div class="admin-search-container">
         <div class="search-bar-box">
-            <input type="text" id="search" placeholder="Tìm kiếm..." class="form-control ">
+            <input type="text" id="search" placeholder="Tìm kiếm theo tên" class="form-control ">
             <!-- <a href="#" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></a> -->
         </div>
     </div>

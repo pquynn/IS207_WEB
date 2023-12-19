@@ -4,22 +4,39 @@ include '../connect.php';
 function fetchProducts() {
     global $conn;
     
-    $sql = " SELECT products.product_id, product_name, gender, price, first_picture
-                    FROM products
-                    INNER JOIN product_pictures ON products.product_id = product_pictures.product_id
-                    ORDER BY products.product_id";
-    $result = $conn->query($sql);
+    $sql_Category = "SELECT category_id, category_name FROM category";
 
-    $data = [];
+    $sql_Product = " SELECT products.product_id, product_name, gender, price, first_picture, category_id
+                        FROM products
+                        INNER JOIN product_pictures ON products.product_id = product_pictures.product_id
+                        ORDER BY products.product_id";
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $row['first_picture'] = base64_encode($row['first_picture']); //end code image data
-            $data[] = $row;
+    $resultCategory = $conn->query($sql_Category);
+    $resultProduct = $conn->query($sql_Product);
+
+    $dataProduct = [];
+    $dataCategory = [];
+
+    if ($resultCategory->num_rows > 0) {
+        while ($rowCategory = $resultCategory->fetch_assoc()) {
+            $dataCategory[] = $rowCategory;
         }
     }
 
-    return $data;
+
+    if ($resultProduct->num_rows > 0) {
+        while ($rowProduct = $resultProduct->fetch_assoc()) {
+            $rowProduct['first_picture'] = base64_encode($rowProduct['first_picture']); //end code image data
+            $dataProduct[] = $rowProduct;
+        }
+    }
+
+    $combinedResult = array(
+        "tableCategory" => $dataCategory,
+        "tableProduct" => $dataProduct
+    );
+
+    return $combinedResult;
 }
 
 
