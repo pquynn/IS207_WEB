@@ -41,7 +41,7 @@
             <a href="#" class="nav-admin-logo">
                 <!-- change logo color into white. modified 10/18/2023 by Quyen -->
                 <img src="../../img/logo-white.png" alt="logo"> 
-                <h1>LOGO</h1>
+                <h1>BISUTH</h1>
             </a>
     
             <div class="admin-menu-container" style="height: 470px;">
