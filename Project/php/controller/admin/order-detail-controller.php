@@ -89,12 +89,12 @@
             $stmt->close();
 
             if ($result) {
-                return ['result' => true, 'message' => 'Cập nhật thành công'];
+                return true;
             } else {
-                return ['result' => false, 'message' => 'Cập nhật không thành công'];
+                return false;
             }
         } else {
-            return ['result' => false, 'message' => 'Cập nhật không thành công'];
+            return false;
         }        
     }
     if (isset($_POST['action'])) {

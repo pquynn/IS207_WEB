@@ -31,7 +31,7 @@
 
                 <!--Footer-->
                 <div class="modal-footer edit">
-                    <button type="button" class="btn btn-cancel admin" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-cancel admin">Hủy</button>
                     <input type="submit" class="btn btn-confirm admin" value="Xác nhận">
                 </div>
             </form>

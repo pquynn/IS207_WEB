@@ -27,13 +27,33 @@ $(document).ready(function() {
         }
     });
 
+     // Get the URL parameters
+    var urlParams = new URLSearchParams(window.location.search);
+    // Check if the parameter exists, 
+    if (urlParams.has('update_status')) {
+        // Get the value of update_status
+        var update_status = urlParams.get('update_status');
+        if (update_status == 1) {
+            showToastr('success', 'Cập nhật trạng thái đơn hàng thành công');
+        }
+        var currentUrl = window.location.href;
+
+        // Check if the URL contains the update_status_success parameter
+        if (currentUrl.includes('update_status')) {
+            // Remove the update_status parameter
+            var updatedUrl = currentUrl.replace(/(\?|&)update_status=[^&]*(&|$)/, '$1');
+            // Use replaceState to update the URL without reloading the page
+            window.history.replaceState({}, document.title, updatedUrl);
+        }
+    }
+
     
     //thay đổi trạng thái đơn hàng
     $('#edit-order-status .btn-confirm').on('click', function(event) {
         event.preventDefault();
-        status1 = indexStatus(showOrderStatus.text());   
+        var status1 = indexStatus(showOrderStatus.text());   
         if(confirm("Xác nhận thay đổi thông tin?")) {
-            form_data = {
+            var form_data = {
                 id: orderId,
                 order_status: $("input[type='radio'][name='status-order']:checked").val()
             };
@@ -50,7 +70,7 @@ $(document).ready(function() {
             }
             else {
                 updateStatus(form_data);
-                window.location.href= url;                 
+                // window.location.href= url;                 
             }          
         }
           
@@ -62,7 +82,7 @@ $(document).ready(function() {
         console.error("Không lấy được id");
     }     
 
-})
+
 
 function fetchData_Customer(orderId) {
     $.ajax({
@@ -132,11 +152,14 @@ function updateStatus(form_data) {
         dataType: 'json',
         success: function(result) {
             if(result==true) {
-                showToastr("success", "Cập nhật thông tin thành công"); 
-                // alert("Cập nhật thông tin thành công");                   
+                // showToastr("success", "Cập nhật trạng thái đơn hàng thành công"); 
+                // alert("Cập nhật thông tin thành công");  
+                var update_status = '1';
+                var encode_update_status = encodeURIComponent(update_status);
+                window.location.href = '../../php/admin/OrderDetail.php?id='+ orderId + "&update_status=" + encode_update_status;       
             }
             else {
-                showToastr("error", "Cập nhật thông tin không thành công"); 
+                showToastr("error", "Cập nhật trạng thái đơn hàng không thành công"); 
                 // alert("Cập nhật thông tin không thành công");
             }
    
@@ -176,3 +199,6 @@ function indexStatus(status) {
             return 4;
     }
 }
+
+
+})

@@ -78,7 +78,7 @@ function detailOrder(id) {
     $.ajax({
         url: "../../php/controller/admin/orders-controller.php",
         type: 'POST',
-        data: {action: detail, id: id},
+        data: {action: 'detail', id: id},
         dataType: 'json',
         success: function (response) {
             var data = response.data;
