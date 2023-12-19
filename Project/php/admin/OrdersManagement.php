@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../../css/admin/admin-orders.css"/>
 
 <?php
-    $role_id = 1;
+    $role_id =1;
     $title = "Danh sách đơn hàng";
     include("AdminNavigation.php");
 ?>
@@ -16,77 +16,65 @@
     </ol>
     <!--Orders' date-->
     <div class="date-orders">
-        <i class="fa-solid fa-calendar"></i>
-        <span>dd/mm/yyyy - dd/mm/yyyy</span>
+        <h6>
+        <i class="fa-solid fa-calendar"></i>            
+            Ngày hóa đơn
+        </h6>
+
+        <div class="input-date-range row">
+            <div class="col-2">
+                <input type = "date" id="fromdate" class="input-date form-control" placeholder="Từ ngày">
+            </div>
+            <div class="col-2 p-0">
+                <input type = "date" id="todate" class="input-date form-control" placeholder="Đến ngày">
+            </div>
+            <div class="col-1">
+                <button class="btn-admin btn-add" id="btn-filter-date" value="Tìm">Tìm</button>
+            </div>
+        </div>
     </div>
 
     <!--Dropdown choose status for orders-->
-    <div class="choose-status">
-            <span>Trạng thái đơn hàng</span>                
-            <i class="fa-solid fa-angle-down"></i>
-
-            <ul class="list-status">
-                <li>Đang xử lý</li>
-                <li>Giao hàng thành công</li>
-                <li>Đã hủy</li>  
-            </ul>                      
-    </div>
+    <select name="status" id="choose-status">
+        <option value="">Trạng thái đơn hàng</option>
+        <option value="prepare">Đang chuẩn bị hàng</option>
+        <option value="shipping">Đang giao hàng</option>
+        <option value="order-success">Giao thành công</option>
+        <option value="order-cancel">Đã hủy</option>                 
+    </select>
     
     <!--Search bar-->
     <div class="admin-search-container">
         <div class="search-bar-box">
-            <input type="text" id="search" placeholder="Tìm kiếm..." class="form-control ">
-            <a href="#" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <input type="text" id="search" placeholder="Tìm kiếm theo mã đơn hàng" class="form-control ">
+            <!--<a href="#" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></a>-->
         </div>
     </div>
 
     <!--Table list orders-->
     <div class="admin-table">
         <table class="list-orders">
-            <tr>
-                <th><input type="checkbox"></th>   
-                <th>Mã đơn hàng</th>
-                <th>Ngày hóa đơn</th>   
-                <th>SĐT</th>   
-                <th>Tên khách hàng</th>                  
-                <th>Địa chỉ</th>
-                <th>PTTT</th>   
-                <th>Trạng thái</th>   
-                <th>Tổng sản phẩm</th>   
-                <th>Tổng tiền</th>   
-                <th>Thao tác</th>
-            </tr>
-
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>A123</td>
-                <td>dd/mm/yyy</td>   
-                <td>0912345678</td>   
-                <td>ABC DEF GHIJK</td>                  
-                <td>123 ABCD</td>
-                <td>Momo</td>   
-                <td>Giao hàng thành công</td>   
-                <td>3</td>   
-                <td>$9999</td> 
-                <td class="action">
-                    <a href="OrderDetail.php"><i class="fa-solid fa-pen"></i></a>
-                    <a href="#"><i class="fa-solid fa-trash"></i></a>
-                </td> 
-            </tr>
+            <thead>
+                <tr>
+                    <th>Mã đơn hàng</th>
+                    <th>Ngày hóa đơn</th>   
+                    <th>SĐT</th>   
+                    <th>Tên khách hàng</th>                  
+                    <th>Địa chỉ</th>
+                    <th>PTTT</th>   
+                    <th>Trạng thái</th>   
+                    <th>Tổng sản phẩm</th>   
+                    <th>Tổng tiền</th>   
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
         </table>
     </div>
     
 
     <!--Pagination-->
     <div class="pagination admin">
-        <a href="#">&laquo;</a>
-        <a class="active" href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">&raquo;</a>
     </div>
 </div>
 <!--MAIN SECTION----END-->

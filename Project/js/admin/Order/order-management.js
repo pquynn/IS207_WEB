@@ -50,11 +50,11 @@ $(document).ready(function() {
     });
 
     //FILTER BY DATE RANGE
-    $('.input-date').datepicker({
-        "dateFormat": "yy-mm-dd",
-        "changeYear": true,
-        "changeMonth": true
-    });
+    // $('.input-date').datepicker({
+    //     "dateFormat": "yy-mm-dd",
+    //     "changeYear": true,
+    //     "changeMonth": true
+    // });
 
     $('#btn-filter-date').click(function() {
         
@@ -93,7 +93,7 @@ function detailOrder(id) {
 
 function fetchData(page) {
     $.ajax({
-        url: "../../php/controller/admin/orders-controller.php",
+        url: "../../../Project/php/controller/admin/orders-controller.php",
         type: 'POST',
         data: {action:'fetch', page: page},
         dataType: 'json',

@@ -101,7 +101,9 @@
             <!-- gender: end -->
           </div>
           <!-- accordion: end -->
-            <button id="clearFilter">Bỏ chọn</button>
+            <div style="position: relative; height: 50px;">
+              <button id="clearFilter">Bỏ chọn</button>
+            </div>
         </div>
         <!-- left-col: end -->
 
@@ -126,7 +128,7 @@
           <!-- product-list: end -->
 
           <div class="pagination m-5">
-            <p style="cursor: pointer;">Xem thêm</p>
+            <p id="loadMoreProductList">Xem thêm</p>
             <!-- <a href="#">&laquo;</a>
             <a class="active" href="#">1</a>
             <a href="#">2</a>

@@ -9,62 +9,46 @@
     padding: 30px;
 }
 
+
 .customer-infomation,
 .order-infomation {
     border-radius: 10px;
     background-color: #fff;
     padding: 10px;
-    margin: 10px auto;
+    margin: 10px;
     width: 100%;
-    border: 1px solid var(--table-border);
-
-    overflow: auto;
-    box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;
 }
 
 /*customer infomation*/
 /***header*/
 .order-status {
+    background-color: #37cd70;
     color: #ffff;
     font-size: 15px;
     padding: 10px;
     margin: 10px;
     border-radius: 8px;
-    margin-right: 0px;
-}
-.order-status.success {
-    background-color: #37cd70;
-}
-
-.order-status.pending {
-    background-color: #FFC416;
-}
-
-.order-status.cancel {
-    background-color: #FF0000;
 }
 
 /***date*/
 .date-order {
     font-size: 18px;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-left: 0px;
-    margin-bottom: 20px;
 }
 
-/***box-change_status-print-save
-.box-change_status-print {
-    margin-left: 900px;
+/***box-change_status-print-save*/
+.box-change_status-print-save {
+    margin-left: 869px;
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
-}*/
+}
 
 /***change status*/
 .change-status{
     margin: 10px;
-    margin-left: 950px;
-    margin-bottom: 20px;
+    margin-left: 0px;
     background-color: #F4F2F2;
     border-radius: 8px;
     width: 200px;
@@ -156,26 +140,15 @@
     width: 15px;
 }
 
-.btn-edit-info {
-    color: #a2a9ac;
-    border: none;
-    background-color: #fff;
-    font-size: 15px;
-}
 /*order cost*/
-.order-cost-box{
-    width: 100%;
-    display: flex;
-    justify-content: end;
-}
 .order-cost{
-    min-width: 300px !important;
+    min-width: 50px !important;
     margin-top: 20px;
-    width: 400px;
-    /* margin-left: 800px; */
+    width: 300px;
+    margin-left: 880px;
 }
 .order-cost td, tr{
-    border: none !important;
+    border: none;
     color: #000 !important;
 }
 
@@ -191,18 +164,4 @@
 
 .total-cost td.total {
     color:#FF0000 !important;
-}
-
-/*Modal*/
-.modal-footer.edit {
-    border-top: none !important;
-    justify-content: center !important;
-}
-
-h4.modal-title{
-    font-weight: bolder;
-}
-
-#payment-information {
-    display: none;
 }
