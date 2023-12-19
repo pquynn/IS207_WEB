@@ -19,8 +19,7 @@
     text-align: center;
 }
 
-#order-status {
-    background-color: #37cd70;
+.order-status {
     color: #ffff;
     font-size: 15px;
     padding: 10px;
@@ -28,8 +27,21 @@
     border-radius: 8px;
 }
 
+.order-status.success {
+    background-color: #37cd70;
+}
+
+.order-status.pending {
+    background-color: #FFC416;
+}
+
+.order-status.cancel {
+    background-color: #FF0000;
+}
+
 #date-create-order {
-    margin-left: 400px;
+    position: absolute;
+    right: 130px;
     font-size: 20px;
     margin-top: 10px;
 }

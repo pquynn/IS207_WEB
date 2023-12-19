@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../css/base.css">
 </head>
 <body>
-    <form>
+    <form action="Forgetpass.php" method="post">
         <table>
             <tr>
                 <td>
@@ -28,14 +28,25 @@
             </tr>
             <tr>
                 <td>
-                    <input type="text" id="phonenumber" placeholder=" Số điện thoại">
+                    <input type="text" id="phonenumber" placeholder=" Số điện thoại" required
+                    oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại.')"
+                    oninput="this.setCustomValidity('')">
                 </td>
             </tr>
             <tr>
-                <th colspan="2"><button class="btn btn-confirm" onclick="submit()">Tiếp tục</button></th>
+                <td colspan="2">
+                    <?php if (isset($error) && $error): ?>
+                        <p style="color: red;"><?php echo $error; ?></p>
+                    <?php endif; ?>
+                </td>
             </tr>
             <tr>
-                <td style="color: green; font-weight: bold;">Quay lại</td>
+                <th colspan="2"><button type="submit" class="btn btn-confirm">Tiếp tục</button></th>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">
+                    <a href="Login.html" onclick="regturnback()">Quay lại</a>
+                </td>
             </tr>
         </table>
     </form>
