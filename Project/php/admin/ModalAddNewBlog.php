@@ -16,11 +16,23 @@
                         </div>
 
                         <label for="blog-content" class="form-label">Nội dung</label>
-                        <textarea id="blog-content" class="form-control"></textarea>
+                        <textarea id="blog-content" class="form-control" required></textarea>
+                        <div class="invalid-feedback">
+                            Yêu cầu nhập nội dung.
+                        </div>
+
+                        <label for="author" class="form-label">Tác giả</label>
+                        <input type="text" id="author" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Yêu cầu nhập tác gỉa.
+                        </div>
                         
                         <label for="blog-img" class="form-label">Hình ảnh</label>
-                        <input type="file" id="blog-img" class="form-control">
-                        <div class="image-box" style="width: 100px;"></div>
+                        <input type="file" id="blog-img" class="form-control" required>
+                        <div class="image-box" style="width: 200px;"></div>
+                        <div class="invalid-feedback">
+                            Yêu cầu chọn 1 hình ảnh (.png, .jepg, .jpg).
+                        </div>
                     </div>
                     
                     <div class="modal-footer">

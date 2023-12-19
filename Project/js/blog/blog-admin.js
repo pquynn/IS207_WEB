@@ -1,6 +1,6 @@
+import {showToastr} from "../admin/toastr.js";
 var tbl_id, tbl_img, tbl_title, tbl_username, tbl_date, tbl_content;
 var formData;
-
 var closest_row;
 
 $(document).ready(function () {
@@ -21,11 +21,16 @@ $(document).ready(function () {
         modal.querySelector('form').reset(); // Reset the form
         $('#blog-name').removeClass('is-invalid'); //remove class is-invalid if the form was validated before
 
+        $('#blog-name').removeClass('is-invalid'); 
         Array.from(modal.querySelectorAll('.was-validated')).forEach((element) => {
             element.classList.remove('was-validated'); // Clear Bootstrap form validation classes
         });
+
+        // Add the 'required' attribute
+        $('#blog-images').attr('required', 'required');
+        // reset image form-control
+        $('.image-box').empty();
     });
-})
 
 
     // when submit #modal-form
@@ -36,39 +41,45 @@ $(document).ready(function () {
         var btn_name = $('#modal-form .btn-confirm').text();
         var blogName = $('#blog-name').val();
         var blogContent =  $('#blog-content').val();
-        var blogImg =  $('#blog-img').val();
-        var userId = 'KH0001';
-        var userName = "Nguyen van a";
-        var blogDay = '2023-11-23';
+        var userName = $('#author').val();
 
+        var searchTerm = $('#search').val();
+        formData.append('blogName', blogName);
+        formData.append('blogContent', blogContent);
+        formData.append('userName', userName);
     
-        if(btn_name.localeCompare("Thêm mới") == 0){
-            //insert 
-            Array.from(form).forEach(form_element => {
-            
-                if (form_element.checkValidity() === false) {
-                    $('.invalid-feedback').html('Yêu cầu nhập tên Blog');
+        Array.from(form).forEach(form_element => {
+            if (form_element.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            else 
+            {
+                if(btn_name.localeCompare("Thêm mới") === 0){
+                    var action = "insert";
+                    formData.append('action', action);
+
+                    event.preventDefault();
+                    insertProduct(searchTerm);
                     event.stopPropagation();
-                } else 
-                    insertBlog(userId, userName, blogImg, blogDay, blogContent, blogName);
-                
-                form.addClass('was-validated');
-            })
-        }
-        else{
-            //update
-            Array.from(form).forEach(form_element => {
-            
-                if (form_element.checkValidity() === false) {
-                    $('.invalid-feedback').html('Yêu cầu nhập tên Blog!');
+                }
+                else{
+                    var update_images = false;
+
+                    var files = $('#product-images')[0].files;
+                    if (files.length > 0) {
+                        update_images = true;
+                            
+                        var action = "update-images";
+                        formData.append('action', action);
+                    } 
+                    event.preventDefault();
+                    updateProduct(searchTerm);
                     event.stopPropagation();
-                } 
-                else 
-                    updateBlog(blogName);
-        
-                form.addClass('was-validated');
-            })
-        }
+                }
+            }
+            form.addClass('was-validated');
+        })
 
         
     });
@@ -96,8 +107,10 @@ $(document).ready(function () {
         var closest_row = $(this).closest('tr');
         // Get the datas from the row
         tbl_id = $.trim(closest_row.find('td:first').text());
-        tbl_title = $.trim(closest_row.find('td:eq(3)').text());
-        tbl_img = $.trim(closest_row.find('td:eq(2)').text());
+        tbl_title = $.trim(closest_row.find('td:eq(2)').text());
+        tbl_content = $.trim(closest_row.find('td:eq(3)').text());
+        tbl_username = $.trim(closest_row.find('td:eq(4)').text());
+        // tbl_img = $.trim(closest_row.find('td:eq(2)').text());
        
         // Remove the is-invalid class in form-controls
         var modal = document.getElementById('add-new');
@@ -106,8 +119,9 @@ $(document).ready(function () {
         });
         
         $('#blog-name').val(tbl_title);
-        $('#blog-img').fetchImages(tbl_id);
-        $('#blog-content').fetchContent(tbl_id);
+        fetchImages(tbl_id);
+        $('#blog-content').val(tbl_content);
+        $('#author').val(tbl_username);
         // Populate the modal form with the fetched category_name
         $('h1.modal-title').text('Thông tin ' + namePage);
         $('.btn-confirm').text('Thay đổi');
@@ -119,17 +133,15 @@ $(document).ready(function () {
         var searchTerm = $('#search').val();
 
         // Fetch data based on the search term
-        if(searchTerm.localeCompare('') != 0)
-            fetchSearchData(searchTerm, currentPage);
+        if(searchTerm !== 0)
+            fetchSearchData(searchTerm, 1);
         else
-            fetchData(currentPage);
+            fetchData(1);
     });
 
     // Event listener for the "Cancel" button of modal
     $('.btn-cancel').on('click', function () {
         if (confirm('Những thay đổi của bạn sẽ không được lưu?')) {
-            // Dismiss the modal if the user clicks "OK" in the confirm box
-            // Replace 'myModal' with the actual ID of your Bootstrap modal
             $('#add-new').modal('hide');
             // Clear the data and reset the form validation in the modal
             const modal = document.getElementById('add-new');
@@ -145,143 +157,65 @@ $(document).ready(function () {
     });
 
 
-
-
-
-
     // khi thêm file vào input
     $('#blog-img').on('change', function () {
-        // Add the 'required' attribute
-        $('#blog-img').attr('required', 'required');
+        $('#product-images').attr('required', 'required');
         var fileInput = $(this);
         var imageBox = $('.image-box');
         var invalidFeedback = $('.invalid-feedback.image');
-    
+
         // Check the number of selected files
-        var numberOfFiles = fileInput.files.length;
-    
+        var numberOfFiles = fileInput[0].files.length;
+
         // Clear previous content
         imageBox.empty();
-    
+
         // Check form validation and add 'is-invalid' class if needed
         if (numberOfFiles !== 1) {
             fileInput.addClass('is-invalid');
             invalidFeedback.show();
-            return;
         } else {
-           
-            //check file types
-            var files = fileInput.files;
-            
-           
-                var fileName = files.name;
-                var idxDot = fileName.lastIndexOf(".") + 1;
-                var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
-                
-                if (extFile !== "jpg" && extFile !== "jpeg" && extFile !== "png"){
-                    fileInput.value = ''; // Clear the file input
-                    fileInput.addClass('is-invalid');
-                    invalidFeedback.show();
-                    return;
-                
-            }
+            var file = fileInput[0].files[0];
+            var fileName = file.name;
+            var idxDot = fileName.lastIndexOf(".") + 1;
+            var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
 
-            fileInput.removeClass('is-invalid');
-            invalidFeedback.hide();
-        
-    
-            formData = new FormData();
-    
-            // Display selected images
-           
-                var file = fileInput.files;
+            // Check file type
+            if (extFile !== "jpg" && extFile !== "jpeg" && extFile !== "png") {
+                fileInput.value = ''; // Clear the file input
+                fileInput.addClass('is-invalid');
+                invalidFeedback.show();
+            } else {
+                fileInput.removeClass('is-invalid');
+                invalidFeedback.hide();
+
+                formData = new FormData();
+
+                // Display selected image
                 var reader = new FileReader();
-                formData.append('blog-img', file);
-                
-    
+                formData.append('product-image', file);
+
                 // Closure to capture the file information.
-                reader.onload = (function (theFile) {
-                    return function (e) {
-                        // Create an <img> element and set its source
-                        var img = $('<img>')
-                            .attr('src', e.target.result)
-                            .attr('max-width', '100px')
-                            .attr('height', '110px')
-                            .css('object-fit', 'contain');
-    
-                        // Append the <img> element to the imageBox
-                        imageBox.append(img);
-                    };
-        })(file);
-    
+                reader.onload = function (e) {
+                    // Create an <img> element and set its source
+                    var img = $('<img>')
+                        .attr('src', e.target.result)
+                        .attr('max-width', '200px')
+                        .attr('height', '150px')
+                        .css('object-fit', 'cover');
+
+                    // Append the <img> element to the imageBox
+                    imageBox.append(img);
+                };
+
                 // Read in the image file as a data URL.
                 reader.readAsDataURL(file);
             }
-        });
-        
-    
-
-    
-    // // Event listener for the "submit" button
-    $('#modal-form').submit(function (event) { 
-        var form = $(this);
-        var btn_name = $('#modal-form .btn-confirm').text();
-        // Create a temp_product object
-        var title =  $.trim($('#blog-name').val());
-        var content =  $.trim($('#blog-content').val());
-        var img =  $.trim($('#blog-img').val());
-        
-        formData.append('title', title);
-
-        
-
-        // check form validation before call function insert or update product    
-        Array.from(form).forEach(form_element => {
-            if (form_element.checkValidity() === false 
-            || isDuplicate === true
-            ) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            else 
-            {
-                if(btn_name.localeCompare("Thêm mới") === 0){
-                    var action = "insert-images";
-                    formData.append('action', action);
-
-                    event.preventDefault();
-                    insertBlog(title, content, img);
-                    // event.stopPropagation();
-                }
-                else{
-                  
-
-                    var files = $('#blog-img').files;
-                    if (files.length > 0) {
-                        update_images = true;
-                            
-                        var action = "update-images";
-                        formData.append('action', action);
-                    } 
-                    event.preventDefault();
-                    updateBlog(title, content, img);
-                    // event.stopPropagation();
-                }
-            }
-            form.addClass('was-validated');
-        })
+        }
     });
+        
 
-
-
-
-
-// Function to fetch categories from the server
-
-
-
-
-
+})
 
 //function to fetch data in database to table
 function fetchData(page){
@@ -305,6 +239,8 @@ function fetchData(page){
                 <td>${row.BLOG_ID}</td>
                 <td><div class="table-img" style="background-image: url(${imageUrl})"></div></td>
                 <td>${row.BLOG_TITLE}</td>
+                <td style="max-width: 300px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                    ${row.CONTENT} </td>
                 <td>${row.USER_NAME}</td>
                 <td>${row.BLOG_DAY}</td>
                 <td class="action">
@@ -319,6 +255,38 @@ function fetchData(page){
         },
         error: function () {
             console.error('Failed to fetch data from the server.');
+        }
+    });
+}
+
+// function to insert product images after product is inserted successfully
+function fetchImages(id) {
+    $.ajax({
+        url: '../../php/controller/Blog/blog-controller.php',
+        type: 'POST',
+        data: {action: 'fetch-images', id: id},
+        dataType: 'json',
+        success: function (data) {
+            var imageBox = $('.image-box');
+            
+            imageBox.empty();
+            var imageUrls = 'data:image/png;base64,' + data.BLOG_IMG;
+          
+            // Create an <img> element and set its source
+           
+                var img = $('<img>')
+                    .attr('src', imageUrls)
+                    .attr('width', '200px')
+                    .attr('height', '150px')
+                    .css('object-fit', 'cover');
+
+                // Append the <img> element to the imageBox
+                imageBox.append(img);
+            
+
+        },
+        error: function () {
+            console.error('Failed to fetch Blog from the server.');
         }
     });
 }
@@ -353,43 +321,37 @@ function updatePagination(currentPage, totalPages) {
   }
 
 // Function to insert product into the database
-function insertBlog (userId, userName, blogImg, blogDay, blogContent, blogName)  {
+function insertBlog (searchTerm)  {
     $.ajax({
         url: '../../php/controller/Blog/blog-controller.php',
         type: 'POST',
-        data: {
-            action: 'insert',
-            USER_ID: userId,
-            USER_NAME: userName,
-            BLOG_DAY: blogDay,
-            CONTENT: blogContent,
-            BLOG_IMG: blogImg,
-            BLOG_TITLE: blogName
-        },
-        dataType: 'json',
+        data: formData,
+        contentType: false,
+        processData: false,
         success: function (result) {
+            console.log(result);
             if (result.result === true) {
                alert('Đã thêm thành công Blog!'); 
                 //TODO: THÔNG BÁO THÊM THÀNH CÔNG
                 $('#add-new').modal('hide');
                 
                 var current_page = parseInt($('.pagination a.active').data('page'));
-                fetchData(current_page);
+                fetchSearchData(searchTerm, current_page);
+                showToastr('success', 'Thêm blog thành công');
             }
             else{
+                showToastr('warning', 'Tên blog đã tồn tại');
                 $('#blog-name').addClass('is-invalid');
                 $('#modal-form').addClass('was-validated');
             }
         },
         error: function () {
+            showToastr('error', 'Thêm blog không thành công');
             console.error('Failed to insert blog.');
         }
     });
     
 }
-
-// function to insert product images after product is inserted successfully
-
 
 
 // update a product
@@ -434,8 +396,6 @@ function updateBlog (update_images, name, content) {
     
 }
 
-
-
 // Function to delete product by product_id
 function deleteBlog(blog_id, closest_row) {
     $.ajax({
@@ -452,29 +412,29 @@ function deleteBlog(blog_id, closest_row) {
     });
 }
     
-
 // Function to fetch data based on search term (product name)
 function fetchSearchData(searchTerm, page) {
     $.ajax({
-        url: '../../php/controller/Blog/blog-controller.php',
+        url: '../../php/Controller/Blog/blog-controller.php',
         type: 'POST',
         data: {action: 'search', searchTerm: searchTerm, page: page },
         dataType: 'json',
         success: function (response) {
             var data = response.data;
             var totalPages = response.totalPages;
-
             // Populate the table with fetched data
-            var blog_body = $('.blog');
+            var blog_body = $('.admin-table tbody');
             blog_body.empty(); 
 
             data.forEach(function (row) {
-                var imageUrl = 'data:image/png;base64,' + row.first_picture;
+                var imageUrl = 'data:image/png;base64,' + row.BLOG_IMG;
                 blog_body.append(`
                 <tr>
                 <td>${row.BLOG_ID}</td>
                 <td><div class="table-img" style="background-image: url(${imageUrl})"></div></td>
                 <td>${row.BLOG_TITLE}</td>
+                <td style="max-width: 300px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                    ${row.CONTENT} </td>
                 <td>${row.USER_NAME}</td>
                 <td>${row.BLOG_DAY}</td>
                 <td class="action">
@@ -494,60 +454,3 @@ function fetchSearchData(searchTerm, page) {
     });
 }
 
-function fetchImages(id) {
-    $.ajax({
-        url: '../../php/controller/Blog/blog-controller.php',
-        type: 'POST',
-        data: {action: 'fetch-images', id: id},
-        dataType: 'json',
-        success: function (data) {
-            var imageBox = $('.image-box');
-            
-            imageBox.empty();
-            var imageUrls; // Corrected variable name
-
-            imageUrls.push('data:image/png;base64,' + data.tbl_img);
-          
-
-            // Create an <img> element and set its source
-           
-                var img = $('<img>')
-                    .attr('src', imageUrls)
-                    .attr('width', '100px')
-                    .attr('height', '110px')
-                    .css('object-fit', 'contain');
-
-                // Append the <img> element to the imageBox
-                imageBox.append(img);
-            
-
-        },
-        error: function () {
-            console.error('Failed to fetch Blog from the server.');
-        }
-    });
-}
-function fetchContent(id) {
-    $.ajax({
-        url: '../../controller/Blog/blog-controller.php',
-        type: 'POST',
-        dataType: 'json',
-        data: {action: 'fetch-content', id: id},
-        success: function (data) {
-            if (data) {
-                console.log(data);
-             
-              
-
-                $('#blog-content').text(data.CONTENT);
-               
-            }
-            else {
-                console.error('Empty data received from the server.');
-            }
-        },
-        error: function () {
-            console.error('Failed to fetch data from the server.');
-        }
-    });
-}
