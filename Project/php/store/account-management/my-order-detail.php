@@ -122,7 +122,8 @@
     </div>
   <!--DETAIL ORDER--END-->  
 </div>
-<script src="../../../js/store/my-order/detail.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="module" src="../../../js/my-order/my-order-detail-management"></script>
 <?php
     include("../header-footer-nav/footer.php");
 ?>
