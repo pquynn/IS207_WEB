@@ -260,3 +260,40 @@ button.btn{
 } /* personal-rating: end */
 /* rating tab: end */
 /* TAB: END */
+
+
+/* description style */
+.description-container{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.description-box{
+  white-space: pre-wrap;
+  height: fit-content;
+
+  overflow-y: auto; /* Add overflow-y property */
+  max-height: 662.5px; /* Set a maximum height */
+  position: sticky;
+  top: 0;
+}
+
+.description-box p{
+  font-size: 16px;
+  text-align: justify;
+  width: 95%;
+}
+
+.img-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.image-box{
+  width: 500px; /* Adjust width as needed */
+  height: 662.5px; /* Adjust height as needed */
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+
