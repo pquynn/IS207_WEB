@@ -52,6 +52,7 @@
     $stmt->bind_param(
         "isssissssssssss",  // Adjust data types accordingly
         $data_momo['id'],
+        $data_momo['partnerCode'],
         $data_momo['orderId'],
         $data_momo['requestId'],
         $data_momo['amount'],
@@ -67,17 +68,26 @@
         $data_momo['paymentOption']
     );
 
-    $stmt->execute();
-    $stmt->close();
-  
+    if($stmt->execute())
+    {
     //Thay đổi trạng thái đơn hàng trong csdl
       //Cập nhật thông tin đơn hàng
       $sqlUpdateOrder='UPDATE ORDERS SET STATUS="Đang chuẩn bị hàng" WHERE ORDER_ID=?';
       $buySql=$conn->prepare($sqlUpdateOrder);
       $buySql->bind_param("i", $data_momo['id']);
-      $buySql->execute();
-
-
+      if($buySql->execute()){
+        echo "
+        <script>
+        // Use JavaScript to remove query parameters from the URL
+        if (window.history.replaceState) {
+            // Modify the URL without a page reload
+            var cleanUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
+            window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+        }
+        </script>
+        ";
+      }
+    }
   }
 
   $conn->close();

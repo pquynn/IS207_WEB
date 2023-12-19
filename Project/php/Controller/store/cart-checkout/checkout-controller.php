@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
 
             // UPDATE TO DATA BASE: START
             $buySql=$conn->prepare($sqlUpdateOrder);
-            $buySql->bind_param("sssi", $fixedAddress, $fixedName, $fixedPhone, $orderId);
+            $buySql->bind_param("sssi", $fixedAddress, $fixedName, $fixedPhone, $order_id);
             if($buySql->execute()){
                 echo "Buy Succesfully";
             }
@@ -78,7 +78,7 @@ if (isset($_POST['submit'])) {
             $sqlUpdateOrder='UPDATE ORDERS SET ADDRESS=?, NAME=?, TELEPHONE=?, PAY="MoMo" WHERE ORDER_ID=?';
            
             $buySql=$conn->prepare($sqlUpdateOrder);
-            $buySql->bind_param("sssi", $fixedAddress, $fixedName, $fixedPhone, $orderId);
+            $buySql->bind_param("sssi", $fixedAddress, $fixedName, $fixedPhone, $order_id);
             if($buySql->execute()){
               
                 //Lấy số tiền cần thanh toán 
@@ -100,8 +100,8 @@ if (isset($_POST['submit'])) {
                     $orderInfo = "Thanh toán qua MoMo";
                     $amount = $total;
                     $orderId = time() ."";
-                    $redirectUrl = "http://localhost/IS207_WEB/IS207_WEB/Project/php/store/checkout/buySuccess.php";
-                    $ipnUrl = "http://localhost/IS207_WEB/IS207_WEB/Project/php/store/checkout/buySuccess.php";
+                    $redirectUrl = "http://localhost/IS207_WEB/IS207_WEB/Project/php/store/checkout/buySuccess.php?id=" . $order_id;
+                    $ipnUrl = "http://localhost/IS207_WEB/IS207_WEB/Project/php/store/checkout/buySuccess.php?id=" . $order_id;
                     $extraData = "";
 
                     $partnerCode = $partnerCode;
