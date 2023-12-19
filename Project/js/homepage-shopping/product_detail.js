@@ -88,6 +88,11 @@ if (window.location.href.includes("product_detail.php")) {
 
           $('.btn-size').click(function () {
             productSize = $(this).text();
+            // Loại bỏ lớp "active" từ tất cả các thẻ a
+            $(".size .btn-size").removeClass("btn-active");
+
+            // Thêm lớp "active" cho thẻ a được click
+            $(this).addClass("btn-active");
           });
 
           $('.btn-cancel').click(function () {

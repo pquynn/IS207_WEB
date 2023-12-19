@@ -94,7 +94,6 @@
                 <a style='cursor: pointer;' class="accordion-body categoryGender" id="Nam">Giày nam</a>
                 <a style='cursor: pointer;' class="accordion-body categoryGender" id="Nữ">Giày nữ</a>
                 <a style='cursor: pointer;' class="accordion-body categoryGender" id="Nam, nữ">Giày nam, nữ</a>
-
               </div>
               <!-- accordion-item body: start  -->
             </div>
@@ -114,9 +113,6 @@
           <select name="sort" id="sort">
             <option value="cheap-to-expensive" >Sắp xếp theo giá tăng dần</option>
             <option value="expensive-to-cheap">Sắp xếp theo giá giảm dần</option>
-            <!-- <option value="male">Giày nam</option>
-            <option value="female">Giày nữ</option>
-            <option value="male-female">Giày nam, nữ</option> -->
           </select>
           <!-- sort-option: end -->
 
