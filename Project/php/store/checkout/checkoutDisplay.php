@@ -17,7 +17,7 @@ function getChekoutData(){
                         ON order_detail.ORDER_ID = orders.ORDER_ID
                         INNER JOIN product_pictures
                         ON order_detail.product_id = product_pictures.product_id
-                    WHERE orders.ORDER_ID=1";
+                    WHERE orders.ORDER_ID=8";
     $productData = $conn -> query($sqlProductData);
     $customerData = $conn -> query($sqlCustomerData);
     
