@@ -6,6 +6,8 @@ $(document).ready(function () {
         success: function (data) {
             if (data) {
                 data.forEach(function (row) {
+                    var words = (row.CONTENT).split(' ').slice(0, 40).join(' ');
+
                     let imageBlog = 'data:BLOG_IMG/png;base64,' + row.BLOG_IMG;
                     $('.blog').append(`
                         <div class="blog-content zoom-when--hover">
@@ -14,7 +16,7 @@ $(document).ready(function () {
                                     <img class="blog-img zoom-img" src="${imageBlog}" alt="" />
                                 </div>
                                 <p class="blog-title">${row.BLOG_TITLE}</p>
-                                <p class="preview-content">${row.CONTENT}</p>
+                                <p class="preview-content">${words + '...'}</p>
                             </a>
                         </div>
                     `);
