@@ -1,7 +1,6 @@
 /** @format */
-
+console.log(user_id);
 var myCart = [];
-var userID = 'KH0001';
 var quantityOfProduct = [];
 
 if (window.location.href.includes("product_detail.php")) {
@@ -50,8 +49,6 @@ if (window.location.href.includes("product_detail.php")) {
               <button class="btn-size">${row.SIZE}</button>
             `);
           });
-
-          console.log(quantityOfProduct);
 
           let countComment = data.tableComment.length;
           let avgScore = 0;
@@ -143,7 +140,7 @@ if (window.location.href.includes("product_detail.php")) {
                 };
 
                 // Trường hợp không đăng nhập
-                if (userID === null) {
+                if (user_id === null) {
                   // Đưa sản phẩm được chọn vào giỏ hàng.
                   myCart.push(tempProduct);
 
@@ -155,7 +152,7 @@ if (window.location.href.includes("product_detail.php")) {
                     type: 'POST',
                     url: '../../controller/homepage-shopping/add-to-cart-controller.php',
                     data: {
-                      userID: userID,
+                      userID: user_id,
                       productData: tempProduct
                     },
                     success: function (response) {
@@ -205,7 +202,7 @@ if (window.location.href.includes("product_detail.php")) {
                 };
 
                 // Trường hợp không đăng nhập
-                if (userID === null) {
+                if (user_id === null) {
                   // Đưa sản phẩm được chọn vào giỏ hàng.
                   myCart.push(tempProduct);
 
@@ -218,7 +215,7 @@ if (window.location.href.includes("product_detail.php")) {
                     type: 'POST',
                     url: '../../controller/homepage-shopping/add-to-cart-controller.php',
                     data: {
-                      userID: userID,
+                      userID: user_id,
                       productData: tempProduct
                     },
                     success: function (response) {

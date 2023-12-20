@@ -1,8 +1,7 @@
-<?php session_start(); 
-echo $_SESSION['user_id'];
-echo '<script>';
-echo 'var user_id_session =' . json_encode($_SESSION['user_id']) . ';';
-echo '</script>';
+<?php
+  session_start();
+  $user_id = isset($_SESSION['user_id']) ? json_encode($_SESSION['user_id']) : 'null';
+  echo '<script> var user_id =' . $user_id . ';</script>';
 ?>
 
 <link rel="stylesheet" href="../../../css/store/product_list.css">

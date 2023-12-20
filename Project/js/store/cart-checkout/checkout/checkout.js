@@ -1,4 +1,7 @@
 /** @format */
+// Chỉ cần sử dụng user_id (Nếu chưa đăng nhập thì null)
+console.log(user_id);
+
 $(document).ready(function () {
   displayCheckout();
 });

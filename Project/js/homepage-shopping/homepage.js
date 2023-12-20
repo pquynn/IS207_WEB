@@ -2,8 +2,7 @@ import { showToastr } from "../admin/toastr.js";
 
 // Fetch data using AJAX
 $(document).ready(function () {
-    console.log('session');
-    console.log('session' + user_id_session);
+    console.log(user_id);
     //HIỂN THỊ THÔNG BÁO ĐĂNG NHẬP THÀNH CÔNG NẾU CÓ ĐĂNG NHẬP
     // Get the URL parameters
     var urlParams = new URLSearchParams(window.location.search);
@@ -11,7 +10,7 @@ $(document).ready(function () {
     if (urlParams.has('login')) {
         // Get the value of login
         var loginSuccessValue = urlParams.get('login');
-        console.log(loginSuccessValue);
+        // console.log(loginSuccessValue);
         // Example: Show a message if login_success is 1
         if (loginSuccessValue == '1') {
             showToastr('success', 'Đăng nhập thành công.');

@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  $user_id = isset($_SESSION['user_id']) ? json_encode($_SESSION['user_id']) : 'null';
+  echo '<script> var user_id =' . $user_id . ';</script>';
+?>
     <!-- Add particular css link to file: start -->
       <link rel="stylesheet" href="../../../css/store/checkout.css" />
     <!-- Add particular css link to file: start -->
