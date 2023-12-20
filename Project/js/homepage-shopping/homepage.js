@@ -1,5 +1,33 @@
+import { showToastr } from "../admin/toastr.js";
+
 // Fetch data using AJAX
 $(document).ready(function () {
+
+    //HIỂN THỊ THÔNG BÁO ĐĂNG NHẬP THÀNH CÔNG NẾU CÓ ĐĂNG NHẬP
+    // Get the URL parameters
+    var urlParams = new URLSearchParams(window.location.search);
+    // Check if the parameter exists, 
+    if (urlParams.has('login')) {
+        // Get the value of login
+        var loginSuccessValue = urlParams.get('login');
+        console.log(loginSuccessValue);
+        // Example: Show a message if login_success is 1
+        if (loginSuccessValue == '1') {
+            showToastr('success', 'Đăng nhập thành công.');
+        }
+
+                // Get the current URL
+        var currentUrl = window.location.href;
+
+        // Check if the URL contains the login_success parameter
+        if (currentUrl.includes('login')) {
+            // Remove the login parameter
+            var updatedUrl = currentUrl.replace(/(\?|&)login=[^&]*(&|$)/, '$1');
+            // Use replaceState to update the URL without reloading the page
+            window.history.replaceState({}, document.title, updatedUrl);
+        }
+    }
+    
 
     $.ajax({
         url: '../../controller/homepage-shopping/homepage-controller.php',

@@ -8,37 +8,42 @@
 
                 <div class="modal-header" style="border-bottom: none;">
                     <h1 class="modal-title fs-5" id="modal-profile">SỬA THÔNG TIN</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="row row-gap-3">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Họ và tên*" required>
-                                <label for="name">Họ và tên*</label>
+                                <input type="text" class="form-control" id="name-profile" placeholder="Họ và tên*" required
+                                oninvalid="this.setCustomValidity('Vui lòng nhập họ và tên.')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="name-profile">Họ và tên*</label>
                             </div>
 
                             <div class="form-floating">
-                                <input type="date" class="form-control" id="dateofbirth" required>
-                                <label for="phonenumber">Ngày sinh*</label>
+                                <input type="tel" class="form-control" id="phonenumber" placeholder=" Số điện thoại*" required pattern="^0[0-9]{9}$"
+                                    oninvalid="this.setCustomValidity('Yêu cầu nhập số điện thoại có 10 số và bắt đầu =0')"
+                                    oninput="this.setCustomValidity('')">
+                                
+                                <label for="phonenumber"> Số điện thoại*</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="date" class="form-control" id="dateofbirth">
+                                <label for="dateofbirth">Ngày sinh*</label>
                             </div>
 
                             <div>
-                                <input type="radio" id="nam" name="gioitinh">
+                                <input type="radio" id="nam" value="Nam" name="gioitinh">
                                 <label for="radio1">Nam</label>
 
-                                <input type="radio" id="nu" name="gioitinh">
+                                <input type="radio" id="nu" value="Nữ" name="gioitinh">
                                 <label for="radio2">Nữ</label>
 
-                                <input type="radio" id="khac" name="gioitinh">
-                                <label for="radio3">Khác</label>
                             </div>
 
                             <div class="btn-container">
-                                <button class="btn btn-confirm" onclick="savechange()" style="width: 100%;">Lưu thay
-                                    đổi</button>
-                                <button class="btn btn-cancel" onclick="cancel()" data-bs-dismiss="modal"
-                                    style="width: 100%;">Hủy</button>
+                                <button class="btn btn-confirm" style="width: 100%;">Lưu thay đổi</button>
+                                <button class="btn btn-cancel" style="width: 100%;">Hủy</button>
                             </div>
                         </div>
 

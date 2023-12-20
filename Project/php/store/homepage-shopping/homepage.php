@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../../../css/style-components/homepage.css">
 <link rel="stylesheet" href="../../../css/store/blog.css">
 <link rel="stylesheet" href="../../../css/store/slider.css">
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
     
     <!-- Start of header -->
     <?php 
@@ -86,8 +86,9 @@
     </div>
     <!-- MAIN SLIDER: END -->
 
-    <script src="../../../js/homepage-shopping/homepage.js"></script>
-    <script src="../../../js/homepage-shopping/homepage-slider.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="module" src="../../../js/homepage-shopping/homepage.js"></script>
+    <script type="module" src="../../../js/homepage-shopping/homepage-slider.js"></script>
 
     <!-- Start of footer -->
     <?php include("../header-footer-nav/footer.php"); ?>

@@ -1,27 +1,6 @@
 const table = document.querySelector('.admin-table table');
 const page_name = $('.section_heading').text();
 
-// export function showToastr(type, message){
-//     toastr.options = {
-//     "closeButton": false,
-//     "debug": false,
-//     "newestOnTop": false,
-//     "progressBar": true,
-//     "positionClass": "toast-top-right",
-//     "preventDuplicates": true,
-//     "onclick": null,
-//     "showDuration": "300",
-//     "hideDuration": "500",
-//     "timeOut": "2100",
-//     "extendedTimeOut": "1000",
-//     "showEasing": "swing",
-//     "hideEasing": "linear",
-//     "showMethod": "fadeIn",
-//     "hideMethod": "fadeOut"
-//     }
-
-//     toastr[type](message)
-// }
 
 //START: CONFIRMATION POPUP----------
 // exit confirmation popup

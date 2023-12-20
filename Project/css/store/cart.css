@@ -5,6 +5,11 @@
 }
 
 /* general */
+:root {
+  --bs-btn-hover-color: white;
+  --bs-btn-hover-bg: var(--orange);
+}
+
 p {
   margin-bottom: 0 !important;
 }
@@ -82,7 +87,7 @@ p {
 }
 
 /* amount */
-.product input {
+.amount .amount-feld {
   min-width: 30px;
   max-width: 50px;
   border: none;
@@ -95,11 +100,11 @@ p {
   -webkit-appearance: none;
 }
 
-.amount-btn {
+div > .amount-btn {
   background-color: #d9d9d9;
   border: solid 1px;
   padding: 2px 7px;
-  /* cursor: pointer; */
+  cursor: pointer;
 }
 
 /* remove */
@@ -172,3 +177,34 @@ p {
 .checkout-bnt:hover {
   background-color: var(--orange) !important;
 }
+
+/* empty cart: star */
+.empty-cart {
+  text-align: center;
+}
+
+.empty-cart--img {
+  width: 35%;
+  margin-bottom: 30px;
+}
+
+.empty-cart--notification {
+  font-size: 17px;
+}
+
+.empty-cart > .empty-cart--shopping {
+  font-weight: 800;
+  font-size: 14px;
+  border: solid 1px;
+  border-radius: 0;
+  padding: 10px;
+  margin-top: 16px;
+}
+/* empty cart: end */
+
+/* js: start */
+/* hide component */
+.hidden {
+  display: none;
+}
+/* js: end */

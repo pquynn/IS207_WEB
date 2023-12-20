@@ -5,7 +5,7 @@
     <!-- BODY HEADER: Start -->
     <?php 
       $title = "Thanh toán";
-      include('../header-footer-nav/header.php');
+      include("../header-footer-nav/header.php");
     ?>
     <!-- BODY HEADER: End -->
 
@@ -14,38 +14,23 @@
       <!-- CHECKOUT HEADER: Start -->
       <div class="checkout-header">
         <h2>Thanh toán</h2>
-        <a href="#">
+        <a href="#" onclick="location.href='../cart/cart.php'">
           <span class="material-symbols-outlined"> keyboard_backspace </span
-          >Tiếp tục mua sắm
+          >Quay về giỏ hàng
         </a>
       </div>
       <!-- CHECKOUT's HEADER: End -->
 
       <!-- CHECKOUT BODY: Start -->
-      <form>
+      <!-- <form action="checkoutBuy.php" method="get"> -->
+      <form action="../../Controller/store/cart-checkout/checkout-controller.php" method="post">
         <div class="checkout-body flex">
           <!-- INFOR FORM: Start -->
-          <div class="left-col">
+          <div class="left-col" style="width: 50%;">
             <div class="infor-form flex flex-col">
               <!-- GENDER: Start -->
               <div class="gender flex">
-                <div>
-                  <input
-                    class="square-radio"
-                    type="radio"
-                    name="gender"
-                    id="nam" />
-                  <label for="nam">Nam</label>
-                </div>
-
-                <div>
-                  <input
-                    class="square-radio"
-                    type="radio"
-                    name="gender"
-                    id="nu" />
-                  <label for="nu">Nữ</label>
-                </div>
+                <!-- GENDER REDIO HERE -->
               </div>
               <!-- GENDER: End -->
 
@@ -53,44 +38,59 @@
               <input
                 type="text"
                 placeholder="Họ tên*"
+                name="name"
                 required
-                class="input-char" />
+                class="input-char customer-name" 
+                aria-required="true"/>
               <!-- NAME: End -->
 
               <!-- PHONE NUMBER: Start -->
               <input
-                type="number"
+                type="tel"
                 placeholder="SĐT*"
+                name="phone"
+                aria-required="true"
                 required
-                class="input-char" />
-              
+                class="input-char customer-phone" 
+                pattern="(\+84|0)\d{7,10}"/>
               <!-- PHONE NUMBER: End -->
 
               <!-- ADDRESS: Start -->
               <div class="address width-50-30">
+                <!-- City -->
                 <input
                   type="text"
-                  placeholder="Tỉnh/Thành phố*"
-                  required
-                  class="input-char" />
-                <input
+                  class="input-char"
+                  id="city"
+                  name="city"
+                  placeholder="Tỉnh/Thành*"
+                  required/>
+
+                  <input
                   type="text"
-                  placeholder="Huyện/Phường*"
-                  required
-                  class="input-char" />
+                  class="input-char"
+                  id="district"
+                  name="district"
+                  placeholder="Quận/Huyện*"
+                  required/>
+                </select>
               </div>
 
               <div class="address width-50-50">
                 <input
                   type="text"
-                  placeholder="Tổ/Ấp*"
-                  required
-                  class="input-char" />
+                  class="input-char"
+                  id="ward"
+                  name="ward"
+                  placeholder="Xã/Phường*"
+                  required/>
                 <input
                   type="text"
-                  placeholder="Hẻm, số nhà,...*"
+                  placeholder="Ấp, Hẻm, số nhà,...*"
                   required
-                  class="input-char" />
+                  id="street"
+                  name="street"
+                  class="input-char address-text" />
               </div>             
               <!-- ADDRESS: End -->
 
@@ -106,19 +106,22 @@
               <div class="payment">
                 <div class="payment-header flex vertical-center">
                   <div class="flex vertical-center">
-                    <img src="../../../img/footer_image/paypal.png" />Pay Pal
+                    <!-- <img src="../../../img/footer_image/paypal.png" />Pay Pal -->
+                    <img src="https://cdn-icons-png.flaticon.com/512/5229/5229335.png" />COD
                   </div>
                   <input
                     type="radio"
-                    value="paypal"
+                    value="cod"
                     class="square-radio"
-                    name="payment" />
+                    name="payment" 
+                    id="cod"
+                    required/>
                 </div>
               </div>
 
               <!-- master card -->
 
-              <div class="payment">
+              <!-- <div class="payment">
                 <div class="payment-header flex vertical-center">
                   <div class="flex vertical-center">
                     <img src="../../../img/footer_image/mastercard.png" />Master Card
@@ -127,22 +130,42 @@
                     type="radio"
                     value="paypal"
                     class="square-radio"
-                    name="payment" />
+                    name="payment"
+                    required />
                 </div>
-              </div>
+              </div> -->
 
-              <!-- Napas -->
+              <!-- atm momo -->
               <div class="payment">
                 <!-- header -->
                 <div class="payment-header flex vertical-center">
                   <div class="flex vertical-center">
-                    <img src="../../../img/footer_image/napas.png" />Napas
+                    <img src="../../../img/footer_image/momo.png" />ATM MOMO
                   </div>
                   <input
                     type="radio"
-                    value="paypal"
+                    value="payUrl"
                     class="square-radio"
-                    name="payment" />
+                    name="payment"
+                    id="payUrl"
+                    required/>
+                </div>
+              </div>
+
+              <!-- ví momo -->
+              <div class="payment">
+                <!-- header -->
+                <div class="payment-header flex vertical-center">
+                  <div class="flex vertical-center">
+                    <img src="../../../img/footer_image/momo.png" />VÍ MOMO
+                  </div>
+                  <input
+                    type="radio"
+                    value="momo-wallet"
+                    class="square-radio"
+                    name="payment"
+                    id="momo-wallet"
+                     required/>
                 </div>
               </div>
             </div>
@@ -158,79 +181,34 @@
                 <td>Sản phẩm</td>
                 <td>Tổng</td>
               </tr>
-
-              <!-- product -->
-              <tr class="product-checkout">
-                <td class="product-infor">
-                  <img
-                    class="product-img"
-                    src="https://bisuth-store-demo.myshopify.com/cdn/shop/products/14.4.png?v=1657703781" />
-                  <div class="product-descr">
-                    <a href="#">Tên sản phẩm</a>
-                    <small class="gray-text">Màu, size</small>
-                    <small>X1</small>
-                  </div>
-                </td>
-
-                <td>300.000</td>
-              </tr>
-              <!-- product -->
-              <tr class="product-checkout">
-                <td class="product-infor">
-                  <img
-                    class="product-img"
-                    src="https://bisuth-store-demo.myshopify.com/cdn/shop/products/14.4.png?v=1657703781" />
-                  <div class="product-descr">
-                    <a href="#">Tên sản phẩm</a>
-                    <small class="gray-text">Màu, size</small>
-                    <small>X1</small>
-                  </div>
-                </td>
-
-                <td>300.000</td>
-              </tr>
-              <!-- product -->
-              <tr class="product-chekout">
-                <td class="product-infor">
-                  <img
-                    class="product-img"
-                    src="https://bisuth-store-demo.myshopify.com/cdn/shop/products/14.4.png?v=1657703781" />
-                  <div class="product-descr">
-                    <a href="#">Tên sản phẩm</a>
-                    <small class="gray-text">Màu, size</small>
-                    <small>X1</small>
-                  </div>
-                </td>
-
-                <td>300.000</td>
-              </tr>
+              <!-- PRODUCT LIST HERE -->
             </table>
             <!-- PRODUCT LIST: End -->
 
             <!-- BUY SECTION: Start -->
             <div class="buy-section">
               <!-- sub total -->
+
               <div class="sub-total flex">
-                <p>Tạm tính (3 sản phẩm)</p>
-                <p>183.000 đ</p>
+                <!-- SUB TOTAL HERE -->
               </div>
 
               <!-- total -->
               <div class="total flex">
                 <p>Tổng <small>(bao gồm VAT)</small></p>
-                <p>143.910 đ</p>
+                <!-- TOTAL HERE -->
               </div>
 
               <!-- buy -->
-              <input class="buy-btn btn" type="submit" value="Mua" />
+              <input class="buy-btn btn" name="submit" type="submit" value="Mua"/>
+              <!-- <input class="buy-btn btn" name="payUrl" type="submit" value="Thanh toán qua MoMo"/> -->
               <!-- accept rule -->
-              <input type="checkbox" id="accept-rule" />
+              <input type="checkbox" id="accept-rule" required/>
               <label for="accept-rule" class="gray-text"
                 ><small>
                   Tôi đồng ý chính sách bảo mật của cửa hàng.</small
                 ></label
               >
-              <!-- avaliable pament method -->
             </div>
             <!-- BUY SECTION: Start -->
 
@@ -271,7 +249,11 @@
     <!-- CHECKOUT'S MAIN CONTENT: End -->
 
     <!-- page footer : start -->
-      <?php include('../header-footer-nav/footer.php');?>
-      <!-- page footer : end -->
-  </body>
-</html>
+    <?php include('../header-footer-nav/footer.php');?>
+    <!-- page footer : end -->
+
+    <!-- js: start -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../js/store/cart-checkout/checkout/checkout.js"></script>
+    <!-- js: end -->

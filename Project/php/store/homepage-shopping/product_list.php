@@ -1,6 +1,5 @@
-  <link rel="stylesheet" href="../../../css/store/product_list.css">
-  <link rel="stylesheet" href="../../../css/style-components/pagination.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="../../../css/store/product_list.css">
+<link rel="stylesheet" href="../../../css/style-components/pagination.css">
 
   <!-- Start of header -->
   <?php 
@@ -23,14 +22,14 @@
         </nav>
         <!-- DESCRIPTION -->
         <p class="category-search-intro">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non sit
+          <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non sit
           adipiscing at habitasse lorem volutpat id. Ipsum urna tortor tempus
           hendrerit mauris, diam, ante. Sit ultricies sed mauri-s, consequat.
           Urna, eu tortor, feugiat id in. Pulvinar sit quis nibh mauris non
           cursus blandit. Vel amet malesuada vulputate auctor enim vitae. Enim
           mi et, fermentum imperdiet. Faucibus tellus a tincidunt arcu proin
           mattis egestas varius amet. Tortor tellus lobortis ut pretium nunc
-          elit, ornare.
+          elit, ornare. -->
         </p>
       </div>
       <!-- CATEGORY-HEADER: ENS -->
@@ -140,15 +139,13 @@
     </div>
     <!-- PRODUCT-LIST--BODY: end -->
   
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"></script>
-      <script src="../../../js/homepage-shopping/product_list.js"></script>
+    <script src="../../../js/homepage-shopping/product_list.js"></script>
     <!-- js: end -->
 
     <!-- Start of footer -->
     <?php include("../header-footer-nav/footer.php"); ?>
     <!-- End of footer -->
-
