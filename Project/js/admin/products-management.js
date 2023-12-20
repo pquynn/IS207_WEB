@@ -104,8 +104,7 @@ $(document).ready(function () {
         // Remove the 'required' attribute
         $('#product-images').removeAttr('required');
 
-        //TODO:LOAD TỪ CSDL: ẢNH, CATEGORY, SIZE - QUANTITY
-
+        
         // reset image form-control
         fetchImages(tbl_id);
         fetchVariants(tbl_id);

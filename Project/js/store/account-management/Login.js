@@ -50,12 +50,13 @@ $(document).ready(function() {
 
 
   $('.btn-confirm').on('click', function(e){
-    e.preventDefault();
+    // e.preventDefault();
 
     var userlogin = document.getElementById("userlogin").value;
     var pass = document.getElementById("pass").value;
 
-    if(userlogin.localeCompare('') != 0 && pass.localeCompare('') != 0){
+    if(userlogin != 0 && pass != 0){
+      e.preventDefault();
       // gửi dữ liệu đăng nhập lên server
       var xhr = new XMLHttpRequest();
       xhr.open("POST", "../../../php/controller/store/login-signup-forgotpw/login-controller.php", true);

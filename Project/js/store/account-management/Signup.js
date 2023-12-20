@@ -9,12 +9,15 @@ $(document).ready(function () {
         var userlogin = document.getElementById('userlogin').value;
         var password = document.getElementById('password').value;
         var repassword = document.getElementById('repassword').value;
+        var input_phone = document.getElementById('customerphone');
 
-        if(name.localeCompare('') != 0 
-        && customerphone.localeCompare('') != 0
-        && userlogin.localeCompare('') != 0
-        && password.localeCompare('') != 0
-        && repassword.localeCompare('') != 0){
+        if(name != 0 
+        && customerphone != 0
+        && userlogin != 0
+        && password != 0
+        && repassword != 0
+        && input_phone.checkVisibility()){
+            event.preventDefault();
             // Kiểm tra mật khẩu nhập lại
             if (password !== repassword) {
                 showToastr('error', 'Mật khẩu không khớp. Vui lòng nhập lại.');
