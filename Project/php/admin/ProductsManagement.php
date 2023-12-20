@@ -1,11 +1,26 @@
-<!-- Init basic layout, components. Modified 10/23/2023 by Quyen. 
-    Not have: 
-    + export button event
-    + filter button event
-    + responsive
--->
     <!-- start: admin navigation -->
     <?php 
+        // session_start();
+        // ob_start();
+    
+        // // Check if user is logged in and role_id is set in the session
+        // if (isset($_SESSION['user_id']) && isset($_SESSION['role_id'])) {
+        //     $user_id = $_SESSION['user_id'];
+        //     $role_id = $_SESSION['role_id'];
+        //     $user_name = $_SESSION['user_name']; //user_name phải tự tìm hay có trong session?
+    
+        //     // Include the specific dashboard based on the role
+        //     if($role_id != 1 && $role_id != 2){
+        //         header("Location: ../store/login-signup-forgot/Login.php");
+        //         exit();
+        //     }
+    
+        // } else {
+        //     // Redirect to login page if user is not logged in or role_id is not set
+        //     header("Location: ../store/login-signup-forgot/Login.php");
+        //     exit();
+        // }
+        $role_id = 1;
         $title = "Quản lý sản phẩm";
         include("AdminNavigation.php");
     ?>
@@ -31,7 +46,6 @@
                             <th>Ảnh</th>
                             <th>Tên sản phẩm</th>
                             <th>Giá</th>
-                            <th>Kích thước</th>
                             <th>Phân loại</th>
                             <th>Màu sắc</th>
                             <th>Giới tính</th>
@@ -46,14 +60,6 @@
 
             <!-- start: pagination in admin -->
             <div class="pagination admin">
-                <!-- <a href="#">&laquo;</a>
-                <a class="active" href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">&raquo;</a> -->
             </div>
             <!-- end: pagination in admin -->
         </div>
@@ -66,14 +72,8 @@
         <?php include("ModalAddNewProduct.php"); ?>
     <!-- end of Modal of Add new elements-->
 
-    <!-- start of warning message when click del-btn -->
-        <?php 
-            // $alert_message = "xóa sản phẩm";
-            // $alert_action = "Xóa";
-            // include("ModalAlert.php"); 
-        ?>
-    <!-- end of warning message when click del-btn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="../../js/admin/common.js"></script>
-    <script src="../../js/admin/products-management.js"></script>
+    <script type="module" src="../../js/admin/products-management.js"></script>
 </body>
 </html>

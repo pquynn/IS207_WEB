@@ -1,5 +1,26 @@
     <!-- start: admin navigation -->
     <?php 
+        // session_start();
+        // ob_start();
+    
+        // // Check if user is logged in and role_id is set in the session
+        // if (isset($_SESSION['user_id']) && isset($_SESSION['role_id'])) {
+        //     $user_id = $_SESSION['user_id'];
+        //     $role_id = $_SESSION['role_id'];
+        //     $user_name = $_SESSION['user_name']; //user_name phải tự tìm hay có trong session?
+
+        //     // Include the specific dashboard based on the role
+        //     if($role_id != 1){
+        //         header("Location: ../store/login-signup-forgot/Login.php");
+        //         exit();
+        //     }
+    
+        // } else {
+        //     // Redirect to login page if user is not logged in or role_id is not set
+        //     header("Location: ../store/login-signup-forgot/Login.php");
+        //     exit();
+        // }
+        $role_id = 1;
         $title = "Quản lý nhân viên";
         include("AdminNavigation.php");
     ?>
@@ -17,7 +38,7 @@
         <div class="section_bottom-content">
             <!-- start: admin table -->
             <div class="admin-table">
-                <table>
+                <table >
                     <thead>
                         <tr>
                             <th>#</th>
@@ -26,28 +47,13 @@
                             <th>Họ tên</th>
                             <th>Ngày sinh</th>
                             <th>Giới tính</th>
-                            <th>Địa chỉ</th>
+                            <th style="max-width: 100px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">Địa chỉ</th>
                             <th>Ngày thêm</th>
                             <th>Vai trò</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
-                    <!-- <tr>
-                        <td>1</td>
-                        <td>vannguyen</td>
-                        <td>0123456789</td>
-                        <td>Nguyễn Văn</td>
-                        <td>13/07/2000</td>
-                        <td>Nữ</td>
-                        <td>Linh Trung, Thủ Đức</td>
-                        <td>18/10/2023</td>
-                        <td>Nhân viên</td>
-                        <td class="action">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#alert" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr> -->
                 </table>
             </div>
             <!-- end: admin table -->
@@ -66,7 +72,8 @@
     <?php include("ModalAddNewEmployee.php"); ?>
     <!-- end of Modal of Add new elements-->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="../../js/admin/common.js"></script>
-    <script src="../../js/admin/employees-management.js"></script>
+    <script type="module" src="../../js/admin/employees-management.js"></script>
 </body>
 </html>

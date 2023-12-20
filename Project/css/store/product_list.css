@@ -136,6 +136,29 @@ div a.accordion-body:hover {
   color: #e96d00;
   font-weight: bold;
 }
+
+/* Active color */
+.active {
+  color: var(--orange);
+}
+
+/* Clear Button */
+#clearFilter {
+  color: white;
+  width: 100px;
+  background-color: red;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 0;
+  position: absolute;
+  left: 50%;;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#clearFilter:hover {
+  opacity: 0.6;
+}
 /* ACCORDION: END */
 
 /* PRICE: START */

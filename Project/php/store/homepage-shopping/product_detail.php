@@ -10,14 +10,7 @@
     <!-- PRODUCT DETAIL'S BODY: START -->
     <div class="product-detail--body">
       <div class="product-nav">
-        <h1>For Shoes</h1>
-        <nav class="product-detail-link" aria-label="breadcrumb">
-          <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">For Shoes</a></li>
-            <li><a class="breadcrumb-item" href="#">Sneaker</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Adidas</li>
-          </ul>
-        </nav>
+        <h1></h1>
       </div>
       <div class="main-info">
         <!--Khung giới thiệu ảnh sản phẩm-->
@@ -75,17 +68,6 @@
             aria-selected="true">
             Mô tả
           </button>
-          <!-- <button
-            class="nav-link tag-btn"
-            id="nav-profile-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-profile"
-            type="button"
-            role="tab"
-            aria-controls="nav-profile"
-            aria-selected="false">
-            Chi tiết
-          </button> -->
           <button
             class="nav-link tag-btn"
             id="nav-contact-tab"
@@ -111,14 +93,22 @@
           aria-labelledby="nav-home-tab">
 
           <!-- Ai đó hãy sữa giùm style chỗ này đc ko :))) -->
-          <div style="display: flex; justify-content: space-around;"> 
-            <p style="flex: 1;"></p>
-            <div style="display: flex; flex-wrap: wrap;">
-              <img src="" alt="" id="second_img" width="450px" height="562.5px">
-              <img src="" alt="" id="third_img" width="450px" height="562.5px">
-            </div>
+          <div class='description-container'> 
+              <div class="description-box">
+                <p style="flex: 1;"></p>
+              </div>
+              <div class="image-container">
+                <div class="img-box mb-4">
+                  <img class="" src="" alt="" id="second_img" width="500px" height="662.5px">
+                </div>
+          
+                <div class="img-box">
+                  <img src="" alt="" id="third_img" width="500px" height="662.5px">
+                </div>
+              </div>
           </div>
           <!-- Ai đó hãy sữa giùm chỗ này đc ko :))) -->
+          
         </div>
         <!-- description's content: end -->
 
@@ -129,18 +119,8 @@
           role="tabpanel"
           aria-labelledby="nav-profile-tab">
           <div class="tab-content">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-              autem quibusdam dolorum dolorem pariatur dolores, non ipsum ad
-              nulla magnam veniam dignissimos vero nam alias minima repellat
-              optio, nihil accusantium? quam.
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem,
-              eius illum consequuntur quae minus iusto voluptatibus inventore
-              exercitationem, similique distinctio repellat veniam animi
-              aspernatur laborum laboriosam iste adipisci consectetur
-            </p>
+            <p></p>
+            <p></p>
           </div>
         </div>
         <!-- detail's content:end -->

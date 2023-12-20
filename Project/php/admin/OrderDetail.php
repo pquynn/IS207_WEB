@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="../../css/admin/admin-order-detail.css"/>
 
 <?php
+    $role_id = 1;
     $title = "Chi tiết đơn hàng";
     include("./AdminNavigation.php");
 ?>
@@ -12,34 +13,22 @@
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="../../php/admin/OrdersManagement.php">Danh sách đơn hàng</a></li>
-        <li class= "breadcrumb-item active" aria-current="page">Chi tiết đơn hàng #A123</li>
+        <li class= "breadcrumb-item active" aria-current="page">Chi tiết đơn hàng</li>
     </ol>
 
     <div class="customer-infomation">
-        <h3>Mã đơn hàng: 
-            <span class="order-status">Giao hàng thành công</span>
+        <h3>Mã đơn hàng: #
+            <span id="orderId"></span>
+            <span class="order-status"></span>
+            <button class="btn-edit-info" data-bs-toggle="modal" data-bs-target="#edit-order-status">
+                <i class="fa-solid fa-pen "></i>
+            </button>
         </h3>
         <!--date order-->
         <div class="date-order">
             <i class="fa-solid fa-calendar"></i>
-            <span>dd/mm/yyyy</span>
-        </div>
-
-        <!--Change status, button print, button save-->
-        <div class="box-change_status-print-save">
-            <div class="change-status">
-                <span>Trạng thái đơn hàng</span>                
-                <i class="fa-solid fa-angle-down"></i>
-
-                <ul class="option-status">
-                    <li>Đang xử lý</li>
-                    <li>Giao hàng thành công</li>
-                    <li>Đã hủy</li>  
-                </ul>                      
-            </div>
-
-            <i class="fa-solid fa-print icon"></i>
-            <i class="fa-solid fa-floppy-disk icon"></i>            
+            Ngày đặt hàng: 
+            <span></span>
         </div>
 
         <!--3 boxes information of customer-->
@@ -48,9 +37,16 @@
             <i class="fa-solid fa-user icon-info"></i>
                     
                 <ul class="info">
-                    <li class="header-info">Thông tin người nhận</li>
-                    <li>Họ tên: </li>
-                    <li>SĐT: </li> 
+                    <li class="header-info">Thông tin người nhận 
+                    </li>
+                    <li> 
+                        Họ tên:
+                        <span id="cus-name"></span>
+                    </li>
+                    <li> 
+                        SĐT:
+                        <span id="cus-tel"></span>
+                    </li> 
                 </ul>
             </li>
             
@@ -58,8 +54,9 @@
                 <i class="fa-solid fa-location-dot icon-info"></i>
                     
                 <ul class="info">
-                    <li class="header-info">Địa chỉ người nhận</li>
-                    <li> 123 ABC</li>
+                    <li class="header-info">Địa chỉ người nhận
+                    </li>
+                    <li id="cus-add"></li>
                 </ul>
             </li>
 
@@ -67,8 +64,9 @@
             <i class="fa-solid fa-credit-card icon-info"></i>
                     
                 <ul class="info">
-                    <li class="header-info">Phương thức thanh toán</li>
-                    <li>Momo: 09123456789</li>
+                    <li class="header-info">Phương thức thanh toán
+                    </li>
+                    <li id="cus-pay"></li>
                 </ul>
             </li>
 
@@ -79,66 +77,48 @@
     <!--Information of products in order-->
     <div class="order-infomation admin-table">
         <table>
-            <td colspan="8">Sản phẩm</td>
-            <tr>
-                <td colspan="2">Mã đơn hàng</td>
-                <td>Mã sản phẩm</td>
-                <td>Kích thước</td>
-                <td>Tên sản phẩm</td>
-                <td>Hình ảnh</td>
-                <td>Số lượng</td>
-                <td>Tổng tiền</td>
-            </tr>
+            <thead>
+                <td colspan="7">Sản phẩm</td>
+                <tr>
+                    <th>Mã đơn hàng</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Kích thước</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Hình ảnh</th>
+                    <th>Số lượng</th>
+                    <th>Tổng tiền</th>
+                </tr>
+            </thead>
 
-            <tr>
-                <td class="col-checkbox"><input type="checkbox"></td>
-                <td>#A123</td>
-                <td>SS001</td>
-                <td>38</td>
-                <td>Product name</td>
-                <td>xem hình ảnh</td>
-                <td>1</td>
-                <td>$9999</td>
-            </tr>
-            <tr>
-                <td class="col-checkbox"><input type="checkbox"></td>
-                <td>#A123</td>
-                <td>SS001</td>
-                <td>38</td>
-                <td>Product name</td>
-                <td>xem hình ảnh</td>
-                <td>1</td>
-                <td>$9999</td>
-            </tr>
-            <tr>
-                <td class="col-checkbox"><input type="checkbox"></td>
-                <td>#A123</td>
-                <td>SS001</td>
-                <td>38</td>
-                <td>Product name</td>
-                <td>xem hình ảnh</td>
-                <td>1</td>
-                <td>$9999</td>
-            </tr>
+            <tbody class="tbody-product"></tbody>
         </table>
+        <div class="order-cost-box">
+            <!--Order cost-->
+            <table class="order-cost">
+                <tr>
+                    <td>Tổng tiền sản phẩm</td>
+                    <td class="cost order"></td>
+                </tr>
 
-        <!--Order cost-->
-        <table class="order-cost">
-            <tr>
-                <td>Tổng tiền sản phẩm</td>
-                <td class="cost order">$9999</td>
-            </tr>
+                <tr>
+                    <td>Khuyến mãi</td>
+                    <td class="cost promotion"></td>
+                </tr>
 
-            <tr>
-                <td>Khuyến mãi</td>
-                <td class="cost promotion">$9999</td>
-            </tr>
-
-            <tr class="total-cost">
-                <td>Tổng tiền thanh toán</td>
-                <td class="cost total">$9999</td>
-            </tr>
-        </table>
+                <tr class="total-cost">
+                    <td>Tổng tiền thanh toán</td>
+                    <td class="cost total"></td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 <!--MAIN SECTION----END-->
+
+<!--Modal edit customer's information-->
+<?php
+    include("./ModalEditOrderStatus.php");
+?>
+<!---->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="module" src="../../js/admin/Order/order-detail-management"></script>

@@ -1,8 +1,6 @@
 <?php
 include '../connect.php';
 
-//$sql_Blog = "SELECT `BLOG_TITLE`, `USER_NAME`, `BLOG_IMG` FROM blog ORDER BY `BLOG_DAY` DESC LIMIT 3";
-
 $sql_Blog = "SELECT `BLOG_TITLE`, `USER_NAME`, `BLOG_IMG` FROM blog ORDER BY `BLOG_DAY` DESC LIMIT 3";
 
 $sql_ProductBestSeller = "SELECT PRODUCT_NAME, PRICE, FIRST_PICTURE

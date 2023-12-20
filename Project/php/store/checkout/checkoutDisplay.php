@@ -23,7 +23,7 @@ function getChekoutData(){
     
 
     $productDataJson=[];
-    $customerDataJson;
+    // $customerDataJson;
     $index=0;
     while($customer = $customerData -> fetch_assoc()){
         $customerDataJson=$customer;
