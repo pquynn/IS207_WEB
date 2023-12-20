@@ -50,7 +50,7 @@
           <div class="zoom-img--container">
             <img
               class="collection-img zoom-img"
-              src="https://bisuth-store-demo.myshopify.com/cdn/shop/files/11.png?v=1657512855" />
+              src="https://images.pexels.com/photos/1456706/pexels-photo-1456706.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
           </div>
           <!-- text -->
           <div class="collection-text">
@@ -67,7 +67,7 @@
           <div class="zoom-img--container">
             <img
               class="collection-img zoom-img"
-              src="https://bisuth-store-demo.myshopify.com/cdn/shop/files/12.png?v=1657513152" />
+              src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
           </div>
           <!-- tetx -->
           <div class="collection-text">

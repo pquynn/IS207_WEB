@@ -177,15 +177,21 @@ function forgetPassword(){
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Lấy dữ liệu từ form
-        $userLogin = $_POST['userlogin'];
+        // $userLogin = $_POST['userlogin'];
         $phoneNumber = $_POST['phonenumber'];
+        if (substr($phoneNumber, 0, 3) === '+84') {
+            // If yes, replace '+84' with '0'
+            $phoneNumber = '0' . substr($phoneNumber, 3);
+        }
 
         // Kiểm tra tên đăng nhập và số điện thoại trong cơ sở dữ liệu
-        $sql = "SELECT * FROM users WHERE USER_LOGIN = '$userLogin' AND USER_TELEPHONE = '$phoneNumber'";
+        $sql = "SELECT * FROM users WHERE USER_TELEPHONE = '$phoneNumber' LIMIT 1";
         $result = $conn->query($sql);
-
+        $data = [];
         if ($result->num_rows > 0) {
-            return (['status' => 'success', 'message' => 'Xác thực thành công']);
+            $row = $result->fetch_assoc();
+            $data = $row;
+            return (['status' => 'success','message' => 'Xác thực thành công', 'data'=> $data]);
         } else {
             // Tên đăng nhập hoặc số điện thoại không đúng, hiển thị thông báo
             return (['status' => 'error', 'message' => 'Tên đăng nhập hoặc số điện thoại không đúng.']);

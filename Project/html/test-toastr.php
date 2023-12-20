@@ -42,7 +42,7 @@
     </script>
 </body>
 </html> -->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -74,4 +74,4 @@
     Từ những bài tập nhảy dây cho đến những bài tập tạ kettlebell, bài tập nào cũng rất mất sức. Vì vậy, bạn sẽ cần đến sự hỗ trợ của Nano Flex TR 2.0, vì đôi giày này</p>
 
 </body>
-</html>
+</html> -->
