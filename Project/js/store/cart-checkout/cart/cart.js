@@ -73,18 +73,6 @@ function getLocalCart(cart) {
 // LAY GIO HANG LUU O CLIENT NEU KHONG DANG NHAP: END
 
 // LAY GIO HANG LUU O DB NEU  DANG NHAP: START
-// $.ajax({
-//   type: "GET",
-//   url: "../../../../Project/php/store/cart/cartDisplayProduct.php",
-//   dataType: "json",
-//   data: { user_id: user_id },
-//   success: function (response) {
-//     console.log(response.data);
-//   },
-//   error: function () {
-//     console.error("Failed to fetch data from the server.");
-//   },
-// });
 async function getLoginCart(user_id) {
   return $.ajax({
     type: "GET",
@@ -92,7 +80,7 @@ async function getLoginCart(user_id) {
     dataType: "json",
     data: { user_id: user_id },
     success: function (response) {
-      console.log(1);
+      // console.log(1);
     },
     error: function () {
       console.error("Failed to fetch data from the server.");
