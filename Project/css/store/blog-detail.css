@@ -44,7 +44,8 @@ ul{
 
 /* blog img */
 .blog-img{
-    width: 60%;
+    width: 55%;
+    overflow: hidden;
 }
 
 .blog-img img{

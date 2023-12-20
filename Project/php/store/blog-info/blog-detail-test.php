@@ -15,6 +15,10 @@
                 <li><a class="breadcrumb-item active" href="#">Thông tin bài viết</a></li>
             </ul>
             </nav>
+
+            <div class="blog-title">
+                <h4></h4>
+            </div>
         </div>
         
         <div class="blog-img">
@@ -29,9 +33,7 @@
 
 
     </div>
-    <div class="blog-title">
-        <h4></h4>
-    </div>
+    
 
 
 
