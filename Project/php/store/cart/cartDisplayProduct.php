@@ -3,6 +3,10 @@
 include "./connect.php";
 function fetchProducts() {
   global $conn;
+  // if(isset($_GET['user_id'])){
+  
+  $user_id=$_GET['user_id'];
+  // $user_id='"KH0037"';
 
   //   SELECT TABLE: START
   // order's detail
@@ -12,8 +16,8 @@ function fetchProducts() {
                 ON order_detail.ORDER_ID = orders.ORDER_ID
                 INNER JOIN product_pictures
                 ON order_detail.product_id = product_pictures.product_id
-          WHERE orders.ORDER_ID=1";
-  
+          WHERE STATUS=\"Đang mua hàng\"
+                AND orders.USER_ID=".$user_id;
   $orderDetailList = $conn->query($sql);
   //   SELECT TABLE: END
   //   connect to sever: end
@@ -37,7 +41,8 @@ function fetchProducts() {
     // CLOSE CONNECTION
     // $conn -> close();
     return json_encode($response);
-}
+    }
+// }
 echo fetchProducts();
 // DISPLAY PRODUCT: end
 ?>

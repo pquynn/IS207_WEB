@@ -26,7 +26,6 @@ function buy(){
     $fixedName=$conn -> real_escape_string($name);
     $fixedPhone=$conn -> real_escape_string($phone);
 
-    // $sqlUpdateOrder='UPDATE ORDERS SET ADDRESS="'.$fixedAddress.'", STATUS="Đang chuẩn bị hàng" WHERE ORDER_ID='.$orderId;
     $sqlUpdateOrder='UPDATE ORDERS SET ADDRESS=?, STATUS="Đang chuẩn bị hàng", NAME=?, TELEPHONE=? WHERE ORDER_ID=?';
 
     $orderId=1;
@@ -38,8 +37,7 @@ function buy(){
     if($buySql->execute()){
         echo "Buy Succesfully";
     }
-    // $updateOrder=$conn -> query($sqlUpdateOrder);
-    // UPDATE TO DATA BASE: START
+    // UPDATE TO DATA BASE: end
 
     // go to success announcement page
     header("Location:./buySuccess.php");
