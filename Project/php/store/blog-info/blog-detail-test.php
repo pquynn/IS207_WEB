@@ -5,49 +5,45 @@
         $title = "Blog";
         include("../header-footer-nav/header.php"); ?>
 
-    <div class="container-heading mb-5 blog-heading">
+    <div class="container-heading blog-heading">
         <div class="breadcrumb-box">
              <!-- breadcrum -->
-             <nav class="blog-list-link" aria-label="breadcrumb">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../homepage-shopping/homepage.php">Trang chủ</a></li>
-                <li><a class="breadcrumb-item" href="./blog.php">Blog</a></li>
-                <li><a class="breadcrumb-item active" href="#">Thông tin bài viết</a></li>
-            </ul>
-            </nav>
-
-            <div class="blog-title">
-                <h4></h4>
+            <div class="row1">
+                <nav class="blog-list-link" aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../homepage-shopping/homepage.php">Trang chủ</a></li>
+                    <li><a class="breadcrumb-item" href="./blog.php">Blog</a></li>
+                    <li><a class="breadcrumb-item active" href="#">Thông tin bài viết</a></li>
+                </ul>
+                </nav>
             </div>
+            
+            <div class="blog-title row2">
+                <h4></h4>
+            
+                <div class="row3">
+                    <div class="blog-author">
+                        <p></p>
+                    </div>
+                    <div class="blog-date">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            
+
         </div>
         
         <div class="blog-img">
             <img src="">
         </div>
-        
-
-            
     </div>
 
-    <div class="main-section">
 
-
-    </div>
-    
-
-
-
-
-    
     <div class="blog-content">
         <p></p>
     </div>
-    <div class="blog-date">
-        <p><i></i></p>
-    </div>
-    <div class="blog-author">
-        <p><b></b></p>
-    </div>
+    
 
 
 <script src="../../../js/blog/blog-detail-test.js"></script>

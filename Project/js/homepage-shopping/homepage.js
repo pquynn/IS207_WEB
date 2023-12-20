@@ -2,8 +2,6 @@ import { showToastr } from "../admin/toastr.js";
 
 // Fetch data using AJAX
 $(document).ready(function () {
-    console.log('session');
-    console.log('session' + user_id_session);
     //HIỂN THỊ THÔNG BÁO ĐĂNG NHẬP THÀNH CÔNG NẾU CÓ ĐĂNG NHẬP
     // Get the URL parameters
     var urlParams = new URLSearchParams(window.location.search);

@@ -272,7 +272,7 @@ button.btn{
 .description-box{
   white-space: pre-wrap;
   height: fit-content;
-
+  width: 85%;
   overflow-y: auto; /* Add overflow-y property */
   max-height: 662.5px; /* Set a maximum height */
   position: sticky;
@@ -282,7 +282,7 @@ button.btn{
 .description-box p{
   font-size: 16px;
   text-align: justify;
-  width: 95%;
+  width: 85%;
 }
 
 .img-container{

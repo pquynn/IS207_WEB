@@ -1,8 +1,8 @@
 <?php
-  session_start();
-  echo '<script>';
-  echo 'var user_id_session =' . json_encode($_SESSION['user_id']) . ';';
-  echo '</script>';
+  // session_start();
+  // echo '<script>';
+  // echo 'var user_id_session =' . json_encode($_SESSION['user_id']) . ';';
+  // echo '</script>';
   
 ?>
 <link rel="stylesheet" href="../../../css/style-components/homepage.css">

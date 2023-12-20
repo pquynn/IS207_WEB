@@ -1,6 +1,5 @@
 // Fetch data using AJAX
 $(document).ready(function () {
-    console.log('session ' + user_id_session);
     // Lấy giá trị của tham số "gender"
     var optionGender = getParameterByName('gender');
 
