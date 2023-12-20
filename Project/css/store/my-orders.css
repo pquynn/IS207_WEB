@@ -73,14 +73,22 @@
   padding: 30px 80px;
 }
 
-.store-table{
+/*.store-table{
   margin: 50px 0;
   overflow: auto;
+}*/
+.store-table.orders-list {
+  width: 100% !important;
+  margin-left: 0px !important;
 }
 
+.link-to-detail{
+  color: #000;
+}
 .link-to-detail:hover {
   color: #e96d00;
 }
+
 
 #pagination-my-orders {
   margin: 0 auto;

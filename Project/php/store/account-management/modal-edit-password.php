@@ -8,26 +8,27 @@
 
                 <div class="modal-header" style="border-bottom: none;">
                     <h1 class="modal-title fs-5" id="modal-pass">ĐỔI MẬT KHẨU</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="row row-gap-3">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="oldpassword" placeholder="Mật khẩu cũ*" required>
-                                <label for="name">Mật khẩu cũ*</label>
+                                <input type="password" class="form-control" id="oldpassword" placeholder="Mật khẩu cũ*" required
+                                oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu cũ.')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="oldpassword">Mật khẩu cũ*</label>
                             </div>
 
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="newpassword" placeholder="Mật khẩu mới*" required>
-                                <label for="phonenumber">Mật khẩu mới*</label>
+                                <input type="password" class="form-control" id="newpassword" placeholder="Mật khẩu mới*" required
+                                oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu mới.')"
+                                oninput="this.setCustomValidity('')">
+                                <label for="newpassword">Mật khẩu mới*</label>
                             </div>
 
                             <div class="btn-container">
-                                <button class="btn btn-confirm" onclick="savechange()" style="width: 100%;">Lưu thay
-                                    đổi</button>
-                                <button class="btn btn-cancel" onclick="cancel()" data-bs-dismiss="modal"
-                                    style="width: 100%;">Hủy</button>
+                                <button class="btn btn-confirm" style="width: 100%;">Lưu thay đổi</button>
+                                <button class="btn btn-cancel" style="width: 100%;">Hủy</button>
                             </div>
                         </div>
 

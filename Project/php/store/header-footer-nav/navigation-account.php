@@ -20,4 +20,4 @@
   <!--NAVIGATION END-->
   
 <!--Add/remove active-->
-  <script src="../../../js/my-order/nav-acc"></script> 
+  <script src="../../../js/store/my-order/nav-acc.js"></script> 

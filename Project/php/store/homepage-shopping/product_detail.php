@@ -10,7 +10,7 @@
     <!-- PRODUCT DETAIL'S BODY: START -->
     <div class="product-detail--body">
       <div class="product-nav">
-        <h1>Chi tiết sản phẩm</h1>
+        <h1></h1>
       </div>
       <div class="main-info">
         <!--Khung giới thiệu ảnh sản phẩm-->

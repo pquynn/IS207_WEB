@@ -1,7 +1,8 @@
 import { showToastr } from "./toastr.js";
 var tbl_id, tbl_login, tbl_name, tbl_phone, tbl_birthday, tbl_gender,
-tbl_address, tbl_dayadd, tbl_role_name;
+tbl_address, tbl_dayadd, tbl_role_name, add_password = "";
 var closest_row;
+
 
 $(document).ready(function () {
     var namePage = $('.section_heading').text();
@@ -25,8 +26,24 @@ $(document).ready(function () {
         Array.from(modal.querySelectorAll('.was-validated')).forEach((element) => {
             element.classList.remove('was-validated'); // Clear Bootstrap form validation classes
         });
+
+        $('.pw-box').show();
+        $('#employee-password').val('');
     })
 
+    $('.generate-pw').on('click', function(e){
+        e.preventDefault();
+        console.log('a');
+        var characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        var password = '';
+
+        for (var i = 0; i < 10; i++) {
+            var index = Math.floor(Math.random() * characters.length);
+            password += characters.charAt(index);
+        }
+        add_password= password;
+        $('#employee-password').val(password);
+    })
 
     // when submit #modal-form
     $('#modal-form').submit(function (event) { 
@@ -53,9 +70,13 @@ $(document).ready(function () {
             else 
             {
                 if(btn_name.localeCompare("Thêm mới") === 0){
-                    event.preventDefault();
-                    insertemployee(username, name, phone, date_of_birth, gender, address, role, searchTerm);
-                    event.stopPropagation();
+                    if(add_password == "")
+                        showToastr("warning", "Hãy tạo mật khẩu cho nhân viên");
+                    else{
+                        event.preventDefault();
+                        insertemployee(username, name, add_password, phone, date_of_birth, gender, address, role, searchTerm);
+                        event.stopPropagation();
+                    }
                 }
                 else{
                     event.preventDefault();
@@ -85,6 +106,8 @@ $(document).ready(function () {
     // Event listener for the "Edit" button
     $('.admin-table').on('click', '.btn-edit',function (e) {
         e.preventDefault();
+
+        $('.pw-box').hide();
 
         // Get the closest row to the clicked button
         closest_row = $(this).closest('tr');
@@ -215,11 +238,20 @@ function updatePagination(currentPage, totalPages) {
 
 
 // Function to insert employee into the database
-function insertemployee(username, name, phone, birthday, gender, address, role, searchTerm) {
+function insertemployee(username, name, password, phone, birthday, gender, address, role, searchTerm) {
     $.ajax({
         url: '../../php/controller/admin/employee-controller.php',
         type: 'POST',
-        data: {action: 'insert', username : username, name : name, phone : phone, gender : gender, address : address, birthday : birthday, role : role},
+        data: {
+            action: 'insert', 
+            username : username, 
+            name : name, 
+            password : password,
+            phone : phone, 
+            gender : gender, 
+            address : address, 
+            birthday : birthday, 
+            role : role},
         dataType: 'json',
         success: function (result) {
             if (result.result === true) {
