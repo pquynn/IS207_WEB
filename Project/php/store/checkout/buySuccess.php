@@ -8,7 +8,7 @@
 
   <!-- BODY: START --> 
   <div style="height:60vh;display: flex;flex-direction: column;justify-content: center;">
-    <h1 style="text-align: center; font-size: 45px">Đặt hàng thàng công!</h1>
+    <h1 style="text-align: center; font-size: 45px">Đặt hàng thành công!</h1>
     <div class="icon" style="text-align: center">
       <ion-icon
       name="checkmark-circle-outline"
