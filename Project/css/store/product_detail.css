@@ -109,11 +109,10 @@ body p {
   border: 1px solid;
   background-color: #ffffff;
   transition: all 0.3s;
-
 }
 
 /* change size btn when hover */
-.btn-size:hover {
+.btn-size:hover, .btn-active {
   background-color: var(--orange);
   color: white;
 }

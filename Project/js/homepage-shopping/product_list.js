@@ -116,6 +116,10 @@ $(document).ready(function () {
             });
 
             $('#clearFilter').click(function () {
+                // Xóa các lựa chọn phân loại.
+                $("#panelsStayOpen-collapseOne a").removeClass("active");
+                $("#panelsStayOpen-collapseTwo a").removeClass("active");
+                // Xóa danh sách sản phẩm được hiện thị.
                 $('.product-list').empty();
                 optionGender = null;
                 optionCategory = 0;
@@ -133,7 +137,6 @@ $(document).ready(function () {
                     return columnB - columnA; // Sắp xếp giảm dần
                 });
             }
-
 
             // Truyền dữ liệu lên giao diện website
             limitOfProduct = 9;
@@ -163,6 +166,24 @@ $(document).ready(function () {
                 // Truyền dữ liệu lên giao diện website
                 limitOfProduct = 9;
                 InsertData(data.tableProduct, optionGender, optionCategory);
+            });
+
+            // Xử lí khi ấn vào phân loại giày.
+            $('.categoryProduct').click(function () {
+                // Loại bỏ lớp "active" từ tất cả các thẻ a
+                $("#panelsStayOpen-collapseOne a").removeClass("active");
+
+                // Thêm lớp "active" cho thẻ a được click
+                $(this).addClass("active");
+            });
+
+            // Xử lí khi ấn vào phân loại giới tính.
+            $('.categoryGender').click(function () {
+                // Loại bỏ lớp "active" từ tất cả các thẻ a
+                $("#panelsStayOpen-collapseTwo a").removeClass("active");
+
+                // Thêm lớp "active" cho thẻ a được click
+                $(this).addClass("active");
             });
         },
         error: function () {
