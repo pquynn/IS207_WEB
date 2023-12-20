@@ -73,24 +73,25 @@ function insertBlog() {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        
-        $user_id = ($_POST['USER_ID']);
-        $user_name = ($_POST['USER_NAME']);
-        $date = ($_POST['BLOG_DAY']);
-        $content = ($_POST['CONTENT']);
-        $img = ($_POST['BLOG_IMG']);
-        $name = ($_POST['BLOG_TITLE']);
+        $user_id = 'KH0034'; //dùng để test
+        $user_name = ($_POST['username']);
+        $content = ($_POST['content']);
+        $name = ($_POST['name']);
+
+        $pic = $_FILES['blog-img']['tmp_name'];
+        $pic_blob = file_get_contents($pic);
 
         $exist = checkBlog($name);
         if ($exist) {
             return false;
         } else {
-            // Use prepared statement to avoid SQL injection
+
             $sql = "INSERT INTO blog (USER_ID, USER_NAME, BLOG_DAY, CONTENT, BLOG_IMG, BLOG_TITLE)
-            VALUES (?, ?, ?, ?, ?, ?)";
+            VALUES (?, ?, sysdate(), ?, ?, ?)";
             $stmt = $conn->prepare($sql);
 
             // Bind the parameter
-            $stmt->bind_param('s', $name);
+            $stmt->bind_param('sssss', $user_id, $user_name, $content, $pic_blob, $name);
 
             // Execute the statement
             $result = $stmt->execute();
@@ -98,7 +99,10 @@ function insertBlog() {
             // Close the statement
             $stmt->close();
 
-            return $result;
+            if($result)
+                return true;
+            else
+                return false;
         }
     } else {
         return false;
@@ -130,16 +134,13 @@ function updateBlog() {
     global $conn;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
+        $id = ($_POST['id']);
+        $user_id = 'KH0034'; //dùng để test
+        $user_name = ($_POST['username']);
+        $content = ($_POST['content']);
+        $name = ($_POST['name']);
 
-        $id = trim($_POST['BLOG_ID'], " ");
-        $user_id = (int) ($_POST['USER_ID']);
-        $user_name = (int) ($_POST['USER_NAME']);
-        $date = ($_POST['BLOG_DAY']);
-        $content = ($_POST['CONTENT']);
-        $img = ($_POST['BLOG_IMG']);
-        $name = trim($_POST['BLOG_TITLE'], " ");
-
-        // Use prepared statement to avoid SQL injection
         $sql = "SELECT COUNT(*) as count FROM blog 
                 WHERE BLOG_TITLE like ? AND BLOG_ID <> ?";
         $stmt = $conn->prepare($sql);
@@ -152,27 +153,43 @@ function updateBlog() {
         $stmt->close();
 
         if (!$isExist) {
-            // Use prepared statement to avoid SQL injection
-            $sql = "UPDATE blog
-                     SET BLOG_ID = ?, USER_ID = ?, USER_NAME = ?, BLOG_DAY = ?, CONTENT = ?, BLOG_IMG = ?, BLOG_TITLE = ?
-                     WHERE BLOG_ID = ?";
-            
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param('ssissii', $id, $user_id, $user_name, $date, $content, $img, $name);
-            $result = $stmt->execute();
-            $stmt->close();
+            if(isset($_FILES['blog-img']['tmp_name'])){
+                $pic = $_FILES['blog-img']['tmp_name'];
+                $pic_blob = file_get_contents($pic);
 
-            if ($result) {
-                return (['result' => true, 'message' => 'Cập nhật bảng Blog thành công']);
-            } else {
-                return (['result' => false, 'message' => 'Cập nhật bảng Blog không thành công']);
+                $sql = "UPDATE blog
+                SET USER_ID = ?, USER_NAME = ?, BLOG_DAY = sysdate(), CONTENT = ?, BLOG_IMG = ?, BLOG_TITLE = ?
+                WHERE BLOG_ID = ?";
+       
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param('sssssi', $user_id, $user_name, $content, $pic_blob, $name, $id);
+                $result = $stmt->execute();
+                $stmt->close();
+
+                if ($result) 
+                    return true;
+                 else 
+                    return false;
             }
-        } else {
-            return (['result' => false, 'message' => 'Tên Blog đã tồn tại']);
-        }
-    } else {
-        return (['result' => false, 'message' => 'Cập nhật không thành công. Không lấy được giá trị']);
-    }
+            else{
+                $sql = "UPDATE blog
+                SET USER_ID = ?, USER_NAME = ?, BLOG_DAY = sysdate(), CONTENT = ?, BLOG_TITLE = ?
+                WHERE BLOG_ID = ?";
+       
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param('ssssi', $user_id, $user_name, $content, $name, $id);
+                $result = $stmt->execute();
+                $stmt->close();
+
+                if ($result) 
+                    return true;
+                 else 
+                    return false;
+            }
+        } else 
+            return false;
+    } else 
+        return false;
 }
 
 
@@ -181,17 +198,16 @@ function deleteBlog() {
     global $conn;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $productId = trim($_POST['BLOG_ID'], " ");
+        $Id = trim($_POST['id'], " ");
 
-        // Use prepared statement to avoid SQL injection
         $sql1 = "DELETE FROM blog WHERE BLOG_ID = ?";
         $stmt1 = $conn->prepare($sql1);
-        $stmt1->bind_param('i', $productId);
+        $stmt1->bind_param('i', $Id);
         $result1 = $stmt1->execute();
         $stmt1->close();
 
         if ($result1) {
-            // Use prepared statement to avoid SQL injection
+
             return ['result' => true];
         } else {
             return ['result' => false];
@@ -215,7 +231,6 @@ function searchBlog() {
             $page = 1;
         }
 
-        // Use prepared statement to avoid SQL injection
         $totalRecordsQuery = "SELECT COUNT(*) as total FROM blog WHERE BLOG_TITLE LIKE ?";
         $stmtTotal = $conn->prepare($totalRecordsQuery);
         $stmtTotal->bind_param('s', $searchTerm);
@@ -230,7 +245,6 @@ function searchBlog() {
         // Calculate the offset for the query
         $offset = ($page - 1) * $records_per_page;
 
-        // Use prepared statement to avoid SQL injection
         $sql = "SELECT BLOG_ID, BLOG_TITLE, USER_ID, USER_NAME, CONTENT, BLOG_DAY, BLOG_IMG 
             FROM blog
             where BLOG_TITLE like ?
@@ -269,7 +283,6 @@ function fetchImages()
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_POST['id'];
 
-        // Use prepared statement to avoid SQL injection
         $sql = "SELECT BLOG_IMG FROM blog WHERE BLOG_ID = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('i', $id);
@@ -313,10 +326,9 @@ if (isset($_POST['action'])) {
         case 'update':
             echo json_encode(updateBlog());
             break;
-       
-            case 'search':
-            echo json_encode(searchBlog());
-            break;
+        case 'search':
+        echo json_encode(searchBlog());
+        break;
         case 'fetch-images':
             echo json_encode(fetchImages());
             break;

@@ -1,5 +1,5 @@
 import {showToastr} from "../admin/toastr.js";
-var tbl_id, tbl_img, tbl_title, tbl_username, tbl_date, tbl_content;
+var tbl_id, tbl_title, tbl_username, tbl_content;
 var formData;
 var closest_row;
 
@@ -30,6 +30,7 @@ $(document).ready(function () {
         $('#blog-images').attr('required', 'required');
         // reset image form-control
         $('.image-box').empty();
+        formData = new FormData();
     });
 
 
@@ -42,11 +43,12 @@ $(document).ready(function () {
         var blogName = $('#blog-name').val();
         var blogContent =  $('#blog-content').val();
         var userName = $('#author').val();
-
         var searchTerm = $('#search').val();
-        formData.append('blogName', blogName);
-        formData.append('blogContent', blogContent);
-        formData.append('userName', userName);
+
+        formData.append('id', tbl_id);
+        formData.append('name', blogName);
+        formData.append('content', blogContent);
+        formData.append('username', userName);
     
         Array.from(form).forEach(form_element => {
             if (form_element.checkValidity() === false) {
@@ -60,21 +62,15 @@ $(document).ready(function () {
                     formData.append('action', action);
 
                     event.preventDefault();
-                    insertProduct(searchTerm);
+                    insertBlog(searchTerm);
                     event.stopPropagation();
                 }
                 else{
-                    var update_images = false;
+                    var action = "update";
+                    formData.append('action', action);
 
-                    var files = $('#product-images')[0].files;
-                    if (files.length > 0) {
-                        update_images = true;
-                            
-                        var action = "update-images";
-                        formData.append('action', action);
-                    } 
                     event.preventDefault();
-                    updateProduct(searchTerm);
+                    updateBlog(searchTerm);
                     event.stopPropagation();
                 }
             }
@@ -102,6 +98,7 @@ $(document).ready(function () {
     // Event listener for the "Edit" button
     $('.admin-table').on('click', '.btn-edit', function (e) {
         e.preventDefault();
+        formData = new FormData();
 
         // Get the closest row to the clicked button
         var closest_row = $(this).closest('tr');
@@ -117,6 +114,10 @@ $(document).ready(function () {
         Array.from(modal.querySelectorAll('.is-invalid')).forEach((element) => {
             element.classList.remove('is-invalid'); // Clear Bootstrap form validation classes
         });
+        $('#blog-name').removeClass('is-invalid'); //remove class is-invalid if the form was validated before
+
+        $('#modal-form').removeClass('was-validated');
+        $('#blog-img').removeAttr('required');
         
         $('#blog-name').val(tbl_title);
         fetchImages(tbl_id);
@@ -159,7 +160,7 @@ $(document).ready(function () {
 
     // khi thêm file vào input
     $('#blog-img').on('change', function () {
-        $('#product-images').attr('required', 'required');
+        $('#blog-img').attr('required', 'required');
         var fileInput = $(this);
         var imageBox = $('.image-box');
         var invalidFeedback = $('.invalid-feedback.image');
@@ -193,7 +194,7 @@ $(document).ready(function () {
 
                 // Display selected image
                 var reader = new FileReader();
-                formData.append('product-image', file);
+                formData.append('blog-img', file);
 
                 // Closure to capture the file information.
                 reader.onload = function (e) {
@@ -259,7 +260,7 @@ function fetchData(page){
     });
 }
 
-// function to insert product images after product is inserted successfully
+// function to insert blog images after blog is inserted successfully
 function fetchImages(id) {
     $.ajax({
         url: '../../php/controller/Blog/blog-controller.php',
@@ -320,7 +321,7 @@ function updatePagination(currentPage, totalPages) {
     });
   }
 
-// Function to insert product into the database
+// Function to insert blog into the database
 function insertBlog (searchTerm)  {
     $.ajax({
         url: '../../php/controller/Blog/blog-controller.php',
@@ -329,10 +330,8 @@ function insertBlog (searchTerm)  {
         contentType: false,
         processData: false,
         success: function (result) {
-            console.log(result);
-            if (result.result === true) {
-               alert('Đã thêm thành công Blog!'); 
-                //TODO: THÔNG BÁO THÊM THÀNH CÔNG
+            if ($.trim(result) == 'true') {
+                
                 $('#add-new').modal('hide');
                 
                 var current_page = parseInt($('.pagination a.active').data('page'));
@@ -354,65 +353,55 @@ function insertBlog (searchTerm)  {
 }
 
 
-// update a product
-function updateBlog (update_images, name, content) {
+// update a blog
+function updateBlog (searchTerm) {
     $.ajax({
         url: '../../php/controller/Blog/blog-controller.php',
         type: 'POST',
-        data: {
-            action: 'update',
-        
-            name: name,
-            content: content
-           
-        },
-        dataType: 'json',
+        data: formData,
+        contentType: false,
+        processData: false,
         success: function (result) {
-            if (result.result === true) {
-                if(update_images){
-                    updateImages();
-                    //TODO: THÔNG BÁO THÊM THÀNH CÔNG
-                    $('#add-new').modal('hide');
-                    var current_page = parseInt($('.pagination a.active').data('page'));
-                    fetchData(current_page);
-                }
-                else
-                {
-                    $('#add-new').modal('hide');
-                    //TODO: THÔNG BÁO THÊM THÀNH CÔNG
-                    var current_page = parseInt($('.pagination a.active').data('page'));
-                    fetchData(current_page);
-                }
+            if ($.trim(result) == 'true') {
+                
+                $('#add-new').modal('hide');
+                
+                var current_page = parseInt($('.pagination a.active').data('page'));
+                fetchSearchData(searchTerm, current_page);
+                showToastr('success', 'Cập nhật blog thành công');
             }
             else{
+                showToastr('warning', 'Tên blog đã tồn tại');
                 $('#blog-name').addClass('is-invalid');
                 $('#modal-form').addClass('was-validated');
             }
         },
         error: function () {
+            showToastr('error', 'Cập nhật blog không thành công');
             console.error('Failed to update Blog.');
         }
     });
     
 }
 
-// Function to delete product by product_id
+// Function to delete blog by blog_id
 function deleteBlog(blog_id, closest_row) {
     $.ajax({
         url: '../../php/controller/Blog/blog-controller.php',
         type: 'POST',
-        data: {action: 'delete', tbl_id: blog_id },
+        data: {action: 'delete', id: blog_id },
         success: function () {
-            //TODO: hiện thông báo xóa thành công
             closest_row.remove();
+            showToastr('success', 'Xóa blog thành công');
         },
         error: function () {
+            showToastr('error', 'Xóa blog không thành công');
             console.error('Failed to delete blog.');
         }
     });
 }
     
-// Function to fetch data based on search term (product name)
+// Function to fetch data based on search term (blog name)
 function fetchSearchData(searchTerm, page) {
     $.ajax({
         url: '../../php/Controller/Blog/blog-controller.php',
