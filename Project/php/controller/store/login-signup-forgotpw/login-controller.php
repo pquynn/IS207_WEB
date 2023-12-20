@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include("../../connect.php");
     global $conn;
 
@@ -21,19 +22,6 @@
         // Check if the query was successful
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            // if ($row['count'] > 0) {
-
-                // $sql = "SELECT * FROM login WHERE USER_LOGIN = ?";
-                // $stmt = $conn->prepare($sql);
-                // $stmt->bind_param("ss", $userlogin);
-
-                // // Thực hiện truy vấn
-                // $stmt->execute();
-                // // Lấy kết quả
-                // $result = $stmt->get_result();
-
-
-                //Lấy mật khẩu đã hash từ database
                 $passwordFromDatabase = $row['user_password'];
 
                 // Kiểm tra mật khẩu nhập từ form với mật khẩu đã hash
@@ -50,7 +38,7 @@
                     if ($result->num_rows > 0) {
                         $data = $result->fetch_assoc();
                         // Phân quyền
-                        session_start();
+                        // session_start();
                         $_SESSION['user_id'] = $data['user_id'];
                         $_SESSION['role_id'] = $row['role_id'];
                         $role_id = $row['role_id'];

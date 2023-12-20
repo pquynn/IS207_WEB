@@ -1,4 +1,6 @@
-    <?php 
+
+   <?php 
+        session_start();
         $title = "Đăng nhập";
         include("./login-head.php"); ?>
  
