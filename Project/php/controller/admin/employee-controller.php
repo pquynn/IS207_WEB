@@ -74,8 +74,10 @@ function insertEmployee() {
         $gender = ($_POST['gender']);
         $address = ($_POST['address']);
         $role = ($_POST['role']);
-        $password = generateRandomPassword();
+        $password = ($_POST['password']);
         $id = generateUserId();
+
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
         if (checkExist($username)) {
             return ['result' => false, 'message' => 'Tên đăng nhập đã có trong hệ thống'];
@@ -83,7 +85,7 @@ function insertEmployee() {
             // Use prepared statement to avoid SQL injection
             $sql1 = "INSERT INTO login (user_login, user_password, role_id) VALUES (?, ?, ?)";
             $stmt1 = $conn->prepare($sql1);
-            $stmt1->bind_param('ssi', $username, $password, $role);
+            $stmt1->bind_param('ssi', $username, $hashedPassword, $role);
             $result1 = $stmt1->execute();
             $stmt1->close();
 
