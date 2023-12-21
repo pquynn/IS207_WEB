@@ -6,7 +6,17 @@ $(document).ready(function () {
   const account = $(".account");
   function getRoleId(user_id) {
     if (user_id === null) {
-      return 1;
+      account.append(`<li class="sub-nav--item hover-underline">
+      <a href="#" id="login">Đăng nhập</a>
+    </li>`);
+
+      $("#login").click(function () {
+        // Tạo URL mới với tham số truyền vào là tên sản phẩm
+        var url = "../../store/login-signup-forgot/Login.php";
+
+        // Chuyển hướng đến trang mới
+        window.location.href = url;
+      });
     }
 
     $.ajax({
@@ -17,7 +27,7 @@ $(document).ready(function () {
       success: function (response) {
         console.log(Number(response.ROLE_ID));
 
-        const account = $(".account");
+        // const account = $(".account");
         const accountHTML = `<a>
         <span class="material-symbols-outlined"> account_circle </span>
       </a>
