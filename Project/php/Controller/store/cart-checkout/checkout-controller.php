@@ -69,7 +69,8 @@ if (isset($_POST['submit'])) {
             // UPDATE TO DATA BASE: START
 
             // go to success announcement page
-            header("Location:./buySuccess.php");
+            // header("Location:./buySuccess.php");
+            header("Location:../../../store/account-management/my-orders.php");
 
         } 
         //Thanh toán bằng ATM MOMO
