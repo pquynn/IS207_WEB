@@ -7,7 +7,7 @@ $(document).ready(function () {
   function getRoleId(user_id) {
     if (user_id === null) {
       account.append(`<li class="sub-nav--item hover-underline">
-      <a href="#" id="login">Đăng nhập</a>
+      <a href="#" id="login">ĐĂNG NHẬP</a>
     </li>`);
 
       $("#login").click(function () {
