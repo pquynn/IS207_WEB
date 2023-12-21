@@ -2,23 +2,15 @@
 // Chỉ cần sử dụng user_id (Nếu chưa đăng nhập thì null)
 console.log(user_id);
 
-// lay gio hang neu chua dang nhap
-// console.log(localCart);
-
 // test
-user_id = "KH0006";
+// user_id = "KH0036";
+// console.log(user_id);
 const userIdJson = { user_id: `${user_id}` };
 console.log(JSON.stringify(userIdJson));
 
 $(document).ready(function () {
   displayCheckout(user_id);
 });
-// var address = {
-//   tinhThanh: "",
-//   quanHuyen: "",
-//   xaPhuong: "",
-//   duongAp: "",
-// };
 
 // DISPLAY CUSTOMER INFOR: START
 async function getLoginCheckout(user_id) {
@@ -43,21 +35,6 @@ function displayCustomerData(customerData) {
   // gender
   const gender = document.getElementById(`${customerData.GENDER}`);
   gender.checked = true;
-  // for (var i = 0; i <= 1; i++) {
-  //   const inputGenderId = i === 0 ? "Nam" : "Nữ";
-  //   const checkedGender =
-  //     customerData.GENDER === inputGenderId ? "checked" : "";
-
-  // divGender.append(`<div>
-  //                     <input
-  //                       class="square-radio"
-  //                       type="radio"
-  //                       name="gender"
-  //                       id="${inputGenderId}"
-  //                       ${checkedGender}
-  //                       required/>
-  //                     <label for="${inputGenderId}">${inputGenderId}</label>
-  //                   </div>`);
 
   // personal infor
   $(".customer-name").val(customerData.NAME);
@@ -136,60 +113,69 @@ function displayProductData(productData) {
 }
 
 async function displayCheckout(user_id) {
-  // var customerData =
-  //   user_id !== null ? (await getLoginCheckout(user_id)).customerData : "";
-
   if (user_id !== null) {
     displayCustomerData((await getLoginCheckout(user_id)).customerData);
   }
 
-  var productData = localCart;
-  // user_id !== null
-  //   ? (await getLoginCheckout(user_id)).productData
-  //   :
+  var productData =
+    user_id !== null
+      ? (await getLoginCheckout(user_id)).tableProductData
+      : localCart;
 
-  console.log(productData);
   displayProductData(productData);
-  //   },
-  //   error: function () {
-  //     console.log(0);
-  //   },
-  // });
 }
 // DISPLAY CUSTOMER INFOR: END
 
 // CLICK BUY BTN: START
-// const btnBuy = document
-//   .querySelector(".buy-btn")
-//   .addEventListener("click", function (e) {
-//     // get adress from input feld
-//     address.tinhThanh = $("#city").val();
-//     address.quanHuyen = $("#district").val();
-//     address.xaPhuong = $("#ward").val();
-//     address.duongAp = $("#street").val();
-//     e.preventDefault();
-//     buy(address);
-//   });
+const btnBuy = document
+  .querySelector(".buy-btn")
+  .addEventListener("click", function (e) {
+    // Ten, sdt
+    const name = $(".customer-name").val();
+    const phone = $(".customer-phone").val();
 
-// function buy(address) {
-//   $.ajax({
-//     url: "../../../../Project/php/store/checkout/checkoutBuy.php",
-//     dataType: "json",
-//     data: {
-//       tinhThanh: address.tinhThanh,
-//       quanHuyen: address.quanHuyen,
-//       xaPhuong: address.xaPhuong,
-//       duongAp: address.duongAp,
-//     },
-//     type: "GET",
-//     success: function (response) {
-//       console.log(response);
-//     },
-//     error: function () {
-//       // console.log(0);
-//     },
-//   });
-// }
+    // gioi tinh
+    const gender = $(".gender-radio")[0].checked === true ? "Nam" : "Nữ";
+
+    // Dia chi
+    const address = {
+      tinhThanh: "",
+      quanHuyen: "",
+      xaPhuong: "",
+      duongAp: "",
+    };
+    address.tinhThanh = $("#city").val();
+    address.quanHuyen = $("#district").val();
+    address.xaPhuong = $("#ward").val();
+    address.duongAp = $("#street").val();
+
+    e.preventDefault();
+    buy(name, phone, gender, address, user_id);
+  });
+
+function buy(name, phone, gender, address, user_id) {
+  $.ajax({
+    url: "../../../../Project/php/store/checkout/checkoutBuy.php?action=fetch",
+    // dataType: "json",
+    data: {
+      user_id: user_id,
+      name: name,
+      phone: phone,
+      gender: gender,
+      tinhThanh: address.tinhThanh,
+      quanHuyen: address.quanHuyen,
+      xaPhuong: address.xaPhuong,
+      duongAp: address.duongAp,
+    },
+    type: "GET",
+    success: function (response) {
+      console.log(response);
+    },
+    error: function () {
+      console.log(0);
+    },
+  });
+}
 // CLICK BUY BTN: END
 
 // GET DATA FROM BD: END
