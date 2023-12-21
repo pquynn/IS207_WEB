@@ -150,7 +150,6 @@ $("#buy-form").submit(function (e) {
   // phuong thuc thanh toan
   const paymentMethod = $(`input[name="payment"]:checked`).val();
 
-  e.preventDefault();
   buy(name, phone, gender, address, user_id, date, paymentMethod, localCart);
 });
 
