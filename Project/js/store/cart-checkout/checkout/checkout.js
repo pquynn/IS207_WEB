@@ -125,6 +125,7 @@ async function displayCheckout(user_id) {
 
 // CLICK BUY BTN: START
 $("#buy-form").submit(function (e) {
+  e.preventDefault();
   // const btnBuy = document
   //   .querySelector(".buy-btn")
   //   .addEventListener("submit", function (e) {
@@ -154,6 +155,7 @@ $("#buy-form").submit(function (e) {
 
   if (paymentMethod == "cod") {
     alert("Đặt hàng thành công!");
+    window.location.href = "../../../../Project/php/store/cart/cart.php";
   }
 
   // xoa localstorage chua gio hàng khi ko đăng nhập

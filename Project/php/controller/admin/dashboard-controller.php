@@ -37,7 +37,8 @@ if ($result) {
 // Calculate total year revenue and total year orders
 $sql = "SELECT COUNT(*) as orders, SUM(total_price) as revenue 
         FROM orders
-        WHERE year(order_date) = year(sysdate())";
+        WHERE year(order_date) = year(sysdate())
+        and status = 'Giao thành công'";
 $result = $conn->query($sql);
 
 if ($result) {
@@ -54,7 +55,8 @@ else{
 $sql = "SELECT COUNT(*) as orders, SUM(total_price) as revenue 
         FROM orders
         WHERE year(order_date) = year(sysdate())
-        and month(order_date) = month(sysdate())";
+        and month(order_date) = month(sysdate())
+        and status = 'Giao thành công'";
 $result = $conn->query($sql);
 
 if ($result) {
@@ -76,7 +78,7 @@ $sql = "SELECT first_picture,A.product_name, total_quantity, A.price
             INNER JOIN
             (   SELECT product_id, product_name, sum(quantity) AS total_quantity, price
                 FROM order_detail
-                WHERE order_id in (SELECT order_id FROM orders WHERE year(order_date) = year(sysdate()))
+                WHERE order_id in (SELECT order_id FROM orders WHERE year(order_date) = year(sysdate()) and status = 'Giao thành công')
                 GROUP BY product_id, product_name, price
                 ORDER BY sum(quantity) desc
                 LIMIT 5
@@ -101,6 +103,7 @@ if ($result->num_rows > 0) {
 $sql = "SELECT MONTH(order_date) as order_month, SUM(total_price) as revenue 
         FROM orders
         WHERE year(order_date) = year(sysdate())
+        and status = 'Giao thành công'
         GROUP BY MONTH(order_date)
         ORDER BY MONTH(order_date) ASC";
 $result = $conn->query($sql);
@@ -134,7 +137,7 @@ $sql = "SELECT category_name, total_revenue
                 (
                     SELECT product_id, sum(price) as revenue
                     FROM order_detail
-                    WHERE order_id in (SELECT order_id from orders where year(order_date) = year(sysdate()))
+                    WHERE order_id in (SELECT order_id from orders where year(order_date) = year(sysdate()) and status = 'Giao thành công')
                     group by product_id
                 ) as B
                 ON products.product_id = B.product_id

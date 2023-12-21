@@ -10,7 +10,7 @@ $(document).ready(function () {
       <a href="#" id="login">ĐĂNG NHẬP</a>
     </li>`);
 
-      $(".order-not-login").text("ĐƠN HÀNG");
+      // $(".order-not-login").text("ĐƠN HÀNG");
 
       $("#login").click(function () {
         // Tạo URL mới với tham số truyền vào là tên sản phẩm
@@ -21,14 +21,18 @@ $(document).ready(function () {
       });
     }
 
+    if(user_id != null){
     $.ajax({
       type: "GET",
       url: "../../../../Project/php/store/header-footer-nav/headerGetRoleId.php?action=fetch",
       dataType: "json",
       data: { user_id: user_id },
       success: function (response) {
-        console.log(Number(response.ROLE_ID));
-
+        // console.log(Number(response.ROLE_ID));
+        var role_id = 0;
+        if(response.result == 'success')
+          role_id = (response.row).ROLE_ID; 
+        console.log(role_id);
         // const account = $(".account");
         const accountHTML = `<a>
         <span class="material-symbols-outlined"> account_circle </span>
@@ -38,7 +42,7 @@ $(document).ready(function () {
           <a href="../account-management/account-profile.php">TÀI KHOẢN</a>
         </li>
         ${
-          Number(response.ROLE_ID) !== 3
+          (Number(role_id) == 1 || Number(role_id) == 2)
             ? `<li class="sub-nav--item hover-underline">
                     <a href="../../admin/Dashboard.php">QUẢN LÝ</a>
               </li>`
@@ -55,6 +59,7 @@ $(document).ready(function () {
         console.error("Failed to fetch data from the server.");
       },
     });
+  }
   }
   getRoleId(user_id);
   // hien tuy chon tai khoan doi voi nguoi dung: bat dau

@@ -15,7 +15,11 @@ function getRoleId(){
     //     "role_id" => "123",
     //     "user_id" => "456"
     // );
-    echo json_encode($roleId->fetch_assoc());
+    
+    if($roleId->num_rows > 0)
+        echo json_encode(['result'=> 'success', 'row' => $roleId->fetch_assoc()]);
+    else
+        echo json_encode(['result'=> 'error']);
 }
 getRoleId()
 ?>
