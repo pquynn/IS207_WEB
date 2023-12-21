@@ -28,7 +28,7 @@
 
       <!-- CHECKOUT BODY: Start -->
       <!-- <form action="checkoutBuy.php" method="get"> -->
-      <form action="../../Controller/store/cart-checkout/checkout-controller.php" method="post">
+      <form action="../../Controller/store/cart-checkout/checkout-controller.php" method="post" id="buy-form">
         <div class="checkout-body flex">
           <!-- INFOR FORM: Start -->
           <div class="left-col" style="width: 50%;">

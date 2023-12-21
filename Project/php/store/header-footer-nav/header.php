@@ -1,4 +1,9 @@
 <!-- @format -->
+<?php
+  // session_start();
+  $user_id = isset($_SESSION['user_id']) ? json_encode($_SESSION['user_id']) : 'null';
+  echo '<script> var user_id =' . $user_id . ';</script>';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,21 +87,7 @@
         </li>
 
         <!-- account -->
-        <ul class="nav-icon--item primary-nav">
-          <a>
-            <span class="material-symbols-outlined"> account_circle </span>
-          </a>
-          <ul class="sub-nav">
-            <li class="sub-nav--item hover-underline">
-              <a href="../account-management/account-profile.php">TÀI KHOẢN</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="../../admin/Dashboard.php">QUẢN LÝ</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="#">LOG OUT</a>
-            </li>
-          </ul>
+        <ul class="nav-icon--item primary-nav account">
         </ul>
 
         <!-- cart -->
@@ -109,4 +100,5 @@
       <!-- ICON (ACCOUNT, CART): End -->
     </ul>
 
+    <!-- <script src="../../../js/homepage-shopping/product_detail.js"></script> -->
     <script src="../../../js/header/header.js"></script>

@@ -8,8 +8,6 @@ const localCart = getLocalCart(cart);
 
 // Render cart row: start
 $(document).ready(function () {
-  // sessionStorage.setItem("user_id", "KH0006");
-  // const user_id = sessionStorage.getItem("user_id");
   displayCart(user_id);
 
   // CHANGE PRODUCT'S AMOUNT-BTN: START

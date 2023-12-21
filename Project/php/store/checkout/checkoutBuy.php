@@ -5,36 +5,21 @@ function buy(){
     global $conn;
 
     // GET INPUT: START
-    $user_id=$_GET['user_id'];
+    $user_id=$_POST['user_id'];
 
-    $name=$_GET['name'];
-    $phone=$_GET['phone'];
-    $gender=$_GET['gender'];
+    $name=$_POST['name'];
+    $phone=$_POST['phone'];
+    $gender=$_POST['gender'];
 
-    $city=$_GET['tinhThanh'];
-    $district=$_GET['quanHuyen'];
-    $ward=$_GET['xaPhuong'];
-    $street=$_GET['duongAp'];
+    $city=$_POST['tinhThanh'];
+    $district=$_POST['quanHuyen'];
+    $ward=$_POST['xaPhuong'];
+    $street=$_POST['duongAp'];
 
-    
-    // echo $user_id;
-    // echo $name;
-    // echo $phone;
-    // echo $gender;
-    // echo $city;
-    // GET INPUT: END 
-    // $city="";
-    // $district="";
-    // $ward="";
-    // $street="";
+    $date=$_POST['date'];
+    $paymentMethod=$_POST['paymentMethod'];
 
-    // $name=$_GET['name'];
-    // $phone=$_GET['phone'];
-    // $city=$_GET['city'];
-    // $district=$_GET['district'];
-    // $ward=$_GET['ward'];
-    // $street=$_GET['street'];
-    // GET INPUT: END
+    $localCart=json_decode(json_encode($_POST['localCart']), true);
 
     // GET ADDRESS, AVOID SQP INJECTION: START
     $address=$street.", ".$district.", ".$ward.", ".$city;
@@ -42,30 +27,65 @@ function buy(){
     $fixedName=$conn -> real_escape_string($name);
     $fixedPhone=$conn -> real_escape_string($phone);
 
-    $sqlUpdateOrderLogin="UPDATE ORDERS SET ADDRESS='$fixedAddress', STATUS='Đang chuẩn bị hàng', NAME='$fixedName', TELEPHONE='$fixedPhone' WHERE USER_ID='$user_id' AND STATUS='Đang mua hàng'";
-    // echo $sqlUpdateOrderLogin;
+    // cap nhat len db TH nguoi dung dang nhap
+    $sqlUpdateOrderLogin="UPDATE ORDERS SET ADDRESS='$fixedAddress', 
+    STATUS='Đang chuẩn bị hàng', 
+    NAME='$fixedName', 
+    TELEPHONE='$fixedPhone',
+    PAY='$paymentMethod' 
+    WHERE USER_ID='$user_id' 
+        AND STATUS='Đang mua hàng'";
+
 
     // TOTAL_PRODUCT, TOTAL_PRICE, PAY
-    $sqlUpdateOrderLocal="INSERT INTO ORDERS (ADDRESS, NAME, TELEPHONE, STATUS ) VALUES ('$fixedAddress', '$fixedName', '$fixedPhone', 'Đang chuẩn bị hàng')";
-    echo $sqlUpdateOrderLocal;
+    $sqlUpdateOrderLocal="INSERT INTO ORDERS (ADDRESS, NAME, TELEPHONE, STATUS , ORDER_DATE, PAY) VALUES ('$fixedAddress', '$fixedName', '$fixedPhone', 'Đang chuẩn bị hàng', '$date', '$paymentMethod')";
 
     // $orderId=1;
     // GET ADDRESS, AVOID SQP INJECTION: END
 
     // UPDATE TO DATA BASE: START
+    // IF USER LOGIN
     if($user_id!==''){
         // $buySql=$conn->prepare($sqlUpdateOrderLogin);
         // $buySql->bind_param("sssi", $fixedAddress, $fixedName, $fixedPhone, $user_id);
-        echo 1;
         $buySqlLocal=$conn->query($sqlUpdateOrderLogin);
     }else{
+        // IF USER NOT LOGIN
+        // update to order table
         $buySqlLocal=$conn->query($sqlUpdateOrderLocal);
-        echo 0;
+
+        // update to order_detail
+        $sqlOrderId_Local="SELECT DISTINCT ORDER_ID FROM orders
+                        WHERE USER_ID IS NULL
+                        AND ORDER_DATE='$date'
+                        AND TELEPHONE='$phone'
+                        AND NAME='$name'
+                        AND ADDRESS='$address'";
+                        // echo $sqlOrderId_Local;
+
+        $OrderId_NotFecth=$conn->query($sqlOrderId_Local);
+        $localOrderId = intval(implode($OrderId_NotFecth->fetch_assoc()));
+        // echo implode($localOrderId);
+
+        // $localCart_array=array_values($localCart);
+        foreach($localCart as $row){
+            $product_name=$row["PRODUCT_NAME"];
+            $size=intval($row["SIZE"]);
+            $quantity=intval($row["QUANTITY"]);
+
+            $sqlUpdate_OrderDetail_Local="INSERT INTO order_detail (order_id, product_name, size, quantity) VALUES ($localOrderId, '$product_name', $size, $quantity)";
+            echo $sqlUpdate_OrderDetail_Local;
+
+            $add=$conn->query($sqlUpdate_OrderDetail_Local);
+        }
     }
+    // update to orders table: end
+
+    // update localCart to orders_detail table: start
     
-    // if($buySql->execute()){
-    //     echo "Buy Succesfully";
-    // }
+
+    
+    // update to orders_detail table: end
     // UPDATE TO DATA BASE: end
 
     // go to success announcement page

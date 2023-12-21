@@ -4,9 +4,6 @@ console.log(user_id);
 
 // test
 // user_id = "KH0036";
-// console.log(user_id);
-// const userIdJson = { user_id: `${user_id}` };
-// console.log(JSON.stringify(userIdJson));
 
 $(document).ready(function () {
   displayCheckout(user_id);
@@ -127,33 +124,46 @@ async function displayCheckout(user_id) {
 // DISPLAY CUSTOMER INFOR: END
 
 // CLICK BUY BTN: START
-const btnBuy = document
-  .querySelector(".buy-btn")
-  .addEventListener("click", function (e) {
-    // Ten, sdt
-    const name = $(".customer-name").val();
-    const phone = $(".customer-phone").val();
+$("#buy-form").submit(function (e) {
+  // const btnBuy = document
+  //   .querySelector(".buy-btn")
+  //   .addEventListener("submit", function (e) {
+  // Ten, sdt
+  const name = $(".customer-name").val();
+  const phone = $(".customer-phone").val();
 
-    // gioi tinh
-    const gender = $(".gender-radio")[0].checked === true ? "Nam" : "Nữ";
+  // gioi tinh
+  const gender = $(".gender-radio")[0].checked === true ? "Nam" : "Nữ";
 
-    // Dia chi
-    const address = {
-      tinhThanh: "",
-      quanHuyen: "",
-      xaPhuong: "",
-      duongAp: "",
-    };
-    address.tinhThanh = $("#city").val();
-    address.quanHuyen = $("#district").val();
-    address.xaPhuong = $("#ward").val();
-    address.duongAp = $("#street").val();
+  // Dia chi
+  const address = {
+    tinhThanh: $("#city").val(),
+    quanHuyen: $("#district").val(),
+    xaPhuong: $("#ward").val(),
+    duongAp: $("#street").val(),
+  };
 
-    e.preventDefault();
-    buy(name, phone, gender, address, user_id);
-  });
+  // thoi gian
+  const now = new Date();
+  const date = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 
-function buy(name, phone, gender, address, user_id) {
+  // phuong thuc thanh toan
+  const paymentMethod = $(`input[name="payment"]:checked`).val();
+
+  e.preventDefault();
+  buy(name, phone, gender, address, user_id, date, paymentMethod, localCart);
+});
+
+function buy(
+  name,
+  phone,
+  gender,
+  address,
+  user_id,
+  date,
+  paymentMethod,
+  localCart
+) {
   $.ajax({
     url: "../../../../Project/php/store/checkout/checkoutBuy.php?action=fetch",
     // dataType: "json",
@@ -166,8 +176,11 @@ function buy(name, phone, gender, address, user_id) {
       quanHuyen: address.quanHuyen,
       xaPhuong: address.xaPhuong,
       duongAp: address.duongAp,
+      date: date,
+      paymentMethod: paymentMethod,
+      localCart: localCart,
     },
-    type: "GET",
+    type: "POST",
     success: function (response) {
       console.log(response);
     },
