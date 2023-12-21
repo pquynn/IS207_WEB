@@ -12,6 +12,10 @@ div a {
   text-decoration: none;
 }
 
+.hidden {
+  display: none;
+}
+
 .nav-icon--item a,
 .nav-link--item a {
   color: black;
@@ -92,11 +96,11 @@ div a {
 
 /* hide sub-nav when not hovered */
 /* sub-nav have height=0 when not hovered */
-.sub-nav {
+ul.sub-nav {
   position: absolute;
   opacity: 0;
   pointer-events: none;
-  top: 100%;
+  top: 200%;
   right: 50%;
   transform: translate(50%, -3px);
   background-color: white;
@@ -113,6 +117,7 @@ div a {
 .primary-nav:hover .sub-nav {
   opacity: 1;
   pointer-events: all;
+  top: 100%;
 }
 
 /* show nav's underline when being hover*/
@@ -139,13 +144,14 @@ div a {
 }
 
 /* **********NAV ICON********* */
-/* .nav-icon--item {
+/* hover color orange */
+.hover-orange {
   transition: all 0.3s;
 }
 
-.nav-icon--item:hover {
+.hover-orange:hover {
   color: var(--orange);
-} */
+}
 
 /* **********STORE LAYOUT: MAIN SECTION********* */
 .main-section {
@@ -167,11 +173,16 @@ div a {
   height: 35px;
   display: flex;
   cursor: pointer;
-  padding: 10px 10px;
+  /* padding: 10px 10px; */
   background-color: #fff;
   border-radius: 30px;
   align-items: center;
   border: none;
+  transition: all 0.3s;
+}
+
+.search-box:hover {
+  padding: 10px 10px;
 }
 
 .search-box:hover {

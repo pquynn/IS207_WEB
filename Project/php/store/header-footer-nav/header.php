@@ -86,7 +86,7 @@
           </div>
         </li>
 
-        <li class="nav-icon--item hover-underline"><a href="../account-management/my-orders.php" class="order-not-login"></a></li>
+        <li class="nav-icon--item hover-underline hidden"><a href="../account-management/my-orders.php" class="order-not-login"></a></li>
 
         <!-- account -->
         <ul class="nav-icon--item primary-nav account">
@@ -94,7 +94,7 @@
 
         <!-- cart -->
         <li class="nav-icon--item">
-          <a href="../cart/cart.php">
+          <a href="../cart/cart.php" class="hover-orange">
             <span class="material-symbols-outlined"> shopping_bag </span>
           </a>
         </li>
@@ -104,3 +104,4 @@
 
     <!-- <script src="../../../js/homepage-shopping/product_detail.js"></script> -->
     <script src="../../../js/header/header.js"></script>
+    <!-- <script src="../../../js/store/account-management/account-management"></script> -->

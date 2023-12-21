@@ -45,11 +45,39 @@ $(document).ready(function () {
             : ""
         }
         <li class="sub-nav--item hover-underline">
-          <a href="#">LOG OUT</a>
+          <a href="#" class="logout">LOG OUT</a>
         </li>
       </ul>`;
 
         account.append(accountHTML);
+        console.log($(".logout"));
+
+        $(".logout").on("click", function () {
+          // Create an XMLHttpRequest object
+          var xhr = new XMLHttpRequest();
+
+          // Define the request method, URL, and set it to be asynchronous
+          xhr.open(
+            "POST",
+            "../../../php/Controller/store/login-signup-forgotpw/account-controller.php",
+            true
+          );
+
+          // Set the request header
+          xhr.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+          );
+          xhr.send("action=" + "logout");
+          // Set the callback function to handle the response
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              //TODO: Trờ về trang chủ lúc chưa đăng nhập
+              window.location.href =
+                "../../../../Project/php/store/homepage-shopping/homepage.php";
+            }
+          };
+        });
       },
       error: function () {
         console.error("Failed to fetch data from the server.");
