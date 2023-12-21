@@ -15,6 +15,8 @@ function buy(){
     $district=$_GET['quanHuyen'];
     $ward=$_GET['xaPhuong'];
     $street=$_GET['duongAp'];
+
+    
     // echo $user_id;
     // echo $name;
     // echo $phone;
@@ -44,19 +46,21 @@ function buy(){
     // echo $sqlUpdateOrderLogin;
 
     // TOTAL_PRODUCT, TOTAL_PRICE, PAY
-    $sqlUpdateOrderLocal="INSERT INTO orders (ADDRESS, NAME, TELEPHONE, STATUS ) VALUES ('$fixedAddress', '$fixedName', '$fixedPhone', 'Đang chuẩn bị hàng')";
+    $sqlUpdateOrderLocal="INSERT INTO ORDERS (ADDRESS, NAME, TELEPHONE, STATUS ) VALUES ('$fixedAddress', '$fixedName', '$fixedPhone', 'Đang chuẩn bị hàng')";
     echo $sqlUpdateOrderLocal;
 
     // $orderId=1;
     // GET ADDRESS, AVOID SQP INJECTION: END
 
     // UPDATE TO DATA BASE: START
-    if($user_id!==null){
+    if($user_id!==''){
         // $buySql=$conn->prepare($sqlUpdateOrderLogin);
         // $buySql->bind_param("sssi", $fixedAddress, $fixedName, $fixedPhone, $user_id);
+        echo 1;
         $buySqlLocal=$conn->query($sqlUpdateOrderLogin);
     }else{
         $buySqlLocal=$conn->query($sqlUpdateOrderLocal);
+        echo 0;
     }
     
     // if($buySql->execute()){

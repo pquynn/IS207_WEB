@@ -223,7 +223,6 @@
 
               <!-- buy -->
               <input class="buy-btn btn" name="submit" type="submit" value="Mua"/>
-              <!-- <button class="buy-btn btn" name="submit" value="Mua">Mua</button> -->
 
               <!-- <input class="buy-btn btn" name="payUrl" type="submit" value="Thanh toán qua MoMo"/> -->
               <!-- accept rule -->

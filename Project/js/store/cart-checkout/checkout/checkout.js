@@ -5,8 +5,8 @@ console.log(user_id);
 // test
 // user_id = "KH0036";
 // console.log(user_id);
-const userIdJson = { user_id: `${user_id}` };
-console.log(JSON.stringify(userIdJson));
+// const userIdJson = { user_id: `${user_id}` };
+// console.log(JSON.stringify(userIdJson));
 
 $(document).ready(function () {
   displayCheckout(user_id);
