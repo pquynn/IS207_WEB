@@ -77,25 +77,38 @@
 
             <!-- gender: start -->
             <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                 <!-- accordion-item header:start -->
                 <button
-                  class="accordion-button collapsed"
+                  class="accordion-button"
                   type="button"
                   data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseTwo"
+                  data-bs-target="#panelsStayOpen-collapseOne"
                   aria-expanded="true"
-                  aria-controls="panelsStayOpen-collapseTwo">
+                  aria-controls="panelsStayOpen-collapseOne">
                   Giới tính
                 </button>
                 <!-- accordion-item header:end -->
               </h2>
+              <!-- <h2 class="accordion-header" id="panelsStayOpen-headingOne"> -->
+                <!-- accordion-item header:start -->
+                <!-- <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseOne"
+                  aria-expanded="true"
+                  aria-controls="panelsStayOpen-collapseOne">
+                  Giới tính
+                </button> -->
+                <!-- accordion-item header:end -->
+              <!-- </h2> -->
 
               <!-- accordion-item body: start  -->
               <div
-                id="panelsStayOpen-collapseTwo"
-                class="accordion-collapse collapse"
-                aria-labelledby="panelsStayOpen-headingTwo">
+                id="panelsStayOpen-collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="panelsStayOpen-headingOne">
                 <a style='cursor: pointer;' class="accordion-body categoryGender" id="Nam">Giày nam</a>
                 <a style='cursor: pointer;' class="accordion-body categoryGender" id="Nữ">Giày nữ</a>
                 <a style='cursor: pointer;' class="accordion-body categoryGender" id="Nam, nữ">Giày nam, nữ</a>
