@@ -151,6 +151,15 @@ $("#buy-form").submit(function (e) {
   const paymentMethod = $(`input[name="payment"]:checked`).val();
 
   buy(name, phone, gender, address, user_id, date, paymentMethod, localCart);
+
+  if (paymentMethod == "cod") {
+    window.location.href = ".../../../../php/store/checkout/buySuccess.php";
+    // http://localhost/IS207_WEB/Project/php/store/checkout/buySuccess.php
+    // http://localhost/IS207_WEB/Project/php/Controller/store/cart-checkout/buySuccess.php
+  }
+
+  // xoa localstorage chua gio hàng khi ko đăng nhập
+  localStorage.clear();
 });
 
 function buy(

@@ -1,6 +1,6 @@
 /** @format */
 console.log(user_id);
-
+// user_id = "KH0030";
 $(document).ready(function () {
   // hien tuy chon tai khoan doi voi nguoi dung: bat dau
   const account = $(".account");
