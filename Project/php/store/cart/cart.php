@@ -17,7 +17,7 @@
     <!-- CART-HEADER: Start -->
     <div class="cart-header">
       <h2>Giỏ hàng</h2>
-      <a href="#">
+      <a href="../homepage-shopping/product_list.php">
         <span class="material-symbols-outlined"> keyboard_backspace </span
         >Tiếp tục mua sắm
       </a>
@@ -83,7 +83,7 @@
     <p class="empty-cart--notification">
       Không có sản phẩm nào trong giỏ hàng
     </p>
-    <a href="../homepage-shopping/homepage.php" class="btn empty-cart--shopping" >TIẾP TỤC MUA SẮM</a>
+    <a href="../homepage-shopping/product_list.php" class="btn empty-cart--shopping" >TIẾP TỤC MUA SẮM</a>
   </div>
   <!-- EPMTY-CART: END -->
 

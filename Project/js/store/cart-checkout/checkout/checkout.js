@@ -2,90 +2,110 @@
 // Chỉ cần sử dụng user_id (Nếu chưa đăng nhập thì null)
 console.log(user_id);
 
+// lay gio hang neu chua dang nhap
+// console.log(localCart);
+
+// test
+user_id = "KH0006";
+const userIdJson = { user_id: `${user_id}` };
+console.log(JSON.stringify(userIdJson));
+
 $(document).ready(function () {
-  displayCheckout();
+  displayCheckout(user_id);
 });
-var address = {
-  tinhThanh: "",
-  quanHuyen: "",
-  xaPhuong: "",
-  duongAp: "",
-};
+// var address = {
+//   tinhThanh: "",
+//   quanHuyen: "",
+//   xaPhuong: "",
+//   duongAp: "",
+// };
 
 // DISPLAY CUSTOMER INFOR: START
-function displayCheckout() {
-  $.ajax({
-    url: "../../../../Project/php/store/checkout/checkoutDisplay.php",
-    dataType: "json",
+async function getLoginCheckout(user_id) {
+  return $.ajax({
     type: "GET",
-    success: function (response) {
-      var customerData = response.customerData;
-      var productData = response.productData;
+    url: "../../../../Project/php/store/checkout/checkoutDisplay.php?action=fetch",
+    dataType: "json",
+    data: { user_id: user_id },
+    success: function (response) {},
+    error: function (xhr, textStatus, err) {
+      console.log("readyState: " + xhr.readyState);
+      console.log("responseText: " + xhr.responseText);
+      console.log("status: " + xhr.status);
+      console.log("text status: " + textStatus);
+      console.log("error: " + err);
+    },
+  });
+}
 
-      //DISPLAY CUSTOMER INFOR: START
-      // gender
-      const divGender = $(".gender");
-      for (var i = 0; i <= 1; i++) {
-        const inputGenderId = i === 0 ? "Nam" : "Nữ";
-        const checkedGender =
-          customerData.GENDER === inputGenderId ? "checked" : "";
-        divGender.append(`<div>
-                        <input
-                          class="square-radio"
-                          type="radio"
-                          name="gender"
-                          id="${inputGenderId}"
-                          ${checkedGender}
-                          required/>
-                        <label for="${inputGenderId}">${inputGenderId}</label>
-                      </div>`);
-      }
+function displayCustomerData(customerData) {
+  //DISPLAY CUSTOMER INFOR: START
+  // gender
+  const gender = document.getElementById(`${customerData.GENDER}`);
+  gender.checked = true;
+  // for (var i = 0; i <= 1; i++) {
+  //   const inputGenderId = i === 0 ? "Nam" : "Nữ";
+  //   const checkedGender =
+  //     customerData.GENDER === inputGenderId ? "checked" : "";
 
-      // personal infor
-      $(".customer-name").val(customerData.NAME);
-      $(".customer-phone").val(customerData.TELEPHONE);
+  // divGender.append(`<div>
+  //                     <input
+  //                       class="square-radio"
+  //                       type="radio"
+  //                       name="gender"
+  //                       id="${inputGenderId}"
+  //                       ${checkedGender}
+  //                       required/>
+  //                     <label for="${inputGenderId}">${inputGenderId}</label>
+  //                   </div>`);
 
-      // address
-      // get address
-      var addressString = customerData.USER_ADDRESS;
-      var myString = addressString.split(",");
-      for (var i = 0; i < myString.length; i++) {
-        myString[i] = myString[i].trim();
-      }
+  // personal infor
+  $(".customer-name").val(customerData.NAME);
+  $(".customer-phone").val(customerData.TELEPHONE);
 
-      var address = {
-        tinhThanh: "",
-        quanHuyen: "",
-        xaPhuong: "",
-        duongAp: "",
-      };
-      address.duongAp = myString[0];
-      if (myString.length == 4) {
-        address.xaPhuong = myString[1];
-        address.quanHuyen = myString[2];
-        address.tinhThanh = myString[3];
-      } else {
-        address.quanHuyen = myString[1];
-        address.tinhThanh = myString[2];
-      }
-      if (address.tinhThanh == "TP.HCM") {
-        address.tinhThanh = "Thành phố Hồ Chí Minh";
-      }
+  // address
+  // get address
+  var addressString = customerData.USER_ADDRESS;
+  var myString = addressString.split(",");
+  for (var i = 0; i < myString.length; i++) {
+    myString[i] = myString[i].trim();
+  }
 
-      // display address
-      $("#city").val(address.tinhThanh);
-      $("#district").val(address.quanHuyen);
-      $("#ward").val(address.xaPhuong);
-      $("#street").val(address.duongAp);
-      //DISPLAY CUSTOMER INFOR: END
+  var address = {
+    tinhThanh: "",
+    quanHuyen: "",
+    xaPhuong: "",
+    duongAp: "",
+  };
+  address.duongAp = myString[0];
+  if (myString.length == 4) {
+    address.xaPhuong = myString[1];
+    address.quanHuyen = myString[2];
+    address.tinhThanh = myString[3];
+  } else {
+    address.quanHuyen = myString[1];
+    address.tinhThanh = myString[2];
+  }
+  if (address.tinhThanh == "TP.HCM") {
+    address.tinhThanh = "Thành phố Hồ Chí Minh";
+  }
 
-      // DISPLAY PRODUCT: START
-      var subTotal = 0;
-      const tbProduct = $(".product-list--checkout");
-      productData.forEach(function (row) {
-        subTotal += row.PRICE * row.QUANTITY;
-        var imageUrl = "data:image/png;base64," + row.FIRST_PICTURE;
-        tbProduct.append(`<tr class="product-checkout">
+  // display address
+  $("#city").val(address.tinhThanh);
+  $("#district").val(address.quanHuyen);
+  $("#ward").val(address.xaPhuong);
+  $("#street").val(address.duongAp);
+  //DISPLAY CUSTOMER INFOR: END
+}
+
+function displayProductData(productData) {
+  // DISPLAY PRODUCT: START
+  var subTotal = 0;
+  const tbProduct = $(".product-list--checkout");
+  productData.forEach(function (row) {
+    subTotal += row.PRICE * row.QUANTITY;
+    var imageUrl = "data:image/png;base64," + row.FIRST_PICTURE;
+    tbProduct.append(`<tr class="product-checkout">
         <td class="product-infor">
           <img
             alt="${row.PRODUCT_NAME}"
@@ -100,24 +120,41 @@ function displayCheckout() {
 
         <td>${(row.PRICE * row.QUANTITY).toLocaleString("vi")}</td>
       </tr>`);
-      });
-      // DISPLAY PRODUCT: END
+  });
+  // DISPLAY PRODUCT: END
 
-      // DISPLAY ORDER TOTAL: START
-      // sub total
-      const divSubTotal = $(".sub-total");
-      divSubTotal.append(`<p>Tạm tính (${productData.length} sản phẩm)</p>
+  // DISPLAY ORDER TOTAL: START
+  // sub total
+  const divSubTotal = $(".sub-total");
+  divSubTotal.append(`<p>Tạm tính (${productData.length} sản phẩm)</p>
       <p>${subTotal.toLocaleString("vi")} đ</p>`);
 
-      // total
-      const divTotal = $(".total");
-      divTotal.append(`<p>${(subTotal * 1.05).toLocaleString("vi")} đ</p>`);
-      // DISPLAY ORDER TOTAL: END
-    },
-    error: function () {
-      console.log(0);
-    },
-  });
+  // total
+  const divTotal = $(".total");
+  divTotal.append(`<p>${(subTotal * 1.05).toLocaleString("vi")} đ</p>`);
+  // DISPLAY ORDER TOTAL: END
+}
+
+async function displayCheckout(user_id) {
+  // var customerData =
+  //   user_id !== null ? (await getLoginCheckout(user_id)).customerData : "";
+
+  if (user_id !== null) {
+    displayCustomerData((await getLoginCheckout(user_id)).customerData);
+  }
+
+  var productData = localCart;
+  // user_id !== null
+  //   ? (await getLoginCheckout(user_id)).productData
+  //   :
+
+  console.log(productData);
+  displayProductData(productData);
+  //   },
+  //   error: function () {
+  //     console.log(0);
+  //   },
+  // });
 }
 // DISPLAY CUSTOMER INFOR: END
 

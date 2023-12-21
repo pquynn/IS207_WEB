@@ -35,7 +35,24 @@
             <div class="infor-form flex flex-col">
               <!-- GENDER: Start -->
               <div class="gender flex">
-                <!-- GENDER REDIO HERE -->
+                <div>
+                  <input
+                    class="square-radio"
+                    type="radio"
+                    name="gender"
+                    id="Nam"
+                    required/>
+                  <label for="${inputGenderId}">Nam</label>
+                </div>
+                <div>
+                  <input
+                    class="square-radio"
+                    type="radio"
+                    name="gender"
+                    id="Nữ"
+                    required/>
+                  <label for="${inputGenderId}">Nữ</label>
+                </div>
               </div>
               <!-- GENDER: End -->
 
@@ -260,5 +277,6 @@
     <!-- js: start -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../../js/store/cart-checkout/checkout/checkout.js"></script>
+    <script type="text/javascript" src="../../../js/store/cart-checkout/cart/cart.js"></script>
+    <script type="text/javascript" src="../../../js/store/cart-checkout/checkout/checkout.js"></script>
     <!-- js: end -->
