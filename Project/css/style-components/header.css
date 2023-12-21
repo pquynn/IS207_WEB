@@ -113,11 +113,15 @@ ul.sub-nav {
   z-index: 10;
 }
 
+ul.sub-nav:hover {
+  box-shadow: 3px 3px 7px -1px;
+}
+
 /* sub-nav have width=130px when being hovered */
 .primary-nav:hover .sub-nav {
   opacity: 1;
   pointer-events: all;
-  top: 100%;
+  top: 115%;
 }
 
 /* show nav's underline when being hover*/

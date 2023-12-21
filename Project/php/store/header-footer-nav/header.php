@@ -86,7 +86,7 @@
           </div>
         </li>
 
-        <li class="nav-icon--item hover-underline hidden"><a href="../account-management/my-orders.php" class="order-not-login"></a></li>
+        <li class="nav-icon--item hover-underline hidden not-login"><a href="../account-management/my-orders.php" class="order-not-login"></a></li>
 
         <!-- account -->
         <ul class="nav-icon--item primary-nav account">

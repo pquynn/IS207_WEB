@@ -10,6 +10,7 @@ $(document).ready(function () {
       <a href="#" id="login">ĐĂNG NHẬP</a>
     </li>`);
 
+      $(".hidden.not-login").removeClass("hidden");
       $(".order-not-login").text("ĐƠN HÀNG");
 
       $("#login").click(function () {
