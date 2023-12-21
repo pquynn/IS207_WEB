@@ -10,6 +10,8 @@ $(document).ready(function () {
       <a href="#" id="login">ĐĂNG NHẬP</a>
     </li>`);
 
+      $(".order-not-login").text("ĐƠN HÀNG");
+
       $("#login").click(function () {
         // Tạo URL mới với tham số truyền vào là tên sản phẩm
         var url = "../../store/login-signup-forgot/Login.php";
