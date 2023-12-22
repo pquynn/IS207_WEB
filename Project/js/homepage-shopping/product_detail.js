@@ -1,5 +1,6 @@
 /** @format */
-console.log(user_id);
+import {showToastr} from "../admin/toastr.js";
+// console.log(user_id);
 var myCart = [];
 var quantityOfProduct = [];
 
@@ -42,7 +43,7 @@ if (window.location.href.includes("product_detail.php")) {
           $(".tab-pane #third_img").attr("src", imageUrlThird);
 
           data.tableProductSize.forEach(function (row) {
-            temp = [row.SIZE, row.QUANTITY];
+            var temp = [row.SIZE, row.QUANTITY];
             quantityOfProduct.push(temp);
 
             $(".size").append(`
@@ -111,7 +112,7 @@ if (window.location.href.includes("product_detail.php")) {
             productPrice = $(".product-price").text();
             numberOfProduct = $(".number").text();
             productImage = $(".product-main-img img").attr("src");
-            success = false;
+            var success = false;
 
             quantityOfProduct.some(function (item) {
               if (item[0] === productSize) {
@@ -132,7 +133,9 @@ if (window.location.href.includes("product_detail.php")) {
               numberOfProduct &&
               productImage
             ) {
-              if (success !== true) alert("Số lượng sản phẩm không đủ!");
+              if (success !== true) 
+              // alert("Số lượng sản phẩm không đủ!");
+              showToastr("warning", "Số lượng sản phẩm không đủ!")
               else {
                 let tempProduct = {
                   productName: productName,
@@ -159,7 +162,8 @@ if (window.location.href.includes("product_detail.php")) {
                       productData: tempProduct,
                     },
                     success: function (response) {
-                      alert("Thêm thành công!");
+                      showToastr("success", "Sản phẩm đã được thêm vào giỏ hàng")
+                      // alert("Thêm thành công!");
                     },
                     error: function (error) {
                       console.error("Đã xảy ra lỗi:", error);
@@ -167,7 +171,8 @@ if (window.location.href.includes("product_detail.php")) {
                   });
                 }
               }
-            } else alert("Thiếu thông tin!");
+            } else showToastr("warning", "Bạn chưa chọn kích thước!")
+            // alert("Thiếu thông tin!");
           });
 
           $(".btn-confirm").click(function () {
@@ -175,7 +180,7 @@ if (window.location.href.includes("product_detail.php")) {
             productPrice = $(".product-price").text();
             numberOfProduct = $(".number").text();
             productImage = $(".product-main-img img").attr("src");
-            success = false;
+            var success = false;
 
             quantityOfProduct.some(function (item) {
               if (item[0] === productSize) {
@@ -196,7 +201,9 @@ if (window.location.href.includes("product_detail.php")) {
               numberOfProduct &&
               productImage
             ) {
-              if (success !== true) alert("Số lượng sản phẩm không đủ!");
+              if (success !== true) 
+                showToastr("warning", "Số lượng sản phẩm không đủ!")
+              // alert("Số lượng sản phẩm không đủ!");
               else {
                 let tempProduct = {
                   productName: productName,
@@ -224,7 +231,8 @@ if (window.location.href.includes("product_detail.php")) {
                       productData: tempProduct,
                     },
                     success: function (response) {
-                      alert("Thêm thành công!");
+                      showToastr("success", "Sản phẩm đã được thêm vào giỏ hàng")
+                      // alert("Thêm thành công!");
                     },
                     error: function (error) {
                       console.error("Đã xảy ra lỗi:", error);
@@ -238,7 +246,8 @@ if (window.location.href.includes("product_detail.php")) {
                 // Chuyển hướng đến trang mới
                 window.location.href = url;
               }
-            } else alert("Thiếu thông tin!");
+            } else showToastr("warning", "Bạn chưa chọn kích thước")
+            // alert("Thiếu thông tin!");
           });
         } else {
           console.error("Empty data received from the server.");

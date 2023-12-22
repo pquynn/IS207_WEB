@@ -55,7 +55,7 @@
           </div>
           <div class="shopping-btn">
             <button class="btn btn-cancel">Thêm vào giỏ hàng</button>
-            <button class="btn btn-confirm">Mua ngay</button>
+            <button class="btn btn-confirm" >Mua ngay</button>
           </div>
         </div>
       </div>
@@ -187,7 +187,9 @@
       });
     </script>
 
-    <script src="../../../js/homepage-shopping/product_detail.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    
+    <script type="module" src="../../../js/homepage-shopping/product_detail.js"></script>
 
     <!-- bootstrap -->
     <script
