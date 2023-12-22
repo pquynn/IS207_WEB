@@ -12,6 +12,10 @@ div a {
   text-decoration: none;
 }
 
+.hidden {
+  display: none;
+}
+
 .nav-icon--item a,
 .nav-link--item a {
   color: black;
@@ -51,17 +55,21 @@ div a {
   gap: 12px;
   padding-left: 0;
   justify-content: end;
-  width: 220px;
+  min-width: 30%;
   align-items: center;
 }
 
 .nav-icon ul {
-  padding:6px 5px 10px;
+  padding: 6px 5px 10px;
 }
 
-.nav-icon--item.cart{
+.nav-icon--item.cart {
   padding-top: 5px;
   padding-left: 7px;
+}
+
+.primary-nav.account {
+  padding: 0;
 }
 
 /* home, shop, category,.... */
@@ -88,11 +96,11 @@ div a {
 
 /* hide sub-nav when not hovered */
 /* sub-nav have height=0 when not hovered */
-.sub-nav {
+ul.sub-nav {
   position: absolute;
   opacity: 0;
   pointer-events: none;
-  top: 100%;
+  top: 200%;
   right: 50%;
   transform: translate(50%, -3px);
   background-color: white;
@@ -105,10 +113,15 @@ div a {
   z-index: 10;
 }
 
+ul.sub-nav:hover {
+  box-shadow: 3px 3px 7px -1px;
+}
+
 /* sub-nav have width=130px when being hovered */
 .primary-nav:hover .sub-nav {
   opacity: 1;
   pointer-events: all;
+  top: 115%;
 }
 
 /* show nav's underline when being hover*/
@@ -135,13 +148,14 @@ div a {
 }
 
 /* **********NAV ICON********* */
-/* .nav-icon--item {
+/* hover color orange */
+.hover-orange {
   transition: all 0.3s;
 }
 
-.nav-icon--item:hover {
+.hover-orange:hover {
   color: var(--orange);
-} */
+}
 
 /* **********STORE LAYOUT: MAIN SECTION********* */
 .main-section {
@@ -158,29 +172,31 @@ div a {
   margin: 50px;
 }
 
-
-
 /* search bar */
-.search-box{
+.search-box {
   height: 35px;
   display: flex;
   cursor: pointer;
-  padding: 10px 10px;
+  /* padding: 10px 10px; */
   background-color: #fff;
   border-radius: 30px;
   align-items: center;
   border: none;
-  
+  transition: all 0.3s;
 }
 
-.search-box:hover{
+.search-box:hover {
+  padding: 10px 10px;
+}
+
+.search-box:hover {
   border: 1px solid var(--table-border);
 }
-.search-box:hover input{
+.search-box:hover input {
   width: 200px;
 }
 
-.search-box input{
+.search-box input {
   width: 0;
   outline: none;
   border: none;

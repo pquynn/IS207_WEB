@@ -1,8 +1,13 @@
 /** @format */
+// Chỉ cần sử dụng user_id (Nếu chưa đăng nhập thì null)
+console.log(user_id);
+
+// dua gio hang khi chua dang nhap cho checkout
+const cart = JSON.parse(localStorage.getItem("myCart"));
+const localCart = getLocalCart(cart);
+
 // Render cart row: start
 $(document).ready(function () {
-  sessionStorage.setItem("user_id", "KH0006");
-  const user_id = sessionStorage.getItem("user_id");
   displayCart(user_id);
 
   // CHANGE PRODUCT'S AMOUNT-BTN: START
@@ -29,6 +34,10 @@ $(document).ready(function () {
 
 // LAY GIO HANG LUU O CLIENT NEU KHONG DANG NHAP: START
 function getLocalCart(cart) {
+  if (cart === null) {
+    return [];
+  }
+
   // get cart form client
   var mergedCart = [];
 
@@ -52,11 +61,11 @@ function getLocalCart(cart) {
     // chuyen thanh object
     var row = {
       ORDER_DETAIL_ID: i,
-      PRODUCT_NAME: product[0],
-      PRICE: Number(product[1].slice(0, -4).replaceAll(".", "")),
-      SIZE: Number(product[2]),
-      QUANTITY: Number(product[3]),
-      FIRST_PICTURE: product[4].slice(30),
+      PRODUCT_NAME: product.productName,
+      PRICE: Number(product.productPrice.slice(0, -4).replaceAll(".", "")),
+      SIZE: Number(product.productSize),
+      QUANTITY: Number(product.numberOfProduct),
+      FIRST_PICTURE: product.productImage.slice(30),
     };
 
     // dua vao day san pham (cart)
@@ -79,9 +88,7 @@ async function getLoginCart(user_id) {
     url: "../../../../Project/php/store/cart/cartDisplayProduct.php?action=fetch",
     dataType: "json",
     data: { user_id: user_id },
-    success: function (response) {
-      // console.log(1);
-    },
+    success: function (response) {},
     error: function () {
       console.error("Failed to fetch data from the server.");
     },
@@ -90,7 +97,6 @@ async function getLoginCart(user_id) {
 // LAY GIO HANG LUU O DB NEU  DANG NHAP: END
 
 async function displayCart(user_id) {
-  const cart = JSON.parse(localStorage.getItem("myCart"));
   var total = 0;
 
   var data =
@@ -99,6 +105,7 @@ async function displayCart(user_id) {
   // kt xem gio hang co trong khong
   if (data.length === 0) {
     emptyCart();
+    return 0;
   }
 
   const tbCart = $(".product-list--body");
@@ -158,7 +165,7 @@ async function displayCart(user_id) {
         <button 
           class="remove-btn pointer"
           id="btn-remove-${row.ORDER_DETAIL_ID}"
-          onClick="removeProduct(${row.ORDER_DETAIL_ID}, ${user_id})"
+          onClick="removeProduct(${row.ORDER_DETAIL_ID})"
           type="button">
           <span class="material-symbols-sharp">
 delete
@@ -183,18 +190,18 @@ function changeAmountLocal(cartData, productAmount, rowId) {
 
   var cartArray = [];
   cartData.forEach((row) => {
-    let rowData = [];
-    rowData[0] = row.PRODUCT_NAME;
-    rowData[1] = `${row.PRICE} VND`;
-    rowData[2] = `${row.SIZE}`;
-    rowData[3] = `${row.QUANTITY}`;
-    rowData[4] = `data:FIRST_PICTURE/png;base64,${row.FIRST_PICTURE}`;
+    let rowData = {};
+    rowData.productName = row.PRODUCT_NAME;
+    rowData.productPrice = `${row.PRICE} VND`;
+    rowData.productSize = `${row.SIZE}`;
+    rowData.numberOfProduct = `${row.QUANTITY}`;
+    rowData.productImage = `data:FIRST_PICTURE/png;base64,${row.FIRST_PICTURE}`;
     cartArray.push(rowData);
   });
   localStorage.setItem("myCart", JSON.stringify(cartArray));
 }
 
-function changeAmountLogin() {
+function changeAmountLogin(inputId, inputVal) {
   $.ajax({
     type: "GET",
     url: "cartChangeAmount.php",
@@ -227,11 +234,11 @@ function changeAmountInpt(inputId, productPrice) {
   document.querySelector(".total-amount").textContent = total * 1.05;
 
   // update data
-  if (sessionStorage.getItem("user_id") === null) {
+  if (user_id === null) {
     const cart = JSON.parse(localStorage.getItem("myCart"));
     changeAmountLocal(getLocalCart(cart), Number(inputVal), inputId);
   } else {
-    changeAmountLogin();
+    changeAmountLogin(inputId, inputVal);
   }
 }
 // CHANGE PRODUCT AMOUNT: END
@@ -267,7 +274,7 @@ function removeProductLogin(id) {
   });
 }
 
-function removeProduct(id, user_id) {
+function removeProduct(id) {
   const confirmResult = confirm("Xác nhận xóa sản phẩm?");
   if (confirmResult === true) {
     // giam so luong san pham trong gio tren giao dien

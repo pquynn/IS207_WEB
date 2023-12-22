@@ -1,4 +1,8 @@
-  <?php session_start(); ?>
+<?php
+  session_start();
+  $user_id = isset($_SESSION['user_id']) ? json_encode($_SESSION['user_id']) : 'null';
+  echo '<script> var user_id =' . $user_id . ';</script>';
+?>
   
   <link rel="stylesheet" href="../../../css/store/product_detail.css">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

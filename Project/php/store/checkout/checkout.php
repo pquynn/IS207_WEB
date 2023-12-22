@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  $user_id = isset($_SESSION['user_id']) ? json_encode($_SESSION['user_id']) : 'null';
+  echo '<script> var user_id =' . $user_id . ';</script>';
+?>
     <!-- Add particular css link to file: start -->
       <link rel="stylesheet" href="../../../css/store/checkout.css" />
     <!-- Add particular css link to file: start -->
@@ -23,14 +28,31 @@
 
       <!-- CHECKOUT BODY: Start -->
       <!-- <form action="checkoutBuy.php" method="get"> -->
-      <form action="../../Controller/store/cart-checkout/checkout-controller.php" method="post">
+      <form action="../../Controller/store/cart-checkout/checkout-controller.php" method="post" id="buy-form">
         <div class="checkout-body flex">
           <!-- INFOR FORM: Start -->
           <div class="left-col" style="width: 50%;">
             <div class="infor-form flex flex-col">
               <!-- GENDER: Start -->
               <div class="gender flex">
-                <!-- GENDER REDIO HERE -->
+                <div>
+                  <input
+                    class="square-radio gender-radio"
+                    type="radio"
+                    name="gender"
+                    id="Nam"
+                    required/>
+                  <label for="${inputGenderId}">Nam</label>
+                </div>
+                <div>
+                  <input
+                    class="square-radio gender-radio"
+                    type="radio"
+                    name="gender"
+                    id="Nữ"
+                    required/>
+                  <label for="${inputGenderId}">Nữ</label>
+                </div>
               </div>
               <!-- GENDER: End -->
 
@@ -38,6 +60,7 @@
               <input
                 type="text"
                 placeholder="Họ tên*"
+                id="name"
                 name="name"
                 required
                 class="input-char customer-name" 
@@ -48,6 +71,7 @@
               <input
                 type="tel"
                 placeholder="SĐT*"
+                id="phone"
                 name="phone"
                 aria-required="true"
                 required
@@ -144,10 +168,10 @@
                   </div>
                   <input
                     type="radio"
-                    value="payUrl"
+                    value="momo-atm"
                     class="square-radio"
                     name="payment"
-                    id="payUrl"
+                    id="momo-atm"
                     required/>
                 </div>
               </div>
@@ -201,6 +225,7 @@
 
               <!-- buy -->
               <input class="buy-btn btn" name="submit" type="submit" value="Mua"/>
+
               <!-- <input class="buy-btn btn" name="payUrl" type="submit" value="Thanh toán qua MoMo"/> -->
               <!-- accept rule -->
               <input type="checkbox" id="accept-rule" required/>
@@ -255,5 +280,9 @@
     <!-- js: start -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../../js/store/cart-checkout/checkout/checkout.js"></script>
+    <script type="text/javascript" src="../../../js/store/cart-checkout/cart/cart.js"></script>
+    <script type="text/javascript" src="../../../js/store/cart-checkout/checkout/checkout.js"></script>
     <!-- js: end -->
+
+
+    

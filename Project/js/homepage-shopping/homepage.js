@@ -9,7 +9,7 @@ $(document).ready(function () {
     if (urlParams.has('login')) {
         // Get the value of login
         var loginSuccessValue = urlParams.get('login');
-        console.log(loginSuccessValue);
+        // console.log(loginSuccessValue);
         // Example: Show a message if login_success is 1
         if (loginSuccessValue == '1') {
             showToastr('success', 'Đăng nhập thành công.');
