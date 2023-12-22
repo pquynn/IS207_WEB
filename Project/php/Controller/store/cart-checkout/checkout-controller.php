@@ -106,7 +106,7 @@ if (isset($_POST['submit'])) {
             }
         }
         //Thanh toán bằng VÍ MOMO - QUÉT MÃ QR
-        if ($selectedPayment == 'momo-wallet') {
+        if ($selectedPayment === 'momo-wallet') {
                //Lấy số tiền cần thanh toán 
                $sql = "SELECT order_id, total_price FROM orders WHERE name = ? and telephone = ? 
                order by order_id desc, order_date desc 
