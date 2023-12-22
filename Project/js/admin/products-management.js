@@ -104,8 +104,7 @@ $(document).ready(function () {
         // Remove the 'required' attribute
         $('#product-images').removeAttr('required');
 
-        //TODO:LOAD TỪ CSDL: ẢNH, CATEGORY, SIZE - QUANTITY
-
+        
         // reset image form-control
         fetchImages(tbl_id);
         fetchVariants(tbl_id);
@@ -534,7 +533,7 @@ function fetchData(page){
                         <td>${row.category_name}</td>
                         <td>${row.color}</td>
                         <td>${row.gender}</td>
-                        <td>${row.description}</td>
+                        <td style="max-width: 200px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">${row.description}</td>
                         <td class="action">
                             <a href="#" class="btn-edit" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
                             <a href="#" class="btn-delete btn-table"><i class="fa-solid fa-trash"></i></a>
@@ -748,7 +747,7 @@ function fetchSearchData(searchTerm, page) {
                         <td>${row.category_name}</td>
                         <td>${row.color}</td>
                         <td>${row.gender}</td>
-                        <td>${row.description}</td>
+                        <td style="max-width: 200px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">${row.description}</td>
                         <td class="action">
                             <a href="#" class="btn-edit" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
                             <a href="#" class="btn-delete btn-table"><i class="fa-solid fa-trash"></i></a>

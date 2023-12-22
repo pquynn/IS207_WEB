@@ -137,6 +137,11 @@ div a.accordion-body:hover {
   font-weight: bold;
 }
 
+/* Active color */
+.active {
+  color: var(--orange);
+}
+
 /* Clear Button */
 #clearFilter {
   color: white;

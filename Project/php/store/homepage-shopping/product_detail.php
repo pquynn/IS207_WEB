@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  $user_id = isset($_SESSION['user_id']) ? json_encode($_SESSION['user_id']) : 'null';
+  echo '<script> var user_id =' . $user_id . ';</script>';
+?>
+  
   <link rel="stylesheet" href="../../../css/store/product_detail.css">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <!-- Start of header -->
@@ -49,7 +55,7 @@
           </div>
           <div class="shopping-btn">
             <button class="btn btn-cancel">Thêm vào giỏ hàng</button>
-            <button class="btn btn-confirm">Mua ngay</button>
+            <button class="btn btn-confirm" >Mua ngay</button>
           </div>
         </div>
       </div>
@@ -93,12 +99,19 @@
           aria-labelledby="nav-home-tab">
 
           <!-- Ai đó hãy sữa giùm style chỗ này đc ko :))) -->
-          <div style="display: flex; justify-content: space-around;"> 
-            <p style="flex: 1;"></p>
-            <div style="display: flex; flex-wrap: wrap;">
-              <img src="" alt="" id="second_img" width="450px" height="562.5px">
-              <img src="" alt="" id="third_img" width="450px" height="562.5px">
-            </div>
+          <div class='description-container'> 
+              <div class="description-box">
+                <p style="flex: 1;"></p>
+              </div>
+              <div class="image-container">
+                <div class="img-box mb-4">
+                  <img class="" src="" alt="" id="second_img" width="500px" height="662.5px">
+                </div>
+          
+                <div class="img-box">
+                  <img src="" alt="" id="third_img" width="500px" height="662.5px">
+                </div>
+              </div>
           </div>
           <!-- Ai đó hãy sữa giùm chỗ này đc ko :))) -->
           
@@ -112,18 +125,8 @@
           role="tabpanel"
           aria-labelledby="nav-profile-tab">
           <div class="tab-content">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-              autem quibusdam dolorum dolorem pariatur dolores, non ipsum ad
-              nulla magnam veniam dignissimos vero nam alias minima repellat
-              optio, nihil accusantium? quam.
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem,
-              eius illum consequuntur quae minus iusto voluptatibus inventore
-              exercitationem, similique distinctio repellat veniam animi
-              aspernatur laborum laboriosam iste adipisci consectetur
-            </p>
+            <p></p>
+            <p></p>
           </div>
         </div>
         <!-- detail's content:end -->
@@ -184,7 +187,9 @@
       });
     </script>
 
-    <script src="../../../js/homepage-shopping/product_detail.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    
+    <script type="module" src="../../../js/homepage-shopping/product_detail.js"></script>
 
     <!-- bootstrap -->
     <script

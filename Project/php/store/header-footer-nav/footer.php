@@ -7,14 +7,14 @@
     <div class="FooterBox__one">
         <div class="FooterBox__one__left">
             <h3>Về chúng tôi</h3>
-            <p><a href="#">Trang chủ</a></p>
-            <p><a href="#">Cửa hàng</a></p>
-            <p><a href="#">Thông tin</a></p>
-            <p><a href="help-page.php">Liên hệ</a></p>
+            <p><a href="../homepage-shopping/homepage.php">Trang chủ</a></p>
+            <p><a href="../homepage-shopping/product_list.php">Cửa hàng</a></p>
+            <p><a href="../blog-info/about-us.php">Thông tin</a></p>
+            <p><a href="../blog-info/help-page.php">Liên hệ</a></p>
         </div>
         <div class="FooterBox__one__center">
             <h3>Khám phá</h3>
-            <p><a href="question-page.php">Câu hỏi thường gặp</a></p>
+            <p><a href="../blog-info/question-page.php">Câu hỏi thường gặp</a></p>
             <p><a href="#">Vận chuyển & Hoàn trản</a></p>
             <p><a href="#">Điều khoản</a></p>
             <p><a href="#">Phương thức thanh toán</a></p>

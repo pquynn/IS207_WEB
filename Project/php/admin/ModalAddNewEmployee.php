@@ -20,6 +20,12 @@
                         </div>
                     </div>
 
+                    <div class="pw-box">
+                        <label for="employee-password" class="form-label">Mật khẩu (Lưu lại trước khi thêm)</label>
+                        <input type="text" id="employee-password" class="form-control" disabled>
+                        <a class="btn btn-filter generate-pw" style="width: 130px;font-weight: normal;">Tạo mật khẩu</a>
+                    </div>
+
                     <div class="">
                         <label for="employee-name" class="form-label">Tên nhân viên*</label>
                         <input type="text" id="employee-name" class="form-control" required>

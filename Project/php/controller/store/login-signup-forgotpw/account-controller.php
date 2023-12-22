@@ -1,5 +1,6 @@
 <?php
 // Include the database configuration file
+session_start();
 include '../../connect.php';
 
 function editAddress() {
@@ -8,7 +9,9 @@ function editAddress() {
     // Kiểm tra xem request có phải là POST không
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Lấy dữ liệu từ form chỉnh sửa địa chỉ
-        $user_id = 'KH17028633'; //lấy để test chức năng
+        // $user_id = 'KH17028633';
+        // $user_id='KH0006'; //lấy để test chức năng
+        $user_id = $_SESSION['user_id'];
         $name = $_POST['name'];
         // $phoneNumber = $_POST['phonenumber'];
         $province = $_POST['province'];
@@ -37,7 +40,9 @@ function editProfile(){
     global $conn;
     // Kiểm tra xem request có phải là POST không
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $user_id = 'KH17028633';//id mẫu thoi
+        // $user_id = 'KH17028633';
+        // $user_id='KH0006';//id mẫu thoi
+        $user_id = $_SESSION['user_id'];
         $name = $_POST["name"];
         $dateOfBirth = $_POST["dateOfBirth"];
         $gender = $_POST["gender"];
@@ -66,7 +71,9 @@ function editProfile(){
 function fetchAddress(){
     global $conn;
     // Kiểm tra xem request có phải là POST không
-    $user_id = 'KH17028633';//id mẫu thoi
+    // $user_id = 'KH17028633';
+    // $user_id='KH0006';//id mẫu thoi
+    $user_id = $_SESSION['user_id'];
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT USER_NAME, ADDRESS FROM users WHERE USER_ID = ?";
         $stmt = $conn->prepare($sql);
@@ -88,7 +95,9 @@ function fetchAddress(){
 function fetchProfile(){
     global $conn;
     // $user_id = $_POST['user_id'];
-    $user_id = 'KH17028633';//id mẫu thoi
+    // $user_id = 'KH17028633';
+    // $user_id='KH0006';//id mẫu thoi
+    $user_id = $_SESSION['user_id'];
     $sql = "SELECT USER_NAME, USER_TELEPHONE, BIRTHDAY, GENDER FROM users WHERE USER_ID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $user_id);
@@ -113,8 +122,9 @@ function editPassword(){
         // Nhận dữ liệu từ yêu cầu AJAX
         $oldPassword = $_POST['oldPassword'];
         $newPassword = $_POST['newPassword'];
-        $user_id = 'KH17028633'; //lấy để test chức năng
-    
+        // $user_id = 'KH17028633';
+        // $user_id='KH0006'; //lấy để test chức năng
+        $user_id = $_SESSION['user_id'];
 
         // Chuẩn bị và thực thi truy vấn SQL để kiểm tra mật khẩu cũ
         $sql = "SELECT users.USER_LOGIN, USER_PASSWORD FROM users, login 
@@ -172,15 +182,21 @@ function forgetPassword(){
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Lấy dữ liệu từ form
-        $userLogin = $_POST['userlogin'];
+        // $userLogin = $_POST['userlogin'];
         $phoneNumber = $_POST['phonenumber'];
+        if (substr($phoneNumber, 0, 3) === '+84') {
+            // If yes, replace '+84' with '0'
+            $phoneNumber = '0' . substr($phoneNumber, 3);
+        }
 
         // Kiểm tra tên đăng nhập và số điện thoại trong cơ sở dữ liệu
-        $sql = "SELECT * FROM users WHERE USER_LOGIN = '$userLogin' AND USER_TELEPHONE = '$phoneNumber'";
+        $sql = "SELECT * FROM users WHERE USER_TELEPHONE = '$phoneNumber' LIMIT 1";
         $result = $conn->query($sql);
-
+        $data = [];
         if ($result->num_rows > 0) {
-            return (['status' => 'success', 'message' => 'Xác thực thành công']);
+            $row = $result->fetch_assoc();
+            $data = $row;
+            return (['status' => 'success','message' => 'Xác thực thành công', 'data'=> $data]);
         } else {
             // Tên đăng nhập hoặc số điện thoại không đúng, hiển thị thông báo
             return (['status' => 'error', 'message' => 'Tên đăng nhập hoặc số điện thoại không đúng.']);

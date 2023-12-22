@@ -1,4 +1,7 @@
-
+<?php session_start();
+$user_id = isset($_SESSION['user_id']) ? json_encode($_SESSION['user_id']) : 'null';
+echo '<script> var user_id =' . $user_id . ';</script>';
+?>
     <link rel="stylesheet" href="../../../css/store/question_page_style.css">
     
     <!-- Start of header -->

@@ -1,4 +1,9 @@
 <!-- @format -->
+<?php
+  // session_start();
+  $user_id = isset($_SESSION['user_id']) ? json_encode($_SESSION['user_id']) : 'null';
+  echo '<script> var user_id =' . $user_id . ';</script>';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,8 +14,20 @@
 
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+
     <!-- toastr -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    
     <!-- css file -->
     <link rel="stylesheet" href="../../../css/style-components/base.css" />
     <link rel="stylesheet" href="../../../css/style-components/header.css" />
@@ -25,6 +42,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
       integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
       crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     
     <script src="https://kit.fontawesome.com/f7fcb1a9ac.js"crossorigin="anonymous"></script>
     <!-- icon -->
@@ -76,27 +98,15 @@
           </div>
         </li>
 
+        <!-- <li class="nav-icon--item hover-underline"><a href="../account-management/my-orders.php" class="order-not-login"></a></li> -->
+
         <!-- account -->
-        <ul class="nav-icon--item primary-nav">
-          <a>
-            <span class="material-symbols-outlined"> account_circle </span>
-          </a>
-          <ul class="sub-nav">
-            <li class="sub-nav--item hover-underline">
-              <a href="../account-management/account-profile.php">TÀI KHOẢN</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="../../admin/Dashboard.php">QUẢN LÝ</a>
-            </li>
-            <li class="sub-nav--item hover-underline">
-              <a href="#">LOG OUT</a>
-            </li>
-          </ul>
+        <ul class="nav-icon--item primary-nav account">
         </ul>
 
         <!-- cart -->
-        <li class="nav-icon--item cart">
-          <a href="../cart-checkout/cart.php">
+        <li class="nav-icon--item">
+          <a href="../cart/cart.php" class="hover-orange">
             <span class="material-symbols-outlined"> shopping_bag </span>
           </a>
         </li>
@@ -104,4 +114,6 @@
       <!-- ICON (ACCOUNT, CART): End -->
     </ul>
 
+    <!-- <script src="../../../js/homepage-shopping/product_detail.js"></script> -->
     <script src="../../../js/header/header.js"></script>
+    <!-- <script src="../../../js/store/account-management/account-management"></script> -->

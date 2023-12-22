@@ -1,7 +1,7 @@
-    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- start: admin navigation -->
     <?php 
-        $role_id = 1;
+        $role_id = 1; //nhớ xóa đi
         $title = "Quản lý Blogs";
         include("AdminNavigation.php");
     ?>
@@ -10,7 +10,7 @@
 
     <!-- start: main section -->
     <div class="section">
-        <h2 class="section_heading">Quản lý Blogs</h2>
+        <h2 class="section_heading">Blogs</h2>
         
         <!-- start: search bar, button section -->
         <div class="section_top-content">
@@ -19,7 +19,7 @@
                 <div class="admin-search-container">
                     <div class="search-bar-box">
                         <input type="text" id="search" placeholder="Tìm kiếm..." class="form-control ">
-                        <a href="#" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <!-- <a href="#" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></a> -->
                     </div>
                 </div>
             </div>
@@ -37,25 +37,22 @@
             <!-- start: admin table -->
             <div class="admin-table">
                 <table>
-                    <tr>
-                        <th>#</th>
-                        <th>Hình ảnh</th>
-                        <th>Tên blog</th>
-                        <th>Người viết</th>
-                        <th>Ngày thêm</th>
-                        <th>Thao tác</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><div class="table-img"></div></td>
-                        <td>Review Mắt Biếc</td>
-                        <td>Nguyễn Văn A</td>
-                        <td>14/11/2023</td>
-                        <td class="action">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#add-new"><i class="fa-solid fa-pen"></i></a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#alert"><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Hình ảnh</th>
+                            <th>Tên blog</th>
+                            <th style="max-width: 100px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                Nội dung</th>
+                            <th>Người viết</th>
+                            <th>Ngày thêm</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+
+                    </tbody>
                 </table>
             </div>
             <!-- end: admin table -->
@@ -81,7 +78,7 @@
     <!-- start of Modal of Add new elements. Modified 10/22/2023 by Quyen -->
     <?php include("ModalAddNewBlog.php"); ?>
     <!-- end of Modal of Add new elements-->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type = "module" src="../../js/blog/blog-admin.js"></script>
 </body>
 </html>

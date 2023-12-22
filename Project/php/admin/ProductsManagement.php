@@ -49,7 +49,7 @@
                             <th>Phân loại</th>
                             <th>Màu sắc</th>
                             <th>Giới tính</th>
-                            <th>Mô tả</th>
+                            <th style="max-width: 200px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">Mô tả</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
