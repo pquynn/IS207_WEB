@@ -1,6 +1,6 @@
 /** @format */
 // Chỉ cần sử dụng user_id (Nếu chưa đăng nhập thì null)
-console.log(user_id);
+// console.log(user_id);
 
 // test
 // user_id = "KH0036";
@@ -30,10 +30,10 @@ async function getLoginCheckout(user_id) {
 function displayCustomerData(customerData) {
   //DISPLAY CUSTOMER INFOR: START
   // gender
-  if(customerData.GENDER != null){
+  // if(customerData.GENDER != null){
     const gender = document.getElementById(`${customerData.GENDER}`);
     gender.checked = true;
-  }
+  // }
   
 
   // personal infor
@@ -42,7 +42,7 @@ function displayCustomerData(customerData) {
 
   // address
   // get address
-  if(customerData.USER_ADDRESS){
+  // if(customerData.USER_ADDRESS){
   var addressString = customerData.USER_ADDRESS;
   var myString = addressString.split(",");
   for (var i = 0; i < myString.length; i++) {
@@ -73,7 +73,7 @@ function displayCustomerData(customerData) {
   $("#district").val(address.quanHuyen);
   $("#ward").val(address.xaPhuong);
   $("#street").val(address.duongAp);
-}
+// }
   //DISPLAY CUSTOMER INFOR: END
 }
 
@@ -110,7 +110,7 @@ function displayProductData(productData) {
 
   // total
   const divTotal = $(".total");
-  divTotal.append(`<p>${(subTotal * 1.05).toLocaleString("vi")} đ</p>`);
+  divTotal.append(`<p>${(subTotal).toLocaleString("vi")} đ</p>`);
   // DISPLAY ORDER TOTAL: END
 }
 
@@ -160,7 +160,7 @@ $("#buy-form").submit(function (e) {
 
   if (paymentMethod == "cod") {
     alert("Đặt hàng thành công!");
-  //   // window.location.href = "../../../../Project/php/store/cart/cart.php";
+    window.location.href = "../../../../Project/php/store/cart/cart.php";
   }
   // else{
   //   window.location.href = "../../../../php/Controller/store/cart-checkout/checkout-controller.php?id=1";

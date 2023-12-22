@@ -180,7 +180,7 @@ delete
   document.querySelector(".sub-total--amount").textContent = total;
 
   // display total
-  document.querySelector(".total-amount").textContent = total * 1.05;
+  document.querySelector(".total-amount").textContent = total;
 }
 // Render cart row: end
 
@@ -231,7 +231,7 @@ function changeAmountInpt(inputId, productPrice) {
   }
 
   document.querySelector(".sub-total--amount").textContent = total;
-  document.querySelector(".total-amount").textContent = total * 1.05;
+  document.querySelector(".total-amount").textContent = total;
 
   // update data
   if (user_id === null) {

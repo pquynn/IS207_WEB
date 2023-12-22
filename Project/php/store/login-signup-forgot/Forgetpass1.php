@@ -30,7 +30,7 @@
                     <input class="form-control" type="text" id="phonenumber" placeholder=" Số điện thoại (+84...)" required pattern="\+84\d{9}"
                     oninvalid="this.setCustomValidity('Yêu cầu nhập số điện thoại có 10 số và bắt đầu =0.')" 
                     oninput="this.setCustomValidity('')">
-                    <label for="phonenumber" class="form-label"> Số điện thoại</label>
+                    <label for="phonenumber" class="form-label"> Số điện thoại (+84...)</label>
                     <div id="recaptcha-container" style="margin: 10px auto 0; width: 80%;"></div>
                 </div>
 

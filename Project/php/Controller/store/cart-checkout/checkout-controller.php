@@ -70,7 +70,7 @@ if (isset($_POST['submit'])) {
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
                     $order_id = $row['order_id'];
-                    $total = (int) $row['total_price'] * 1.05;
+                    $total = $row['total_price'];
                     
                     $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
                     $partnerCode = 'MOMOBKUN20180529';

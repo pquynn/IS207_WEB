@@ -151,7 +151,7 @@ if (window.location.href.includes("product_detail.php")) {
                   myCart.push(tempProduct);
 
                   localStorage.setItem("myCart", JSON.stringify(myCart));
-                  alert("Thêm thành công!");
+                  showToastr("success", "Sản phẩm đã được thêm vào giỏ hàng")
                 }
                 // Trường hợp có đăng nhập.
                 else {
@@ -221,7 +221,7 @@ if (window.location.href.includes("product_detail.php")) {
 
                   // Lưu dữ liệu vào localStorage.
                   localStorage.setItem("myCart", JSON.stringify(myCart));
-                  alert("Thêm thành công!");
+                  showToastr("success", "Sản phẩm đã được thêm vào giỏ hàng")
                 }
                 // Trường hợp có đăng nhập.
                 else {
