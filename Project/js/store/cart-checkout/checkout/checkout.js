@@ -125,7 +125,7 @@ async function displayCheckout(user_id) {
 
 // CLICK BUY BTN: START
 $("#buy-form").submit(function (e) {
-  e.preventDefault();
+  // e.preventDefault();
   // const btnBuy = document
   //   .querySelector(".buy-btn")
   //   .addEventListener("submit", function (e) {
@@ -157,6 +157,9 @@ $("#buy-form").submit(function (e) {
     alert("Đặt hàng thành công!");
     window.location.href = "../../../../Project/php/store/cart/cart.php";
   }
+  // else{
+  //   window.location.href = "../../../../php/Controller/store/cart-checkout/checkout-controller.php?id=1";
+  // }
 
   // xoa localstorage chua gio hàng khi ko đăng nhập
   localStorage.clear();

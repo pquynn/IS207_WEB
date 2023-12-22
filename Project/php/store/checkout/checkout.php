@@ -28,7 +28,7 @@
 
       <!-- CHECKOUT BODY: Start -->
       <!-- <form action="checkoutBuy.php" method="get"> -->
-      <form action="" method="post" id="buy-form">
+      <form action="../../Controller/store/cart-checkout/checkout-controller.php" method="post" id="buy-form">
         <div class="checkout-body flex">
           <!-- INFOR FORM: Start -->
           <div class="left-col" style="width: 50%;">
@@ -60,6 +60,7 @@
               <input
                 type="text"
                 placeholder="Họ tên*"
+                id="name"
                 name="name"
                 required
                 class="input-char customer-name" 
@@ -70,6 +71,7 @@
               <input
                 type="tel"
                 placeholder="SĐT*"
+                id="phone"
                 name="phone"
                 aria-required="true"
                 required
@@ -169,7 +171,7 @@
                     value="momo-atm"
                     class="square-radio"
                     name="payment"
-                    id="payUrl"
+                    id="momo-atm"
                     required/>
                 </div>
               </div>
@@ -281,3 +283,6 @@
     <script type="text/javascript" src="../../../js/store/cart-checkout/cart/cart.js"></script>
     <script type="text/javascript" src="../../../js/store/cart-checkout/checkout/checkout.js"></script>
     <!-- js: end -->
+
+
+    
