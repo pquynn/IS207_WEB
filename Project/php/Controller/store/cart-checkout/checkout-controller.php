@@ -27,33 +27,16 @@ function execPostRequest($url, $data)
 
 //Kiểm tra phương thức thanh toán
 if (isset($_POST['submit'])) {
-//     // GET INPUT: START
-//     $name="";
-//     $phone="";
-//     $city="";
-//     $district="";
-//     $ward="";
-//     $street="";
 
-//     $order_id = 3;//THAY BẰNG SESSION HAY J ĐÓ
     $name=$_POST['name'];
     $phone=$_POST['phone'];
-//     $city=$_POST['city'];
-//     $district=$_POST['district'];
-//     $ward=$_POST['ward'];
-//     $street=$_POST['street'];
-//     // GET INPUT: END
-
-    // GET ADDRESS, AVOID SQP INJECTION: START
-    // $address=$street.", ".$district.", ".$ward.", ".$city;
-    // $fixedAddress = $conn -> real_escape_string($address);
-    // $fixedName=$conn -> real_escape_string($name);
-    // $fixedPhone=$conn -> real_escape_string($phone);
 
     if (isset($_POST['payment'])) {
         $selectedPayment = $_POST['payment'];
 
-        
+        if ($selectedPayment === 'cod'){
+            header('Location: ../../../store/cart/cart.php');
+        }
         
         //Thanh toán bằng ATM MOMO
         if ($selectedPayment === 'momo-atm') {
@@ -122,10 +105,6 @@ if (isset($_POST['submit'])) {
                 }
             }
         }
-        else if ($selectedPayment == 'cod'){
-            header('Location: ../../../store/cart/cart.php');
-        }
-        
         //Thanh toán bằng VÍ MOMO - QUÉT MÃ QR
         // else if ($selectedPayment == 'momo-wallet') {
         //        //Lấy số tiền cần thanh toán 

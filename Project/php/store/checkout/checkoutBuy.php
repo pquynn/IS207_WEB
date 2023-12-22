@@ -41,6 +41,8 @@ function buy(){
     $street=$_POST['duongAp'];
 
     $date=$_POST['date'];
+    // $date = date('Y-m-d H:i:s');
+    
     $paymentMethod=$_POST['paymentMethod'];
 
     if(isset($_POST['localCart'])){
@@ -56,6 +58,7 @@ function buy(){
 
     // cap nhat len db TH nguoi dung dang nhap
     $sqlUpdateOrderLogin="UPDATE ORDERS SET ADDRESS='$fixedAddress', 
+    ORDER_DATE = '$date',
     STATUS='Đang chuẩn bị hàng', 
     NAME='$fixedName', 
     TELEPHONE='$fixedPhone',
@@ -84,10 +87,12 @@ function buy(){
         // update to order_detail
         $sqlOrderId_Local="SELECT DISTINCT ORDER_ID FROM orders
                         WHERE USER_ID IS NULL
-                        AND ORDER_DATE='$date'
                         AND TELEPHONE='$phone'
                         AND NAME='$name'
-                        AND ADDRESS='$address'";
+                        AND ADDRESS='$address'
+                        AND STATUS = 'Đang chuẩn bị hàng'
+                        AND ORDER_DATE='$date'
+                        LIMIT 1";
                         // echo $sqlOrderId_Local;
 
         $OrderId_NotFecth=$conn->query($sqlOrderId_Local);
@@ -105,9 +110,6 @@ function buy(){
 
             $add=$conn->query($sqlUpdate_OrderDetail_Local);
         }
-    }
-    if ($paymentMethod === 'cod'){
-        header('Location: ../cart/cart.php');
     }
 }
     
