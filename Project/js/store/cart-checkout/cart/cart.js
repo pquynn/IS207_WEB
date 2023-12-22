@@ -1,6 +1,4 @@
 /** @format */
-// Chỉ cần sử dụng user_id (Nếu chưa đăng nhập thì null)
-console.log(user_id);
 
 // dua gio hang khi chua dang nhap cho checkout
 const cart = JSON.parse(localStorage.getItem("myCart"));
