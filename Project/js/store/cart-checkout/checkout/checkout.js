@@ -30,8 +30,11 @@ async function getLoginCheckout(user_id) {
 function displayCustomerData(customerData) {
   //DISPLAY CUSTOMER INFOR: START
   // gender
-  const gender = document.getElementById(`${customerData.GENDER}`);
-  gender.checked = true;
+  if(customerData.GENDER != null){
+    const gender = document.getElementById(`${customerData.GENDER}`);
+    gender.checked = true;
+  }
+  
 
   // personal infor
   $(".customer-name").val(customerData.NAME);
@@ -39,6 +42,7 @@ function displayCustomerData(customerData) {
 
   // address
   // get address
+  if(customerData.USER_ADDRESS){
   var addressString = customerData.USER_ADDRESS;
   var myString = addressString.split(",");
   for (var i = 0; i < myString.length; i++) {
@@ -69,6 +73,7 @@ function displayCustomerData(customerData) {
   $("#district").val(address.quanHuyen);
   $("#ward").val(address.xaPhuong);
   $("#street").val(address.duongAp);
+}
   //DISPLAY CUSTOMER INFOR: END
 }
 
@@ -155,7 +160,7 @@ $("#buy-form").submit(function (e) {
 
   if (paymentMethod == "cod") {
     alert("Đặt hàng thành công!");
-    window.location.href = "../../../../Project/php/store/cart/cart.php";
+  //   // window.location.href = "../../../../Project/php/store/cart/cart.php";
   }
   // else{
   //   window.location.href = "../../../../php/Controller/store/cart-checkout/checkout-controller.php?id=1";

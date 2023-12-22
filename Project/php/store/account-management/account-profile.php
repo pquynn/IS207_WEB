@@ -5,6 +5,9 @@
 <link rel="stylesheet" href="../../../css/store/account-profile.css"/>
 <?php
     session_start();
+$user_id = isset($_SESSION['user_id']) ? json_encode($_SESSION['user_id']) : 'null';
+echo '<script> var user_id =' . $user_id . ';</script>';
+
     // $user_id = $_SESSION['user_id'];
     // $user_id = 'KH17028633'; //lấy để test chức năng
     // $user_id='KH006';
