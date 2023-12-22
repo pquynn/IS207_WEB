@@ -155,7 +155,7 @@ $("#buy-form").submit(function (e) {
 
   if (paymentMethod == "cod") {
     alert("Đặt hàng thành công!");
-    window.location.href = "../../../../Project/php/store/cart/cart.php";
+    // window.location.href = "../../../../Project/php/store/cart/cart.php";
   }
   // else{
   //   window.location.href = "../../../../php/Controller/store/cart-checkout/checkout-controller.php?id=1";
