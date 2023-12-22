@@ -14,10 +14,10 @@
         </div>
         <div class="FooterBox__one__center">
             <h3>Khám phá</h3>
-            <p><a href="../blog-info/question-page.php">Câu hỏi thường gặp</a></p>
-            <p><a href="#">Vận chuyển & Hoàn trản</a></p>
-            <p><a href="#">Điều khoản</a></p>
-            <p><a href="#">Phương thức thanh toán</a></p>
+            <p><a href="../blog-info/question-page-Huy-don-hang.php">Đổi và hủy đơn hàng</a></p>
+            <p><a href="../blog-info/question-page-Phuong-thuc-van-chuyen.php">Phương thức vận chuyển</a></p>
+            <p><a href="../blog-info/question-page-Dieu-khoan.php">Điều khoản</a></p>
+            <p><a href="../blog-info/question-page-Phuong-thuc-thanh-toan.php">Phương thức thanh toán</a></p>
         </div>
         <div class="FooterBox__one__right">
             <h3>Theo dõi</h3>

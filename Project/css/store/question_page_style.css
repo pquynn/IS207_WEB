@@ -3,15 +3,41 @@ html {
 }
 
 h2 {
+    font-size: 50px;
     text-align: center;
     text-decoration: underline;
     text-decoration-color: #E96D00;
+}
+
+table {
+    width: 90%;
+}
+
+table, td, th {
+    border: 1px solid black;
+    /* border-collapse: collapse; */
+}
+
+td {
+    text-align: center;
 }
 
 .contentBox {
     display: flex;
     flex-direction: row;
     padding: 0 50px 50px 50px;
+}
+
+.contentBox__Left {
+    flex: 2;
+}
+
+.Content h4 {
+    font-size: 20px;
+}
+
+.Content p {
+    font-size: 20px;
 }
 
 .contentBox img {

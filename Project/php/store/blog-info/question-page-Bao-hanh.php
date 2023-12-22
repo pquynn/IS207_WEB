@@ -16,31 +16,21 @@ echo '<script> var user_id =' . $user_id . ';</script>';
     <div class="contentBox">
         <div class="contentBox__Left">
             <div class="Content">
-                <h4>ĐỔI HOẶC HỦY ĐƠN HÀNG</h4>
+                <h4>QUY ĐỊNH BẢO HÀNH</h4>
                 <p>
-                    Điều kiện: Thực hiện hủy đơn đặt hàng trong vòng 60 phút kể từ khi đặt hàng.<br>
-                    Cách thức thực hiện:<br>
-                    Cách 1: Khách hàng truy cập website, đăng nhập và truy cập vào đơn hàng. Nếu khách hàng không đăng
-                    nhập
-                    thì cần cung cấp mã đặt hàng từ email xác nhận. Tiếp theo, khách hàng ấn nút “Hủy” để thực hiện thao
-                    tác
-                    hủy đơn đặt hàng.<br>
-                    Cách 2: Khách hàng gọi điện thoại trực tiếp cho cửa hàng và làm theo hướng dẫn của nhân viên hỗ trợ
-                    hủy
-                    đơn đặt hàng.<br>
-                    Đối với trường hợp quá thời hạn 60 phút, khách hàng có thể gửi lại sản phẩm (đơn hàng vẫn chưa bị
-                    mở,
-                    tem nhãn và niêm phong còn đầy đủ) thông qua việc gọi thông báo cho cửa hàng, chúng tôi sẽ kiểm tra
-                    và
-                    hoàn lại tiền sản phẩm.
+                <br>Cửa hàng sẽ chịu trách nhiệm và đảm bảo quyền lợi cho khách hàng đối với mọi sản phẩm theo quy định sau:<br>
+                - Lỗi sản phẩm xuất phát từ lỗi vật liệu tạo nên sản phẩm (vải, da) hoặc do sản phẩm không đạt chất lượng (bong tróc keo, đường may).<br>
+                - Thời hạn bảo hành là 1 năm kể từ ngày mua hàng, khách hàng cần có hộp sản phẩm, tem, giấy mua hàng hoặc mã đơn mà chúng tôi đã gửi vào email tại thời điểm đặt hàng.<br>
+                - Lưu ý với sai sót về màu sắc và kích thước, khách hàng chỉ có thể đổi trong thời hạn 45 ngày kể từ khi mua hàng với tình trạng sản phẩm chưa được sử dụng.<br>
+                <br>Khách hàng vui lòng tới cửa hàng để nhân viên kiểm tra và đổi lại cho khách hàng 1 sản phẩm mới hoàn toàn.
                 </p>
             </div>
 
             <div class="Related_Questions">
                 <p>Các câu hỏi liên quan:</p>
                 <ul style="list-style-type:disc">
-                    <li><a href="#">Các phương thức thanh toán.</a></li>
-                    <li><a href="#">Quy định bảo hành.</a></li>
+                    <li><a href="../blog-info/question-page-Phuong-thuc-thanh-toan.php">Các phương thức thanh toán.</a></li>
+                    <li><a href="../blog-info/question-page-Kich-thuoc.php">Cách chọn kích thước.</a></li>
                 </ul>
             </div>
         </div>
