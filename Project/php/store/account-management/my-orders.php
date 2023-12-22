@@ -58,7 +58,7 @@ echo '<script> var user_id =' . $user_id . ';</script>';
   <!--LIST-ORDERS END-->
 </div>
 <!--MAIN SECTION END-->
-<script src="../../../js/my-order/my-order-management"></script>
+<script src="../../../js/my-order/my-order-management.js"></script>
 <?php
     include("../header-footer-nav/footer.php");
 ?>
