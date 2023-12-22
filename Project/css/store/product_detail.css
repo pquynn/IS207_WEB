@@ -70,7 +70,7 @@ body p {
   gap: 20px;
 }
 
-.product-name h2{
+.product-name h2 {
   font-size: 40px !important;
 }
 
@@ -112,7 +112,8 @@ body p {
 }
 
 /* change size btn when hover */
-.btn-size:hover, .btn-active {
+.btn-size:hover,
+.btn-active {
   background-color: var(--orange);
   color: white;
 }
@@ -146,7 +147,7 @@ body p {
   transition: all 0.3s;
 }
 
-button.btn{
+button.btn {
   border-radius: 0 !important;
 }
 
@@ -261,39 +262,36 @@ button.btn{
 /* rating tab: end */
 /* TAB: END */
 
-
 /* description style */
-.description-container{
+.description-container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.description-box{
+.description-box {
   white-space: pre-wrap;
   height: fit-content;
   width: 85%;
   overflow-y: auto; /* Add overflow-y property */
   max-height: 662.5px; /* Set a maximum height */
   position: sticky;
-  top: 0;
+  top: 10%;
 }
 
-.description-box p{
+.description-box p {
   font-size: 16px;
   text-align: justify;
   width: 85%;
 }
 
-.img-container{
+.img-container {
   display: flex;
   flex-direction: column;
 }
 
-.image-box{
+.image-box {
   width: 500px; /* Adjust width as needed */
   height: 662.5px; /* Adjust height as needed */
   margin-bottom: 10px; /* Adjust margin as needed */
 }
-
-
