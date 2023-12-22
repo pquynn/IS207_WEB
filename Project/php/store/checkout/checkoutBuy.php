@@ -47,6 +47,11 @@ function buy(){
         $localCart=json_decode(json_encode($_POST['localCart']), true);
     }
     
+    // GET ADDRESS, AVOID SQP INJECTION: START
+    $address=$street.", ".$district.", ".$ward.", ".$city;
+    $fixedAddress = $conn -> real_escape_string($address);
+    $fixedName=$conn -> real_escape_string($name);
+    $fixedPhone=$conn -> real_escape_string($phone);
 
 
     // cap nhat len db TH nguoi dung dang nhap
