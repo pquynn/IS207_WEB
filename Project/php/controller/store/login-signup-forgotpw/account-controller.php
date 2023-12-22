@@ -1,5 +1,6 @@
 <?php
 // Include the database configuration file
+session_start();
 include '../../connect.php';
 
 function editAddress() {
@@ -9,7 +10,8 @@ function editAddress() {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Lấy dữ liệu từ form chỉnh sửa địa chỉ
         // $user_id = 'KH17028633';
-        $user_id='KH0006'; //lấy để test chức năng
+        // $user_id='KH0006'; //lấy để test chức năng
+        $user_id = $_SESSION['user_id'];
         $name = $_POST['name'];
         // $phoneNumber = $_POST['phonenumber'];
         $province = $_POST['province'];
@@ -39,7 +41,8 @@ function editProfile(){
     // Kiểm tra xem request có phải là POST không
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // $user_id = 'KH17028633';
-        $user_id='KH0006';//id mẫu thoi
+        // $user_id='KH0006';//id mẫu thoi
+        $user_id = $_SESSION['user_id'];
         $name = $_POST["name"];
         $dateOfBirth = $_POST["dateOfBirth"];
         $gender = $_POST["gender"];
@@ -69,7 +72,8 @@ function fetchAddress(){
     global $conn;
     // Kiểm tra xem request có phải là POST không
     // $user_id = 'KH17028633';
-    $user_id='KH0006';//id mẫu thoi
+    // $user_id='KH0006';//id mẫu thoi
+    $user_id = $_SESSION['user_id'];
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT USER_NAME, ADDRESS FROM users WHERE USER_ID = ?";
         $stmt = $conn->prepare($sql);
@@ -92,7 +96,8 @@ function fetchProfile(){
     global $conn;
     // $user_id = $_POST['user_id'];
     // $user_id = 'KH17028633';
-    $user_id='KH0006';//id mẫu thoi
+    // $user_id='KH0006';//id mẫu thoi
+    $user_id = $_SESSION['user_id'];
     $sql = "SELECT USER_NAME, USER_TELEPHONE, BIRTHDAY, GENDER FROM users WHERE USER_ID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $user_id);
@@ -118,8 +123,8 @@ function editPassword(){
         $oldPassword = $_POST['oldPassword'];
         $newPassword = $_POST['newPassword'];
         // $user_id = 'KH17028633';
-        $user_id='KH0006'; //lấy để test chức năng
-    
+        // $user_id='KH0006'; //lấy để test chức năng
+        $user_id = $_SESSION['user_id'];
 
         // Chuẩn bị và thực thi truy vấn SQL để kiểm tra mật khẩu cũ
         $sql = "SELECT users.USER_LOGIN, USER_PASSWORD FROM users, login 

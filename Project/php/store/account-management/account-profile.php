@@ -7,7 +7,7 @@
     session_start();
     // $user_id = $_SESSION['user_id'];
     // $user_id = 'KH17028633'; //lấy để test chức năng
-    $user_id='KH006';
+    // $user_id='KH006';
     $title = "Quản lý tài khoản";
     include("../header-footer-nav/header.php");
 ?>
