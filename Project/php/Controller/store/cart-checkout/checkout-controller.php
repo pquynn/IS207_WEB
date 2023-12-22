@@ -70,8 +70,8 @@ if (isset($_POST['submit'])) {
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
                     $order_id = $row['order_id'];
-                    $total = $row['total_price'];
-
+                    $total = (int) $row['total_price'] * 1.05;
+                    
                     $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
                     $partnerCode = 'MOMOBKUN20180529';
                     $accessKey = 'klm05TvNBzhg7h7j';
@@ -122,12 +122,12 @@ if (isset($_POST['submit'])) {
                 }
             }
         }
-
-        // else if ($selectedPayment === 'cod'){
-        //     header("Location: ../../../store/cart/cart.php");
-        // }
+        else if ($selectedPayment == 'cod'){
+            header('Location: ../../../store/cart/cart.php');
+        }
+        
         //Thanh toán bằng VÍ MOMO - QUÉT MÃ QR
-        // else if ($selectedPayment === 'momo-wallet') {
+        // else if ($selectedPayment == 'momo-wallet') {
         //        //Lấy số tiền cần thanh toán 
         //        $sql = "SELECT order_id, total_price FROM orders WHERE name = ? and telephone = ? 
         //        order by order_id desc, order_date desc 
