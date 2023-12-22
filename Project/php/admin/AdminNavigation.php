@@ -1,4 +1,8 @@
-
+<?php
+  session_start();
+  $user_id = isset($_SESSION['user_id']) ? json_encode($_SESSION['user_id']) : 'null';
+  echo '<script> var user_id =' . $user_id . ';</script>';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,6 +91,6 @@
     <!-- end: admin navigation -->
 
    
-    <script src="../../js/admin/admin-nav"></script>
+    <script src="../../js/admin/admin-nav.js"></script>
 
 
