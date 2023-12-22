@@ -7,7 +7,7 @@ function getCheckoutData()
         $user_id = $_GET["user_id"];
         // echo $user_id;
 
-        $sqlCustomerData = "SELECT DISTINCT NAME, TELEPHONE, users.ADDRESS AS USER_ADDRESS, orders.ADDRESS AS ORDER_ADDRESS, GENDER
+        $sqlCustomerData = "SELECT DISTINCT USER_NAME, USER_TELEPHONE, users.ADDRESS AS USER_ADDRESS, orders.ADDRESS AS ORDER_ADDRESS, GENDER
         FROM  orders
             INNER JOIN order_detail 
             ON order_detail.ORDER_ID = orders.ORDER_ID

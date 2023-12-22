@@ -49,6 +49,7 @@ function DeleteOrder(orderId) {
         dataType: 'json',
         success: function (result) {
             if(result) {
+                
                 alert("Hủy đơn hàng thành công!");
                 var url = '../../../php/store/account-management/my-orders.php';
                 window.location.href = url;

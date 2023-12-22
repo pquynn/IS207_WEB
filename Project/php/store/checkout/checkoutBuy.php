@@ -1,5 +1,5 @@
 <?php  
-
+include('../cart/connect.php');
 // function execPostRequest($url, $data)
 // {
 //     $ch = curl_init($url);
@@ -41,6 +41,8 @@ function buy(){
     $street=$_POST['duongAp'];
 
     $date=$_POST['date'];
+    // $date = date('Y-m-d H:i:s');
+    
     $paymentMethod=$_POST['paymentMethod'];
 
     if(isset($_POST['localCart'])){
@@ -56,6 +58,7 @@ function buy(){
 
     // cap nhat len db TH nguoi dung dang nhap
     $sqlUpdateOrderLogin="UPDATE ORDERS SET ADDRESS='$fixedAddress', 
+    ORDER_DATE = '$date',
     STATUS='Đang chuẩn bị hàng', 
     NAME='$fixedName', 
     TELEPHONE='$fixedPhone',
@@ -84,10 +87,12 @@ function buy(){
         // update to order_detail
         $sqlOrderId_Local="SELECT DISTINCT ORDER_ID FROM orders
                         WHERE USER_ID IS NULL
-                        AND ORDER_DATE='$date'
                         AND TELEPHONE='$phone'
                         AND NAME='$name'
-                        AND ADDRESS='$address'";
+                        AND ADDRESS='$address'
+                        AND STATUS = 'Đang chuẩn bị hàng'
+                        AND ORDER_DATE='$date'
+                        LIMIT 1";
                         // echo $sqlOrderId_Local;
 
         $OrderId_NotFecth=$conn->query($sqlOrderId_Local);
@@ -106,66 +111,9 @@ function buy(){
             $add=$conn->query($sqlUpdate_OrderDetail_Local);
         }
     }
-    // update to orders table: end
-
-    // update localCart to orders_detail table: start
-    
-
-    
-    // update to orders_detail table: end
-    // UPDATE TO DATA BASE: end
-
-    // go to success announcement page
-    // header("Location:./buySuccess.php");
-
-
 }
     
 }
 
-// include('../cart/connect.php');
-
-// function buy(){
-//     global $conn;
-
-//     // GET INPUT: START
-//     $name="";
-//     $phone="";
-//     $city="";
-//     $district="";
-//     $ward="";
-//     $street="";
-
-//     $name=$_GET['name'];
-//     $phone=$_GET['phone'];
-//     $city=$_GET['city'];
-//     $district=$_GET['district'];
-//     $ward=$_GET['ward'];
-//     $street=$_GET['street'];
-//     // GET INPUT: END
-
-//     // GET ADDRESS, AVOID SQP INJECTION: START
-//     $address=$street.", ".$district.", ".$ward.", ".$city;
-//     $fixedAddress = $conn -> real_escape_string($address);
-//     $fixedName=$conn -> real_escape_string($name);
-//     $fixedPhone=$conn -> real_escape_string($phone);
-
-//     $sqlUpdateOrder='UPDATE ORDERS SET ADDRESS=?, STATUS="Đang chuẩn bị hàng", NAME=?, TELEPHONE=? WHERE ORDER_ID=?';
-
-//     $orderId=1;
-//     // GET ADDRESS, AVOID SQP INJECTION: END
-
-//     // UPDATE TO DATA BASE: START
-//     $buySql=$conn->prepare($sqlUpdateOrder);
-//     $buySql->bind_param("sssi", $fixedAddress, $fixedName, $fixedPhone, $orderId);
-//     if($buySql->execute()){
-//         echo "Buy Succesfully";
-//     }
-//     // UPDATE TO DATA BASE: end
-
-//     // go to success announcement page
-//     header("Location:./buySuccess.php");
-// }
-
-// buy();
+buy();
 ?>

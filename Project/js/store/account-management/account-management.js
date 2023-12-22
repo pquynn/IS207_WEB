@@ -71,8 +71,6 @@ $(document).ready(function() {
         if(confirm('Những thay đổi của bạn sẽ không được lưu?')){
             $('#edit-profile').modal('hide');
         }
-        else{
-        }
     })
 
 
@@ -173,11 +171,9 @@ $(document).ready(function() {
     })
 
     //EVENT WHEN CANCEL EDIT
-    $('#edit-address .btn-cancel').on('click', function(e){
+    $('#edit-address .btn-cancel.btn-edit-address').on('click', function(e){
         if(confirm('Những thay đổi của bạn sẽ không được lưu?')){
             $('#edit-address').modal('hide');
-        }
-        else{
         }
     })
 
@@ -211,11 +207,9 @@ $(document).ready(function() {
     })
     
     //EVENT WHEN CANCEL EDIT
-    $('#edit-pass .btn-cancel').on('click', function(e){
+    $('#edit-pass .btn-cancel.btn-edit-pass').on('click', function(e){
         if(confirm('Những thay đổi của bạn sẽ không được lưu?')){
             $('#edit-pass').modal('hide');
-        }
-        else{
         }
     })
 

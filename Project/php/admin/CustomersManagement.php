@@ -1,26 +1,26 @@
     <!-- start: admin navigation -->
     <?php 
-        // session_start();
-        // ob_start();
+        session_start();
+        ob_start();
     
         // Check if user is logged in and role_id is set in the session
-        // if (isset($_SESSION['user_id']) && isset($_SESSION['role_id'])) {
-        //     $user_id = $_SESSION['user_id'];
-        //     $role_id = $_SESSION['role_id'];
-        //     $user_name = $_SESSION['user_name']; //user_name phải tự tìm hay có trong session?
+        if (isset($_SESSION['user_id']) && isset($_SESSION['role_id'])) {
+            $user_id = $_SESSION['user_id'];
+            $role_id = $_SESSION['role_id'];
+            // $user_name = $_SESSION['user_name']; //user_name phải tự tìm hay có trong session?
 
-        //     // Include the specific dashboard based on the role
-        //     if($role_id != 1 && $role_id != 2){
-        //         header("Location: ../store/login-signup-forgot/Login.php");
-        //         exit();
-        //     }
+            // Include the specific dashboard based on the role
+            if($role_id != 1 && $role_id != 2){
+                header("Location: ../store/login-signup-forgot/Login.php");
+                exit();
+            }
     
-        // } else {
-        //     // Redirect to login page if user is not logged in or role_id is not set
-        //     header("Location: ../store/login-signup-forgot/Login.php");
-        //     exit();
-        // }
-        $role_id = 1;
+        } else {
+            // Redirect to login page if user is not logged in or role_id is not set
+            header("Location: ../store/login-signup-forgot/Login.php");
+            exit();
+        }
+        // $role_id = 1;
         $title = "Quản lý khách hàng";
         include("AdminNavigation.php");
     ?>

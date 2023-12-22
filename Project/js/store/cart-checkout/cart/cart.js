@@ -1,6 +1,4 @@
 /** @format */
-// Chỉ cần sử dụng user_id (Nếu chưa đăng nhập thì null)
-console.log(user_id);
 
 // dua gio hang khi chua dang nhap cho checkout
 const cart = JSON.parse(localStorage.getItem("myCart"));
@@ -180,7 +178,7 @@ delete
   document.querySelector(".sub-total--amount").textContent = total;
 
   // display total
-  document.querySelector(".total-amount").textContent = total * 1.05;
+  document.querySelector(".total-amount").textContent = total;
 }
 // Render cart row: end
 
@@ -231,7 +229,7 @@ function changeAmountInpt(inputId, productPrice) {
   }
 
   document.querySelector(".sub-total--amount").textContent = total;
-  document.querySelector(".total-amount").textContent = total * 1.05;
+  document.querySelector(".total-amount").textContent = total;
 
   // update data
   if (user_id === null) {
@@ -277,6 +275,14 @@ function removeProductLogin(id) {
 function removeProduct(id) {
   const confirmResult = confirm("Xác nhận xóa sản phẩm?");
   if (confirmResult === true) {
+    // giam tong don hang
+    const subTotal = Number($(".sub-total--amount").text());
+    const deletedProduct = Number($(`#pro-total-${id}`).text());
+    console.log($(`#pro-total-${id}`));
+
+    $(".sub-total--amount").text(subTotal - deletedProduct);
+    $(".total-amount").text((subTotal - deletedProduct) * 1.05);
+
     // giam so luong san pham trong gio tren giao dien
     rowAmount--;
 

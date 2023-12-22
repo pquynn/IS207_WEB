@@ -49,7 +49,7 @@
 
                         <div class="btn-container">
                             <button class="btn btn-confirm" style="width: 100%;">Lưu thay đổi</button>
-                            <button class="btn btn-cancel" style="width: 100%;">Hủy</button>
+                            <button class="btn btn-cancel btn-edit-address" style="width: 100%;">Hủy</button>
                         </div>
                     </div>
 

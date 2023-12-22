@@ -1,6 +1,11 @@
 <?php session_start();
 $user_id = isset($_SESSION['user_id']) ? json_encode($_SESSION['user_id']) : 'null';
 echo '<script> var user_id =' . $user_id . ';</script>';
+if (!isset($_SESSION['user_id'])) {
+  // Redirect to login page if user is not logged in or role_id is not set
+  header("Location:../login-signup-forgot/Login.php");
+  exit();
+}
 ?>
 <?php
     $title = "Chi tiết đơn hàng";
@@ -102,7 +107,7 @@ echo '<script> var user_id =' . $user_id . ';</script>';
   <!--DETAIL ORDER--END-->  
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script type="module" src="../../../js/my-order/my-order-detail-management"></script>
+<script type="module" src="../../../js/my-order/my-order-detail-management.js"></script>
 <?php
     include("../header-footer-nav/footer.php");
 ?>

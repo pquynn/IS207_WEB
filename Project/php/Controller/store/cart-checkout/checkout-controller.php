@@ -27,33 +27,16 @@ function execPostRequest($url, $data)
 
 //Kiểm tra phương thức thanh toán
 if (isset($_POST['submit'])) {
-//     // GET INPUT: START
-//     $name="";
-//     $phone="";
-//     $city="";
-//     $district="";
-//     $ward="";
-//     $street="";
 
-//     $order_id = 3;//THAY BẰNG SESSION HAY J ĐÓ
     $name=$_POST['name'];
     $phone=$_POST['phone'];
-//     $city=$_POST['city'];
-//     $district=$_POST['district'];
-//     $ward=$_POST['ward'];
-//     $street=$_POST['street'];
-//     // GET INPUT: END
-
-    // GET ADDRESS, AVOID SQP INJECTION: START
-    // $address=$street.", ".$district.", ".$ward.", ".$city;
-    // $fixedAddress = $conn -> real_escape_string($address);
-    // $fixedName=$conn -> real_escape_string($name);
-    // $fixedPhone=$conn -> real_escape_string($phone);
 
     if (isset($_POST['payment'])) {
         $selectedPayment = $_POST['payment'];
 
-        
+        if ($selectedPayment === 'cod'){
+            header('Location: ../../../store/cart/cart.php');
+        }
         
         //Thanh toán bằng ATM MOMO
         if ($selectedPayment === 'momo-atm') {
@@ -71,7 +54,7 @@ if (isset($_POST['submit'])) {
                     $row = $result->fetch_assoc();
                     $order_id = $row['order_id'];
                     $total = $row['total_price'];
-
+                    
                     $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
                     $partnerCode = 'MOMOBKUN20180529';
                     $accessKey = 'klm05TvNBzhg7h7j';
@@ -122,75 +105,71 @@ if (isset($_POST['submit'])) {
                 }
             }
         }
-
-        // else if ($selectedPayment === 'cod'){
-        //     header("Location: ../../../store/cart/cart.php");
-        // }
         //Thanh toán bằng VÍ MOMO - QUÉT MÃ QR
-        // else if ($selectedPayment === 'momo-wallet') {
-        //        //Lấy số tiền cần thanh toán 
-        //        $sql = "SELECT order_id, total_price FROM orders WHERE name = ? and telephone = ? 
-        //        order by order_id desc, order_date desc 
-        //        limit 1";
-        //         $stmt = $conn->prepare($sql);
-        //         $stmt->bind_param('ss', $name, $phone);
-        //         $stmt->execute();
-        //         $result = $stmt->get_result();
+        if ($selectedPayment === 'momo-wallet') {
+               //Lấy số tiền cần thanh toán 
+               $sql = "SELECT order_id, total_price FROM orders WHERE name = ? and telephone = ? 
+               order by order_id desc, order_date desc 
+               limit 1";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param('ss', $name, $phone);
+                $stmt->execute();
+                $result = $stmt->get_result();
 
-        //         if ($result->num_rows > 0) {
-        //             $row = $result->fetch_assoc();
-        //             $order_id = $row['order_id'];
-        //             $total = $row['total_price'];
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    $order_id = $row['order_id'];
+                    $total = $row['total_price'];
 
-        //             $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
-        //             $partnerCode = 'MOMOBKUN20180529';
-        //             $accessKey = 'klm05TvNBzhg7h7j';
-        //             $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+                    $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+                    $partnerCode = 'MOMOBKUN20180529';
+                    $accessKey = 'klm05TvNBzhg7h7j';
+                    $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 
-        //             $orderInfo = "Thanh toán qua MoMo";
-        //             $amount = $total;
-        //             $orderId = time() ."";
-        //             $redirectUrl = "http://localhost/IS207_WEB/IS207_WEB/Project/php/store/cart/cart.php?id=" . $order_id;
-        //             $ipnUrl = "http://localhost/IS207_WEB/IS207_WEB/Project/php/store/cart/cart.php?id=" . $order_id;
-        //             $extraData = "";
+                    $orderInfo = "Thanh toán qua MoMo";
+                    $amount = $total;
+                    $orderId = time() ."";
+                    $redirectUrl = "http://localhost/IS207_WEB/IS207_WEB/Project/php/store/cart/cart.php?id=" . $order_id;
+                    $ipnUrl = "http://localhost/IS207_WEB/IS207_WEB/Project/php/store/cart/cart.php?id=" . $order_id;
+                    $extraData = "";
 
-        //             $partnerCode = $partnerCode;
-        //             $accessKey = $accessKey;
-        //             $serectkey = $secretKey;
-        //             $orderId = $orderId; // Mã đơn hàng
-        //             $orderInfo = $orderInfo;
-        //             $amount = $amount;
-        //             $ipnUrl = $ipnUrl;
-        //             $redirectUrl = $redirectUrl;
-        //             $extraData = $extraData;
+                    $partnerCode = $partnerCode;
+                    $accessKey = $accessKey;
+                    $serectkey = $secretKey;
+                    $orderId = $orderId; // Mã đơn hàng
+                    $orderInfo = $orderInfo;
+                    $amount = $amount;
+                    $ipnUrl = $ipnUrl;
+                    $redirectUrl = $redirectUrl;
+                    $extraData = $extraData;
 
-        //             $requestId = time() . "";
-        //             $requestType = "captureWallet";
-        //             // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
-        //             //before sign HMAC SHA256 signature
-        //             $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
-        //             $signature = hash_hmac("sha256", $rawHash, $serectkey);
-        //             $data = array('partnerCode' => $partnerCode,
-        //                 'partnerName' => "Test",
-        //                 "storeId" => "MomoTestStore",
-        //                 'requestId' => $requestId,
-        //                 'amount' => $amount,
-        //                 'orderId' => $orderId,
-        //                 'orderInfo' => $orderInfo,
-        //                 'redirectUrl' => $redirectUrl,
-        //                 'ipnUrl' => $ipnUrl,
-        //                 'lang' => 'vi',
-        //                 'extraData' => $extraData,
-        //                 'requestType' => $requestType,
-        //                 'signature' => $signature);
-        //             $result = execPostRequest($endpoint, json_encode($data));
-        //             $jsonResult = json_decode($result, true);  // decode json
+                    $requestId = time() . "";
+                    $requestType = "captureWallet";
+                    // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
+                    //before sign HMAC SHA256 signature
+                    $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
+                    $signature = hash_hmac("sha256", $rawHash, $serectkey);
+                    $data = array('partnerCode' => $partnerCode,
+                        'partnerName' => "Test",
+                        "storeId" => "MomoTestStore",
+                        'requestId' => $requestId,
+                        'amount' => $amount,
+                        'orderId' => $orderId,
+                        'orderInfo' => $orderInfo,
+                        'redirectUrl' => $redirectUrl,
+                        'ipnUrl' => $ipnUrl,
+                        'lang' => 'vi',
+                        'extraData' => $extraData,
+                        'requestType' => $requestType,
+                        'signature' => $signature);
+                    $result = execPostRequest($endpoint, json_encode($data));
+                    $jsonResult = json_decode($result, true);  // decode json
 
-        //             //Just a example, please check more in there
+                    //Just a example, please check more in there
 
-        //             header('Location: ' . $jsonResult['payUrl']);
-        //         }
-        //     }
+                    header('Location: ' . $jsonResult['payUrl']);
+                }
+            }
            
         }
     

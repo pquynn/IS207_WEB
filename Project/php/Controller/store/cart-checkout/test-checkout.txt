@@ -9,23 +9,4 @@ Nếu không mở được trang thanh toán momo, check xem có bị lỗi:
 60: SSL certificate problem: self signed certificate in certificate chain
 Cách xử lý: https://www.youtube.com/watch?v=Om9JSauo9xQ 
 
-------------------------
-Tạo bảng momo_payment
-CREATE TABLE momo_payment (
-    order_id INT PRIMARY KEY,
-    orderId VARCHAR(60),
-    requestId VARCHAR(60),
-    amount INT,
-    orderInfo VARCHAR(60),
-    orderType VARCHAR(60),
-    transId VARCHAR(60),
-    resultCode VARCHAR(60),
-    message VARCHAR(60),
-    payType VARCHAR(60),
-    responseTime BIGINT,
-    extraData VARCHAR(60),
-    signature VARCHAR(60),
-    paymentOption VARCHAR(60),
-    FOREIGN KEY (order_id) REFERENCES orders(order_id)
-);
 
