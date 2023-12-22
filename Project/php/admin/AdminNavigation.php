@@ -72,7 +72,13 @@
             <div class="nav-admin-account">
                 <a href="#" id="account">
                         <img src="../../img/user.png" alt="Your account">
-                        <span style="color: #fff; font-size:16px;max-width:130px;text-align:center;"> <?php //echo $user_name; ?></span>
+                        <?php if ($role_id == 1): ?>
+                            <span style="color: #fff; font-size:16px;max-width:130px;text-align:center;"> <?php echo '  QUẢN LÝ' ?></span>
+                        <?php endif; ?>
+                        <?php if ($role_id == 2): ?>
+                            <span style="color: #fff; font-size:16px;max-width:130px;text-align:center;"> <?php echo '  NHÂN VIÊN' ?></span>
+                        <?php endif; ?>
+                        
                 </a>
                 <a href="#" id="logout">Đăng Xuất</a>
             </div>

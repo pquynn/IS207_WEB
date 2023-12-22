@@ -1,9 +1,10 @@
 
 $(document).ready(function() {
     var currentpage = 1;
-    //CustomerId =  new URLSearchParams(window.location.search).get('id');
-    CustomerId='KH0038'; //giả sử
-    fetchData(CustomerId, currentpage);
+    //user_id =  new URLSearchParams(window.location.search).get('id');
+    // user_id='KH0038'; //giả sử
+    
+    fetchData(user_id, currentpage);
 
     //SEARCH ORDER
     $('#search').on('keyup', function () {
@@ -11,9 +12,9 @@ $(document).ready(function() {
 
         // Fetch data based on the search term
         if(searchTerm.localeCompare('') != 0)
-            fetchSearchData(searchTerm, 1, CustomerId);
+            fetchSearchData(searchTerm, 1, user_id);
         else
-            fetchData(CustomerId, 1);
+            fetchData(user_id, 1);
     });
 });
 

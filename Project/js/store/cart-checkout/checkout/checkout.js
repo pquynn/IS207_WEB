@@ -34,11 +34,11 @@ function displayCustomerData(customerData) {
     const gender = document.getElementById(`${customerData.GENDER}`);
     gender.checked = true;
   // }
-  
+  console.log("customerdataa" + customerData);
 
   // personal infor
-  $(".customer-name").val(customerData.NAME);
-  $(".customer-phone").val(customerData.TELEPHONE);
+  $(".customer-name").val(customerData.USER_NAME);
+  $(".customer-phone").val(customerData.USER_TELEPHONE);
 
   // address
   // get address

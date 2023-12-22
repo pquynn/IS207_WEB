@@ -10,7 +10,7 @@ $(document).ready(function () {
       <a href="#" id="login">ĐĂNG NHẬP</a>
     </li>`);
 
-      $(".order-not-login").text("ĐƠN HÀNG");
+      // $(".order-not-login").text("ĐƠN HÀNG");
 
       $("#login").click(function () {
         // Tạo URL mới với tham số truyền vào là tên sản phẩm
@@ -32,6 +32,20 @@ $(document).ready(function () {
           var role_id = 0;
           if (response.result == "success") role_id = response.row.ROLE_ID;
           console.log(role_id);
+
+          var nav = '';
+          if( Number(role_id) == 1 )
+          {
+            nav += `<li class="sub-nav--item hover-underline">
+                <a href="../../admin/Dashboard.php">QUẢN LÝ</a>
+          </li>`
+          }
+          else if(Number(role_id) == 2){
+            nav += `<li class="sub-nav--item hover-underline">
+                <a href="../../admin/CategoriesManagement.php">QUẢN LÝ</a>
+          </li>`
+          }
+          
           // const account = $(".account");
           const accountHTML = `<a>
         <span class="material-symbols-outlined"> account_circle </span>
@@ -40,13 +54,7 @@ $(document).ready(function () {
         <li class="sub-nav--item hover-underline">
           <a href="../account-management/account-profile.php">TÀI KHOẢN</a>
         </li>
-        ${
-          Number(role_id) == 1 || Number(role_id) == 2
-            ? `<li class="sub-nav--item hover-underline">
-                    <a href="../../admin/Dashboard.php">QUẢN LÝ</a>
-              </li>`
-            : ""
-        }
+        ${ nav }
         <li class="sub-nav--item hover-underline">
           <a href="#" class="logout">LOG OUT</a>
         </li>
