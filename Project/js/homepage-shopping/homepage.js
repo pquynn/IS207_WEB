@@ -52,15 +52,25 @@ $(document).ready(function () {
                             </div>
                         </div>
                     `);
-                    $('.blog-content').last().on('click', function () { // CHỌN BLOG
-                        var blogTitle = $(this).find('.blog-title').text();
-
-                        // Tạo URL mới với tham số truyền vào là tên blog
-                        var url = '../../store/blog-info/blog.php?blog=?' + encodeURIComponent(blogTitle);
+                    $('.blog-content').click(function () {
+                        let blogTitle = $(this).find('.blog-title').text();
+                        // alert(blogTitle);
                         
+                        // Tạo URL mới với tham số truyền vào là tên blog title
+                        var url = '../../store/blog-info/blog-detail-test.php?blogTitle=' + encodeURIComponent(blogTitle);
+    
                         // Chuyển hướng đến trang mới
                         window.location.href = url;
                     });
+                    // $('.blog-content').last().on('click', function () { // CHỌN BLOG
+                    //     var blogTitle = $(this).find('.blog-title').text();
+
+                    //     // Tạo URL mới với tham số truyền vào là tên blog
+                    //     var url = '../../store/blog-info/blog.php?blog=?' + encodeURIComponent(blogTitle);
+                        
+                    //     // Chuyển hướng đến trang mới
+                    //     window.location.href = url;
+                    // });
                 });
 
                 data.tableProductBestSeller.forEach(function (row) {
