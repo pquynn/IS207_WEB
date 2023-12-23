@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="col-12 form-floating">
-                    <input class="form-control" type="text" id="userlogin" placeholder=" Tên đăng nhập" style="font-size: 12px;"required
+                    <input class="form-control" type="text" id="userlogin" placeholder=" Tên đăng nhập" style="font-size: 12px;"required pattern="^\S+$"
                     oninvalid="this.setCustomValidity('Vui lòng nhập tên tài khoản.')"
                     oninput="this.setCustomValidity('')">
                     <label for="userlogin" class="form-label">Tên đăng nhập</label>

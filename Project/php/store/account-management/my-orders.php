@@ -56,8 +56,8 @@ if (!isset($_SESSION['user_id'])) {
       <!--Table list orders--end-->
     
       <!--pagination--start-->
-      <div class="pagination"  id="pagination-my-orders">
-      </div>
+      <!-- <div class="pagination"  id="pagination-my-orders">
+      </div> -->
       <!--pagiantion--end-->
     </div>
   <!--LIST-ORDERS END-->

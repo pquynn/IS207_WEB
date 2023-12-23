@@ -13,6 +13,7 @@ $(document).ready(function () {
 
     // when btn-add button is clicked
     $('.btn-add').click(function (event){
+        formData = new FormData();
         $('h1.modal-title').text('Thêm mới ' + namePage);
         $('.btn-confirm').text('Thêm mới');
 

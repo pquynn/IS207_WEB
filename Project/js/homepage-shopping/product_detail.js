@@ -57,7 +57,7 @@ if (window.location.href.includes("product_detail.php")) {
 
           if (countComment > 0) {
             data.tableComment.forEach(function (row) {
-              avgScore = row.SCORE;
+              avgScore += Number(row.SCORE);
               $(".review-list").append(`
               <div class="person-review">
                 <!-- star: start -->
